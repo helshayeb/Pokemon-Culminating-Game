@@ -12,7 +12,7 @@ public class Pokemon{
    private Location foundIn;
    private Item itemHolding;
 
-   public Pokemon(String name, int type, int id, double hps, double chp, double atk, double def, double spd, int m1, int m2, int m3, int m4, int loca){
+   public Pokemon(String name, int type, int id, double hps, double atk, double def, double spd, int m1, int m2, int m3, int m4, int loca){
       this.name = name;
       this.type = type;
       this.id = id;
