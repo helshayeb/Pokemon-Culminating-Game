@@ -5,13 +5,29 @@ public class Pokemon{
    private double maxHPStat;
    private double currentHP;
    private double attackStat;
-   private double defenseStat;
+   private double defenceStat;
    private double speedStat;
    private Move[] moveList;
    private Condition currentCondition;
    private Location foundIn;
+   private Item itemHolding;
 
-   public Pokemon(String name, int type, int id, double hps, double chp, double atk, double def, double spd, int m1, int m2, int m3, int m4){
+   public Pokemon(String name, int type, int id, double hps, double atk, double def, double spd, int m1, int m2, int m3, int m4, int loca){
+      this.name = name;
+      this.type = type;
+      this.id = id;
+      maxHPStat = hps;
+      currentHP = maxHPStat;
+      attackStat = atk;
+      defenceStat = def;
+      speedStat = spd;
+      moveList[0] = new Move(m1);
+      moveList[1] = new Move(m2);
+      moveList[2] = new Move(m3);
+      moveList[3] = new Move(m4);
+      currentCondition = null;
+      foundIn = new location(loca);
+      itemHolding = null;
    }
 
    public void changeCurrentHP(double hpMod, double hpHeal){
@@ -55,6 +71,10 @@ public class Pokemon{
             return "Type Not Found";
       }
       
+   }
+
+   public void attack(Pokemon p2, Move m1){
+      m1.useMove(this, p2, m1);
    }
 }
 
