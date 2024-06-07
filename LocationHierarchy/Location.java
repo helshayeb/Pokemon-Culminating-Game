@@ -11,7 +11,7 @@ public class Location{
 
   public Location(int id){
     locationID = id;
-    regionType = null
+    regionType = null;
     name = null;
   }
 
