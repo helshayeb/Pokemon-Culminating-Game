@@ -1,3 +1,6 @@
+/**
+* Creates Pokemon which can be caught and used to battle other Pokemon
+*/
 public class Pokemon{
    
    /**
