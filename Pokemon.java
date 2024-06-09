@@ -139,6 +139,25 @@ public class Pokemon{
    }
 
    /**
+   * This method is a mutator that sets the current Condition of
+   * the Pokemon when given the 
+   * @param conditionID Integer used to identify Conditions
+   */
+   public void setCondition(int conditionID){
+      Condition cd;
+      if(conditionID == 0){
+         cd = new Burn();
+         currentCondition = cd;
+      }else if(conditionID == 1){
+         cd = new Paralysis();
+         currentCondition = cd;
+      }else if(conditionID == 2){
+         cd = new Poison();
+         currentCondition = cd;
+      }
+   }
+   
+   /**
    * This method returns the name of 
    * a type when given its
    * @param typeID Integer used to identify types
