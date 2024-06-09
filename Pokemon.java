@@ -31,7 +31,7 @@ public class Pokemon{
    private double attackStat;
 
    /**
-   * Defense stat of the Pokemon, which determines the damage it takes from other Pokemon in battle
+   * Defence stat of the Pokemon, which determines the damage it takes from other Pokemon in battle
    */
    private double defenceStat;
 
@@ -61,7 +61,20 @@ public class Pokemon{
    private Item itemHolding;
 
    /**
-   * This method is a constructor that 
+   * This method is a constructor that initializes the fields of
+   * the Pokemon when given its 
+   * @param name The name of the Pokemon
+   * @param type The type of the Pokemon
+   * @param id The ID of the Pokemon
+   * @param hps The max health of the Pokemon
+   * @param atk The attack stat of the Pokemon
+   * @param def The defence stat of the Pokemon
+   * @param spd The speed stat of the Pokemon
+   * @param m1 The first move the Pokemon can use
+   * @param m2 The second move the Pokemon can use
+   * @param m3 The third move the Pokemon can use
+   * @param m4 The fourth move the Pokemon can use
+   * @param loca The location in which the Pokemon can be found
    */
    public Pokemon(String name, int type, int id, double hps, double atk, double def, double spd, int m1, int m2, int m3, int m4, int loca){
       moveList = new Move[4];
