@@ -1,4 +1,7 @@
 public class Pokemon{
+   /**
+   *The name of the Pokemon
+   */
    private String name;
    private int type;
    private int id;
