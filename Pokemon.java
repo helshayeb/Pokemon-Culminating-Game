@@ -6,29 +6,62 @@ public class Pokemon{
    private String name;
    
    /**
-   * Type of the Pokemon, represented as an integer
+   * Type of the Pokemon
    */
    private int type;
 
    /**
-   * ID of the Pokemon, represented as an integer
+   * ID of the Pokemon
    */
    private int id;
 
    /**
-   * Max health of the Pokemon, represented as a double
+   * Max health of the Pokemon
    */
    private double maxHPStat;
+
+   /**
+   * Current health of the Pokemon
+   */
    private double currentHP;
+
+   /**
+   * Attack stat of the Pokemon, which determines the damage it can deal to other Pokemon in battle
+   */
    private double attackStat;
+
+   /**
+   * Defense stat of the Pokemon, which determines the damage it takes from other Pokemon in battle
+   */
    private double defenceStat;
+
+   /**
+   * Speed stat of the Pokemon, which determines which Pokemon goes first in battle
+   */
    private double speedStat;
+
+   /**
+   * List of the moves that the Pokemon can use in battle
+   */
    private Move[] moveList;
+
+   /**
+   * Current Condition of the Pokemon
+   */
    private Condition currentCondition;
+
+   /**
+   * Location in which the Pokemon can be found
+   */
    private Location foundIn;
+
+   /**
+   * Item that the Pokemon is currently holding
+   */
    private Item itemHolding;
 
    public Pokemon(String name, int type, int id, double hps, double atk, double def, double spd, int m1, int m2, int m3, int m4, int loca){
+      moveList = new Move[4];
       this.name = name;
       this.type = type;
       this.id = id;
