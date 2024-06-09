@@ -137,6 +137,12 @@ public class Pokemon{
    public void changeSpdStat(double spdMod){
       speedStat *= spdMod;
    }
+
+   /**
+   * This method returns the name of 
+   * a type when given its
+   * @param typeID Integer used to identify types
+   */
    public static String getTypeName(int typeID){
       switch(typeID) {
          case 0:
@@ -166,9 +172,10 @@ public class Pokemon{
    public void attack(Pokemon p2, Move m1){
       m1.useMove(this, p2, m1);
    }
+
+   public String toString(){
+   //put stuff here frfr
+   }
 }
 
 
-Contains all accessors, constructors, and mutators
-attack(): takes in two pokemon (one implicitly one explicitly) and a move. Uses the two pokemon and one move to call the useMove method in the Move class.
-toString(): returns the information of the pokemon in text format. Includes the Pokemon’s name, ID, type, statistics, if it has an Item, and what route it can be found in,
