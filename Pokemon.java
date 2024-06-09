@@ -179,6 +179,12 @@ public class Pokemon{
       m1.useMove(this, p2, m1);
    }
 
+   public void applyCondition(){
+      if(currentCondition != null){
+         currentCondition.apply();
+      }
+   }
+   
    /**
    * This method returns the information about
    * the Pokemon
