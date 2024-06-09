@@ -1,10 +1,23 @@
 public class Pokemon{
+   
    /**
-   *The name of the Pokemon
+   * Name of the Pokemon
    */
    private String name;
+   
+   /**
+   * Type of the Pokemon, represented as an integer
+   */
    private int type;
+
+   /**
+   * ID of the Pokemon, represented as an integer
+   */
    private int id;
+
+   /**
+   * Max health of the Pokemon, represented as a double
+   */
    private double maxHPStat;
    private double currentHP;
    private double attackStat;
