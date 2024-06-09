@@ -27,6 +27,10 @@ public class Route extends Location {
         return pokemonInLocation;
     }
 
+    public int getNumPokemon(){
+        return numPokemon;
+    }
+
     public int getRouteNum() {
         return routeNum;
     }
