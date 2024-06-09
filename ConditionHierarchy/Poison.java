@@ -3,12 +3,16 @@ public class Poison extends Condition{
 
   public Poison(Pokemon appliedTo){ //wait appliedTo might have to be a thing in condition
     super(appliedTo);
-    originalAtk = appliedTo.getAtkStat();
   }
 
   apply(){
+    if(super.getTurnsRemaining() != 0){
       appliedTo.changeCurrentHP(DMG, 0);
       super.reduceTurns();
+    }else{
+      appliedTo.changeCurrentHP(DMG, 0);
+      appliedTo.setCondition(-1);
+    }
   }
    
   
