@@ -79,7 +79,7 @@ public class Pokemon{
    * @param m4 The fourth move the Pokemon can use
    * @param loca The location in which the Pokemon can be found
    */
-   public Pokemon(String name, int type, int id, double hps, double atk, double def, double spd, int m1, int m2, int m3, int m4, int loca){
+   public Pokemon(String name, int type, int id, double hps, double atk, double def, double spd, Move m1, Move m2, Move m3, Move m4, Location loca){
       moveList = new Move[4];
       this.name = name;
       this.type = type;
@@ -161,6 +161,14 @@ public class Pokemon{
       return defenceStat;
    }
 
+   /**
+   * This method is an accessor that allows other classes to access
+   * the defence stat of the Pokemon
+   * @return Defence stat of the Pokemon
+   */
+   public String getSpeedStat () {
+      return defenceStat;
+   }
 
    
    /**
