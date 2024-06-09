@@ -154,6 +154,8 @@ public class Pokemon{
       }else if(conditionID == 2){
          cd = new Poison();
          currentCondition = cd;
+      }else{
+         currentCondition = null;
       }
    }
    
