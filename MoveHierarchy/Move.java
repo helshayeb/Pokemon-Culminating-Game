@@ -3,12 +3,15 @@ public abstract class Move{
    private String moveName;
    private int moveType;
    private int moveID;
-   
+   Pokedex pd = new Pokedex();
    public Move(String objectID, String moveName, int moveType, int moveID){
       this.objectID = objectID;
       this.moveName = moveName;
       this.moveType = moveType;
       this.moveID = moveID;
+   }
+   public double getMatchup(int type1, int type2){
+      return pd.getMultiplier(type1, type2);
    }
    
    public String getMoveTypeName(int typeID){
