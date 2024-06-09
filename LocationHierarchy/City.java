@@ -24,10 +24,10 @@ public class City extends Location {
 
     // Accessors (Getters)
 
-    public boolean hasPokeCentre() {
+    public boolean getHasPokeCentre() {
         return hasPokeCentre;
     }
-    public boolean hasStore() {
+    public boolean getHasStore() {
         return hasStore;
     }
     // Mutators (Setters)
