@@ -15,7 +15,7 @@ public class Burn extends Condition{
       super.reduceTurns();
     }else if (super.getTurnsRemaining() == 0){
       appliedTo.setAtkStat(originalAtk);
-      appliedTo.applyCondition(-1);
+      appliedTo.setCondition(-1);
     }else{
       appliedTo.changeCurrentHP(DMG, 0);
       super.reduceTurns();
