@@ -23,7 +23,7 @@ public class Location{
     return name;
   }
 
-  public int getLoactionID(){
+  public int getLocationID(){
     return locationID;
   }
 

@@ -211,17 +211,18 @@ public class Person {
     * @return True if the item was successfully given and false otherwise
     */
    public boolean giveItem (String poke, String it) {
-      for ()
       Pokemon p_temp = this.searchPokemonByNameInTeam(poke);
       if (this instanceof NPC) {
          Item i_temp = pokedexReference.getItemDex().searchItemByName(it);
          p_temp.setItemHolding(i_temp);
+         return true;
       } else {
          Item i_temp = this.searchItemByNameInTeam(it);
          if (i_temp == null) {
             return false;
          } else {
             p_temp.setItemHolding(i_temp);
+            return true;
          }
       }
    }
@@ -235,5 +236,43 @@ public class Person {
       Pokemon p_temp = this.pokedexReference.getPokemonDex().searchPokemonByID(pokeId);
       teamList[numPokemon] = new Pokemon (p_temp.getName(), p_temp.getType(), p_temp.getID(), p_temp.getMaxHPStat(), p_temp.getAttackStat(), p_temp.getDefenceStat(), p_temp.getSpeedStat(), p_temp.getMoveList()[0].getMoveID(), p_temp.getMoveList()[1].getMoveID(), p_temp.getMoveList()[2].getMoveID(), p_temp.getMoveList()[3].getMoveID(), p_temp.getFoundIn().getLocationID());
       numPokemon++;
+   }
+
+   /**
+    * Resets all the stats for the Pokemon whose ID is passed
+    * in through the parameter after a battle
+    * @param pokeID The Id of the Pokemon that is being reset
+    */
+   public void resetPokemon (int pokeID) {
+      Pokemon p_temp = this.pokedexReference.getPokemonDex().searchPokemonByID(pokeId);
+      int index = p_temp.getID(); 
+      int save;
+      for (int i = 0; i < numPokemon; i++) {
+         if (index = teamList[i]) {
+            save = i;
+         }
+      }
+      teamList[save] = new Pokemon (p_temp.getName(), p_temp.getType(), p_temp.getID(), p_temp.getMaxHPStat(), p_temp.getAttackStat(), p_temp.getDefenceStat(), p_temp.getSpeedStat(), p_temp.getMoveList()[0].getMoveID(), p_temp.getMoveList()[1].getMoveID(), p_temp.getMoveList()[2].getMoveID(), p_temp.getMoveList()[3].getMoveID(), p_temp.getFoundIn().getLocationID());
+      teamList[save].setCurrentHP(0);
+      numPokemon++;
+   }
+
+   /**
+    * This method heals the person's entire team after a battle
+    * @return True if the heal was successful and false if otherwise
+    */
+   public boolean healTeam () {
+      Pokemon p_temp = this.searchPokemonByNameInTeam(poke);
+      if (this instanceof NPC) {
+         Item i_temp = pokedexReference.getItemDex().searchItemByName(it);
+         p_temp.setItemHolding(i_temp);
+      } else {
+         Item i_temp = this.searchItemByNameInTeam(it);
+         if (i_temp == null) {
+            return false;
+         } else {
+            p_temp.setItemHolding(i_temp);
+         }
+      }
    }
 }
