@@ -90,7 +90,7 @@ public class Person {
    * the maximum number of Pokemon a player can have
    * @return The maximum number of Pokemon a player can have
    */
-   public int getMaxPokemon () {
+   public static int getMaxPokemon () {
       return maxPokemon;
    }
 
@@ -126,8 +126,80 @@ public class Person {
    * the Pokedex
    * @return The Pokedex object each person has
    */
-   public int getPokedexReference () {
+   public static int getPokedexReference () {
       return pokedexReference;
+   }
+   
+   /**
+   * This method is a mutator that allows other classes to change
+   * the name of the Person
+   * @param n Name of the Person
+   */
+   public void setName (String n) {
+      name = n;
+   }
+
+   /**
+   * This method is a mutator that allows other classes to change
+   * the age of the Person
+   * @param a Age of the Person
+   */
+   public void setAge (int a) {
+      age = a;
+   }
+
+   /**
+   * This method is a mutator that allows other classes to change
+   * the ID of the Person
+   * @param i ID of the Person
+   */
+   public void setPersonID (int i) {
+      personID = i;
+   }
+
+   /**
+   * This method is a mutator that allows other classes to change
+   * the maximum number of Pokemon a person can have
+   * @param m new maximum number of Pokemon a person can have
+   */
+   public static void setMaxPokemon (int m) {
+      maxPokemon = m;
+   }
+
+   /**
+   * This method is a mutator that allows other classes to change
+   * the current number of Pokemon a person has
+   * @param n new number of Pokemon a person can has
+   */
+   public void setNumPokemon (int n) {
+      numPokemon = n;
+   }
+
+   /**
+   * This method is a mutator that allows other classes to change
+   * the list of Pokemon in the person's team
+   * @param list new list of Pokemon in a person team
+   */
+   public void setTeamList (Pokemon[] list) {
+      teamList = list;
+   }
+
+   /**
+   * This method is a mutator that allows other classes to change
+   * the current Location a person is in
+   * @param cL new location of the person
+   */
+   public void setCurrentLocation (Location cL) {
+      currentLocation = cL;
+   }
+
+   /**
+   * This method is a mutator that allows other classes to change
+   * the Pokedex object each person has
+   * @param pR new Pokedex object each person will have
+   */
+   public static void setPokedexReference (Pokedex pR) {
+      pokedexReference = pR;
    }
 
    /**
@@ -142,7 +214,7 @@ public class Person {
       for ()
       Pokemon p_temp = this.searchPokemonByNameInTeam(poke);
       if (this instanceof NPC) {
-         Item i_temp = pokedexReference.getItemDex.searchItemByName(it);
+         Item i_temp = pokedexReference.getItemDex().searchItemByName(it);
          p_temp.setItemHolding(i_temp);
       } else {
          Item i_temp = this.searchItemByNameInTeam(it);
@@ -152,5 +224,15 @@ public class Person {
             p_temp.setItemHolding(i_temp);
          }
       }
+   }
+
+   /**
+    * Adds a Pokemon that is passed in through the parameter
+    * to the user’s team
+    * @param pokeID The Id of the Pokemon that is being added
+    */
+   public void newPokemon (int pokeID) {
+      Pokemon p_temp = this.pokedexReference.getPokemonDex().searchPokemonByID(pokeId);
+      teamList[numPokemon] = new Pokemon (p_temp.getName(), p_temp.getType(), p_temp.getID(), p_temp.getMaxHPStat(), p_temp.getAttackStat(), p_temp.getDefenceStat(), p_temp.getSpeedStat(), p_temp.get)
    }
 }
