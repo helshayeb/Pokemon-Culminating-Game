@@ -1,34 +1,42 @@
+
 public class Route extends Location {
-  String[] pokemonInLocation;
-  int routeNum;
+    int[] pokemonInLocation;
+    int numPokemon = 0;
+    int routeNum;
 
-  public Route(String type, String name, int id,String[] pokes, int routeNum){
-    super(type, name, id);
-    pokemonInLocation = pokes;
-    this.routeNum = routeNum;
-  }
-  
-  public Route(int id,String[] pokes, int routeNum){
-    super(id);
-    pokemonInLocation = pokes;
-    this.routeNum = routeNum;
-  }
-  
-   // Accessors (Getters)
-  public String[] getPokemonInLocation() {
-    return pokemonInLocation;
-  }
+    public Route(String type, String name, int routeNum, int id,int[] pokes){
+        super(type, name, id);
+        pokemonInLocation = pokes;
+        this.routeNum = routeNum;
+    }
 
-  public int getRouteNum() {
-    return routeNum;
-  }
+    public Route(String type, String name, int routeNum, int id){
+        super(type, name, id);
+        pokemonInLocation = new int[10];
+        this.routeNum = routeNum;
+    }
 
-  // Mutators (Setters)
-  public void setPokemonInLocation(String[] pokemonInLocation) {
-    this.pokemonInLocation = pokemonInLocation;
-  }
+    public Route(int id, int routeNum,int[] pokes){
+        super(id);
+        pokemonInLocation = pokes;
+        this.routeNum = routeNum;
+    }
 
-  public void setRouteNum(int routeNum) {
-    this.routeNum = routeNum;
-  }
+    // Accessors (Getters)
+    public int[] getPokemonInLocation() {
+        return pokemonInLocation;
+    }
+
+    public int getRouteNum() {
+        return routeNum;
+    }
+
+    // Mutators (Setters)
+    public void setPokemonInLocation(int[] pokemonInLocation) {
+        this.pokemonInLocation = pokemonInLocation;
+    }
+
+    public void setRouteNum(int routeNum) {
+        this.routeNum = routeNum;
+    }
 }
