@@ -168,11 +168,21 @@ public class Pokemon{
       }
       
    }
-
+   
+   /**
+   * This method calls the useMove method in
+   * the Move class when given the
+   * @param p2 Pokemon the move is being used on
+   * @param m1 Move that is being used
+   */
    public void attack(Pokemon p2, Move m1){
       m1.useMove(this, p2, m1);
    }
 
+   /**
+   * This method returns the information about
+   * the Pokemon
+   */
    public String toString(){
    //put stuff here frfr
    }
