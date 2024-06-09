@@ -1,5 +1,5 @@
 public class PokeDex {
-    double[][] typeCharrt = {{1, 1, 1, 1, 1, 1, 1, 1, 1},
+    double[][] typeChart = {{1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 1, 1, 1, 1, 1, 2, 0.5, 1},
             {1, 1, 0.5, 0.5, 1, 1, 2, 1, 1},
             {1, 0, 2, 1, 2, 1, 0.5, 2, 1},
@@ -21,6 +21,8 @@ public class PokeDex {
         this.pmDex = pmDex;
     }
 
-
+    public double getMultiplier(int typeMove, int typeDefender)P
+        return typeChart[typeMove][typeDefender];
+    }
 
 }
