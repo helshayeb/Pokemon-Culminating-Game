@@ -97,7 +97,12 @@ public class Pokemon{
       foundIn = new location(loca);
       itemHolding = null;
    }
-
+   /**
+   * This method is a mutator that changes the current health of
+   * the Pokemon when given the 
+   * @param hpMod Multiplier to determine percentage changes in health
+   * @param hpChange Value to determine numerical changes in health
+   */
    public void changeCurrentHP(double hpMod, double hpChange){
       currentHP += maxHpStat*hpMod;
       currentHP += hpChange;
@@ -106,12 +111,29 @@ public class Pokemon{
       }
    }
 
+   /**
+   * This method is a mutator that changes the attack stat of
+   * the Pokemon when given the 
+   * @param atkMod Multiplier to determine percentage changes in the attack stat
+   */
    public void changeAtkStat(double atkMod){
       attackStat *= atkMod;
    }
+   
+   /**
+   * This method is a mutator that changes the defence stat of
+   * the Pokemon when given the 
+   * @param defMod Multiplier to determine percentage changes in the defence stat
+   */
    public void changeDefStat(double defMod){
       defenseStat *= defMod;
    }
+
+   /**
+   * This method is a mutator that changes the speed stat of
+   * the Pokemon when given the 
+   * @param spdMod Multiplier to determine percentage changes in the speed stat
+   */
    public void changeSpdStat(double spdMod){
       speedStat *= spdMod;
    }
