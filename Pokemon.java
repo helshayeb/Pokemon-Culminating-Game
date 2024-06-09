@@ -179,6 +179,10 @@ public class Pokemon{
       m1.useMove(this, p2, m1);
    }
 
+   /**
+   * This method calls the apply method in
+   * the Condition class
+   */
    public void applyCondition(){
       if(currentCondition != null){
          currentCondition.apply();
