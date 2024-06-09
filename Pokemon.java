@@ -60,6 +60,9 @@ public class Pokemon{
    */
    private Item itemHolding;
 
+   /**
+   * This method is a constructor that 
+   */
    public Pokemon(String name, int type, int id, double hps, double atk, double def, double spd, int m1, int m2, int m3, int m4, int loca){
       moveList = new Move[4];
       this.name = name;
