@@ -233,6 +233,7 @@ public class Person {
     */
    public void newPokemon (int pokeID) {
       Pokemon p_temp = this.pokedexReference.getPokemonDex().searchPokemonByID(pokeId);
-      teamList[numPokemon] = new Pokemon (p_temp.getName(), p_temp.getType(), p_temp.getID(), p_temp.getMaxHPStat(), p_temp.getAttackStat(), p_temp.getDefenceStat(), p_temp.getSpeedStat(), p_temp.get)
+      teamList[numPokemon] = new Pokemon (p_temp.getName(), p_temp.getType(), p_temp.getID(), p_temp.getMaxHPStat(), p_temp.getAttackStat(), p_temp.getDefenceStat(), p_temp.getSpeedStat(), p_temp.getMoveList()[0].getMoveID(), p_temp.getMoveList()[1].getMoveID(), p_temp.getMoveList()[2].getMoveID(), p_temp.getMoveList()[3].getMoveID(), p_temp.getFoundIn().getLocationID());
+      numPokemon++;
    }
 }
