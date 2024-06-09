@@ -163,6 +163,7 @@ public class Pokemon{
    * This method returns the name of 
    * a type when given its
    * @param typeID Integer used to identify types
+   * @return Name of the Type in String format
    */
    public static String getTypeName(int typeID){
       switch(typeID) {
