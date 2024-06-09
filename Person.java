@@ -14,7 +14,7 @@ public class Person {
    private int age;
    
    /**
-   * ID of the person kys
+   * ID of the person
    */
    private int personID; 
    
