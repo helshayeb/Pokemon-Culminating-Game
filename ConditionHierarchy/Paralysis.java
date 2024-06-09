@@ -13,6 +13,7 @@ public class Paralysis extends Condition{
       super.reduceTurns();
     }else if (super.getTurnsRemaining() == 0){
       appliedTo.setSpdStat(originalSpd);
+      appliedTo.setCondition(-1);
     }else{
       super.reduceTurns();
     }
