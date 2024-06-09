@@ -30,9 +30,9 @@ public class Pokemon{
       itemHolding = null;
    }
 
-   public void changeCurrentHP(double hpMod, double hpHeal){
+   public void changeCurrentHP(double hpMod, double hpChange){
       currentHP += maxHpStat*hpMod;
-      currentHP += hpHeal;
+      currentHP += hpChange;
       if(currentHP > maxHPStat){
          currentHP = maxHPStat;
       }
