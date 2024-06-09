@@ -41,7 +41,7 @@ public class LocationDex {
         }
     }
 
-//    search by id & name
+//   missing search by id & name
 
     public void addCity(String type, String name, int id, boolean pokeCenter, boolean store){
         locDex.add(new City(type, name, id,pokeCenter, store));
