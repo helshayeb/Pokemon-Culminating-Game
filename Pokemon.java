@@ -97,6 +97,72 @@ public class Pokemon{
       foundIn = new location(loca);
       itemHolding = null;
    }
+
+   /**
+   * This method is an accessor that allows other classes to access
+   * the name of the Pokemon
+   * @return Name of the Pokemon
+   */
+   public String getName () {
+      return name;
+   }
+
+   /**
+   * This method is an accessor that allows other classes to access
+   * the type of the Pokemon
+   * @return Name of the Pokemon
+   */
+   public String getType () {
+      return type;
+   }
+
+   /**
+   * This method is an accessor that allows other classes to access
+   * the ID of the Pokemon
+   * @return ID of the Pokemon
+   */
+   public String getID () {
+      return id;
+   }
+
+   /**
+   * This method is an accessor that allows other classes to access
+   * the max health of the Pokemon
+   * @return Max health of the Pokemon
+   */
+   public String getMaxHPStat () {
+      return maxHPStat;
+   }
+
+   /**
+   * This method is an accessor that allows other classes to access
+   * the current health of the Pokemon
+   * @return Current health of the Pokemon
+   */
+   public String getCurrentHP () {
+      return currentHP;
+   }
+
+   /**
+   * This method is an accessor that allows other classes to access
+   * the attack stat of the Pokemon
+   * @return Attack stat of the Pokemon
+   */
+   public String getAttackStat () {
+      return attackStat;
+   }
+
+   /**
+   * This method is an accessor that allows other classes to access
+   * the defence stat of the Pokemon
+   * @return Defence stat of the Pokemon
+   */
+   public String getDefenceStat () {
+      return defenceStat;
+   }
+
+
+   
    /**
    * This method is a mutator that changes the current health of
    * the Pokemon when given the 
