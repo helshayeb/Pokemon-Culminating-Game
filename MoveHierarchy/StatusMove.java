@@ -17,13 +17,13 @@ public class StatusMove extends Move{
    public void useMove(Pokemon p1, Pokemon p2){
       double max;
       if(recipient == 0){
-         p1.changeCurrentHP(p1.getCurrentHP() + p1.getMaxHp()*hpMod);
+         p1.changeCurrentHP(hpMod, 0);
          
          p1.setAttackStat(atkMod); // reminder to make it attackStat*atkMod inside the mutator in pokemon class
          p1.setDefenceStat(defMod); //same with everything here
          p1.setSpeedStat(spdMod);
       }else{
-         p2.setCurrentHP(p2.getCurrentHP() + p2.getMaxHp()*hpMod);
+         p2.setCurrentHP(hpMod, 0);
          max = p2.getMaxHP;
          if(p2.getCurrentHP()>max){
             p2.setCurrentHP(max);
