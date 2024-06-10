@@ -173,12 +173,13 @@ public class User extends Person {
    }
 
    /**
-   * Simulates letting go of a Pokemon into the wild
-   * @param it Item object that user wants to add to their inventory
-   * @return True if the Pokemon was successfully released and false if 
-   * Pokemon is not found in the team and the team has at no Pokemon
+   * A method that continuously has Pokemon keep attacking each other
+   * in a 1 on 1 format until one player runs out of Pokemon.
+   * @param other Person that the user is battling
+   * @return Person object of the winner of the battle. Returns null if
+   * an incorrect input was taken in
    */
-   public Person battleTrainer (Person other) {}
+   public Person battleTrainer (Person other) {
       int challenger_pokemon, defender_pokemon, challenger_pokemon_left, defender_pokemon_left;
       Scanner sc = new Scanner (System.in);
       Pokemon dead;
@@ -202,9 +203,15 @@ public class User extends Person {
          System.out.println("Enter a pokemon (1-" + numPokemon + "): ");
          challenger_pokemon = sc.nextInt() - 1;
 
-         while (teamList[challenger_pokemon].getCurrentHP() == 0) {
-            System.out.println("That Pokemon is dead. Please select another: ")
+         while (teamList[challenger_pokemon].getCurrentHP() == 0 || challenger_pokemon < 0 || challenger_pokemon > numPokemon - 1) {
+            if (teamList[challenger_pokemon].getCurrentHP() == 0 ) {
+               System.out.print("That Pokemon is dead. Please select another: ");
+            }
+            else {
+               System.out.print("That was not in the specified range. Please try another number: ");
+            }
             challenger_pokemon = sc.nextInt() - 1;
+            System.out.println();
          }
          
          defender_pokemon = ((int)Math.random() * (other.numPokemon));
@@ -225,26 +232,104 @@ public class User extends Person {
                   }
                   winner = this.arena(teamList[challenger_pokemon], other.teamList[defender_pokemon]);
                }
-            } else {
+            } 
+            else {
                challenger_pokemon_left--;
                System.out.println("Enter a pokemon (1-" + numPokemon + "): ");
                challenger_pokemon = sc.nextInt() - 1;
 
                if (challenger_pokemon_left > 0) {
-                  while (teamList[challenger_pokemon].getCurrentHP() == 0) {
-                     System.out.println("That Pokemon is dead. Please select another: ")
+                  System.out.println("Enter a pokemon (1-" + numPokemon + "): ");
+                  challenger_pokemon = sc.nextInt();
+                  while (teamList[challenger_pokemon].getCurrentHP() == 0 || challenger_pokemon < 0 || challenger_pokemon > numPokemon - 1) {
+                     if (teamList[challenger_pokemon].getCurrentHP() == 0 ) {
+                        System.out.print("That Pokemon is dead. Please select another: ");
+                     }
+                     else {
+                        System.out.print("That was not in the specified range. Please try another number: ");
+                     }
                      challenger_pokemon = sc.nextInt() - 1;
+                     System.out.println();
                   }
                   winner = this.arena(teamList[challenger_pokemon], other.teamList[defender_pokemon]);
                }
             }
-            System.out.println("Enter a pokemon (1-" + numPokemon + "): ");
-            challenger_pokemon = sc.nextInt();
+
+            for (int i = 0; i < numPokemon; i++) {
+               teamList[i].resetPokemon(teamList[i].getID());
+            }
+
+            for (int i = 0; i < other.numPokemon; i++) {
+               other.teamList[i].resetPokemon(other.teamList[i].getID());
+            }
+
+            if (challenger_pokemon_left == 0) {
+               return other;
+            } else {
+               return this;
+            }
          }
       catch (InputMismatchException ime) {
+         for (int i = 0; i < numPokemon; i++) {
+            teamList[i].resetPokemon(teamList[i].getID());
+         }
+
+         for (int i = 0; i < other.numPokemon; i++) {
+            other.teamList[i].resetPokemon(other.teamList[i].getID());
+         }
+
          return null;
       }
    }
 
+   /** 
+   * A method that enacts the 1 on 1 between two Pokemon (taken in 
+   * through the parameter) in a battle
+   * @param challenger Pokemon object of the user who initiated the battle
+   * @param defender Pokemon object of the user who was challenged
+   * @return Pokemon object of the Pokemon that is left standing
+   */
+   public Pokemon arena (Pokemon challenger, Pokemon defender) {
+      Condition cCondition = challenger.getCurrentCondition();
+      Condition dCondition =  defender.getCurrentCondition();
+      Pokemon winner;
+      while (challenger.getCurrentHP() == 0) {
+         if (cCondition != null) {
+            cCondition.apply(challenger);
+         }
+
+         if (dCondition != null) {
+            dCondition.apply(defender);
+         }
+
+         if (challenger.getCurrentHP() == 0) {
+            return defender;
+         } 
+         else if (challenger.getCurrentHP() == 0) {
+            return challenger;
+         } 
+         else {
+            if (challenger.getSpeedStat() > defender.getSpeedStat()) {
+               this.userTurn();
+               if (challenger.getCurrentHP() == 0) {
+                  return defender;
+               } 
+               else if (challenger.getCurrentHP() == 0) {
+                  return challenger;  
+               } 
+               else {
+                  this.computerTurn();
+                  if (challenger.getCurrentHP() == 0) {
+                     return defender;
+                  } 
+                  else if (challenger.getCurrentHP() == 0) {
+                     return challenger; 
+                  }
+               }
+            }
+         }
+         return winner;
+      }
+   }
 
 }
