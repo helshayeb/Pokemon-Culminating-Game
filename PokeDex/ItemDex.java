@@ -3,6 +3,13 @@ public class ItemDex {
 
    private int numItemData; //Stores the number of items
    private Item[] itemList;
+
+   public int getNumItemData() {
+      return numItemData;
+   }
+   public void setNumItemData(int num) {
+      numItemData = num;
+   }
    
    public boolean readItems (String fileName) {
       try {
