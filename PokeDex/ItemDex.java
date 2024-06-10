@@ -15,20 +15,80 @@ public class ItemDex {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
          numItemData = in.readLine();
-         itemList[] = new Item[numItemData];
+         itemList[] = new Item[PokeDex.MAX_SIZE];
+         String itemTypeName, ItemName;
+         int id, price;
+         double modifier;
          
          for (int i = 0; i < numItemData; i++) {
-            itemList[i].setItemTypeName(in.readLine());
-            itemList[i].setItemName(in.readLine());
-            itemList[i].setId(Integer.parseInt(in.readLine()));
-            itemList[i].setPrice(Double.parseDouble(in.readLine()));
-            itemList[i].setModifer(Double.parseDouble(in.readLine());
+            itemTypeName = (in.readLine());
+            itemName = (in.readLine());
+            id = (Integer.parseInt(in.readLine()));
+            price = (Integer.parseInt(in.readLine()));
+            modifer = (Double.parseDouble(in.readLine());
+
+            itemList[i] = Item (itemTypeName, name, id, price, modifier);
          }
+         
          in.close();
       }
       catch (IOException iox) {
          System.out.println("Error accessing file");
       }
+   }
+   
+   public boolean saveItems (String fileName) {
+      try {
+         BufferedWriter out = new BufferedWriter (new FileWriter (fileName));
+         out.write(numItemData);
+         for (int i = 0; i <= numItemData; i++) {
+            out.write(itemList[i].getItemTypeName());
+            out.write(itemList[i].getItemName());
+            out.write(itemList[i].getId());
+            out.write(itemList[i].getPrice());
+            out.write(itemList[i].getModifier());
+         }
+         out.close();
+         return true;
+      }
+      catch (IOException iox) {
+         System.out.println("Error reading file");
+         return false;
+      }
+   }
+   
+public Item searchItemsByName (String name) {
+      for (int i = 0; i < numItemData; i++) {
+         if ((itemList[i].getItemName()).equals(name)) {
+            return itemList[i];
+         }
+   }
+}
+
+public Item searchItemsById (int id) {
+   return searchItemsById (id, numItemData-1, 0);
+}
+public Item searchItemsById (int id, int top, int bot) {
+   int middle = (top + bot) / 2;
+   if (itemList[middle] == id) {
+      return itemList[middle];
+   } else if (itemList[middle] < id) {
+      searchItemsById(id, middle - 1, bot);
+   } else {
+      searchItemsById(id, top, middle + 1);
+   }
+}
+   public boolean addItems (String type, String name, int price, double modifier) {
+      int newId = numItemData;
+      if (price < 0 || modifier < 0) {
+         return false;
+      }
+      else {
+         itemList[newId] = Item (type, name, newId, price, modifier);
+         numItemData ++;
+         return true;
+      }
+   }           
    }
    
    
