@@ -39,12 +39,13 @@ public class MoveDex{
           in.readLine()
           moveList[i] = new StatusMove(objectID, moveName, moveType, moveID, hpMod, atkMod, defMod, spdMod, recipient);
         }else if(moveVariation.equalsIgnoreCase("Condition")){
-          
-        double hpMod, double atkMod, double defMod, double spdMod, int recipient
-        MoveList[i].setMoveName(in.readLine());
-        MoveList[i].setId(Integer.parseInt(in.readLine()));
-        MoveList[i].setPrice(Double.parseDouble(in.readLine()));
-        MoveList[i].setModifer(Double.parseDouble(in.readLine());
+          moveName = in.readLine();
+          moveType = Integer.parseInt(in.readLine());
+          moveID = Integer.parseInt(in.readLine());
+          conditionApplied = Integer.parseInt(in.readLine());
+          in.readLine();
+          moveList[i] = new DamageMove(objectID, moveName, moveType, moveID, conditionApplied);
+        }
       }
       in.close();   
     }catch (IOException iox) {
