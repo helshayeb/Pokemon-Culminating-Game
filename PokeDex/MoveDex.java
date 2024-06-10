@@ -1,12 +1,12 @@
 import java.io.*;
+import java.util.*;
 public class MoveDex{
   private int numMoveData;
-  private Move[] moveList;
   public boolean readMoves(String fileName){
     try {
       BufferedReader in = new BufferedReader(new FileReader(fileName));
       numMoveData = in.readLine();
-      moveList = new Move[numMoveData];
+      moveList = new Move[MAX_MOVES];
       String objectID;  
       String moveName;
       int moveType;
@@ -52,4 +52,10 @@ public class MoveDex{
       System.out.println("Error accessing file");
     }
   }  
+
+  public boolean addDamageMove(String objectID, String moveName, int moveType, int moveID, int basePower){
+    numMoveData++;
+    moveList = new Move[maxMoveData];
+    mostList[numMoveData-1] = new DamageMove(objectID, moveName, moveType, moveID, basePower);
+  }
 }
