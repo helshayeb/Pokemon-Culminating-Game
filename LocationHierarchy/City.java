@@ -1,23 +1,23 @@
 public class City extends Location {
     private boolean hasPokeCentre;
-    private boolean hasStore;
+    private boolean hasPokestop;
 
     public City(String type, String name, int id, boolean pokeCenter, boolean store){
         super(type, name, id);
         hasPokeCentre = pokeCenter;
-        hasStore = store;
+        hasPokestop = store;
     }
 
     public City(int id, boolean pokeCenter, boolean store){
         super(id);
         hasPokeCentre = pokeCenter;
-        hasStore = store;
+        hasPokestop = store;
     }
 
     public City(int id){
         super(id);
         hasPokeCentre = false;
-        hasStore = false;
+        hasPokestop = false;
     }
 
 
