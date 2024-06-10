@@ -262,17 +262,35 @@ public class Person {
     * @return True if the heal was successful and false if otherwise
     */
    public boolean healTeam () {
-      Pokemon p_temp = this.searchPokemonByNameInTeam(poke);
-      if (this instanceof NPC) {
-         Item i_temp = pokedexReference.getItemDex().searchItemByName(it);
-         p_temp.setItemHolding(i_temp);
-      } else {
-         Item i_temp = this.searchItemByNameInTeam(it);
-         if (i_temp == null) {
-            return false;
-         } else {
-            p_temp.setItemHolding(i_temp);
+      for (int i = 0; i < numPokemon; i++) {
+         teamList[i].setCurrentHP(teamList[i].getMaxHPStat());
+      }
+      return true;
+   }
+
+   /**
+    * This method prints out a person's entire team
+    */
+   public void displayPokemon () {
+      for (int i = 0; i < numPokemon; i++) {
+         System.out.println(teamList[i]);
+         System.out.println();
+      }
+   }
+
+   /**
+    * This method returns the Pokemon object with the same 
+    * name as the String in the parameter
+    * @param name The name of the Pokemon
+    * @return The Pokemon object corresponding to the name given, null if not found
+    */
+   private Pokemon searchPokemonByNameInTeam(String name) {
+      Pokemon p_temp = null;
+      for (int i = 0; i < numPokemon; i++) {
+         if (name.equals(teamList[i].getName())){
+            p_temp = teamList[i];
          }
       }
+      return p_temp;
    }
 }
