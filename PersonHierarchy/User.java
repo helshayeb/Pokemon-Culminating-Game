@@ -1,7 +1,9 @@
 /**
 * Creates accounts that users can use to play the game
 */
+import java.util.*;
 public class User extends Person {
+
 
    /**
    * Amount of money the user has
@@ -132,7 +134,7 @@ public class User extends Person {
    * or numItems is equal to maxItems
    */
    public boolean buyItem (Item it) {
-      if (money > it.getPrice() && numItems < maxItems && currentLocation instanceof City && ((City) currentLocation).getHasStore()) {
+      if (money > it.getPrice() && numItems < maxItems && currentLocation instanceof City && ((City) currentLocation).getHasPokeStop()) {
          inventory[numItems] = new Item (it.getItemTypeName(), it.getName(), it.getID(), it.getPrice(), it.getModifier());
          numItems++;
          money -= it.getPrice();
@@ -142,8 +144,106 @@ public class User extends Person {
       }
    }
 
+   /**
+   * Simulates letting go of a Pokemon into the wild
+   * @param it Item object that user wants to add to their inventory
+   * @return True if the Pokemon was successfully released and false if 
+   * Pokemon is not found in the team and the team has at no Pokemon
+   */
    public boolean releasePokemon (Pokemon poke) {
-      
+      if (numPokemon <= 0) {
+         return false;
+      } else {
+         int index = -1;
+         for (int i = 0; i < numPokemon; i++) {
+            if (poke.getID() == teamList[i].getId()) {
+               index = teamList[i].getId();
+            }
+         }
+         if (index == -1) {
+            return false;
+         } else {
+            for (int i = index; i < numPokemon; i++) {
+               teamList[i] = teamList[i+1];
+            }
+            numPokemon--;
+            return true;
+         }
+      }
+   }
+
+   /**
+   * Simulates letting go of a Pokemon into the wild
+   * @param it Item object that user wants to add to their inventory
+   * @return True if the Pokemon was successfully released and false if 
+   * Pokemon is not found in the team and the team has at no Pokemon
+   */
+   public Person battleTrainer (Person other) {}
+      int challenger_pokemon, defender_pokemon, challenger_pokemon_left, defender_pokemon_left;
+      Scanner sc = new Scanner (System.in);
+      Pokemon dead;
+
+      challenger_pokemon_left = numPokemon;
+      defender_pokemon_left = other.numPokemon;
+
+      for (int i = 0; i < numPokemon; i++) {
+         if (teamList[i].getCurrentHP() == 0) {
+            challenger_pokemon_left--;
+         }
+      }
+
+      for (int i = 0; i < other.numPokemon; i++) {
+         if (other.teamList[i].getCurrentHP() == 0) {
+            defender_pokemon_left--;
+         }
+      }
+
+      try {
+         System.out.println("Enter a pokemon (1-" + numPokemon + "): ");
+         challenger_pokemon = sc.nextInt() - 1;
+
+         while (teamList[challenger_pokemon].getCurrentHP() == 0) {
+            System.out.println("That Pokemon is dead. Please select another: ")
+            challenger_pokemon = sc.nextInt() - 1;
+         }
+         
+         defender_pokemon = ((int)Math.random() * (other.numPokemon));
+
+         while (teamList[defender_pokemon].getCurrentHP == 0) {
+            defender_pokemon = ((int)Math.random() * (other.numPokemon));
+         }
+         
+         winner = this.arena(teamList[challenger_pokemon], other.teamList[defender_pokemon]);
+
+         while (challenger_pokemon_left > 0 && defender_pokemon_left > 0) {
+            if (winner = teamList[challenger_pokemon]) {
+               defender_pokemon_left--;
+               if (defender_pokemon_left > 0) {
+                  defender_pokemon = ((int)Math.random() * (other.numPokemon));
+                  while (teamList[defender_pokemon].getCurrentHP == 0) {
+                     defender_pokemon = ((int)Math.random() * (other.numPokemon));
+                  }
+                  winner = this.arena(teamList[challenger_pokemon], other.teamList[defender_pokemon]);
+               }
+            } else {
+               challenger_pokemon_left--;
+               System.out.println("Enter a pokemon (1-" + numPokemon + "): ");
+               challenger_pokemon = sc.nextInt() - 1;
+
+               if (challenger_pokemon_left > 0) {
+                  while (teamList[challenger_pokemon].getCurrentHP() == 0) {
+                     System.out.println("That Pokemon is dead. Please select another: ")
+                     challenger_pokemon = sc.nextInt() - 1;
+                  }
+                  winner = this.arena(teamList[challenger_pokemon], other.teamList[defender_pokemon]);
+               }
+            }
+            System.out.println("Enter a pokemon (1-" + numPokemon + "): ");
+            challenger_pokemon = sc.nextInt();
+         }
+      catch (InputMismatchException ime) {
+         return null;
+      }
    }
 
 
