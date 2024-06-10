@@ -52,12 +52,12 @@ public class MoveDex{
       System.out.println("Error accessing file");
     }
   }  
-//CHAT I THINK I NEED WRAPPERS
-  public boolean addDamageMove(String objectID, String moveName, int moveType, int moveID, int basePower){
+// ok guys i think whatever calls this is gonna have to have a switch case that determines which one of these to call
+  public boolean addDamageMove(String moveName, int moveType, int moveID, int basePower){
     if(numMoveData >= MAX_SIZE){
       return false;
     }
-    mostList[numMoveData] = new DamageMove(objectID, moveName, moveType, moveID, basePower);
+    mostList[numMoveData] = new DamageMove("Damage", moveName, moveType, moveID, basePower);
     numMoveData++;
     return true;
   }
