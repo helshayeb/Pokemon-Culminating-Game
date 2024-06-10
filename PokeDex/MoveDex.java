@@ -7,9 +7,12 @@ public class MoveDex{
       BufferedReader in = new BufferedReader(new FileReader(fileName));
       numMoveData = in.readLine();
       moveList = new Move[numMoveData];
-         
+      String moveVariation;  
       for (int i = 0; i < numItemData; i++) {
-        MoveList[i].setMoveTypeName(in.readLine());
+        moveVariation = in.readLine();
+        if(moveVariation.equalsIgnoreCase(Damage){
+          MoveList[i].setMoveTypeName(in.readLine());
+        
         MoveList[i].setMoveName(in.readLine());
         MoveList[i].setId(Integer.parseInt(in.readLine()));
         MoveList[i].setPrice(Double.parseDouble(in.readLine()));
