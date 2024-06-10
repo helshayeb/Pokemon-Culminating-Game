@@ -52,10 +52,13 @@ public class MoveDex{
       System.out.println("Error accessing file");
     }
   }  
-
+//CHAT I THINK I NEED WRAPPERS
   public boolean addDamageMove(String objectID, String moveName, int moveType, int moveID, int basePower){
+    if(numMoveData >= MAX_SIZE){
+      return false;
+    }
+    mostList[numMoveData] = new DamageMove(objectID, moveName, moveType, moveID, basePower);
     numMoveData++;
-    moveList = new Move[maxMoveData];
-    mostList[numMoveData-1] = new DamageMove(objectID, moveName, moveType, moveID, basePower);
+    return true;
   }
 }
