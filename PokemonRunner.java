@@ -15,7 +15,9 @@ public class Main{
          } else if(input.equals("2")){
             pass = true;
             System.out.println("tooooooowwwww");
-         } else{
+         } else if(input.equals("0")){
+            System.out.println("Exiting");
+         }else{
             System.out.println("Invalid Input, Try again");
          }
       }
