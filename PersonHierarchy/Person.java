@@ -217,7 +217,7 @@ public class Person {
          p_temp.setItemHolding(i_temp);
          return true;
       } else {
-         Item i_temp = this.searchItemByNameInTeam(it);
+         Item i_temp = ((User)this).searchItemByNameInTeam(it);
          if (i_temp == null) {
             return false;
          } else {
@@ -232,9 +232,8 @@ public class Person {
     * to the user’s team
     * @param pokeID The Id of the Pokemon that is being added
     */
-   public void newPokemon (int pokeID) {
-      Pokemon p_temp = this.pokedexReference.getPokemonDex().searchPokemonByID(pokeId);
-      teamList[numPokemon] = new Pokemon (p_temp.getName(), p_temp.getType(), p_temp.getID(), p_temp.getMaxHPStat(), p_temp.getAttackStat(), p_temp.getDefenceStat(), p_temp.getSpeedStat(), p_temp.getMoveList()[0].getMoveID(), p_temp.getMoveList()[1].getMoveID(), p_temp.getMoveList()[2].getMoveID(), p_temp.getMoveList()[3].getMoveID(), p_temp.getFoundIn().getLocationID());
+   public void newPokemon (Pokemon poke) {
+      teamList[numPokemon] = new Pokemon (poke.getName(), poke.getType(), poke.getID(), poke.getMaxHPStat(), poke.getAttackStat(), poke.getDefenceStat(), poke.getSpeedStat(), poke.getMoveList()[0].getMoveID(), poke.getMoveList()[1].getMoveID(), poke.getMoveList()[2].getMoveID(), poke.getMoveList()[3].getMoveID(), poke.getFoundIn().getLocationID());
       numPokemon++;
    }
 
