@@ -16,6 +16,43 @@ public abstract class Item {
   //abstract method to apply the item's effects on a pokemon
   public abstract void useItem () {
   }
+
+  //all accessors and mutators
+  public String getItemName () {
+    return itemName;
+  }
+  public void setItemName (String name) {
+    itemName = name;
+  }
+
+  public int getId () {
+    return id;
+  }
+  public void setId (int n) {
+    id = n;
+  }
+
+  public int getPrice () {
+    return price;
+  }
+  public void setPrice (int n) {
+    price = n;
+  }
+
+  public double getModifier () {
+    return modifier;
+  }
+  public void setModifier (double d) {
+    modifier = d;
+  }
+
+  public String getItemTypeName () {
+    return itemTypeName;
+  }
+  public void setItemTypeName (String name) {
+    itemTypeName = n;
+  }
+  
 }
 
     
