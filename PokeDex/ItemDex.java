@@ -11,6 +11,18 @@ public class ItemDex {
          itemList[] = new Item[numItemData];
          
          for (int i = 0; i < numItemData; i++) {
-            itemTypeName
+            itemList[i].setItemTypeName(in.readLine());
+            itemList[i].setItemName(in.readLine());
+            itemList[i].setId(Integer.parseInt(in.readLine()));
+            itemList[i].setPrice(Double.parseDouble(in.readLine()));
+            itemList[i].setModifer(Double.parseDouble(in.readLine());
+         }
+         in.close();
+      }
+      catch (IOException iox) {
+         System.out.println("Error accessing file");
+      }
+   }
+   
    
    
