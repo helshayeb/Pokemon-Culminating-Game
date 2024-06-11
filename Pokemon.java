@@ -307,7 +307,7 @@ public class Pokemon{
    * the Pokemon
    */
    public String toString(){
-   //put stuff here frfr
+      String pokemonInfo = "Name: " + name + "
    }
 }
 
