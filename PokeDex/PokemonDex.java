@@ -86,7 +86,7 @@ public boolean readPokemon (String fileName) {
   public Pokemon searchPokemonById (int id) {
    return searchPokemonById (id, numPokemonData-1, 0);
 }
-public Pokemon searchItemsById (int id, int top, int bot) {
+public Pokemon searchPokemonById (int id, int top, int bot) {
    int middle = (top + bot) / 2;
    if (pokemonList[middle] == id) {
       return pokemonList[middle];
