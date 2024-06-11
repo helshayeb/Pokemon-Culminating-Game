@@ -4,6 +4,22 @@ public class StatusMove extends Move{
    private double defMod;
    private double spdMod;
    private int recipient;
+
+   public double getHPMod(){
+      return hpMod;
+   }
+   public double getAtkMod(){
+      return atkMod;
+   }
+   public double getDefMod(){
+      return defMod;
+   }
+   public double getSpdMod(){
+      return spdMod;
+   }
+   public int getRecipient(){
+      return recipient;
+   }
    
    public StatusMove(String objectID, String moveName, int moveType, int moveID, double hpMod, double atkMod, double defMod, double spdMod, int recipient){
       super(objectID, moveName, moveType, moveID);
