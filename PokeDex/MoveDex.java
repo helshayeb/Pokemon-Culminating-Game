@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.*;
 public class MoveDex{
   private int numMoveData;
+  private Move[] moveList;
+
   public boolean readMoves(String fileName){
     try {
       BufferedReader in = new BufferedReader(new FileReader(fileName));
@@ -52,6 +54,44 @@ public class MoveDex{
       System.out.println("Error accessing file");
     }
   }  
+
+  public boolean saveMoves(String fileName){
+    BufferedWriter out = new BufferedWrite(new FileWriter(fileName));
+    
+
+
+  }
+  
+  searchMoveByID(int id){
+    int left = 0;
+    int right = numMoveData-1;
+    searchMoveByID(moveList, id, left, right);
+  }
+
+  searchMoveByID(Move[] moveList, int id, int left, int right){
+    int mid = left+(right-left)/2;
+    if(left>right){
+        return null;
+    }
+    if(moveList[mid] == id){
+        return mid;
+    }else if(moveList[mid} > target){
+      return searchMoveByID(moveList, id, left, mid-1);
+    }else{
+        return searchMoveByID(moveList, id, mid+1, right);
+    }
+  }
+
+  public Move searchMoveByName(String name){
+    for(int i = 0; i < numMoveData; i++){
+      if(moveList[i].equalsIgnoreCase(name)){
+        return moveList[i];
+      }
+    }
+    return null; 
+  }
+
+  }
 // ok guys i think whatever calls this is gonna have to have a switch case that determines which one of these to call
   public boolean addDamageMove(String moveName, int moveType, int moveID, int basePower){
     if(numMoveData >= PokeDex.MAX_SIZE){
