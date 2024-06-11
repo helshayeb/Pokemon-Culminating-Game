@@ -212,17 +212,22 @@ public class Person {
     */
    public boolean giveItem (String poke, String it) {
       Pokemon p_temp = this.searchPokemonByNameInTeam(poke);
-      if (this instanceof NPC) {
-         Item i_temp = pokedexReference.getItemDex().searchItemByName(it);
-         p_temp.setItemHolding(i_temp);
-         return true;
-      } else {
-         Item i_temp = ((User)this).searchItemByNameInTeam(it);
-         if (i_temp == null) {
-            return false;
-         } else {
+      if (p_temp == null) {
+         return false;
+      } 
+      else {
+         if (this instanceof NPC) {
+            Item i_temp = pokedexReference.getItemDex().searchItemByName(it);
             p_temp.setItemHolding(i_temp);
             return true;
+         } else {
+            Item i_temp = ((User)this).searchItemByNameInTeam(it);
+            if (i_temp == null) {
+               return false;
+            } else {
+               p_temp.setItemHolding(i_temp);
+               return true;
+            }
          }
       }
    }
@@ -283,7 +288,7 @@ public class Person {
     * @param name The name of the Pokemon
     * @return The Pokemon object corresponding to the name given, null if not found
     */
-   private Pokemon searchPokemonByNameInTeam(String name) {
+   public Pokemon searchPokemonByNameInTeam(String name) {
       Pokemon p_temp = null;
       for (int i = 0; i < numPokemon; i++) {
          if (name.equals(teamList[i].getName())){
@@ -292,4 +297,6 @@ public class Person {
       }
       return p_temp;
    }
+
+   public 
 }

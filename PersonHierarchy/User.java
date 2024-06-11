@@ -156,8 +156,8 @@ public class User extends Person {
       } else {
          int index = -1;
          for (int i = 0; i < numPokemon; i++) {
-            if (poke.getID() == teamList[i].getId()) {
-               index = teamList[i].getId();
+            if (poke == teamList[i]) {
+               index = i;
             }
          }
          if (index == -1) {
@@ -371,10 +371,56 @@ public class User extends Person {
                challenger.consumeItem(challenger.getItemHolding());
                break;
             default:
-
+               System.out.print("Error");
          }
       } catch (InputMismatchException ime) {
          return null;
       }
+   }
 
+   /** 
+   * A method that enacts the turn of the Person who was challenged 
+   * @param challenger Pokemon object of the user who was challenged 
+   * @param defender Pokemon object of the user who initiated the battle
+   */
+   public void userTurn (Pokemon challenger, Pokemon defender) {
+      int select;
+         select = Math.random() * (5) + 1;
+         switch (select) {
+            case 1:
+               challenger.attack(defender, challenger.getMoveList()[1]);
+               break;
+            case 2:
+               challenger.attack(defender, challenger.getMoveList()[2]);
+               break;
+            case 3:
+               challenger.attack(defender, challenger.getMoveList()[3]);
+               break;
+            case 4:
+               challenger.attack(defender, challenger.getMoveList()[4]);
+               break;
+            case 5:
+               challenger.consumeItem(challenger.getItemHolding());
+               break;
+            default:
+               System.out.print("Error");
+         }
+      } 
+   }
+
+   /**
+    * This method returns the Item object with the same 
+    * name as the String in the parameter
+    * @param name The name of the Item
+    * @return The Item object corresponding to the name given, null if not found
+    */
+   public Item searchItemByNameInTeam(String name) {
+      Item i_temp = null;
+      for (int i = 0; i < numPokemon; i++) {
+         if (name.equals(inventory[i].getName())){
+            i_temp = inventory[i];
+         }
+      }
+      return i_temp;
+   }
 }
