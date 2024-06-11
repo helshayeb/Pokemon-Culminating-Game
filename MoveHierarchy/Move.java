@@ -10,6 +10,11 @@ public abstract class Move{
       this.moveType = moveType;
       this.moveID = moveID;
    }
+
+   public String getMoveName () {
+      return moveName;
+   }
+   
    public double getMatchup(int type1, int type2){
       return pd.getMultiplier(type1, type2);
    }
