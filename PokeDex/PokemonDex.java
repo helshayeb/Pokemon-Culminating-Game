@@ -56,14 +56,14 @@ public boolean readPokemon (String fileName) {
         out.write(pokemonList[i].getName());
         out.write(pokemonList[i].getType());
         out.write(pokemonList[i].getId());
-        out.write(pokemonList[i].getMaxHPStat());
-        out.write(pokemonList[i].getAttackStat());
-        out.write(pokemonList[i].getDefenceStat());
-        out.write(pokemonList[i].getSpeedStat());
+        out.write(pokemonList[i].getHp());
+        out.write(pokemonList[i].getAttack());
+        out.write(pokemonList[i].getDefence());
+        out.write(pokemonList[i].getSpeed());
+        out.write(pokemonList[i].getMoveList()[0].getMoveId());
         out.write(pokemonList[i].getMoveList()[1].getMoveId());
         out.write(pokemonList[i].getMoveList()[2].getMoveId());
         out.write(pokemonList[i].getMoveList()[3].getMoveId());
-        out.write(pokemonList[i].getMoveList()[4].getMoveId());
         out.write(pokemonList[i].getFoundIn().getLocationId();
       }
       out.close();
@@ -83,9 +83,19 @@ public boolean readPokemon (String fileName) {
     }
   }
 
-  //carlos pls do recursion 
   public Pokemon searchPokemonById (int id) {
-  }
+   return searchPokemonById (id, numPokemonData-1, 0);
+}
+public Pokemon searchItemsById (int id, int top, int bot) {
+   int middle = (top + bot) / 2;
+   if (pokemonList[middle] == id) {
+      return pokemonList[middle];
+   } else if (pokemonList[middle] < id) {
+      searchPokemonById(id, middle - 1, bot);
+   } else {
+      searchPokemonById(id, top, middle + 1);
+   }
+}
 
   public Pokemon[] searchPokemonByLocationAndType (String location, int type) {
     int count;
@@ -105,31 +115,11 @@ public boolean readPokemon (String fileName) {
     }
     return list;
   }
+}
+
+  
+
+  
   
 
   
-      
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-        
