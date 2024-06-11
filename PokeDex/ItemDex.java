@@ -74,9 +74,9 @@ public Item searchItemById (int id, int top, int bot) {
    if (itemList[middle] == id) {
       return itemList[middle];
    } else if (itemList[middle] < id) {
-      searchItemsById(id, middle - 1, bot);
+      searchItemById(id, middle - 1, bot);
    } else {
-      searchItemsById(id, top, middle + 1);
+      searchItemById(id, top, middle + 1);
    }
 }
    public boolean addItems (String type, String name, int price, double modifier) {
