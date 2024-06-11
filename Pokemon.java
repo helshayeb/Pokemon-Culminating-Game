@@ -89,12 +89,12 @@ public class Pokemon{
       attackStat = atk;
       defenceStat = def;
       speedStat = spd;
-      moveList[0] = new Move(m1);
-      moveList[1] = new Move(m2);
-      moveList[2] = new Move(m3);
-      moveList[3] = new Move(m4);
+      moveList[0] = m1;
+      moveList[1] = m2;
+      moveList[2] = m3;
+      moveList[3] = m4;
       currentCondition = null;
-      foundIn = new location(loca);
+      foundIn = loca;
       itemHolding = null;
    }
 
