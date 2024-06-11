@@ -51,7 +51,7 @@ Route: 4
 6
 Mudkip
 Garbodor
-Amongus
+Amoonguss
 Golisopod
 Toxapex
 Meowscarada 
