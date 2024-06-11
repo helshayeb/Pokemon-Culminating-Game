@@ -6,7 +6,7 @@ public class MoveDex{
     try {
       BufferedReader in = new BufferedReader(new FileReader(fileName));
       numMoveData = in.readLine();
-      moveList = new Move[MAX_MOVES];
+      moveList = new Move[PokeDex.MAX_SIZE];
       String objectID;  
       String moveName;
       int moveType;
