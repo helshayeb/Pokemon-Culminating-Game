@@ -15,5 +15,7 @@ public class Poison extends Condition{
     }
   }
    
-  
+  toString(){
+    return "Poison";
+  }
 }
