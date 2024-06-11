@@ -133,7 +133,7 @@ Route: 10
 9
 10
 6
-Oshawatt
+Oshawott
 Squirtle
 Piplup
 Slowpoke
