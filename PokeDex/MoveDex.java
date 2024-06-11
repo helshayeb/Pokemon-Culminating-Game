@@ -54,7 +54,7 @@ public class MoveDex{
   }  
 // ok guys i think whatever calls this is gonna have to have a switch case that determines which one of these to call
   public boolean addDamageMove(String moveName, int moveType, int moveID, int basePower){
-    if(numMoveData >= MAX_SIZE){
+    if(numMoveData >= PokeDex.MAX_SIZE){
       return false;
     }
     mostList[numMoveData] = new DamageMove("Damage", moveName, moveType, moveID, basePower);
