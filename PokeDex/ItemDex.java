@@ -29,12 +29,13 @@ public class ItemDex {
 
             itemList[i] = Item (itemTypeName, name, id, price, modifier);
          }
-         
          in.close();
       }
       catch (IOException iox) {
          System.out.println("Error accessing file");
+         return false;
       }
+      return true;
    }
    
    public boolean saveItems (String fileName) {
