@@ -1,5 +1,9 @@
 public class DamageMove extends Move{
    private int basePower;
+
+   public int getBasePower(){
+      return basePower;
+   }
    
    public DamageMove(String objectID, String moveName, int moveType, int moveID, int basePower){
       super(objectID, moveName, moveType, moveID);
