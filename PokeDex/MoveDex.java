@@ -61,4 +61,13 @@ public class MoveDex{
     numMoveData++;
     return true;
   }
+
+  public boolean addStatusMove(String moveName, int moveType, int moveID, int basePower){
+    if(numMoveData >= PokeDex.MAX_SIZE){
+      return false;
+    }
+    mostList[numMoveData] = new DamageMove("Damage", moveName, moveType, moveID, basePower);
+    numMoveData++;
+    return true;
+  }
 }
