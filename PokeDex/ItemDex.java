@@ -66,10 +66,10 @@ public Item searchItemByName (String name) {
    }
 }
 
-public Item searchItemsById (int id) {
+public Item searchItemById (int id) {
    return searchItemById (id, numItemData-1, 0);
 }
-public Item searchItemsById (int id, int top, int bot) {
+public Item searchItemById (int id, int top, int bot) {
    int middle = (top + bot) / 2;
    if (itemList[middle] == id) {
       return itemList[middle];
