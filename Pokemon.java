@@ -307,7 +307,8 @@ public class Pokemon{
    * the Pokemon
    */
    public String toString(){
-      String pokemonInfo = "Name: " + name + "
+      String pokemonInfo = "Name: " + name + "\nType: " + getTypeName(type) + "\nID: " + id + "\nMax Health: " + maxHPStat + "\nCurrent HP: " + currentHP + "\nAttack Stat: " + attackStat + "\nDefence Stat" + defenceStat + "\nSpeedStat: " + speedStat + "Moves: " + moveList[0].getMoveName() + "\n" + moveList[1].getMoveName() + "\n+ moveList[2].getMoveName() + "\n+ moveList[3].getMoveName() + "\nCondition: " + currentCondition.toString() + "\nLocation: " + foundIn.getRegionType();  
+      return pokemonInfo;
    }
 }
 
