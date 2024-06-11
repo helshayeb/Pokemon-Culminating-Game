@@ -70,4 +70,14 @@ public class MoveDex{
     numMoveData++;
     return true;
   }
+
+  public boolean addConditionMove(String moveName, int moveType, int moveID, int conditionAppliedID){
+    if(numMoveData >= PokeDex.MAX_SIZE){
+      return false;
+    }
+    mostList[numMoveData] = new StatusMove("Status", moveName, moveType, moveID, hpMod, atkMod, defMod, spdMod, recipient);
+    numMoveData++;
+    return true;
+  }
+  
 }
