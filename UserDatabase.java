@@ -225,20 +225,28 @@ public class UserDatabase {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
          numUsers = in.readLine();
-         userList = new User[MAX_USERS];
-         String userName, ItemName;
+         userList = new User[PokeDex.MAX_SIZE];
+         String userName;
          int id, money, numPoke, numIt;
+         int[] pokeList = new int [Person.getMaxPokemon()];
+         int[] item = new int [PokeDex.MAX_SIZE];
          
-         for (int i = 0; i < numItemData; i++) {
-            itemTypeName = (in.readLine());
-            itemName = (in.readLine());
+         for (int i = 0; i < numUsers; i++) {
+            userName = (in.readLine());
             id = (Integer.parseInt(in.readLine()));
-            price = (Integer.parseInt(in.readLine()));
-            modifer = (Double.parseDouble(in.readLine());
+            money = (Integer.parseInt(in.readLine()));
+            numPoke = (Integer.parseInt(in.readLine()));
+            numIt = (Integer.parseInt(in.readLine()));
 
-            itemList[i] = Item (itemTypeName, name, id, price, modifier);
+            for (int i = 0; i < numPoke; i++) {
+               pokeList[i] = newPokemon(searchPokemonById(Integer.parseInt(in.readLine())));
+            }
+            for (int i = 0; i < numIt; i++) {
+               item[i] = searchPokemonById(Integer.parseInt(in.readLine()));
+            }
          }
          in.close();
+         }
       }
       catch (IOException iox) {
          System.out.println("Error accessing file");
