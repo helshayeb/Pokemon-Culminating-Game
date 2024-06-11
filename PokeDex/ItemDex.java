@@ -15,7 +15,7 @@ public class ItemDex {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
          numItemData = in.readLine();
-         itemList[] = new Item[PokeDex.MAX_SIZE];
+         itemList = new Item[PokeDex.MAX_SIZE];
          String itemTypeName, ItemName;
          int id, price;
          double modifier;
