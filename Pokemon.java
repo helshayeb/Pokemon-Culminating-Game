@@ -293,8 +293,13 @@ public class Pokemon{
       }
    }
 
+   /**
+   * This method calls the useItem method in
+   * the Item class
+   * @param it Item that is being used
+   */
    public void consumeItem(Item it){
-      it.
+      it.useItem(this);
    }
    
    /**
