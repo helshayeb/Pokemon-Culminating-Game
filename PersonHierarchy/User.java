@@ -118,7 +118,13 @@ public class User extends Person {
    * 
    */
    public boolean catchPokemon (Pokemon poke) {
-      if (Poke.getFoundIn().equals(currentLocation) && numPokemon < maxPokemon) {
+      boolean inTeam = false;
+      for (int i = 0; i < numPokemon; i++) {
+         if (poke == teamList[i]) {
+            inTeam = true
+         }
+      }
+      if (Poke.getFoundIn().equals(currentLocation) && numPokemon < maxPokemon && !(inTeam)) {
         this.newPokemon(poke);
         return true;
       } else {

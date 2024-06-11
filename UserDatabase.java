@@ -1,6 +1,8 @@
 /**
 * A list of all the users and NPCs, making it so users can interact with the game
 */
+import java.io.*;
+import java.util.*;
 public class UserDatabase {
 
    /**
@@ -185,20 +187,64 @@ public class UserDatabase {
    }
    
    /**
-   * This method Calls releasePokemon in User to remove a 
+   * This method calls releasePokemon in User to remove a 
    * Pokemon from the user's team
    * @param id The user's ID
    * @param it The Item object being bought
    * @return True if the item was bought successfully and
    * false if the user does not have enough money, if they
    * reached the max item limit, or if they aren't in a city
-   * with a PokeCentre
+   * with a PokeStop
    */
    public boolean buyItem (int id, Item it) {
       User u = this.searchUserByID(id);
       return u.buyItem(it);
    }
 
+   /**
+   * This method calls catchPokemon in User to simulate catching a 
+   * Pokemon and adding it to the user's team
+   * @param id The user's ID
+   * @param it The Pokemon object being caught
+   * @return True if the Pokemon was caught successfully
+   * and false if the user's team is full or if the Pokemon is 
+   * already on the User's team
+   */
+   public boolean catchPokemon (int id, Pokemon p) {
+      User u = this.searchUserByID(id);
+      return u.catchPokemon(P);
+   }
 
+   /**
+   * This method reads in all the existing users at
+   * the start of the Program
+   * @param fileName Name of the textfile
+   * @return True the file was read correctly and false otherwise
+   */
+   public boolean readUsers (String fileName) {
+      try {
+         BufferedReader in = new BufferedReader(new FileReader(fileName));
+         numUsers = in.readLine();
+         userList = new User[MAX_USERS];
+         String userName, ItemName;
+         int id, money, numPoke, numIt;
+         
+         for (int i = 0; i < numItemData; i++) {
+            itemTypeName = (in.readLine());
+            itemName = (in.readLine());
+            id = (Integer.parseInt(in.readLine()));
+            price = (Integer.parseInt(in.readLine()));
+            modifer = (Double.parseDouble(in.readLine());
+
+            itemList[i] = Item (itemTypeName, name, id, price, modifier);
+         }
+         in.close();
+      }
+      catch (IOException iox) {
+         System.out.println("Error accessing file");
+         return false;
+      }
+      return true;
+   }
 
 }
