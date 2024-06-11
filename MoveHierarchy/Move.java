@@ -11,6 +11,18 @@ public abstract class Move{
       this.moveID = moveID;
    }
 
+   public String getObjectID(){
+      return objectID;
+   }
+
+   public int getMoveType(){
+      return moveType;
+   }
+
+   public int getMoveID(){
+      return moveID;
+   }
+   
    public String getMoveName () {
       return moveName;
    }
@@ -44,16 +56,6 @@ public abstract class Move{
       }
       
    }
-   
-   public String getObjectID(){
-      return objectID;
-   }
-   
-   public String getMoveName(){
-      return moveName;
-   }
-   
-   
    
    
    public abstract void useMove(Pokemon p1, Pokemon p2);
