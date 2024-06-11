@@ -10,6 +10,7 @@ Arceus
 25
 64
 65
+6
 
 Dunsparce
 0
@@ -22,6 +23,7 @@ Dunsparce
 38
 69
 72
+0
 
 Beedrill
 2
@@ -34,6 +36,7 @@ Beedrill
 22
 23
 15
+9
 
 Volcarona
 4
@@ -46,6 +49,7 @@ Volcarona
 12
 13
 32
+5
 
 Zygarde
 3
@@ -58,6 +62,7 @@ Zygarde
 24
 28
 43
+4
 
 Yveltal
 1
@@ -70,6 +75,7 @@ Yveltal
 13
 14
 15
+6
 
 Vikavolt
 7
@@ -82,6 +88,7 @@ Vikavolt
 57
 26
 8
+7
 
 Tatsugiri
 5
@@ -94,6 +101,7 @@ Tatsugiri
 45
 41
 30
+1
 
 Miraidon
 7
@@ -106,6 +114,7 @@ Miraidon
 4
 61
 36
+4
 
 Metagross
 8
@@ -118,6 +127,7 @@ Metagross
 1
 70
 65
+4
 
 Nihilego
 2
@@ -130,6 +140,7 @@ Nihilego
 22
 23
 25
+6
 
 Lunala
 8
@@ -142,6 +153,7 @@ Lunala
 66
 67
 71
+6
 
 Golisopod
 5
@@ -154,6 +166,7 @@ Golisopod
 44
 47
 31
+3
 
 Rayquaza
 1
@@ -166,6 +179,7 @@ Rayquaza
 7
 4
 15
+7
 
 Ogerpon
 6
@@ -178,6 +192,7 @@ Ogerpon
 49
 50
 54
+9
 
 Meowstic
 8
@@ -190,6 +205,7 @@ Meowstic
 66
 68
 72
+8
 
 Shaymin
 6
@@ -202,6 +218,7 @@ Shaymin
 55
 43
 64
+0
 
 Amoonguss
 2
@@ -214,6 +231,7 @@ Amoonguss
 21
 50
 0
+3
 
 Talonflame
 4
@@ -226,6 +244,7 @@ Talonflame
 9
 38
 53
+2
 
 Infernape
 4
@@ -238,6 +257,7 @@ Infernape
 38
 27
 64
+5
 
 Ninetales
 4
@@ -250,6 +270,7 @@ Ninetales
 39
 32
 68
+8
 
 Meloetta
 8
@@ -262,6 +283,7 @@ Meloetta
 66
 67
 68
+7
 
 Eevee
 0
@@ -274,6 +296,7 @@ Eevee
 4
 68
 59
+1
 
 Wooper
 5
@@ -286,6 +309,7 @@ Wooper
 46
 26
 72
+5
 
 Lapras
 5
@@ -298,6 +322,7 @@ Lapras
 44
 43
 41
+1
 
 Meowscarada
 6
@@ -310,6 +335,7 @@ Meowscarada
 49
 52
 54
+3
 
 Sandshrew
 3
@@ -322,6 +348,7 @@ Sandshrew
 26
 29
 31
+2
 
 Cubone
 3
@@ -334,6 +361,7 @@ Cubone
 28
 24
 22
+2
 
 Pachirisu
 7
@@ -346,6 +374,7 @@ Pachirisu
 60
 72
 71
+5
 
 Electrode
 7
@@ -358,6 +387,7 @@ Electrode
 17
 58
 57
+4
 
 Psyduck
 5
@@ -370,6 +400,7 @@ Psyduck
 46
 43
 44
+6
 
 Wailord
 5
@@ -395,6 +426,7 @@ Magikarp
 40
 45
 30
+1
 
 Charmander
 4
@@ -407,6 +439,7 @@ Charmander
 39
 34
 15
+5
 
 Slowpoke
 5
@@ -419,6 +452,7 @@ Slowpoke
 42
 70
 5
+9
 
 Gengar
 2
@@ -431,6 +465,7 @@ Gengar
 22
 70
 20
+6
 
 Snorlax
 0
@@ -443,6 +478,7 @@ Snorlax
 5
 24
 27
+8
 
 Lickilicky
 0
@@ -455,6 +491,7 @@ Lickilicky
 6
 1
 5
+4
 
 Kyogre
 5
@@ -467,6 +504,7 @@ Kyogre
 46
 42
 45
+1
 
 Piplup
 5
@@ -479,6 +517,7 @@ Piplup
 42
 45
 41
+9
 
 Squirtle
 5
@@ -491,6 +530,7 @@ Squirtle
 45
 5
 27
+9
 
 Starmie
 8
@@ -503,6 +543,7 @@ Starmie
 25
 35
 66
+1
 
 Skiploom
 6
@@ -515,6 +556,7 @@ Skiploom
 53
 52
 50
+0
 
 Oshawott
 5
@@ -527,6 +569,7 @@ Oshawott
 44
 47
 43
+9
 
 Gyarados
 5
@@ -539,6 +582,7 @@ Gyarados
 40
 45
 30
+1
 
 Pikachu
 7
@@ -551,6 +595,7 @@ Pikachu
 56
 57
 63
+8
 
 Garbodor
 2
@@ -563,6 +608,7 @@ Garbodor
 17
 19
 22
+3
 
 Toxapex
 2
@@ -575,6 +621,7 @@ Toxapex
 22
 23
 20
+3
 
 Alakazam
 8
@@ -587,6 +634,7 @@ Alakazam
 67
 71
 70
+6
 
 Trapinch
 3
@@ -599,6 +647,7 @@ Trapinch
 53
 26
 24
+2
 
 Gardevoir
 8
@@ -611,6 +660,7 @@ Gardevoir
 66
 59
 70
+0
 
 Palossand
 3
@@ -623,6 +673,7 @@ Palossand
 31
 30
 26
+2
 
 Camerupt
 3
@@ -635,6 +686,7 @@ Camerupt
 26
 33
 27
+5
 
 Mudkip
 5
@@ -647,6 +699,7 @@ Mudkip
 31
 40
 52
+3
 
 Toxtricity
 7
@@ -659,6 +712,7 @@ Toxtricity
 61
 60
 17
+4
 
 Torterra
 6
@@ -671,6 +725,7 @@ Torterra
 27
 52
 53
+8
 
 Noivern
 1
@@ -683,6 +738,7 @@ Noivern
 9
 11
 12
+7
 
 Excadrill
 3
@@ -695,6 +751,7 @@ Excadrill
 29
 30
 31
+2
 
 Togekiss
 1
@@ -707,6 +764,7 @@ Togekiss
 11
 12
 13
+7
 
 Arcanine
 4
@@ -717,5 +775,6 @@ Arcanine
 95
 34
 36
+8
 37
 39
