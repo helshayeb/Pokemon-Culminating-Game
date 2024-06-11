@@ -60,14 +60,14 @@ public class MoveDex{
        BufferedWriter out = new BufferedWriter (new FileWriter (fileName));
        out.write(numMoveData);
        for (int i = 0; i <= numItemData; i++) {
-          if(objectID.equalsIgnoreCase("Damage")){
+          if(moveList[i] instancef DamageMove){
             moveName = in.readLine();
             moveType = Integer.parseInt(in.readLine());
             moveID = Integer.parseInt(in.readLine());
             basePower = Integer.parseInt(in.readLine());
             in.readLine();
             moveList[i] = new DamageMove(objectID, moveName, moveType, moveID, basePower);
-          }else if(moveVariation.equalsIgnoreCase("Status")){
+          }else if(moveList[i] instancef StatusMove){
             moveName = in.readLine();
             moveType = Integer.parseInt(in.readLine());
             moveID = Integer.parseInt(in.readLine());
@@ -78,7 +78,7 @@ public class MoveDex{
             recipient = Integer.parseInt(in.readLine());
             in.readLine()
             moveList[i] = new StatusMove(objectID, moveName, moveType, moveID, hpMod, atkMod, defMod, spdMod, recipient);
-          }else if(moveVariation.equalsIgnoreCase("Condition")){
+          }else if(moveList[i] instancef ConditionMove){
             moveName = in.readLine();
             moveType = Integer.parseInt(in.readLine());
             moveID = Integer.parseInt(in.readLine());
