@@ -354,7 +354,25 @@ public class User extends Person {
             select = sc.nextInt();
          }
 
-         switch 
+         switch (select) {
+            case 1:
+               challenger.attack(defender, challenger.getMoveList()[1]);
+               break;
+            case 2:
+               challenger.attack(defender, challenger.getMoveList()[2]);
+               break;
+            case 3:
+               challenger.attack(defender, challenger.getMoveList()[3]);
+               break;
+            case 4:
+               challenger.attack(defender, challenger.getMoveList()[4]);
+               break;
+            case 5:
+               challenger.consumeItem(challenger.getItemHolding());
+               break;
+            default:
+
+         }
       } catch (InputMismatchException ime) {
          return null;
       }
