@@ -19,5 +19,7 @@ public class Paralysis extends Condition{
     }
   }
    
-  
+  toString(){
+    return "Paralysis";
+  }
 }
