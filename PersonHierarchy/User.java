@@ -303,27 +303,27 @@ public class User extends Person {
          }
 
          if (challenger.getCurrentHP() == 0) {
-            return defender;
+            winner = defender;
          } 
          else if (challenger.getCurrentHP() == 0) {
-            return challenger;
+            winner = challenger;
          } 
          else {
             if (challenger.getSpeedStat() > defender.getSpeedStat()) {
                this.userTurn();
                if (challenger.getCurrentHP() == 0) {
-                  return defender;
+                  winner = defender;
                } 
                else if (challenger.getCurrentHP() == 0) {
-                  return challenger;  
+                  winner = challenger;  
                } 
                else {
                   this.computerTurn();
                   if (challenger.getCurrentHP() == 0) {
-                     return defender;
+                     winner = defender;
                   } 
                   else if (challenger.getCurrentHP() == 0) {
-                     return challenger; 
+                     winner = challenger; 
                   }
                }
             }
@@ -331,5 +331,32 @@ public class User extends Person {
          return winner;
       }
    }
+
+   /** 
+   * A method that enacts the user who initiated the battle’s turn
+   * @param challenger Pokemon object of the user who initiated the battle
+   * @param defender Pokemon object of the user who was challenged
+   */
+   public void userTurn (Pokemon challenger, Pokemon defender) {
+      Scanner sc = new Scanner (System.in);
+      int select;
+      try {
+         System.out.println("Choose an option: ");
+         System.out.println("1) " + challenger.getMoveList()[0].getMoveName());
+         System.out.println("2) " + challenger.getMoveList()[1].getMoveName());
+         System.out.println("3) " + challenger.getMoveList()[2].getMoveName());
+         System.out.println("4) " + challenger.getMoveList()[3].getMoveName());
+         System.out.println("5) Use Item");
+         select = sc.nextInt();
+
+         while (select < 1 || select > 5) {
+            System.out.print("That is not an option. Try again: ");
+            select = sc.nextInt();
+         }
+
+         switch 
+      } catch (InputMismatchException ime) {
+         return null;
+      }
 
 }
