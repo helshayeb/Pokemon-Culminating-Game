@@ -24,7 +24,7 @@ Route: 2
 Tatsugiri
 Lapras
 Wailord
-Staryu
+Starmie
 Gyarados
 Kyogre
 
