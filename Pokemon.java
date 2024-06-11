@@ -292,6 +292,10 @@ public class Pokemon{
          currentCondition.apply();
       }
    }
+
+   public void consumeItem(Item it){
+      it.
+   }
    
    /**
    * This method returns the information about
