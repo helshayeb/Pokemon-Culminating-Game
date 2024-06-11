@@ -2,7 +2,7 @@ public class ConditionMove extends Move{
    private int conditionAppliedID;
    private Condition conditionApplied;
    
-   public ConditionMove(String objectID, String moveName, int moveType, int moveID, int conditionApplied){
+   public ConditionMove(String objectID, String moveName, int moveType, int moveID, int conditionAppliedID){
       super(objectID, moveName, moveType, moveID);
       this.conditionAppliedID = conditionAppliedID;
       switch(conditionAppliedID) {
