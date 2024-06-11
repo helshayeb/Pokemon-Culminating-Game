@@ -170,7 +170,8 @@ public class Pokemon{
       return defenceStat;
    }
 
-   
+   public String getMoveList(int){
+      return
    /**
    * This method is a mutator that changes the current health of
    * the Pokemon when given the 
