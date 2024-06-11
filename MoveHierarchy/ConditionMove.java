@@ -1,6 +1,10 @@
 public class ConditionMove extends Move{
    private int conditionAppliedID;
    private Condition conditionApplied;
+
+   public int getConditionAppliedID(){
+      return conditionAppliedID;
+   }
    
    public ConditionMove(String objectID, String moveName, int moveType, int moveID, int conditionAppliedID){
       super(objectID, moveName, moveType, moveID);
