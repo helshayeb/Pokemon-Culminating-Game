@@ -170,8 +170,15 @@ public class Pokemon{
       return defenceStat;
    }
 
-   public String getMoveList(int){
-      return
+   /**
+   * This method is an accessor that allows other classes to access
+   * the list of moves of the Pokemon
+   * @return moveList[], the array storing the Pokemon's four moves
+   */
+   public Move[] getMoveList(){
+      return moveList[];
+   }
+   
    /**
    * This method is a mutator that changes the current health of
    * the Pokemon when given the 
