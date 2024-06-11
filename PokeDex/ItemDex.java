@@ -58,7 +58,7 @@ public class ItemDex {
       }
    }
    
-public Item searchItemsByName (String name) {
+public Item searchItemByName (String name) {
       for (int i = 0; i < numItemData; i++) {
          if ((itemList[i].getItemName()).equals(name)) {
             return itemList[i];
@@ -67,7 +67,7 @@ public Item searchItemsByName (String name) {
 }
 
 public Item searchItemsById (int id) {
-   return searchItemsById (id, numItemData-1, 0);
+   return searchItemById (id, numItemData-1, 0);
 }
 public Item searchItemsById (int id, int top, int bot) {
    int middle = (top + bot) / 2;
