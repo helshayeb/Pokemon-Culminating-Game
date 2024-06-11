@@ -56,10 +56,10 @@ public boolean readPokemon (String fileName) {
         out.write(pokemonList[i].getName());
         out.write(pokemonList[i].getType());
         out.write(pokemonList[i].getId());
-        out.write(pokemonList[i].getHp());
-        out.write(pokemonList[i].getAttack());
-        out.write(pokemonList[i].getDefence());
-        out.write(pokemonList[i].getSpeed());
+        out.write(pokemonList[i].getMaxHPStat());
+        out.write(pokemonList[i].getAttackStat());
+        out.write(pokemonList[i].getDefenceStat());
+        out.write(pokemonList[i].getSpeedStat());
         out.write(pokemonList[i].getMoveList()[1].getMoveId());
         out.write(pokemonList[i].getMoveList()[2].getMoveId());
         out.write(pokemonList[i].getMoveList()[3].getMoveId());

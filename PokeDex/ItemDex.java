@@ -66,17 +66,17 @@ public Item searchItemByName (String name) {
    }
 }
 
-public Item searchItemsById (int id) {
+public Item searchItemById (int id) {
    return searchItemById (id, numItemData-1, 0);
 }
-public Item searchItemsById (int id, int top, int bot) {
+public Item searchItemById (int id, int top, int bot) {
    int middle = (top + bot) / 2;
    if (itemList[middle] == id) {
       return itemList[middle];
    } else if (itemList[middle] < id) {
-      searchItemsById(id, middle - 1, bot);
+      searchItemById(id, middle - 1, bot);
    } else {
-      searchItemsById(id, top, middle + 1);
+      searchItemById(id, top, middle + 1);
    }
 }
    public boolean addItems (String type, String name, int price, double modifier) {
