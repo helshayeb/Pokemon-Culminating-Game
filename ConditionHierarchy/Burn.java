@@ -21,6 +21,9 @@ public class Burn extends Condition{
       super.reduceTurns();
     }
   }
-   
+
+  toString(){
+    return "Burn";
+  }
   
 }
