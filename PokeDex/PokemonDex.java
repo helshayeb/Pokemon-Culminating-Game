@@ -117,6 +117,44 @@ public Pokemon searchPokemonById (int id, int top, int bot) {
   }
 }
 
+public void sortByHpStat () {
+    sortByHpStat(0, false);
+  }
+
+  public void sortByHpStat (int numChecks, boolean sorted) {
+    Pokemon temp;
+    if (numChecks < numPokemonData - 1 || !sorted)
+      sorted = true;
+      for (int i = numChecks; i < numPokemonData - 1; i++) {
+        if (pokemonList[i].getMaxHPStat() < pokemonList[i + 1].getMaxHPStat()) {
+          sorted = false;
+          temp = pokemonList[i];
+          pokemonList[i] = pokemonList[i + 1];
+          pokemonList[i + 1] = temp;
+          sortByHpStat(i + 1, sorted);
+        }
+      }
+    }
+
+  public void sortByAtkStat () {
+     sortByAtkStat(1);
+  }
+
+  public void sortByAtkStat (int index) {
+    int save = index;
+    Pokemon p_save = pokemonList[save];
+    while (pokemonList[save].getAttackStat() > pokemonList[save - 1].getAttackStat() && index > 0) {
+      pokemonList[save] = pokemonList[save - 1];
+      save--;
+    }
+    list[save] = save;
+    sortBtAtkStat(index + 1)
+  }
+  
+  public void sortPokemonByID (int index) {
+    
+  }
+
   
 
   
