@@ -75,7 +75,7 @@ public class MoveDex{
     if(numMoveData >= PokeDex.MAX_SIZE){
       return false;
     }
-    mostList[numMoveData] = new StatusMove("Status", moveName, moveType, moveID, hpMod, atkMod, defMod, spdMod, recipient);
+    mostList[numMoveData] = new StatusMove("Status", moveName, moveType, moveID, int conditionAppliedID);
     numMoveData++;
     return true;
   }
