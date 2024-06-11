@@ -11,11 +11,6 @@ public class User extends Person {
    private int money;
 
    /**
-    * Mamimum number of items a user can have in their inventory 
-    */
-    private static int maxItems;
-
-   /**
    * Current number of items a user has in their inventory
    */
    private int numItems;
