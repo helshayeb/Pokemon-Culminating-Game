@@ -70,7 +70,18 @@ public class ItemDex {
                 price = Integer.parseInt(in.readLine()); // Read item price
                 modifier = Double.parseDouble(in.readLine()); // Read item modifier
 
-                itemList[i] = new Item(itemTypeName, itemName, id, price, modifier); // Create new Item object and store in itemList
+               if (itemTypeName.equals("AttackItem")) {
+                  itemList[i] = new AttackItem(itemTypeName, itemName, id, price, modifier); // Create new AttackItem object and store in itemList
+               }
+               else if (itemTypeName.equals("DefenceItem")) {
+                  itemList[i] = new DefenceItem(itemTypeName, itemName, id, price, modifier); // Create new DefenceItem object and store in itemList
+               }
+               else if (itemTypeName.equals("HealthItem")) {
+                  itemList[i] = new HealthItem(itemTypeName, itemName, id, price, modifier); // Create new HealthItem object and store in itemList
+               }
+               else if (itemTypeName.equals("SpeedItem")) {
+                  itemList[i] = new SpeedItem(itemTypeName, itemName, id, price, modifier); // Create new SpeedItem object and store in itemList
+               }
             }
             in.close();
         } catch (IOException iox) {
