@@ -227,8 +227,18 @@ public class UserDatabase {
    * outputs all the Pokemon in that person's team
    */
    public void displayPokemon (int id) {
-      Person p = this.searchPersonByID(id);
-      p.displayPokemon();
+      User u = this.searchUserByID(id);
+      if (u == null) {
+        NPC n = this.searchNPCByID(id);
+        if (n == null) {
+            System.out.println("Person not found.");
+        } else {
+            n.displayPokemon();
+        }
+      }
+      else {
+        p.displayPokemon();
+      }
    }
 
    /**
@@ -242,7 +252,7 @@ public class UserDatabase {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
          numUsers = in.readLine();
-         userList = new User[MAX_SIZE]];
+         userList = new User[MAX_SIZE];
          String userName;
          int id, money, age, numPoke, numIt, pokeID, itemID, curLocID;
          Pokemon[] team; 
@@ -293,7 +303,7 @@ public class UserDatabase {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
          MAX_NPCS = in.readLine();
-         npcList = new User[MAX_SIZE];
+         npcList = new User[MAX_NPCS];
          String userName;
          int id, age, numPoke, pokeID, itemID, curLocID;
          Pokemon[] team; 
@@ -400,22 +410,10 @@ public class UserDatabase {
         if (index != -1) {
             return userList[i];
         } else {
-            for (int i = 0; i < MAX_NPCS && index == -1; i++) {
-                if (name.equals(npcList[i].getName())) {
-                    index = i;
-                }
-            }
-        }
-        if (index == -1) {
             return null;
         }
-        return npcList[i];
    } 
 
-   /**
-   * This method searches for a user with the inputted id
-   * @param id The searched for user's id
-   */
    private Person searchUserById (int id) {
         int index = -1;
         for (int i = 0; i < numUsers && index == -1; i++) {
@@ -426,27 +424,7 @@ public class UserDatabase {
         if (index != -1) {
             return userList[i];
         } else {
-            return false;
+            return null;
         }
-   }
-
-   /**
-   * This method searches for an npc with the inputted id
-   * @param id The searched for npc's id
-   */
-private Person searchNpcById (int id) {
-        int index = -1;
-        for (int i = 0; i < MAX_NPCS && index == -1; i++) {
-            if (id == npcList[i].getID()) {
-                index = i;
-            }
-        }
-        if (index != -1) {
-            return npcList[i];
-        } else {
-            return false;
-        }
-   }
-
-      
+   } 
 }
