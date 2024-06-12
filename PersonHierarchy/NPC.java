@@ -21,6 +21,10 @@ public class NPC extends Person {
       super(n, a, i, numP, loc);
    }
 
+   /**
+   * This method makes it so NPC objects can be printed
+   * @return String of the NPC object
+   */
    public String toString () {
       String s = "Name: " + name + "\nAge: " + age + "\nID: " + id + "\nNumber of Pokemon: " + numPokemon;
       for (int i = 0; i < numPokemon; i++) {

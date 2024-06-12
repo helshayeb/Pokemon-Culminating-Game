@@ -436,4 +436,21 @@ public class User extends Person {
       }
       return i_temp;
    }
+
+   /**
+   * This method makes it so User objects can be printed
+   * @return String of the User object
+   */
+   public String toString () {
+      String s = "Name: " + name + "\nAge: " + age + "\nID: " + id + "\nMoney: " + money + "\nNumber of Pokemon: " + numPokemon + "\n";
+      for (int i = 0; i < numPokemon; i++) {
+         s += teamList[i] + "\n\n";
+      }
+      s += "Number of Items: " + numItems + "\n";
+      for (int i = 0; i < numItems; i++) {
+         s += inventory[i] + "\n\n";
+      }
+      s += "Current Location: " + currentLocation.getName();
+      return s;
+   }
 }
