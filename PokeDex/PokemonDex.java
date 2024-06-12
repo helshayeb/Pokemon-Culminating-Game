@@ -5,7 +5,14 @@ import java.io.*;
  */
 public class PokemonDex{
 
-  private int numPokemonData; // Stores the number of Pokémon
+  /** 
+  * Stores the number of pokemon in the program
+  */
+  private int numPokemonData;
+  
+  /** 
+  * Stores a list of all the pokemon in the program
+  */
   private Pokemon[] pokemonList; // Array to store Pokémon
 
   /**
