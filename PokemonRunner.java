@@ -133,7 +133,97 @@ public class PokemonRunner {
 
                      pD.addPokemon(name, type, hps, atk, def, spd, m1, m2, m3, m4, loca);
                   }else if (select3 == 2){
+                     sc.nextLine();
+                     System.out.println("Enter the type of the Item: Attack, Defence, Health, or Speed");
+                     String type = sc.nextLine();
+                     while (!(type.equalsIgnoreCase("attack") || type.equalsIgnoreCase("defence") || type.equalsIgnoreCase("health") || type.equalsIgnoreCase("speed"))) {
+                        System.out.print("That is not a possible option. Enter Attack, Defence, Health, or Speed");
+                        type = sc.nextInt();
+                     }
                      
+                     System.out.println("Enter the name of the Item: ");
+                     String name = sc.nextLine();
+
+                     System.out.println("Enter the price of the item: ");
+                     int price = sc.nextInt();
+                     System.out.println("Enter the modifier: ");
+                     double modifier = sc.nextDouble();
+
+                     iD.addItems(type, name, price, modifier);
+                  }else if (select3 == 3){
+                     sc.nextLine();
+                     System.out.println("Enter the type of Location you want to add: City or Route");
+                     String type = sc.nextLine();
+                     while (!(type.equalsIgnoreCase("city") || type.equalsIgnoreCase("Route")) {
+                        System.out.print("That is not a possible option. Enter City or Route");
+                        type = sc.nextLine();
+                     }
+
+                     if(type.equalsIgnoreCase(city)){
+                        System.out.println("Enter the name of the City: ");
+                        String name = sc.nextLine();
+                        System.out.println("Does the city have a Pokecenter? (0 for no, 1 for yes)");
+                        boolean pkc;
+                        int choice1 = sc.nextInt();
+                        while (!(choice1 == 0 || choice1 == 1)) {
+                        System.out.print("That is not a possible option. Enter 0 or 1");
+                        choice1 = sc.nextInt();
+                        }
+                        if(choice1 == 0){
+                           pkc == false;
+                        }else{
+                           pkc == true;
+                        }
+                        System.out.println("Does the city have a Store? (0 for no, 1 for yes)");
+                        boolean str;
+                        int choice2 = sc.nextInt();
+                        while (!(choice2 == 0 || choice2 == 1)) {
+                        System.out.print("That is not a possible option. Enter 0 or 1");
+                        choice2 = sc.nextInt();
+                        }
+                        if(choice2 == 0){
+                           str == false;
+                        }else{
+                           str == true;
+                        }
+                        lD.addCity(type, name, pkc, str);
+
+                     }else{
+                        System.out.println("Enter the Location name of the Route: ");
+                        String name = sc.nextLine();
+                        System.out.println("Enter the number of the Route:");
+                        int routeNum = sc.nextInt();
+                        System.out.println("Enter the Ids of 6 Pokemon found in the Route");
+                        boolean str;
+                        int choice2 = sc.nextInt();
+                        while (!(choice2 == 0 || choice2 == 1)) {
+                        System.out.print("That is not a possible option. Enter 0 or 1");
+                        choice2 = sc.nextInt();
+                        }
+                        if(choice2 == 0){
+                           str == false;
+                        }else{
+                           str == true;
+                        }
+                        lD.addCity(type, name, pkc, str);
+                        
+                     System.out.println("Enter the type of the Pokemon: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
+                     int type = sc.nextInt();
+                     while (type < 0 || type > 8) {
+                        System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
+                        type = sc.nextInt();
+                     }
+                     //yum yum code so good code so good!! 
+                     //i am losing my sanity help
+                     System.out.println("Enter the max HP stat of the Pokemon: ");
+                     double hps = sc.nextDouble();
+                     System.out.println("Enter the attack stat of the Pokemon: ");
+                     double atk = sc.nextDouble();
+                     System.out.println("Enter the defence stat of the Pokemon: ");
+                     double def = sc.nextDouble();
+                     System.out.println("Enter the speed stat of the Pokemon: ");
+                     double spd = sc.nextDouble();
+                  }
 
                
                
