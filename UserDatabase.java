@@ -353,4 +353,14 @@ public class UserDatabase {
     }
     return true;
    }
+
+   /**
+   * This method calls healTeam in Person and simulates
+   * healing the user's team
+   * @param id The user's ID
+   */
+   public void healTeam (int id) {
+      User u = this.searchUserByID(id);
+      u.healTeam();
+   }
 }

@@ -259,11 +259,11 @@ public class User extends Person {
             }
 
             for (int i = 0; i < numPokemon; i++) {
-               teamList[i].resetPokemon(teamList[i].getID());
+               teamList[i] = teamList[i].resetPokemon(teamList[i].getID());
             }
 
             for (int i = 0; i < other.numPokemon; i++) {
-               other.teamList[i].resetPokemon(other.teamList[i].getID());
+               other.teamList[i] = other.teamList[i].newPokemon(other.teamList[i].getID());
             }
 
             if (challenger_pokemon_left == 0) {

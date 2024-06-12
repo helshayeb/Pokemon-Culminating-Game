@@ -281,13 +281,11 @@ public class Person {
 
    /**
     * This method heals the person's entire team after a battle
-    * @return True if the heal was successful and false if otherwise
     */
-   public boolean healTeam () {
+   public void healTeam () {
       for (int i = 0; i < numPokemon; i++) {
          teamList[i].setCurrentHP(teamList[i].getMaxHPStat());
       }
-      return true;
    }
 
    /**
