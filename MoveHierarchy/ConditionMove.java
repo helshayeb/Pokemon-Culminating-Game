@@ -67,7 +67,7 @@ public class ConditionMove extends Move{
         * @return String Information about the Move
         */
 	public String toString() {
-		String info = 
+		String info = "Condition Move" + "\nMove Name: 
 		return ;
 	}
 }
