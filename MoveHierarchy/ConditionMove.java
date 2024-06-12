@@ -47,6 +47,7 @@ public class ConditionMove extends Move{
 	/**
  	* This method is an accessor that allows other classes to access the
         * ID of the Condition that the Move applies
+	* @return conditionAppliedID
 	*/
 	public int getConditionAppliedID(){
     		return conditionAppliedID;
