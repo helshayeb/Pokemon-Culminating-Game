@@ -66,10 +66,10 @@ public class ConditionMove extends Move{
         * in the form of a String
         * @return String Information about the Move
         */
-	public String toString() {
-		String info = "Condition Move" + "\nMove Name: 
-		return ;
-	}
+	public String toString(){
+     		String damageMoveInfo = "Condition Move\nMove Name: " + super.getMoveName() + "\nType: " + super.getMoveTypeName(super.getMoveType()) + "\nMove ID: " + super.getMoveID() + "\nCondition Applied ID: " + conditionAppliedID; 
+     		return damageMoveInfo;
+   	}
 }
 
 
