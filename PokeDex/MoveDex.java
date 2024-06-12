@@ -2,10 +2,25 @@ package PokeDex;
 
 import java.io.*;
 import MoveHierarchy.*;
-
+/**
+* Creates a PokeDex which can be accessed and used to 
+* manipulate Moves
+*/
 public class MoveDex {
+	
+	/**
+ 	* Amount of Moves in the database
+	*/
 	private int numMoveData;
+
+	/**
+ 	* Array of Moves
+	*/
 	private Move[] moveList;
+
+	/**
+ 	* Typechart that represents the matchups between attacking and defending types
+	*/
 	public static final double[][] TYPECHART = {{1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 1, 1, 1, 1, 1, 2, 0.5, 1},
             {1, 1, 0.5, 0.5, 1, 1, 2, 1, 1},
@@ -16,11 +31,19 @@ public class MoveDex {
             {1, 2, 1, 0, 1, 2, 0.5, 0.5, 1},
             {1, 1, 2, 1, 1, 1, 1, 1, 0.5}};
 	
-
+	/**
+	* This method is a constructor that initializes the fields of
+	* the MoveDex class
+ 	*/
 	public MoveDex () {
 		numMoveData = 0;
 	}
 
+	/**
+ 	* This method uses BufferedReader to read in information from a text file given
+        * @param fileName Name of the file being read
+	* @return True if successful, false if it fails to fully read the text file
+	*/
 	public boolean readMoves(String fileName) {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(fileName));
@@ -75,6 +98,11 @@ public class MoveDex {
 		}
 	}
 
+	/**
+ 	* This method uses BufferedWriter to write information from moveList to the given
+        * @param fileName Name of the file being read
+	* @return True if successful, false if it fails to fully read the text file
+	*/
 	public boolean saveMoves(String fileName) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
@@ -113,6 +141,11 @@ public class MoveDex {
 		}
 	}
 
+	/**
+ 	* This method uses BufferedWriter to write information from moveList to the given
+        * @param fileName Name of the file being read
+	* @return True if successful, false if it fails to fully read the text file
+	*/
 	public Move searchMoveByID(int id) {
 		int left = 0;
 		int right = numMoveData - 1;
