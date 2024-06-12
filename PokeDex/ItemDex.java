@@ -14,6 +14,10 @@ public class ItemDex {
    public void setNumItemData(int num) {
       numItemData = num;
    }
+
+   public Item[] getItemList () {
+      return itemList;
+   }
    
    public boolean readItems (String fileName) {
       try {
