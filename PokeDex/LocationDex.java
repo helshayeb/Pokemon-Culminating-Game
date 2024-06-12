@@ -4,7 +4,7 @@ import java.util.*;
 public class LocationDex {
     int numLocationsData;
     int MAX_SIZE = 10;
-    Location[] locDex;
+    Location[] locList;
     
     public LocationDex () {
         numLocationsData = 0;
@@ -15,9 +15,9 @@ public class LocationDex {
       return numLocationsData;
    }
 
-   // Accessor method for locDex
+   // Accessor method for locList
    public Location[] getLocList() {
-      return locDex;
+      return locList;
    }
     
     /**
@@ -32,7 +32,7 @@ public class LocationDex {
 
                 String type = br.readLine().toLowerCase();
                 if (type.equals("city") || type.equals("c")) {
-                    locDex[i] = new City(br.readLine(), br.readLine(), Integer.parseInt(br.readLine()),Boolean.parseBoolean(br.readLine()),Boolean.parseBoolean(br.readLine()));
+                    locList[i] = new City(br.readLine(), br.readLine(), Integer.parseInt(br.readLine()),Boolean.parseBoolean(br.readLine()),Boolean.parseBoolean(br.readLine()));
                     numData++;
                 } else if(type.equals("route")||type.equals("r")){
                     String region = br.readLine();
@@ -41,7 +41,7 @@ public class LocationDex {
                     int routeNum = Integer.parseInt(br.readLine());
                     br.readLine();
                     int[] list= {Integer.parseInt(br.readLine()),Integer.parseInt(br.readLine()),Integer.parseInt(br.readLine())};
-                    locDex[i] = new Route(region, name, id, routeNum, list);
+                    locList[i] = new Route(region, name, id, routeNum, list);
                     numData++;
                 } else {
                     return false;
@@ -61,7 +61,7 @@ public class LocationDex {
     public Location searchLocationByID(int id){
         int left = 0;
         int right = numData-1;
-        return searchLocationByID(locDex, id, left, right);
+        return searchLocationByID(locList, id, left, right);
     }
 
     public Location searchLocationByID(Location[] locList, int id, int left, int right){
@@ -80,30 +80,30 @@ public class LocationDex {
 
     public Location searchLocationByName(String name){
         for(int i = 0; i < numData; i++){
-            if(locDex[i].getName().equalsIgnoreCase(name)){
-                return locDex[i];
+            if(locList[i].getName().equalsIgnoreCase(name)){
+                return locList[i];
             }
         }
         return null;
     }
 
     public void addCity(String type, String name, boolean pokeCenter, boolean store){
-        locDex[numData] = new City(type, name, numData ,pokeCenter, store);
+        locList[numData] = new City(type, name, numData ,pokeCenter, store);
         numData++;
     }
 
     public void addCity( boolean pokeCenter, boolean store){
-        locDex[numData] = new City(numData, pokeCenter,store);
+        locList[numData] = new City(numData, pokeCenter,store);
         numData++;
     }
 
     public void addRoute(String type, String name, int routeNum, int id,int[] pokes){
-        locDex[numData] = new Route(type,name,routeNum,id,pokes);
+        locList[numData] = new Route(type,name,routeNum,id,pokes);
         numData++;
     }
 
     public void addRoute(String type, String name, int routeNum, int id){
-        locDex[numData] = new Route(type, name, routeNum, id);
+        locList[numData] = new Route(type, name, routeNum, id);
         numData++;
     }
 
@@ -117,13 +117,13 @@ public class LocationDex {
             File file = new File(fileName);
             file.createNewFile();
             BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
-            bw.write(locDex.length); /*Number of Location*/
-            for (int i = 0; i < locDex.length; i++) {
-                if(locDex[i] instanceof City)/*If it is city or not*/{
-                    City temp = (City)(locDex[i]);
+            bw.write(locList.length); /*Number of Location*/
+            for (int i = 0; i < locList.length; i++) {
+                if(locList[i] instanceof City)/*If it is city or not*/{
+                    City temp = (City)(locList[i]);
                     bw.write("City\n"+ temp.getRegionType()+"\n"+ temp.getName()+"\n"+ temp.getLoactionID() +"\n"+temp.getHasStore() +"\n"+temp.getHasPokeCentre()+"\n");
-                } else if(locDex[i] instanceof Route)/*If it is route or not*/{
-                    Route tempp = (Route)locDex[i];
+                } else if(locList[i] instanceof Route)/*If it is route or not*/{
+                    Route tempp = (Route)locList[i];
                     bw.write("Route\n" +"\n"+tempp.getRegionType()+"\n"+ tempp.getName()+"\n"+ tempp.getLoactionID() + "\n"+ tempp.getRouteNum() + "\n"+tempp.getNumPokemon());
                     for (int j = 0; j < tempp.getNumPokemon(); j++) {
                         bw.write(tempp.getPokemonInLocation()[i]+"\n");
@@ -142,6 +142,6 @@ public class LocationDex {
     }
 
     public String toString(){
-        return locDex.toString();
+        return locList.toString();
     }
 }
