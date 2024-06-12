@@ -173,10 +173,37 @@ public class Pokemon{
    /**
    * This method is an accessor that allows other classes to access
    * the list of moves of the Pokemon
-   * @return moveList[], the array storing the Pokemon's four moves
+   * @return moveList[] The array storing the Pokemon's four moves
    */
    public Move[] getMoveList(){
       return moveList[];
+   }
+
+   /**
+   * This method is an accessor that allows other classes to access
+   * the current condition of the Pokemon
+   * @return currentCondition The Pokemon's current condition
+   */
+   public Condition getCurrentCondition(){
+      return currentCondition();
+   }
+
+   /**
+   * This method is an accessor that allows other classes to access
+   * the location in which the Pokemon can be found
+   * @return foundIn The location of the Pokemon
+   */
+   public Location getFoundIn(){
+      return foundIn;
+   }
+
+   /**
+   * This method is an accessor that allows other classes to access
+   * the item the Pokemon is holding
+   * @return itemHolding The Pokemon's current item
+   */
+   public Item getItemHolding(){
+      return itemHolding;
    }
    
    /**
