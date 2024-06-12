@@ -1,124 +1,160 @@
-import java.util.Scanner;
+/**
+* This class makes it so the user can interact with everything 
+* in the Pokemon game
+*/
 import java.io.*;
-
-public class PokemonRunner{
-   public static void main( String[] args){
-      boolean play = true; boolean goPageTwo= true; boolean goPageThree = true; boolean goPageFour= true;
-      System.out.println("Welcome to Pokemons");
-      while(play){
-         goPageTwo = true;
-         int first = crossRoad("Home\n1. PokeDex\n2. User Database", 2);
-         if(first == 1){
-            while(goPageTwo){
-               goPageThree = true;
-               int second = crossRoad("1. PokemonDex\n2. LocationDex\n3. ItemDex\n4. MoveDex\n0. Back to Home", 4);
-               if (second == 1){
-                  while(goPageThree){
-                     int third = crossRoad("1. Method1\n2. Method2\n3. Method3\n0. Back",3);
-                     if(third == 1){
-                     
-                     } else if(third == 2){
-                        
-                     } else if(third == 3){
-                     
-                     }else if(third == 0){
-                        System.out.println("Back\n\n");
-                        goPageThree = false;
-                     }
-                  }
-               }else if(second == 2){
-                  while(goPageThree){
-                     int third = crossRoad("1. Method1\n2. Method2\n3. Method3\n0. Back",3);
-                     if(third == 1){
-                     
-                     } else if(third == 2){
-                        
-                     } else if(third == 3){
-                     
-                     }else if(third == 0){
-                        System.out.println("Back\n\n");
-                        goPageThree = false;
-                     }
-                  }
-               }else if(second == 3){
-                  while(goPageThree){
-                     int third = crossRoad("1. Method1\n2. Method2\n3. Method3\n0. Back",3);
-                     if(third == 1){
-                     
-                     } else if(third == 2){
-                        
-                     } else if(third == 3){
-                     
-                     }else if(third == 0){
-                        System.out.println("Back\n\n");
-                        goPageThree = false;
-                     }
-                  }
-               }else if(second == 4){
-                  while(goPageThree){
-                     int third = crossRoad("1. Method1\n2. Method2\n3. Method3\n0. Back",3);
-                     if(third == 1){
-                     
-                     } else if(third == 2){
-                        
-                     } else if(third == 3){
-                     
-                     } else if(third == 0){
-                        System.out.println("Back\n\n");
-                        goPageThree = false;
-                     }
-                  }
-               } else if(second == 0){
-                  System.out.println("Back\n\n");
-                  goPageTwo = false;
-               }
+import java.util.*;
+public class PokemonRunner {
+   public static void main (String [] args){
+      
+      // Declare Scanner
+      Scanner sc = new Scanner (System.in);
+      
+      // Create Dex Objects (databases)
+      LocationDex lD = new LocationDex ();
+      PokemonDex pD = new PokemonDex ();
+      ItemDex iD = new ItemDex ();
+      MoveDex mD = new MoveDex ();
+      UserDatabase uD = new UserDatabase ();
+      
+      // Read in text files
+      lD.readLocations("LocationList.txt");
+      iD.readItems("ItemList.txt");
+      mD.readMoves("MoveList.txt");
+      pD.readPokemon("PokemonList.txt");
+      uD.readNPCs("NPCList.txt");
+      uD.readUsers("UserList.txt");
+      
+      // Create central dex/database
+      Pokedex gameDatabase = new Pokedex (iD, pD, lD, mD);
+      
+      try {
+         int select1 = -1;
+         int select2;
+         while (select1 != 0) {
+            System.out.println("Welcome to the world of Pokemon! Please select what you would like to do.");
+            System.out.println("1) Go to the Pokedex for information.");
+            System.out.println("2) Go to the UserDatabase to select an account to play as.");
+            System.out.println("0) Exit.");
+            select1 = sc.nextInt();
+            System.out.println();
+         
+            while (select1 < 0 || select1 > 2) {
+               System.out.print("That is not a possible option. Try again: ");
+               select1 = sc.nextInt();
             }
             
-         } else if(first == 2){
-            while(goPageTwo){
-               int second = crossRoad("<User Database>\n1. user1\n2. user2\n3. user3\n0. Back to Home",3);
-               if (second == 1){
-               
-               }else if(second == 2){
-               
-               }else if(second == 3){
-               
-               } else if(second == 0){
-                  System.out.println("Back\n\n");
-                  goPageTwo = false;
-               }
-            } 
+            System.out.println();
             
-         } else if(first == 0){
-            play = false;
-            System.out.println("");
+            if (select1 == 1) {
+               System.out.println("Enter the number corresponding to what you want to search for: ");
+               System.out.println("1) Add an object to the database.");
+               System.out.println("2) Search for a Pokemon.");
+               System.out.println("3) Search for an Item.");
+               System.out.println("4) Search for a move.");
+               System.out.println("5) Search for a Location.");
+               System.out.println("6) Sort the Pokemon database by different factors.");
+               System.out.println("7) Save the current database for future uses.");
+               System.out.println("0) Exit.");
+               select2 = sc.nextInt();
+               System.out.println();
+               
+               while (select2 < 0 || select2 > 7) {
+                  System.out.print("That is not a possible option. Try again: ");
+                  select2 = sc.nextInt();
+               }
+               
+               System.out.println();
+               
+            }
+            
+            else {
+               System.out.println("Enter the number corresponding to what you want to search for: ");
+               System.out.println("1) Add an account.");
+               System.out.println("2) Delete an account.");
+               System.out.println("3) Play in an account");
+               System.out.println("4) Search for a Person.");
+               System.out.println("0) Exit.");
+               select2 = sc.nextInt();
+               System.out.println();
+               
+               while (select2 < 0 || select2 > 4) {
+                  System.out.print("That is not a possible option. Try again: ");
+                  select2 = sc.nextInt();
+               }
+               
+               System.out.println();
+               
+               if (select2 == 1) {
+                  // Filter
+                  sc.nextLine();
+                  
+                  // Create variables
+                  String name;
+                  int age;
+                  
+                  // Ask for input
+                  System.out.print("Enter the name of the account: ");
+                  name = sc.nextLine();
+                  System.out.print("Enter your age: ");
+                  age = sc.nextInt();
+                  
+                  // Call addUser method and output error message if errors occurs
+                  if (addUser(name, age)) {
+                     System.out.println("User has been successfully added.");
+                  } else {
+                     System.out.println("Too many users. Please remove a user before adding another user.");
+                  }
+               }
+               
+               if (select2 == 2) {
+                  // Filter
+                  sc.nextLine();
+                  
+                  // Create variables
+                  String name;
+                  
+                  // Ask for input
+                  System.out.print("Enter the name of the account you want removed: ");
+                  name = sc.nextLine();
+                  
+                  // Call removeUser method and output error message if errors occurs
+                  if (removeUser(name)) {
+                     System.out.println("User has been successfully removed.");
+                  } else {
+                     System.out.println("User not found.");
+                  }
+               }
+               
+               if (select2 == 3) {
+                  int account, select3;
+                  int numUsers = uD.getNumUsers();
+                  System.out.println("Enter account: ");
+                  for (int i = 0; i < numUsers; i++) {
+                     System.out.println((i+1) + ") " + uD.getUserList()[i].getName());
+                  }
+                  account = sc.nextInt();
+                  
+                  while (account < 1 || account > numUsers) {
+                     System.out.print("That is not a possible option. Try again: ");
+                     account = sc.nextInt();
+                  }
+                  
+                  System.out.println("Select an option:");
+                  System.out.println("1) Catch a Pokemon.");
+                  System.out.println("2) Release a Pokemon.");
+                  System.out.println("3) Buy an item.");
+                  System.out.println("4) Give an item to a Pokemon");
+                  System.out.println("5) Move to a new Location.");
+                  System.out.println("6) Heal your team");
+                  System.out.println("7) Display a person's team.");
+                  System.out.println("8) Battle someone.");
+                  System.out.println("0) Exit.");
+               }
+            }
          }
-         
+      } catch (InputMismatchException ime) {
+         System.out.println("Please provide proper input.");
       }
-   }
-   
-   /**
-   *
-   *
-   *
-   */
-   public static int crossRoad(String options, int optionNum){
-      Scanner sc = new Scanner(System.in);
-      System.out.println("\n"+ options);
-      System.out.print("Choose options: ");
-      boolean valid = false;
-      try{
-         int choice = Integer.parseInt(sc.nextLine());
-         if( choice <= optionNum && choice >= 0){
-            return choice;
-         }else{
-            System.out.println("\n****** Try again ******\n");
-            return crossRoad(options, optionNum);
-         }
-      } catch(Exception x){
-         System.out.println("\n******Invalid Input, Try again******\n");
-         return crossRoad(options, optionNum);
-      }
-     
    }
 }
