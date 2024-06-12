@@ -48,19 +48,19 @@ public class LocationDex {
         }
     }
 
-    public int searchLocationByID(int id){
+    public Location searchLocationByID(int id){
         int left = 0;
         int right = numData-1;
         return searchLocationByID(locDex, id, left, right);
     }
 
-    public int searchLocationByID(Location[] locList, int id, int left, int right){
+    public Location searchLocationByID(Location[] locList, int id, int left, int right){
         int mid = left+(right-left)/2;
         if(left>right){
-            return -1;
+            return null;
         }
         if(locList[mid].getLoactionID() == id){
-            return mid;
+            return locList[mid];
         }else if(locList[mid].getLoactionID() > id){
         return searchLocationByID(locList, id, left, mid-1);
     }else{
@@ -68,13 +68,13 @@ public class LocationDex {
     }
 }
 //KELVIN ITSA ME DAVID PLEASE CHANGE THIS TO RETURNING LOCATION OR NULL 
-    public int searchLocationByName(String name){
+    public Location searchLocationByName(String name){
         for(int i = 0; i < numData; i++){
             if(locDex[i].getName().equalsIgnoreCase(name)){
-                return i;
+                return locDex[i];
             }
         }
-        return -1;
+        return null;
     }
 
 
