@@ -175,6 +175,16 @@ public class User extends Person {
    }
 
    /**
+   * Simulates moving to another location in order to fulfill
+   * requirements for certain actions
+   * @param it Item object that user wants to add to their inventory
+   * Pokemon is not found in the team and the team has at no Pokemon
+   */
+   public void moveTo (Location loc) {
+      this.setCurrentLocation(loc);
+   }
+
+   /**
    * A method that continuously has Pokemon keep attacking each other
    * in a 1 on 1 format until one player runs out of Pokemon.
    * @param other Person that the user is battling

@@ -164,7 +164,7 @@ public class UserDatabase {
    }
 
    /**
-   * This method Calls releasePokemon in User to remove a 
+   * This method calls releasePokemon in User to remove a 
    * Pokemon from the user's team
    * @param id The user's ID
    * @param name The Pokemon being released 
@@ -180,6 +180,18 @@ public class UserDatabase {
         return u.releasePokemon(p);
       }
    }
+
+   /**
+   * This method calls moveTo in User to 
+   * @param id The user's ID
+   * @param name The location the user is going to 
+   * @return True if the move was successful and false if the 
+   * location could not be found.
+   */
+   public void moveTo (int id, Location loc) {
+      Person u = this.searchPersonByID(id);
+      ((User)u).moveTo(loc);
+   }
    
    /**
    * This method calls releasePokemon in User to remove a 
@@ -192,8 +204,8 @@ public class UserDatabase {
    * with a PokeStop
    */
    public boolean buyItem (int id, Item it) {
-      User u = this.searchPersonByID(id);
-      return u.buyItem(it);
+      Person u = this.searchPersonByID(id);
+      return ((User)u).buyItem(it);
    }
 
    /**
@@ -206,8 +218,17 @@ public class UserDatabase {
    * already on the User's team
    */
    public boolean catchPokemon (int id, Pokemon p) {
-      User u = this.searchPersonByID(id);
-      return u.catchPokemon(P);
+      Person u = this.searchPersonByID(id);
+      return ((User)u).catchPokemon(P);
+   }
+
+   /**
+   * This method calls displayPokemon in Person and
+   * outputs all the Pokemon in that person's team
+   */
+   public void displayPokemon (int id) {
+      Person p = this.searchPersonByID(id);
+      p.displayPokemon();
    }
 
    /**
