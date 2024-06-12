@@ -4,6 +4,7 @@ import Pokemon.*;
 /**
 * This class creates and allows the Burn Condition to be used and applied to Pokemon 
 * in the Pokemon game
+* The Burn Condition halves the Pokemon's attack stat and deals minor damage every turn
 */
 public class Burn extends Condition{
 
