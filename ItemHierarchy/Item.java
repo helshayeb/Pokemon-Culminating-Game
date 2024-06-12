@@ -14,8 +14,7 @@ public abstract class Item {
   }
   
   //abstract method to apply the item's effects on a pokemon
-  public abstract void useItem (Pokemon p) {
-  }
+  public abstract void useItem (Pokemon p);
 
   //all accessors and mutators
   public String getItemName () {
