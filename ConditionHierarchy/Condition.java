@@ -1,5 +1,6 @@
 package ConditionHierarchy;
 
+import Pokemon.Pokemon;
 public abstract class Condition{
    private int conditionID;
    private int turnsRemaining;
