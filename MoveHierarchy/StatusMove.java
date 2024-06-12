@@ -125,7 +125,13 @@ public class StatusMove extends Move {
 		}
 	}
 
-	public String toString() {
-		return null;
-	}
+	/**
+        * This method returns information about the Condition Move
+        * in the form of a String
+        * @return String Information about the Move
+        */
+	public String toString(){
+     		String statusMoveInfo = "Condition Move\nMove Name: " + super.getMoveName() + "\nType: " + super.getMoveTypeName(super.getMoveType()) + "\nMove ID: " + super.getMoveID() + "\nCondition Applied ID: " + conditionAppliedID; 
+     		return statusMoveInfo;
+   	}
 }
