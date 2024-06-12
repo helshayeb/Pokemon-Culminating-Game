@@ -41,6 +41,11 @@ public class Poison extends Condition {
 		}
 	}
 
+	/**
+        * This method returns the type of Condition it is 
+        * in the form of a String
+        * @return "Poison" as a String
+        */
 	public String toString() {
 		return "Poison";
 	}
