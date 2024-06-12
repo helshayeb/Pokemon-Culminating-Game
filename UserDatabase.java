@@ -13,7 +13,7 @@ public class UserDatabase {
    /**
    * Maximum and total number of NPCS in the program
    */
-   private int MAX_NPCS = 15;
+   private final int MAX_NPCS = 15;
 
    /**
    * List of all Users in the program
@@ -412,10 +412,14 @@ public class UserDatabase {
         return npcList[i];
    } 
 
+   /**
+   * This method searches for a user with the inputted id
+   * @param id The searched for user's id
+   */
    private Person searchUserById (int id) {
         int index = -1;
         for (int i = 0; i < numUsers && index == -1; i++) {
-            if (id == userList.getID()) {
+            if (id == userList[i].getID()) {
                 index = i;
             }
         }
@@ -424,5 +428,25 @@ public class UserDatabase {
         } else {
             return false;
         }
-   } 
+   }
+
+   /**
+   * This method searches for an npc with the inputted id
+   * @param id The searched for npc's id
+   */
+private Person searchNpcById (int id) {
+        int index = -1;
+        for (int i = 0; i < MAX_NPCS && index == -1; i++) {
+            if (id == npcList[i].getID()) {
+                index = i;
+            }
+        }
+        if (index != -1) {
+            return npcList[i];
+        } else {
+            return false;
+        }
+   }
+
+      
 }
