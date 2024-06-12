@@ -99,13 +99,27 @@ public class LocationDex {
     }
    // Method to add a route to locList
     public void addRoute(String type, String name, int routeNum, int id,int[] pokes){
-        locList[numData] = new Route(type,name,routeNum,id,pokes);
-        numData++;
+        if(!duplicateRouteNum){
+            locList[numData] = new Route(type,name,routeNum, numData,pokes);
+            numData++;
+        }
     }
    // Method to add a route to locList
-    public void addRoute(String type, String name, int routeNum, int id){
-        locList[numData] = new Route(type, name, routeNum, id);
-        numData++;
+    public void addRoute(String type, String name, int routeNum){
+        if(!duplicateRouteNum){
+            locList[numData] = new Route(type, name, routeNum, numData);
+            numData++;
+        }
+    }
+
+    private boolean duplicateRouteNum(int rNum){
+        for(int i = 0; i < numData; i++){
+            if(locList[i] instanceof Route){
+                if((Route)(locList).getRouteNum() == rNum)
+                    return true;
+            } 
+        }
+        return false
     }
 
      /**
