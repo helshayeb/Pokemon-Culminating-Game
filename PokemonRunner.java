@@ -79,22 +79,61 @@ public class PokemonRunner {
                   System.out.println();
 
                   if(select3 == 1){
-                     System.out.println("Enter the name of the Pokemon");
+                     sc.nextLine();
+                     System.out.println("Enter the name of the Pokemon: ");
                      String name = sc.nextLine();
+                     
                      System.out.println("Enter the type of the Pokemon: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
                      int type = sc.nextInt();
                      while (type < 0 || type > 8) {
                         System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
                         type = sc.nextInt();
                      }
-                     System.out.println("Enter the ");
-                     System.out.println("Enter the ");
-                     System.out.println("Enter the ");
-                     System.out.println("Enter the ");
-                     System.out.println("Enter the ");
-                     System.out.println("Enter the ");
-                     System.out.println("Enter the ");
-                  
+                     //yum yum code so good code so good!! 
+                     //i am losing my sanity help
+                     System.out.println("Enter the max HP stat of the Pokemon: ");
+                     double hps = sc.nextDouble();
+                     System.out.println("Enter the attack stat of the Pokemon: ");
+                     double atk = sc.nextDouble();
+                     System.out.println("Enter the defence stat of the Pokemon: ");
+                     double def = sc.nextDouble();
+                     System.out.println("Enter the speed stat of the Pokemon: ");
+                     double spd = sc.nextDouble();
+                     sc.nextLine();
+                     System.out.println("Enter the 1st move name of the Pokemon: ");
+                     String m1 = sc.nextLine()searchMoveByName(String name)
+                     while (mD.searchMoveByName(m1) == null) {
+                        System.out.print("That is not a possible option. Enter a valid Move name: ");
+                        m1 = sc.nextLine();
+                     }
+                     System.out.println("Enter the 2nd move name of the Pokemon: ");
+                     String m2 = sc.nextLine()searchMoveByName(String name)
+                     while (mD.searchMoveByName(m2) == null) {
+                        System.out.print("That is not a possible option. Enter a valid Move name: ");
+                        m2 = sc.nextLine();
+                     }
+                     System.out.println("Enter the 3rd move name of the Pokemon: ");
+                     String m3 = sc.nextLine()searchMoveByName(String name)
+                     while (mD.searchMoveByName(m3) == null) {
+                        System.out.print("That is not a possible option. Enter a valid Move name: ");
+                        m3 = sc.nextLine();
+                     }
+                     System.out.println("Enter the 4th move name of the Pokemon: ");
+                     String m4 = sc.nextLine()searchMoveByName(String name)
+                     while (mD.searchMoveByName(m4) == null) {
+                        System.out.print("That is not a possible option. Enter a valid Move name: ");
+                        m4 = sc.nextLine();
+                     }
+                     System.out.println("Enter the name of the Location the Pokemon can be found in: ");
+                     String loca = sc.nextLine();
+                     while (searchLocationByName(loca) == null) {
+                        System.out.print("That is not a possible option. Enter a valid Location name: ");
+                        loca = sc.nextLine();
+                     }
+
+                     pD.addPokemon(name, type, hps, atk, def, spd, m1, m2, m3, m4, loca);
+                  }else if (select3 == 2){
+                     
 
                
                
