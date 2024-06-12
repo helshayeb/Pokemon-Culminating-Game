@@ -229,9 +229,15 @@ public class UserDatabase {
    * @param type The type of Person
    */
    public void displayPokemon (int id, String type) {
-      if (type.equalsIgnoreCase("NPC")) {
-      User u = this.searchUserByID(id);
-      if (u == null) {
+      if (type.equalsIgnoreCase("User")) {
+        User u = this.searchUserByID(id);
+        if (u == null) {
+            System.out.println("Person not found.");
+        } else {
+            u.displayPokemon();
+        }
+      }
+      else if (type.equalsIgnoreCase("NPC")) {
         NPC n = this.searchNPCByID(id);
         if (n == null) {
             System.out.println("Person not found.");
@@ -240,7 +246,7 @@ public class UserDatabase {
         }
       }
       else {
-        p.displayPokemon();
+        System.out.println("Type is not valid.");
       }
    }
 
