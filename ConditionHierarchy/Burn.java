@@ -8,7 +8,7 @@ public class Burn extends Condition{
     originalAtk = appliedTo.getAtkStat();
   }
 
-  apply(){
+  public void apply(){
     if(super.getTurnsRemaining() == 4){
       appliedTo.changeAtkStat(ATK_MOD);
       appliedTo.changeCurrentHP(DMG, 0);
@@ -22,7 +22,7 @@ public class Burn extends Condition{
     }
   }
 
-  toString(){
+  public String toString(){
     return "Burn";
   }
   
