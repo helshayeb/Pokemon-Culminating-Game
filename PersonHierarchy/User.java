@@ -117,7 +117,7 @@ public class User extends Person {
       boolean inTeam = false;
       for (int i = 0; i < numPokemon; i++) {
          if (poke == teamList[i]) {
-            inTeam = true
+            inTeam = true;
          }
       }
       if (Poke.getFoundIn().equals(currentLocation) && numPokemon < MAX_POKEMON && !(inTeam)) {
@@ -137,7 +137,7 @@ public class User extends Person {
    */
    public boolean buyItem (Item it) {
       if (money > it.getPrice() && numItems < maxItems && currentLocation instanceof City && ((City) currentLocation).getHasPokeStop()) {
-         inventory[numItems] = new Item (it.getItemTypeName(), it.getName(), it.getID(), it.getPrice(), it.getModifier());
+         inventory[numItems] = new Item (it.getItemTypeName(), it.getName(), it.getId(), it.getPrice(), it.getModifier());
          numItems++;
          money -= it.getPrice();
          return true;

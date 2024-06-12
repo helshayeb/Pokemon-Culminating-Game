@@ -221,6 +221,8 @@ public class Person {
     */
    public boolean giveItem (String poke, String it) {
       Pokemon p_temp = this.searchPokemonByNameInTeam(poke);
+      int numIt = ((User)this).getNumItems();
+      Item[] inv = this.getInventory();
       if (p_temp == null) {
          return false;
       } 
@@ -230,11 +232,21 @@ public class Person {
             p_temp.setItemHolding(i_temp);
             return true;
          } else {
-            Item i_temp = ((User)this).searchItemByNameInTeam(it);
-            if (i_temp == null) {
+            int index = -1;
+            for (int i = 0; i < numIt; i++) {
+               if (inv[i].getName() == it) {
+                  index = i;
+               }
+            }
+            if (index == -1) {
                return false;
             } else {
+               Item i_temp = inv[index];
                p_temp.setItemHolding(i_temp);
+               for (int i = index; i < numIt; i++) {
+                  inv[i] = inv[i+1];
+               }
+               this.setNumItems(this.setNumItems() - 1);
                return true;
             }
          }
