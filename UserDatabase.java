@@ -225,6 +225,7 @@ public class UserDatabase {
    /**
    * This method calls displayPokemon in Person and
    * outputs all the Pokemon in that person's team
+   * @param id The person's ID
    */
    public void displayPokemon (int id) {
       User u = this.searchUserByID(id);
