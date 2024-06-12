@@ -412,7 +412,7 @@ public class UserDatabase {
         return npcList[i];
    } 
 
-   private Person searchPersonById (int id) {
+   private Person searchUserById (int id) {
         int index = -1;
         for (int i = 0; i < numUsers && index == -1; i++) {
             if (id == userList.getID()) {
@@ -422,15 +422,7 @@ public class UserDatabase {
         if (index != -1) {
             return userList[i];
         } else {
-            for (int i = 0; i < MAX_NPCS && index == -1; i++) {
-                if (id == npcList.getID()) {
-                    index = i;
-                }
-            }
+            return false;
         }
-        if (index == -1) {
-            return null;
-        }
-        return npcList[i];
    } 
 }
