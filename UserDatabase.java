@@ -13,17 +13,12 @@ public class UserDatabase {
    /**
    * Maximum number of users in the program
    */
-   private static final int MAX_USERS = 200;
-    
-   /**
-   * Maximum and total number of NPCS in the program
-   */
-   private static final int MAX_NPCS = 15;
+   private static final int MAX_USERS = 200;0
 
    /**
    * Maximum and total number of NPCS in the program
    */
-   private static final int MAX_NPCS = 15;
+   private int MAX_NPCS = 15;
 
    /**
    * List of all Users in the program
@@ -217,36 +212,47 @@ public class UserDatabase {
 
    /**
    * This method reads in all the existing users at
-   * the start of the Program
+   * the start of the program
    * @param fileName Name of the textfile
+   * @param pD Pokedex reference for methods
    * @return True the file was read correctly and false otherwise
    */
-   public boolean readUsers (String fileName) {
+   public boolean readUsers (String fileName, PokeDex pD) {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
          numUsers = in.readLine();
-         userList = new User[PokeDex.MAX_SIZE];
+         userList = new User[MAX_USERS];
          String userName;
-         int id, money, numPoke, numIt;
-         int[] pokeList = new int [Person.getMaxPokemon()];
-         int[] item = new int [PokeDex.MAX_SIZE];
-         
-         for (int i = 0; i < numUsers; i++) {
-            userName = (in.readLine());
-            id = (Integer.parseInt(in.readLine()));
-            money = (Integer.parseInt(in.readLine()));
-            numPoke = (Integer.parseInt(in.readLine()));
-            numIt = (Integer.parseInt(in.readLine()));
+         int id, money, age, numPoke, numIt, pokeID, itemID, curLocID;
+         Pokemon[] team; 
+         Location curLoc;
+         for (int i = 0; i < numItemData; i++) {
+            in.readLine();
+            userName = in.readLine();
+            id = Integer.parseInt(in.readLine());
+            age = Integer.parseInt(in.readLine());
+            money = Integer.parseInt(in.readLine());
+            numPoke = Integer.parseInt(in.readLine());
+            numIt = Integer.parseInt(in.readLine());
+            curLocID = Integer.parseInt(in.readLine());
+            
+            curLoc = searchLocationById(curLocID);
 
-            for (int i = 0; i < numPoke; i++) {
-               pokeList[i] = newPokemon(searchPokemonById(Integer.parseInt(in.readLine())));
+            team = new Pokemon [getMaxPokemon()];
+            for (int j = 0; j < numPoke; j++) {
+                pokeID = Integer.parseInt(in.readLine());
+                team[j] = pD.searchPokemonById();
             }
-            for (int i = 0; i < numIt; i++) {
-               item[i] = searchPokemonById(Integer.parseInt(in.readLine()));
+
+            inv = new Item [MAX_SIZE];
+            for (int j = 0; j < numIt; j++) {
+                itemID = Integer.parseInt(in.readLine());
+                inv[j] = pD.searchItemById();
             }
+
+            userList[i] = new User (name, age, i, numPoke, team, curLoc, money, numIt, inv);
          }
          in.close();
-         }
       }
       catch (IOException iox) {
          System.out.println("Error accessing file");
@@ -255,4 +261,96 @@ public class UserDatabase {
       return true;
    }
 
+   /**
+   * This method reads in all the existing NPCs at
+   * the start of the program
+   * @param fileName Name of the textfile
+   * @param pD Pokedex reference for methods
+   * @return True the file was read correctly and false otherwise
+   */
+   public boolean readNPCs (String fileName, PokeDex pD) {
+      try {
+         BufferedReader in = new BufferedReader(new FileReader(fileName));
+         MAX_NPCS = in.readLine();
+         npcList = new User[MAX_USERS];
+         String userName;
+         int id, age, numPoke, pokeID, itemID, curLocID;
+         Pokemon[] team; 
+         Item[] inv;
+         Location curLoc;
+         for (int i = 0; i < numItemData; i++) {
+            in.readLine();
+            userName = in.readLine();
+            id = Integer.parseInt(in.readLine());
+            age = Integer.parseInt(in.readLine());
+            numPoke = Integer.parseInt(in.readLine());
+            curLocID = Integer.parseInt(in.readLine());
+
+            curLoc = searchLocationById(curLocID);
+
+            team = new Pokemon [getMaxPokemon()];
+            for (int j = 0; j < numPoke; j++) {
+                pokeID = Integer.parseInt(in.readLine());
+                team[j] = pD.searchPokemonById();
+            }
+            npcList[i] = new NPC (name, age, i, numPoke, team, curLoc);
+
+            inv = new Item [MAX_SIZE];
+            for (int j = 0; j < numPoke; j++) {
+                itemID = Integer.parseInt(in.readLine());
+                npcList[i].giveItem(team[j], itemID);
+            }
+         }
+         in.close();
+      }
+      catch (IOException iox) {
+         System.out.println("Error accessing file");
+         return false;
+      }
+      return true;
+   }
+
+   /**
+   * This method writes all the existing users to a
+   * text file
+   * @param fileName Name of the textfile
+   * @return True the file was written correctly and false otherwise
+   */
+   public boolean saveUsers (String fileName) {
+    try {
+       BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
+       out.write(numUsers);
+       out.newLine();
+       for (int i = 0; i < numUsers; i++) {
+        out.newLine();
+        out.write(userList[i].getName());
+        out.newLine();
+        out.write(i + "");
+        out.newLine();
+        out.write(userList[i].getAge() + "");
+        out.newLine();
+        out.write(userList[i].getMoney() + "");
+        out.newLine();
+        out.write(userList[i].getNumPokemon() + "");
+        out.newLine();
+        out.write(userList[i].getNumItems() + "");
+        out.newLine();
+        out.write(userList[i].getCurrentLocation().getLocationID() + "");
+        out.newLine();
+        for (int j = 0; j < getNumPokemon(); j++) {
+            out.write(userList[i].getTeamList()[j].getID() + "");
+            out.newLine();
+        }
+        for (int j = 0; j < getNumItems(); j++) {
+            out.write(userList[i].getInventory()[j].getId() + "");
+            out.newLine();
+        }
+       }
+       out.close();
+    } catch (IOException iox) {
+        System.out.println("Error accessing file");
+        return false;
+    }
+    return true;
+   }
 }

@@ -41,7 +41,7 @@ public class Person {
    /**
    * The database of the game each person can refer to
    */
-   private static Pokedex pokedexReference
+   private static Pokedex pokedexReference;
    
    /**
    * This method is a constructor that initializes the fields of
@@ -56,6 +56,24 @@ public class Person {
       personID = i;
       numPokemon = 0;
       currentLocation = pokedexReference.getLocationDex.getLocationList()[0];
+   }
+
+   /**
+   * This method is a constructor that initializes the fields of
+   * the person when given all the non-static fields
+   * @param n The name of the person the user inputted
+   * @param a The age of the person the user inputted
+   * @param i The ID of the person, retrieved from the user database
+   * @param numP The number of Pokemon in the user's team
+   * @param team The Pokemon objects in the user's team
+   * @param loc The user's current location
+   */
+   public Person (String n, int a, int i, int numP, Pokemon[] team, Location loc) {
+      name = n;
+      age = a
+      personID = i;
+      numPokemon = numP;
+      currentLocation = loc;
    }
    
    /**
