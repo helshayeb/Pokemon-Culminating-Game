@@ -30,21 +30,43 @@ public abstract class Condition{
  	* the child classes
  	*/
 	public Condition(Pokemon appliedTo, int conditionID) {
-	  this.appliedTo = appliedTo;
-	  this.conditionID = conditionID;
+		this.appliedTo = appliedTo;
+		this.conditionID = conditionID;
+	}
+
+	/**
+        * This method is an accessor that allows other classes to access
+        * the condition ID of the Condition
+        * @return conditionID of the Condition
+        */
+	public int getConditionID(){
+		return conditionID;
 	}
 	
-	public int getConditionID(){
-	return conditionID;
-	}
+	/**
+        * This method is an accessor that allows other classes to access
+        * the turns remaining until the Condition wears off
+        * @return turnsRemaining of the Condition
+        */
 	public int getTurnsRemaining(){
-	return turnsRemaining;
+		return turnsRemaining;
 	}
+
+	/**
+        * This method is an accessor that allows other classes to access
+        * the Pokemon the Condition is applied to
+        * @return appliedTo of the Condition
+        */
 	public Pokemon getAppliedTo(){
-	return appliedTo;
+		return appliedTo;
 	}
+
+	/**
+        * This method is a mutator that allows other classes to change
+        * the turns remaining of the Condition by 1
+        */
 	public void reduceTurns(){
-	turnsRemaining--;
+		turnsRemaining--;
 	}
 
 	/**
