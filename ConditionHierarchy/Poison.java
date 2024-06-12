@@ -5,7 +5,7 @@ public class Poison extends Condition{
     super(appliedTo);
   }
 
-  apply(){
+  public void apply(){
     if(super.getTurnsRemaining() != 0){
       appliedTo.changeCurrentHP(DMG, 0);
       super.reduceTurns();
@@ -15,7 +15,7 @@ public class Poison extends Condition{
     }
   }
    
-  toString(){
+  public StringtoString(){
     return "Poison";
   }
 }
