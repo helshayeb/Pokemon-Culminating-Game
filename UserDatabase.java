@@ -134,9 +134,9 @@ public class UserDatabase {
    * @return True if the item was given successfully and false if
    * the Pokemon or Item was not found
    */
-   public boolean addItem (int id, String p_name, String i_name) {
+   public boolean giveItem (int id, String p_name, String i_name) {
       User u = this.searchPersonByID(id);
-      return u.(p_name, i_name,);
+      return u.(p_name, i_name);
    }
 
    /**
@@ -380,9 +380,9 @@ public class UserDatabase {
    * healing the user's team
    * @param id The user's ID
    */
-   public void healTeam (int id) {
+   public boolean healTeam (int id) {
       User u = this.searchPersonByID(id);
-      u.healTeam();
+      return u.healTeam();
    }
 
    /**

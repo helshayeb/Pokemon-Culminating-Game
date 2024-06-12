@@ -285,9 +285,19 @@ public class Person {
    /**
     * This method heals the person's entire team after a battle
     */
-   public void healTeam () {
-      for (int i = 0; i < numPokemon; i++) {
-         teamList[i].setCurrentHP(teamList[i].getMaxHPStat());
+   public boolean healTeam () {
+      if (this.currentLocation instanceof City) {
+         if (((City)this.currentLocation).getHasPokeCentre()) {
+            for (int i = 0; i < numPokemon; i++) {
+               teamList[i].setCurrentHP(teamList[i].getMaxHPStat());
+            }
+            return true;
+         } else {
+            return false;
+         } 
+      }
+      else {
+         return false;
       }
    }
 
