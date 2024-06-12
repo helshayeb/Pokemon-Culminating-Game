@@ -1,9 +1,14 @@
+package ConditionHierarchy;
+
 public abstract class Condition{
    private int conditionID;
    private int turnsRemaining;
    private Pokemon appliedTo;
    
-   public Condition(Pokemon appliedTo, int conditionID);
+   public Condition(Pokemon appliedTo, int conditionID) {
+	  this.appliedTo = appliedTo;
+	  this.conditionID = conditionID;
+   }
 
    public int getConditionID(){
       return conditionID;
@@ -18,10 +23,6 @@ public abstract class Condition{
       turnsRemaining--;
    }
 
-   public int getTurnsRemaining(){
-      return turnsRemaining;
-   }
-   
-   public void apply();
+   public abstract void apply();
 
 }
