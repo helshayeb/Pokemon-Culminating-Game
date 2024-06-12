@@ -67,7 +67,7 @@ public class LocationDex {
         return searchLocationByID(locList, id, mid+1, right);
     }
 }
-//KELVIN ITSA ME DAVID PLEASE CHANGE THIS TO RETURNING LOCATION OR NULL 
+
     public Location searchLocationByName(String name){
         for(int i = 0; i < numData; i++){
             if(locDex[i].getName().equalsIgnoreCase(name)){
