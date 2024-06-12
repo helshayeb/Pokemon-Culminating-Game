@@ -101,6 +101,11 @@ public class StatusMove extends Move {
 		this.recipient = recipient;
 	}
 
+	/**
+   	* This method uses a Status Move on a Pokemon given
+  	* @param Pokemon p1 Pokemon Pokemon using the move
+ 	* @param Pokemon p2 Pokemon Opposing Pokemon
+ 	*/
 	public void useMove(Pokemon p1, Pokemon p2) {
 		double max;
 		if (recipient == 0) {
