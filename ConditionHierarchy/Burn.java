@@ -23,7 +23,7 @@ public class Burn extends Condition{
   public static final int CONDITION_ID = 0;
 
   /**
-   * Original attack stat of the Pokemon, which is to be change to after the Pokemon stops Burning
+   * Original attack stat of the Pokemon, which is to be changed to after the Pokemon stops Burning
    */
   private double originalAtk;
 
