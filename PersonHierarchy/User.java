@@ -28,9 +28,29 @@ public class User extends Person {
    * @param i The ID of the person, retrieved from the user database
    */
    public User (String n, int a, int i) {
-      super(n, a, i, 0, pokedexReference.getLocationDex.getLocationList()[0]);
+      super(n, a, i);
       money = 0;
       numItems = 0;
+   }
+
+   /**
+   * This method is a constructor that initializes the fields of
+   * the person when given all the non-static fields
+   * @param n The name of the person the user inputted
+   * @param a The age of the person the user inputted
+   * @param i The ID of the person, retrieved from the user database
+   * @param numP The number of Pokemon in the user's team
+   * @param team The Pokemon objects in the user's team
+   * @param loc The user's current location
+   * @param m How much money the user has
+   * @param numI The number of Items in the user's inventory
+   * @param team The Item objects in the user's inventory
+   */
+   public Person (String n, int a, int i, int numP, Pokemon[] team, Location loc, int m, int numI, Item[] inv) {
+      super(n, a, i, team, loc);
+      money = m;
+      numItems = numI;
+      inventory = inv;
    }
 
    /**
@@ -384,7 +404,7 @@ public class User extends Person {
    * @param challenger Pokemon object of the user who was challenged 
    * @param defender Pokemon object of the user who initiated the battle
    */
-   public void userTurn (Pokemon challenger, Pokemon defender) {
+   public void computerTurn (Pokemon challenger, Pokemon defender) {
       int select;
          select = Math.random() * (5) + 1;
          switch (select) {
