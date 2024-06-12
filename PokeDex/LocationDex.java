@@ -44,10 +44,10 @@ public class LocationDex {
         }
     }
 
-    public Location searchLocationByID(int id){
+    public int searchLocationByID(int id){
         int left = 0;
         int right = numData-1;
-        searchLocationByID(locDex, id, left, right);
+        return searchLocationByID(locDex, id, left, right);
     }
 
     public int searchLocationByID(Location[] locList, int id, int left, int right){
@@ -117,7 +117,7 @@ public class LocationDex {
             bw.write(locDex.length); /*Number of Location*/
             for (int i = 0; i < locDex.length; i++) {
                 if(locDex[i] instanceof City)/*If it is city or not*/{
-                    City temp = (City)(locDex[i];
+                    City temp = (City)(locDex[i]);
                     bw.write("City\n"+ temp.getRegionType()+"\n"+ temp.getName()+"\n"+ temp.getLoactionID() +"\n"+temp.getHasStore() +"\n"+temp.getHasPokeCentre()+"\n");
                 } else if(locDex[i] instanceof Route)/*If it is route or not*/{
                     Route tempp = (Route)locDex[i];
