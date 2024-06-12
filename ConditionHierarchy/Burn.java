@@ -1,10 +1,10 @@
-/**
-* This class makes it so the user can interact with everything 
-* in the Pokemon game
-*/
 package ConditionHierarchy;
 
 import Pokemon.*;
+/**
+* This class creates and allows the Burn Condition to be used and applied to Pokemon 
+* in the Pokemon game
+*/
 public class Burn extends Condition{
   public static final double ATK_MOD = 0.5;
   public static final double DMG = -0.05;
