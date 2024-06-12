@@ -5,6 +5,15 @@ public abstract class Condition{
    
    public Condition(Pokemon appliedTo, int conditionID);
 
+   public int getConditionID(){
+      return conditionID;
+   }
+   public int getTurnsRemaining(){
+      return turnsRemaining;
+   }
+   public Pokemon getAppliedTo(){
+      return appliedTo;
+   }
    public void reduceTurns(){
       turnsRemaining--;
    }
