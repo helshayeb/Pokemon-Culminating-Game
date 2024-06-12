@@ -33,10 +33,7 @@ public abstract class Move {
 		return moveName;
 	}
 
-	public double getMatchup(int type1, int type2) {
-		return pd.getMultiplier(type1, type2);
-	}
-
+	
 	public String getMoveTypeName(int typeID) {
 		switch (typeID) {
 		case 0:
