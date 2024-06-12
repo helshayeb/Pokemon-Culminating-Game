@@ -8,7 +8,7 @@ public abstract class Move {
 	private String moveName;
 	private int moveType;
 	private int moveID;
-	PokeDex pd = new PokeDex(null, null, null, null);
+	MoveDex pd = new MoveDex();
 
 	public Move(String objectID, String moveName, int moveType, int moveID) {
 		this.objectID = objectID;
