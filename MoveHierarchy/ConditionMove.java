@@ -15,7 +15,15 @@ public class ConditionMove extends Move{
  		// private Condition conditionApplied;
 
 	
-   
+   	/**
+	* This method is a constructor that initializes the fields of
+	* the ConditionMove class when given its 
+	* @param objectID Type of the Move (Condition, Damage, or Status)
+	* @param moveName Name of the move
+ 	* @param moveType Type of the Move (0, 1, 2...)
+  	* @param moveID ID of the move
+   	* @param conditionAppliedID ID of the Conditioned that is applied
+ 	*/
    	public ConditionMove(String objectID, String moveName, int moveType, int moveID, int conditionAppliedID){
 		super(objectID, moveName, moveType, moveID);
 		this.conditionAppliedID = conditionAppliedID;
@@ -43,14 +51,24 @@ public class ConditionMove extends Move{
 	public int getConditionAppliedID(){
     		return conditionAppliedID;
  	}
-   
+
+	/**
+ 	* This method uses a Condition Move on a Pokemon given
+        * @param Pokemon p1 Pokemon using the Move
+	* @param Pokemon p2 Pokemon that Move is being used on
+	*/
  	public void useMove(Pokemon p1, Pokemon p2){
-      
 		p2.setCondition(conditionAppliedID);
 	}
-   
+
+	/**
+        * This method returns information about the Condition Move
+        * in the form of a String
+        * @return String Information about the Move
+        */
 	public String toString() {
-		return null;
+		String info = 
+		return ;
 	}
 }
 
