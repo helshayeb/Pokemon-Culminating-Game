@@ -69,7 +69,7 @@ public class ConditionMove extends Move{
         */
 	public String toString(){
      		String conditionMoveInfo = "Condition Move\nMove Name: " + super.getMoveName() + "\nType: " + super.getMoveTypeName(super.getMoveType()) + "\nMove ID: " + super.getMoveID() + "\nCondition Applied ID: " + conditionAppliedID; 
-     		return conditioMoveInfo;
+     		return conditionMoveInfo;
    	}
 }
 
