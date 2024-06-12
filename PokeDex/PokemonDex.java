@@ -178,6 +178,46 @@ public void sortByHpStat () {
     }
   }
 
+
+public void sortPokemonByTypeAndID  () {
+  Pokemon temp;
+  boolean sorted;
+  for (int i = 0; i < numPokemonData-1 && !sorted; i++) {
+    sorted = true;
+    for (int d = 0; d < numPokemonData-1-i; d++) {
+      int next = d+1;
+      if (pokemonList[next].getType() < pokemonList[d].getType()) {
+        temp = pokemonList[d];
+        pokemonList[d] = pokemonList[next];
+        pokemondList[next] = temp;
+        sorted = false;
+      }
+      else if (pokemonList[next].getType() == pokemonList[d].getType()) {
+        if (pokemonList[next].getId() < pokemonList[d].getId()) {
+          temp = pokemonList[d];
+          pokemonList[d] = pokemonList[next];
+          pokemonList[next] = temp;
+          sorted = false;
+        }
+      }
+    }
+  }
+}
+
+public boolean addPokemon (String name, int type, double hp, double attack, double defence, double speed, String moveName1, String moveName2, String moveName3, String moveName4, String loca) {
+  PokeDex pd;
+  Move move1 = searchMoveByName(pd.getMvDex().moveName1);
+  Move move2 = searchMoveByName(pd.getMvDex().moveName2);
+  Move move3 = searchMoveByName(pd.getMvDex().moveName3);
+  Move move4 = searchMoveByName(pd.getMvDex().moveName4);
+  Location foundIn = searchLocationByName(pd.getMvDex().loca);
+  pokemonList[numPokemonData] = new Pokemon (name, type, numPokemonData, hp, attack, defence, speed, move1, move2, move3, move4, foundIn);
+  return true;
+}
+
+  
+  
+
   
 
   
