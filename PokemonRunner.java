@@ -208,23 +208,8 @@ public class PokemonRunner {
                         }
 
                         lD.addRoute(type, name, , pokeInLoca);
-                        
-                     System.out.println("Enter the type of the Pokemon: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
-                     int type = sc.nextInt();
-                     while (type < 0 || type > 8) {
-                        System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
-                        type = sc.nextInt();
-                     }
-                     //yum yum code so good code so good!! 
-                     //i am losing my sanity help
-                     System.out.println("Enter the max HP stat of the Pokemon: ");
-                     double hps = sc.nextDouble();
-                     System.out.println("Enter the attack stat of the Pokemon: ");
-                     double atk = sc.nextDouble();
-                     System.out.println("Enter the defence stat of the Pokemon: ");
-                     double def = sc.nextDouble();
-                     System.out.println("Enter the speed stat of the Pokemon: ");
-                     double spd = sc.nextDouble();
+                  }else if (select3 == 4){ //User chooses to add a Move
+
                   }
 
                
