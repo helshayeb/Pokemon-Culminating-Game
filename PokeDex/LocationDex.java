@@ -21,9 +21,9 @@ public class LocationDex {
    }
     
     /**
-     *
-     * @param fileName
-     * @return boolean: if the file was successfully loaded
+     * Reads location data from a file and populates the locList array.
+     * @param fileName The name of the file to read from.
+     * @return true if the file was successfully loaded, false otherwise.
      */
     public boolean readLocations(String fileName){
         try{
@@ -57,13 +57,14 @@ public class LocationDex {
             return false;
         }
     }
-
+    
+   //Wrapper method
     public Location searchLocationByID(int id){
         int left = 0;
         int right = numData-1;
         return searchLocationByID(locList, id, left, right);
     }
-
+   // Method to search for a location by its ID using recursive binary search
     public Location searchLocationByID(Location[] locList, int id, int left, int right){
         int mid = left+(right-left)/2;
         if(left>right){
@@ -86,31 +87,31 @@ public class LocationDex {
         }
         return null;
     }
-
+   // Method to add a city to locList
     public void addCity(String type, String name, boolean pokeCenter, boolean store){
         locList[numData] = new City(type, name, numData ,pokeCenter, store);
         numData++;
     }
-
+   // Method to add a city to locList
     public void addCity( boolean pokeCenter, boolean store){
         locList[numData] = new City(numData, pokeCenter,store);
         numData++;
     }
-
+   // Method to add a route to locList
     public void addRoute(String type, String name, int routeNum, int id,int[] pokes){
         locList[numData] = new Route(type,name,routeNum,id,pokes);
         numData++;
     }
-
+   // Method to add a route to locList
     public void addRoute(String type, String name, int routeNum, int id){
         locList[numData] = new Route(type, name, routeNum, id);
         numData++;
     }
 
-    /**
-     *
-     * @param fileName
-     * @return if it is successfully saved
+     /**
+     * Saves location data from locList array to a file.
+     * @param fileName The name of the file to save to.
+     * @return true if the data was successfully saved, false otherwise.
      */
     public boolean saveLocations(String fileName){
         try{
