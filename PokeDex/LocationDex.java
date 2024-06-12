@@ -9,6 +9,16 @@ public class LocationDex {
     public LocationDex () {
         numLocationsData = 0;
     }
+
+    // Accessor method for numLocationsData
+   public int getNumLocationsData() {
+      return numLocationsData;
+   }
+
+   // Accessor method for locDex
+   public Location[] getLocList() {
+      return locDex;
+   }
     
     /**
      *
