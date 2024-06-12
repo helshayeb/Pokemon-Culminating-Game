@@ -1,7 +1,7 @@
 public class Burn extends Condition{
   public static final double ATK_MOD = 0.5;
   public static final double DMG = -0.05;
-  public double originalAtk;
+  private double originalAtk;
 
   public Burn(Pokemon appliedTo){ //wait appliedTo might have to be a thing in condition
     super(appliedTo);
