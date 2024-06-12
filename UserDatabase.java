@@ -148,13 +148,18 @@ public class UserDatabase {
    * or if a mistake occurs
    */
    public Person battleTrainer (int id, String name) {
+      final int MONEY_FROM_WIN = 500;
       Person winner;
       User u1 = this.searchPersonByID(id);
       Person u2 = this.searchPersonByName(name);
       if (u2 == null) {
          return null;
       } else {
-         return u1.battleTrainer(u2);
+         winner = u1.battleTrainer(u2);
+         if (winner == u1) {
+            u1.setMoney(u1.getMoney() + MONEY_FROM_WIN);
+         }
+         return winner;
       }
    }
 
