@@ -1,3 +1,8 @@
+package Pokemon;
+import ConditionHierarchy.*;
+import MoveHierarchy.*;
+import LocationHierarchy.*;
+import ItemHierarchy.*;
 /**
 * Creates Pokemon which can be caught and used to battle other Pokemon
 */
@@ -110,9 +115,9 @@ public class Pokemon{
    /**
    * This method is an accessor that allows other classes to access
    * the type of the Pokemon
-   * @return Name of the Pokemon
+   * @return Type of the Pokemon
    */
-   public String getType () {
+   public int getType () {
       return type;
    }
 
@@ -121,7 +126,7 @@ public class Pokemon{
    * the ID of the Pokemon
    * @return ID of the Pokemon
    */
-   public String getID () {
+   public int getID () {
       return id;
    }
 
@@ -130,7 +135,7 @@ public class Pokemon{
    * the max health of the Pokemon
    * @return Max health of the Pokemon
    */
-   public String getMaxHPStat () {
+   public double getMaxHPStat () {
       return maxHPStat;
    }
 
@@ -139,7 +144,7 @@ public class Pokemon{
    * the current health of the Pokemon
    * @return Current health of the Pokemon
    */
-   public String getCurrentHP () {
+   public double getCurrentHP () {
       return currentHP;
    }
 
@@ -148,7 +153,7 @@ public class Pokemon{
    * the attack stat of the Pokemon
    * @return Attack stat of the Pokemon
    */
-   public String getAttackStat () {
+   public double getAttackStat () {
       return attackStat;
    }
 
@@ -157,7 +162,7 @@ public class Pokemon{
    * the defence stat of the Pokemon
    * @return Defence stat of the Pokemon
    */
-   public String getDefenceStat () {
+   public double getDefenceStat () {
       return defenceStat;
    }
 
@@ -166,8 +171,8 @@ public class Pokemon{
    * the defence stat of the Pokemon
    * @return Defence stat of the Pokemon
    */
-   public String getSpeedStat () {
-      return defenceStat;
+   public double getSpeedStat () {
+      return speedStat;
    }
 
    /**
@@ -176,7 +181,7 @@ public class Pokemon{
    * @return moveList[] The array storing the Pokemon's four moves
    */
    public Move[] getMoveList(){
-      return moveList[];
+      return moveList;
    }
 
    /**
@@ -185,7 +190,7 @@ public class Pokemon{
    * @return currentCondition The Pokemon's current condition
    */
    public Condition getCurrentCondition(){
-      return currentCondition();
+      return currentCondition;
    }
 
    /**
@@ -213,7 +218,7 @@ public class Pokemon{
    * @param hpChange Value to determine numerical changes in health
    */
    public void changeCurrentHP(double hpMod, double hpChange){
-      currentHP += maxHpStat*hpMod;
+      currentHP += maxHPStat*hpMod;
       currentHP += hpChange;
       if(currentHP > maxHPStat){
          currentHP = maxHPStat;
@@ -235,7 +240,7 @@ public class Pokemon{
    * @param defMod Multiplier to determine percentage changes in the defence stat
    */
    public void changeDefStat(double defMod){
-      defenseStat *= defMod;
+      defenceStat *= defMod;
    }
 
    /**
@@ -246,7 +251,25 @@ public class Pokemon{
    public void changeSpdStat(double spdMod){
       speedStat *= spdMod;
    }
-
+   
+   /**
+    * This method is a mutator that sets the speed stat of
+    * the Pokemon when given the 
+    * @param stat Value to set the speed stat to
+    */
+   public void setSpeedStat(double stat) {
+	   speedStat = stat;
+   }
+   
+   /**
+    * This method is a mutator that sets the attack stat of
+    * the Pokemon when given the 
+    * @param stat Value to set the attack stat to
+    */
+   public void setAttackStat(double stat) {
+	   attackStat = stat;
+   }
+   
    /**
    * This method is a mutator that sets the current Condition of
    * the Pokemon when given the 
@@ -255,13 +278,13 @@ public class Pokemon{
    public void setCondition(int conditionID){
       Condition cd;
       if(conditionID == 0){
-         cd = new Burn();
+         cd = new Burn(this);
          currentCondition = cd;
       }else if(conditionID == 1){
-         cd = new Paralysis();
+         cd = new Paralysis(this);
          currentCondition = cd;
       }else if(conditionID == 2){
-         cd = new Poison();
+         cd = new Poison(this);
          currentCondition = cd;
       }else{
          currentCondition = null;
@@ -307,7 +330,7 @@ public class Pokemon{
    * @param m1 Move that is being used
    */
    public void attack(Pokemon p2, Move m1){
-      m1.useMove(this, p2, m1);
+      m1.useMove(this, p2);
    }
 
    /**
@@ -334,7 +357,7 @@ public class Pokemon{
    * the Pokemon
    */
    public String toString(){
-      String pokemonInfo = "Name: " + name + "\nType: " + getTypeName(type) + "\nID: " + id + "\nMax Health: " + maxHPStat + "\nAttack Stat: " + attackStat + "\nDefence Stat" + defenceStat + "\nSpeedStat: " + speedStat + "Moves: " + moveList[0].getMoveName() + "\n" + moveList[1].getMoveName() + "\n+ moveList[2].getMoveName() + "\n+ moveList[3].getMoveName() + "\nCondition: " + currentCondition.toString() + "\nLocation: " + foundIn.getRegionType();  
+      String pokemonInfo = "Name: " + name + "\nType: " + getTypeName(type) + "\nID: " + id + "\nMax Health: " + maxHPStat + "\nAttack Stat: " + attackStat + "\nDefence Stat" + defenceStat + "\nSpeedStat: " + speedStat + "Moves: " + moveList[0].getMoveName() + "\n" + moveList[1].getMoveName() + "\n" + moveList[2].getMoveName() + "\n" + moveList[3].getMoveName() + "\nCondition: " + currentCondition.toString() + "\nLocation: " + foundIn.getRegionType();  
       return pokemonInfo;
    }
 }
