@@ -211,6 +211,59 @@ public class PokemonRunner {
                      lD.addRoute(type, name, routeNum, pokeInLoca);
                   }
                   else if (select3 == 4){ //User chooses to add a Move
+                     sc.nextLine();
+                     System.out.println("Enter the kind of Move you wish to add: Damage, Status, or Condition");
+                     String objectID = sc.nextLine();
+                     while (!(objectID.equalsIgnoreCase("damage") || (objectID.equalsIgnoreCase("Status") || (objectID.equalsIgnoreCase("Condition")) {
+                        System.out.print("That is not a possible option. Enter Damage, Status, or Condition");
+                        objectID = sc.nextLine();
+                     }
+                     
+                     System.out.println("Enter the name of the Move: ");
+                     String moveName = sc.nextLine();
+                     
+                     System.out.println("Enter the type of the Move: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
+                     int type = sc.nextInt();
+                     while (type < 0 || type > 8) {
+                        System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
+                        type = sc.nextInt();
+                     }
+
+                     if(objectID.equalsIgnoreCase("damage")){
+                        System.out.println("Enter the base power of the move: ");
+                        int basePower = sc.nextInt();
+                     }else if(objectID.equalsIgnoreCase("status")){
+                        System.out.println("Enter the HP modifier of the move: ");
+                        double hpMod = sc.nextDouble();
+                        System.out.println("Enter the attack modifier of the move: ");
+                        double atkMod = sc.nextDouble();
+                        System.out.println("Enter the defence modifier of the move: ");
+                        double defMod = sc.nextDouble();
+                        System.out.println("Enter the speed modifier of the move: ");
+                        double spdMod = sc.nextDouble();
+                        System.out.println("Enter the recipient Pokemon of the Move: 0 (itself) or 1 (opposing Pokemon)");
+                        int recipient = sc.nextInt();
+                        while (recipient == 0 || recipient == 1) {
+                           System.out.print("That is not a possible option. Enter the recipient Pokemon of the Move: 0 (itself) or 1 (opposing Pokemon)");
+                           recipient = sc.nextInt();
+                        }
+                     }else{
+                        System.out.println("Enter the ID of the Condition the move will apply: 0 (Burn), 1 (Paralysis), or 2 (Poison)");
+                        int basePower = sc.nextInt();
+
+
+
+                     
+                     System.out.println("How many Pokemon do you want to be found in your Route (0-10)? ");
+                        int foundSize = sc.nextInt();
+                        while (foundSize < 0 || foundSize > 10) {
+                           System.out.print("That is not a possible option. Enter a number from 0 to 10: ");
+                           foundSize = sc.nextInt();
+                        }
+                     System.out.println("Enter the max HP stat of the Pokemon: ");
+                     double hps = sc.nextDouble();
+                     System.out.println("Enter the attack stat of the Pokemon: ");
+                     double atk = sc.nextDouble();
                   }
                
                
