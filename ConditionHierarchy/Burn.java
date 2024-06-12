@@ -1,3 +1,7 @@
+/**
+* This class makes it so the user can interact with everything 
+* in the Pokemon game
+*/
 package ConditionHierarchy;
 
 import Pokemon.*;
