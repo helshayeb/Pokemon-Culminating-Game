@@ -1,67 +1,70 @@
-public abstract class Move{
-   private String objectID;
-   private String moveName;
-   private int moveType;
-   private int moveID;
-   Pokedex pd = new Pokedex();
-   public Move(String objectID, String moveName, int moveType, int moveID){
-      this.objectID = objectID;
-      this.moveName = moveName;
-      this.moveType = moveType;
-      this.moveID = moveID;
-   }
+package MoveHierarchy;
 
-   public String getObjectID(){
-      return objectID;
-   }
+import PokeDex.*;
+import Pokemon.*;
 
-   public int getMoveType(){
-      return moveType;
-   }
+public abstract class Move {
+	private String objectID;
+	private String moveName;
+	private int moveType;
+	private int moveID;
+	PokeDex pd = new PokeDex(null, null, null, null);
 
-   public int getMoveID(){
-      return moveID;
-   }
-   
-   public String getMoveName () {
-      return moveName;
-   }
-   
-   public double getMatchup(int type1, int type2){
-      return pd.getMultiplier(type1, type2);
-   }
-   
-   public String getMoveTypeName(int typeID){
-      switch(typeID) {
-         case 0:
-            return "Normal";
-         case 1:
-            return "Flying";
-         case 2:
-            return "Poison";
-         case 3:
-            return "Ground";
-         case 4:
-            return "Fire";
-         case 5: 
-            return "Water";
-         case 6:
-            return "Grass";
-         case 7:
-            return "Electric";
-         case 8:
-            return "Psychic";
-         default:
-            return "Type Not Found";
-      }
-      
-   }
-   
-   
-   public abstract void useMove(Pokemon p1, Pokemon p2);
-   
-   
-   public abstract String toString();
+	public Move(String objectID, String moveName, int moveType, int moveID) {
+		this.objectID = objectID;
+		this.moveName = moveName;
+		this.moveType = moveType;
+		this.moveID = moveID;
+	}
+
+	public String getObjectID() {
+		return objectID;
+	}
+
+	public int getMoveType() {
+		return moveType;
+	}
+
+	public int getMoveID() {
+		return moveID;
+	}
+
+	public String getMoveName() {
+		return moveName;
+	}
+
+	public double getMatchup(int type1, int type2) {
+		return pd.getMultiplier(type1, type2);
+	}
+
+	public String getMoveTypeName(int typeID) {
+		switch (typeID) {
+		case 0:
+			return "Normal";
+		case 1:
+			return "Flying";
+		case 2:
+			return "Poison";
+		case 3:
+			return "Ground";
+		case 4:
+			return "Fire";
+		case 5:
+			return "Water";
+		case 6:
+			return "Grass";
+		case 7:
+			return "Electric";
+		case 8:
+			return "Psychic";
+		default:
+			return "Type Not Found";
+		}
+
+	}
+
+	public abstract void useMove(Pokemon p1, Pokemon p2);
+
+	public abstract String toString();
 
 }
-

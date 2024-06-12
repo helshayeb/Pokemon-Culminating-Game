@@ -1,3 +1,6 @@
+package MoveHierarchy;
+
+import Pokemon.Pokemon;
 public class DamageMove extends Move{
    private int basePower;
 
@@ -12,12 +15,12 @@ public class DamageMove extends Move{
    
    public void useMove(Pokemon p1, Pokemon p2){
       double multiplier = super.getMatchup(super.getMoveType(), p2.getType());
-      double damgeDone = -0.2*(p1.getAtkStat()*basePower)/p2.getDefStat()*multiplier;
-      p2.changeHPStat(0, damageDone);
+      double damageDone = -0.2*(p1.getAttackStat()*basePower)/p2.getDefenceStat()*multiplier;
+      p2.changeCurrentHP(0, damageDone);
    }
    
    public String toString(){
-      String damageMoveInfo = "Move Type: Damage\nMove Name: " + super.getMoveName() + "\nType: " + super.getMoveTypeName(typeID) + "\nMove ID: " + super.getMoveID() + "\nBase Power: " + basePower; 
+      String damageMoveInfo = "Move Type: Damage\nMove Name: " + super.getMoveName() + "\nType: " + super.getMoveTypeName(super.getMoveType()) + "\nMove ID: " + super.getMoveID() + "\nBase Power: " + basePower; 
       return damageMoveInfo;
    }
 
