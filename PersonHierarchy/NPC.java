@@ -21,5 +21,14 @@ public class NPC extends Person {
       super(n, a, i, numP, loc);
    }
 
+   public String toString () {
+      String s = "Name: " + name + "\nAge: " + age + "\nID: " + id + "\nNumber of Pokemon: " + numPokemon;
+      for (int i = 0; i < numPokemon; i++) {
+         s += teamList[i] + "\n";
+      }
+      s += currentLocation.getName();
+      return s;
+   }
+
 
 }

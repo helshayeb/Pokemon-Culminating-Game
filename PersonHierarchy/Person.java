@@ -326,8 +326,4 @@ public class Person {
       }
       return p_temp;
    }
-
-   public String toString () {
-      return "Name: " + name + "\n Age: " + age + 
-   }
 }
