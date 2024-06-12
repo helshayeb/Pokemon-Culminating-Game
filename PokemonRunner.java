@@ -209,8 +209,7 @@ public class PokemonRunner {
                      }
                   
                      lD.addRoute(type, name, routeNum, pokeInLoca);
-                  }
-                  else if (select3 == 4){ //User chooses to add a Move
+                  }else if (select3 == 4){ //User chooses to add a Move
                      sc.nextLine();
                      System.out.println("Enter the kind of Move you wish to add: Damage, Status, or Condition");
                      String objectID = sc.nextLine();
@@ -232,6 +231,7 @@ public class PokemonRunner {
                      if(objectID.equalsIgnoreCase("damage")){
                         System.out.println("Enter the base power of the move: ");
                         int basePower = sc.nextInt();
+                        mD.addDamageMove(moveName, type, basePower);
                      }else if(objectID.equalsIgnoreCase("status")){
                         System.out.println("Enter the HP modifier of the move: ");
                         double hpMod = sc.nextDouble();
@@ -243,33 +243,23 @@ public class PokemonRunner {
                         double spdMod = sc.nextDouble();
                         System.out.println("Enter the recipient Pokemon of the Move: 0 (itself) or 1 (opposing Pokemon)");
                         int recipient = sc.nextInt();
-                        while (recipient == 0 || recipient == 1) {
+                        while (!(recipient == 0 || recipient == 1)) {
                            System.out.print("That is not a possible option. Enter the recipient Pokemon of the Move: 0 (itself) or 1 (opposing Pokemon)");
                            recipient = sc.nextInt();
                         }
+                        mD.addStatusMove(moveName, type, hpMod, atkMod, defMod, spdMod, recipient);
                      }else{
                         System.out.println("Enter the ID of the Condition the move will apply: 0 (Burn), 1 (Paralysis), or 2 (Poison)");
-                        int basePower = sc.nextInt();
-
-
-
-                     
-                     System.out.println("How many Pokemon do you want to be found in your Route (0-10)? ");
-                        int foundSize = sc.nextInt();
-                        while (foundSize < 0 || foundSize > 10) {
-                           System.out.print("That is not a possible option. Enter a number from 0 to 10: ");
-                           foundSize = sc.nextInt();
+                        int conditionAppliedID = sc.nextInt();
+                        while (!(conditionAppliedID == 0 || conditionAppliedID == 1 || conditionAppliedID == 2)) {
+                           System.out.print("That is not a possible option. Enter the ID of the Condition the move will apply: 0 (Burn), 1 (Paralysis), or 2 (Poison)");
+                           conditionAppliedID = sc.nextInt();
                         }
-                     System.out.println("Enter the max HP stat of the Pokemon: ");
-                     double hps = sc.nextDouble();
-                     System.out.println("Enter the attack stat of the Pokemon: ");
-                     double atk = sc.nextDouble();
-                  }
-               
-               
-               
+                        mD.addConditionmove(moveName, type, conditionAppliedID);       
+                     }
+               }else if(select2 == 2){ // user chooses to 
+                     
                }
-               
                else {
                   System.out.println("Enter the number corresponding to what you want to search for: ");
                   System.out.println("1) Add an account.");
