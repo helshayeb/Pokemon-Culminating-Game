@@ -101,25 +101,25 @@ public class PokemonRunner {
                      double spd = sc.nextDouble();
                      sc.nextLine();
                      System.out.println("Enter the 1st move name of the Pokemon: ");
-                     String m1 = sc.nextLine()searchMoveByName(String name)
+                     String m1 = sc.nextLine();
                      while (mD.searchMoveByName(m1) == null) {
                         System.out.print("That is not a possible option. Enter a valid Move name: ");
                         m1 = sc.nextLine();
                      }
                      System.out.println("Enter the 2nd move name of the Pokemon: ");
-                     String m2 = sc.nextLine()searchMoveByName(String name)
+                     String m2 = sc.nextLine();
                      while (mD.searchMoveByName(m2) == null) {
                         System.out.print("That is not a possible option. Enter a valid Move name: ");
                         m2 = sc.nextLine();
                      }
                      System.out.println("Enter the 3rd move name of the Pokemon: ");
-                     String m3 = sc.nextLine()searchMoveByName(String name)
+                     String m3 = sc.nextLine();
                      while (mD.searchMoveByName(m3) == null) {
                         System.out.print("That is not a possible option. Enter a valid Move name: ");
                         m3 = sc.nextLine();
                      }
                      System.out.println("Enter the 4th move name of the Pokemon: ");
-                     String m4 = sc.nextLine()searchMoveByName(String name)
+                     String m4 = sc.nextLine();
                      while (mD.searchMoveByName(m4) == null) {
                         System.out.print("That is not a possible option. Enter a valid Move name: ");
                         m4 = sc.nextLine();
