@@ -2,7 +2,7 @@ import java.io.*;
 public class PokemonDex{
 
   private int numPokemonData;
-  private Pokemon pokemonList[];
+  private Pokemon[] pokemonList;
 
   public PokemonDex () {
     numPokemonData = 0;
@@ -14,6 +14,10 @@ public class PokemonDex{
    public void setNumPokemonData(int num) {
       numPokemonData = num;
    }
+
+  public Pokemon[] getPokemonList () {
+    return pokemonList;
+  }
   
 public boolean readPokemon (String fileName) {
     try {
