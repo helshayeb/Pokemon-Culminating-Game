@@ -118,41 +118,64 @@ public Pokemon searchPokemonById (int id, int top, int bot) {
 }
 
 public void sortByHpStat () {
-    sortByHpStat(0, false);
+    this.sortByHpStat(numPokemonData, false);
   }
 
   public void sortByHpStat (int numChecks, boolean sorted) {
     Pokemon temp;
-    if (numChecks < numPokemonData - 1 || !sorted)
+    if (numChecks > 0 || !sorted)
       sorted = true;
-      for (int i = numChecks; i < numPokemonData - 1; i++) {
-        if (pokemonList[i].getMaxHPStat() < pokemonList[i + 1].getMaxHPStat()) {
+      for (int i = 1; i < numPokemonData - 1; i++) {
+        if (pokemonList[i].getMaxHPStat() > pokemonList[i - 1].getMaxHPStat()) {
           sorted = false;
           temp = pokemonList[i];
-          pokemonList[i] = pokemonList[i + 1];
-          pokemonList[i + 1] = temp;
-          sortByHpStat(i + 1, sorted);
+          pokemonList[i] = pokemonList[i - 1];
+          pokemonList[i - 1] = temp;
         }
       }
+      this.sortByHpStat(i + 1, sorted);
     }
 
   public void sortByAtkStat () {
-     sortByAtkStat(1);
+     this.sortByAtkStat(1);
   }
 
   public void sortByAtkStat (int index) {
-    int save = index;
-    Pokemon p_save = pokemonList[save];
-    while (pokemonList[save].getAttackStat() > pokemonList[save - 1].getAttackStat() && index > 0) {
-      pokemonList[save] = pokemonList[save - 1];
-      save--;
+    if (index < numPokemonData) {
+      int i = index;
+      Pokemon p_save = pokemonList[i];
+      int atk_save = pokemonList[i].getAttackStat();
+      while (index > 0 && atk_save > pokemonList[i - 1].getAttackStat()) {
+        pokemonList[i] = pokemonList[i - 1];
+        i--;
+      }
+      pokemonList[i] = p_save;
+      this.sortBtAtkStat(index + 1);
     }
-    list[save] = save;
-    sortBtAtkStat(index + 1)
+  }
+
+  public void sortPokemonByID  () {
+     this.sortByAtkStat(0);
   }
   
-  public void sortPokemonByID (int index) {
-    
+  public void sortPokemonByID (int start) {
+    if (start < numPokemonData) {
+      int biggest = pokemonList[start].getID();
+      int index = start;
+      int save;
+      Pokemon temp;
+      for (int i = start; i < numPokemonData; i++) {
+        save = teamList[i].getID();
+        if (save > biggest) {
+          biggest = save;
+          index = i;
+        }
+      }
+      temp = teamList[start];
+      teamList[start] = teamList[index];
+      teamList[index] = temp;
+      this.sortPokemonByID(start + 1);
+    }
   }
 
   
