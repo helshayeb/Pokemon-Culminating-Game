@@ -232,7 +232,7 @@ public class UserDatabase {
             
             curLoc = searchLocationById(curLocID);
 
-            team = new Pokemon [getMaxPokemon()];
+            team = new Pokemon [Person.getMaxPokemon()];
             for (int j = 0; j < numPoke; j++) {
                 pokeID = Integer.parseInt(in.readLine());
                 team[j] = pD.searchPokemonById();
@@ -282,7 +282,7 @@ public class UserDatabase {
 
             curLoc = searchLocationById(curLocID);
 
-            team = new Pokemon [getMaxPokemon()];
+            team = new Pokemon [Person.getMaxPokemon()];
             for (int j = 0; j < numPoke; j++) {
                 pokeID = Integer.parseInt(in.readLine());
                 team[j] = pD.searchPokemonById();
