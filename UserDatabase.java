@@ -226,8 +226,10 @@ public class UserDatabase {
    * This method calls displayPokemon in Person and
    * outputs all the Pokemon in that person's team
    * @param id The person's ID
+   * @param type The type of Person
    */
-   public void displayPokemon (int id) {
+   public void displayPokemon (int id, String type) {
+      if (type.equalsIgnoreCase("NPC")) {
       User u = this.searchUserByID(id);
       if (u == null) {
         NPC n = this.searchNPCByID(id);
@@ -424,6 +426,20 @@ public class UserDatabase {
         }
         if (index != -1) {
             return userList[i];
+        } else {
+            return null;
+        }
+   } 
+
+   private Person searchNPCById (int id) {
+        int index = -1;
+        for (int i = 0; i < MAX_NPCS && index == -1; i++) {
+            if (id == npcList[i].getID()) {
+                index = i;
+            }
+        }
+        if (index != -1) {
+            return npcList[i];
         } else {
             return null;
         }
