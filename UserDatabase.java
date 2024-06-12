@@ -135,7 +135,7 @@ public class UserDatabase {
    * the Pokemon or Item was not found
    */
    public boolean addItem (int id, String p_name, String i_name) {
-      User u = this.searchUserByID(id);
+      User u = this.searchPersonByID(id);
       return u.(p_name, i_name,);
    }
 
@@ -148,8 +148,9 @@ public class UserDatabase {
    * or if a mistake occurs
    */
    public Person battleTrainer (int id, String name) {
-      User u1 = this.searchUserByID(id);
-      User u2 = this.searchUserByName(name);
+      Person winner;
+      User u1 = this.searchPersonByID(id);
+      Person u2 = this.searchPersonByName(name);
       if (u2 == null) {
          return null;
       } else {
@@ -166,7 +167,7 @@ public class UserDatabase {
    * or if a mistake occurs
    */
    public boolean releasePokemon (int id, String name) {
-      User u = this.searchUserByID(id);
+      User u = this.searchPersonByID(id);
       Pokemon p = u.searchPokemonByNameInTeam(name);
       if (p == null) {
         return false;
@@ -186,7 +187,7 @@ public class UserDatabase {
    * with a PokeStop
    */
    public boolean buyItem (int id, Item it) {
-      User u = this.searchUserByID(id);
+      User u = this.searchPersonByID(id);
       return u.buyItem(it);
    }
 
@@ -200,7 +201,7 @@ public class UserDatabase {
    * already on the User's team
    */
    public boolean catchPokemon (int id, Pokemon p) {
-      User u = this.searchUserByID(id);
+      User u = this.searchPersonByID(id);
       return u.catchPokemon(P);
    }
 
@@ -354,7 +355,7 @@ public class UserDatabase {
    * @param id The user's ID
    */
    public void healTeam (int id) {
-      User u = this.searchUserByID(id);
+      User u = this.searchPersonByID(id);
       u.healTeam();
    }
 

@@ -111,8 +111,7 @@ public class User extends Person {
    * Simulates catching a Pokemon and adding it to the User’s team
    * @param Poke Pokemon object that user wants to catch
    * @return True if the catch was successful and false if Pokemon 
-   * is already in the team or numPokemon is equal to maxPokemon
-   * 
+   * is already in the team or numPokemon is equal to MAX_POKEMON
    */
    public boolean catchPokemon (Pokemon poke) {
       boolean inTeam = false;
@@ -121,7 +120,7 @@ public class User extends Person {
             inTeam = true
          }
       }
-      if (Poke.getFoundIn().equals(currentLocation) && numPokemon < maxPokemon && !(inTeam)) {
+      if (Poke.getFoundIn().equals(currentLocation) && numPokemon < MAX_POKEMON && !(inTeam)) {
         this.newPokemon(poke);
         return true;
       } else {
@@ -377,7 +376,8 @@ public class User extends Person {
                System.out.print("Error");
          }
       } catch (InputMismatchException ime) {
-         return null;
+         System.out.println("Please provide proper input.");
+         userTurn (Pokemon challenger, Pokemon defender);
       }
    }
 

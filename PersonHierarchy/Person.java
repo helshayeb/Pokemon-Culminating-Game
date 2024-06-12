@@ -21,7 +21,7 @@ public class Person {
    /**
    * The maximum number of Pokemon each person can have in their team
    */
-   private static int maxPokemon; 
+   private final static int MAX_POKEMON = 6; 
    
    /**
    * The current number of Pokemon each person has in their team
@@ -109,7 +109,7 @@ public class Person {
    * @return The maximum number of Pokemon a player can have
    */
    public static int getMaxPokemon () {
-      return maxPokemon;
+      return MAX_POKEMON;
    }
 
    /**
@@ -173,15 +173,6 @@ public class Person {
    */
    public void setPersonID (int i) {
       personID = i;
-   }
-
-   /**
-   * This method is a mutator that allows other classes to change
-   * the maximum number of Pokemon a person can have
-   * @param m new maximum number of Pokemon a person can have
-   */
-   public static void setMaxPokemon (int m) {
-      maxPokemon = m;
    }
 
    /**
@@ -314,5 +305,7 @@ public class Person {
       return p_temp;
    }
 
-   public 
+   public String toString () {
+      return "Name: " + name + "\n Age: " + age + 
+   }
 }
