@@ -62,27 +62,31 @@ public class ItemDex {
       }
    }
    
-public Item searchItemByName (String name) {
+   public Item searchItemByName (String name) {
       for (int i = 0; i < numItemData; i++) {
          if ((itemList[i].getItemName()).equals(name)) {
             return itemList[i];
          }
+      }
    }
-}
 
-public Item searchItemById (int id) {
-   return searchItemById (id, numItemData-1, 0);
-}
-public Item searchItemById (int id, int top, int bot) {
-   int middle = (top + bot) / 2;
-   if (itemList[middle] == id) {
-      return itemList[middle];
-   } else if (itemList[middle] < id) {
-      searchItemById(id, middle - 1, bot);
-   } else {
-      searchItemById(id, top, middle + 1);
+   public Item searchItemById (int id) {
+      return searchItemById (id, numItemData-1, 0);
    }
-}
+
+   public Item searchItemById (int id, int top, int bot) {
+      int middle = (top + bot) / 2;
+      if (itemList[middle] == id) {
+         return itemList[middle];
+      } else if (top == bot) {
+         return null;
+      }else if (itemList[middle] < id) {
+         searchItemById(id, middle - 1, bot);
+      } else {
+         searchItemById(id, top, middle + 1);
+         }
+   }
+   
    public boolean addItems (String type, String name, int price, double modifier) {
       int newId = numItemData;
       if (price < 0 || modifier < 0) {
