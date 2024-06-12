@@ -113,9 +113,9 @@ public class UserDatabase {
    * if there are no users or if the user was not found
    */
    public boolean removeUser(String name) {
-      User u = this.searchPersonByName(name);
-      if (u != null) {
-         for (int i = u; u < numUsers; i++) {
+      Person p = this.searchPersonByName(name);
+      if (p instanceof User) {
+         for (int i = p.getID(); p.getID() < numUsers; i++) {
             userList[i] = userList[1+i];
          }
          numUsers--;
