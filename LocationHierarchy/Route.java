@@ -44,23 +44,46 @@ public class Route extends Location {
     }
 
     // Accessors (Getters)
+    /**
+     * Accesses pokemonInLocation.
+     * 
+     * @param id The unique identifier for the location.
+     * @param pokes The list of pokemon ids
+     */
     public int[] getPokemonInLocation() {
         return pokemonInLocation;
     }
 
+    // Accessors (Getters)
+    /**
+     * Accesses pokemonInLocation.
+     * 
+     */
     public int getNumPokemon(){
         return numPokemon;
     }
 
+    /**
+     * Accesses routeNum.
+     * 
+     */
     public int getRouteNum() {
         return routeNum;
     }
 
     // Mutators (Setters)
+    /**
+     * Changes pokemonInLocation.
+     * 
+     */
     public void setPokemonInLocation(int[] pokemonInLocation) {
         this.pokemonInLocation = pokemonInLocation;
     }
 
+    /**
+     * Changes routeNum.
+     * 
+     */
     public void setRouteNum(int routeNum) {
         this.routeNum = routeNum;
     }
