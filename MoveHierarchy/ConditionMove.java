@@ -1,6 +1,11 @@
+package MoveHierarchy;
+
+import Pokemon.Pokemon;
+//import ConditionHierarchy.*;
+
 public class ConditionMove extends Move{
    private int conditionAppliedID;
-   private Condition conditionApplied;
+  // private Condition conditionApplied;
 
    public int getConditionAppliedID(){
       return conditionAppliedID;
@@ -9,7 +14,7 @@ public class ConditionMove extends Move{
    public ConditionMove(String objectID, String moveName, int moveType, int moveID, int conditionAppliedID){
       super(objectID, moveName, moveType, moveID);
       this.conditionAppliedID = conditionAppliedID;
-      switch(conditionAppliedID) {
+      /*switch(conditionAppliedID) {
          case 0:
             conditionApplied = new Burn();
             break;
@@ -22,14 +27,18 @@ public class ConditionMove extends Move{
          default:
             conditionApplied = null;
             break;
-      }
+      }*/
 
    }
    
    public void useMove(Pokemon p1, Pokemon p2){
       
-      p2.setCondition(conditionApplied)
+      p2.setCondition(conditionAppliedID);
    }
+
+	public String toString() {
+		return null;
+	}
 }
 
 
