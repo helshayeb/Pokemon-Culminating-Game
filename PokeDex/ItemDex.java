@@ -4,6 +4,10 @@ public class ItemDex {
    private int numItemData; //Stores the number of items
    private Item[] itemList;
 
+   public ItemDex () {
+      numItemData = 0;
+   }
+
    public int getNumItemData() {
       return numItemData;
    }

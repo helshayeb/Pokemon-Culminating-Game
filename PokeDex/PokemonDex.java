@@ -4,6 +4,10 @@ public class PokemonDex{
   private int numPokemonData;
   private Pokemon pokemonList[];
 
+  public PokemonDex () {
+    numPokemonData = 0;
+  }
+
   public int getNumPokemonData() {
       return numPokemonData;
    }

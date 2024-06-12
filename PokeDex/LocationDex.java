@@ -2,10 +2,14 @@ import java.io.*;
 import java.util.*;
 
 public class LocationDex {
-    int numData;
+    int numLocationsData;
     int MAX_SIZE = 10;
     Location[] locDex;
-
+    
+    public LocationDex () {
+        numLocationsData = 0;
+    }
+    
     /**
      *
      * @param fileName

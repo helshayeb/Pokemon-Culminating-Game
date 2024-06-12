@@ -11,11 +11,6 @@ public class UserDatabase {
    private int numUsers;
 
    /**
-   * Maximum number of users in the program
-   */
-   private static final int MAX_USERS = 200;0
-
-   /**
    * Maximum and total number of NPCS in the program
    */
    private int MAX_NPCS = 15;
@@ -31,21 +26,20 @@ public class UserDatabase {
    private NPC[] npcList;
 
    /**
+   * This method is a constrcutor that creates a UserDatabase
+   * object with no fields filled in
+   */
+   public UserDatabase () {
+    numUsers = 0;
+   }
+
+   /**
    * This method is an accessor that allows other classes to access
    * the number of users in the list
    * @return Number of objects in the userList array
    */
    public int getNumUsers () {
      return numUsers;
-   }
-
-   /**
-   * This method is an accessor that allows other classes to access
-   * the maximum number of users possible the list can contain
-   * @return Maximum number of objects possible in the userList array
-   */
-   public static int getMaxUsers () {
-     return MAX_USERS;
    }
 
    /**
@@ -102,7 +96,7 @@ public class UserDatabase {
    * if there are too many users
    */
    public boolean addUser(String name, int age) {
-      if (numUsers < MAX_USERS) {
+      if (numUsers < MAX_SIZE) {
          userList[numUsers] = new User (name, age, numUsers);
          numUsers++;
          return true;
@@ -221,7 +215,7 @@ public class UserDatabase {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
          numUsers = in.readLine();
-         userList = new User[MAX_USERS];
+         userList = new User[MAX_SIZE]];
          String userName;
          int id, money, age, numPoke, numIt, pokeID, itemID, curLocID;
          Pokemon[] team; 
@@ -272,7 +266,7 @@ public class UserDatabase {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
          MAX_NPCS = in.readLine();
-         npcList = new User[MAX_USERS];
+         npcList = new User[MAX_SIZE];
          String userName;
          int id, age, numPoke, pokeID, itemID, curLocID;
          Pokemon[] team; 
@@ -363,4 +357,53 @@ public class UserDatabase {
       User u = this.searchUserByID(id);
       u.healTeam();
    }
+
+   /**
+   * This method calls finds the Person object corresponding 
+   * with the
+   * @param id The user's ID
+   */
+   private Person searchPersonByName (String name) {
+        int index = -1;
+        for (int i = 0; i < numUsers && index == -1; i++) {
+            if (name.equals(userList[i].getName())) {
+                index = i;
+            }
+        }
+        if (index != -1) {
+            return userList[i];
+        } else {
+            for (int i = 0; i < MAX_NPCS && index == -1; i++) {
+                if (name.equals(npcList[i].getName())) {
+                    index = i;
+                }
+            }
+        }
+        if (index == -1) {
+            return null;
+        }
+        return npcList[i];
+   } 
+
+   private Person searchPersonById (int id) {
+        int index = -1;
+        for (int i = 0; i < numUsers && index == -1; i++) {
+            if (id == userList.getID()) {
+                index = i;
+            }
+        }
+        if (index != -1) {
+            return userList[i];
+        } else {
+            for (int i = 0; i < MAX_NPCS && index == -1; i++) {
+                if (id == npcList.getID()) {
+                    index = i;
+                }
+            }
+        }
+        if (index == -1) {
+            return null;
+        }
+        return npcList[i];
+   } 
 }

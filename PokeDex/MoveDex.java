@@ -7,6 +7,10 @@ public class MoveDex {
 	private int numMoveData;
 	private Move[] moveList;
 
+	public MoveDex () {
+		numMoveData = 0;
+	}
+
 	public boolean readMoves(String fileName) {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(fileName));
