@@ -64,15 +64,6 @@ public class User extends Person {
 
    /**
    * This method is an accessor that allows other classes to access
-   * the maximum number of items the user can have
-   * @return The maximum number of items the user can have
-   */
-   public static int getMaxItems () {
-      return maxItems;
-   }
-
-   /**
-   * This method is an accessor that allows other classes to access
    * the current number of items the user has
    * @return The current number of items the user has
    */
@@ -96,15 +87,6 @@ public class User extends Person {
    */
    public void setMoney (int m) {
       money = m;
-   }
-
-   /**
-   * This method is a mutator that allows other classes to change
-   * the maximum number of items the user can have
-   * @param m New maximum number of items the user can have
-   */
-   public static void setMaxItems (int mI) {
-      maxItems = mI;
    }
 
    /**
