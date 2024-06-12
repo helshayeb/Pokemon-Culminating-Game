@@ -31,6 +31,7 @@ public class PokemonRunner {
       try {
          int select1 = -1;
          int select2;
+         int select3;
          while (select1 != 0) {
             System.out.println("Welcome to the world of Pokemon! Please select what you would like to do.");
             System.out.println("1) Go to the Pokedex for information.");
@@ -65,6 +66,37 @@ public class PokemonRunner {
                }
                
                System.out.println();
+
+               if(select2 == 1){
+
+                  System.out.println("Enter the number corresponding to what object you want to add: ");
+                  System.out.println("1) Add a Pokemon.");
+                  System.out.println("2) Add an Item.");
+                  System.out.println("3) Add a Location.");
+                  System.out.println("4) Add a Move.");
+                  System.out.println("0) Exit.");
+                  select3 = sc.nextInt();
+                  System.out.println();
+
+                  if(select3 == 1){
+                     System.out.println("Enter the name of the Pokemon");
+                     String name = sc.nextLine();
+                     System.out.println("Enter the type of the Pokemon: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
+                     int type = sc.nextInt();
+                     while (type < 0 || type > 8) {
+                        System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
+                        type = sc.nextInt();
+                     }
+                     System.out.println("Enter the ");
+                     System.out.println("Enter the ");
+                     System.out.println("Enter the ");
+                     System.out.println("Enter the ");
+                     System.out.println("Enter the ");
+                     System.out.println("Enter the ");
+                     System.out.println("Enter the ");
+                  
+
+               
                
             }
             
@@ -105,7 +137,7 @@ public class PokemonRunner {
                   } else {
                      System.out.println("Too many users. Please remove a user before adding another user.");
                   }
-               }
+               
                
                if (select2 == 2) {
                   // Filter
