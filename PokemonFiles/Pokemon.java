@@ -355,6 +355,7 @@ public class Pokemon{
    /**
    * This method returns the information about
    * the Pokemon
+   * @return Information in String form
    */
    public String toString(){
       String pokemonInfo = "Name: " + name + "\nType: " + getTypeName(type) + "\nID: " + id + "\nMax Health: " + maxHPStat + "\nAttack Stat: " + attackStat + "\nDefence Stat" + defenceStat + "\nSpeedStat: " + speedStat + "Moves: " + moveList[0].getMoveName() + "\n" + moveList[1].getMoveName() + "\n" + moveList[2].getMoveName() + "\n" + moveList[3].getMoveName() + "\nCondition: " + currentCondition.toString() + "\nLocation: " + foundIn.getRegionType();  
