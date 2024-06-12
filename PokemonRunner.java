@@ -78,7 +78,7 @@ public class PokemonRunner {
                   select3 = sc.nextInt();
                   System.out.println();
 
-                  if(select3 == 1){
+                  if(select3 == 1){ // User chooses to add a Pokemon
                      sc.nextLine();
                      System.out.println("Enter the name of the Pokemon: ");
                      String name = sc.nextLine();
@@ -132,7 +132,7 @@ public class PokemonRunner {
                      }
 
                      pD.addPokemon(name, type, hps, atk, def, spd, m1, m2, m3, m4, loca);
-                  }else if (select3 == 2){
+                  }else if (select3 == 2){ // User chooses to add an Item
                      sc.nextLine();
                      System.out.println("Enter the type of the Item: Attack, Defence, Health, or Speed");
                      String type = sc.nextLine();
@@ -150,7 +150,8 @@ public class PokemonRunner {
                      double modifier = sc.nextDouble();
 
                      iD.addItems(type, name, price, modifier);
-                  }else if (select3 == 3){
+                  
+                  }else if (select3 == 3){ // User chooses to add a Location
                      sc.nextLine();
                      System.out.println("Enter the type of Location you want to add: City or Route");
                      String type = sc.nextLine();
@@ -193,19 +194,20 @@ public class PokemonRunner {
                         String name = sc.nextLine();
                         System.out.println("Enter the number of the Route:");
                         int routeNum = sc.nextInt();
-                        System.out.println("Enter the Ids of 6 Pokemon found in the Route");
-                        boolean str;
-                        int choice2 = sc.nextInt();
-                        while (!(choice2 == 0 || choice2 == 1)) {
-                        System.out.print("That is not a possible option. Enter 0 or 1");
-                        choice2 = sc.nextInt();
+                        System.out.println("How many Pokemon do you want to be found in your Route (0-10)? ");
+                        int foundSize = sc.nextInt();
+                        while (foundSize < 0 || foundSize > 10) {
+                        System.out.print("That is not a possible option. Enter a number from 0 to 10: ");
+                        foundSize = sc.nextInt();
+                     }
+                        System.out.println("Enter the Ids of Pokemon found in the Route");
+                        int[] pokeInLoca = new int[10];
+                        for(int i = 0; i < foundSize; i++){
+                           System.out.println("Enter the ID of Pokemon #" + i+1 + ": ");
+                           pokeInLoca[i] = sc.nextInt();
                         }
-                        if(choice2 == 0){
-                           str == false;
-                        }else{
-                           str == true;
-                        }
-                        lD.addCity(type, name, pkc, str);
+
+                        lD.addRoute(type, name, , pokeInLoca);
                         
                      System.out.println("Enter the type of the Pokemon: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
                      int type = sc.nextInt();
