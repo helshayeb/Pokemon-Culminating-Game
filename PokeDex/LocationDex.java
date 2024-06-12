@@ -77,17 +77,6 @@ public class LocationDex {
         return null;
     }
 
-
-//   missing search by id & name
-
-    /**
-     *
-     * @param type
-     * @param name
-     * @param id
-     * @param pokeCenter
-     * @param store
-     */
     public void addCity(String type, String name, boolean pokeCenter, boolean store){
         locDex[numData] = new City(type, name, numData ,pokeCenter, store);
         numData++;
