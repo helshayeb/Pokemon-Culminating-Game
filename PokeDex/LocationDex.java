@@ -88,13 +88,13 @@ public class LocationDex {
      * @param pokeCenter
      * @param store
      */
-    public void addCity(String type, String name, int id, boolean pokeCenter, boolean store){
-        locDex[numData] = new City(type, name, id,pokeCenter, store);
+    public void addCity(String type, String name, boolean pokeCenter, boolean store){
+        locDex[numData] = new City(type, name, numData ,pokeCenter, store);
         numData++;
     }
 
-    public void addCity(int id, boolean pokeCenter, boolean store){
-        locDex[numData] = new City(id, pokeCenter,store);
+    public void addCity( boolean pokeCenter, boolean store){
+        locDex[numData] = new City(numData, pokeCenter,store);
         numData++;
     }
 
