@@ -1,57 +1,143 @@
+/**
+ * Abstract class representing an item with a name, ID, price, modifier, and type name.
+ */
 public abstract class Item {
-  private String itemName; //name of item
-  private int id; //id of item
-  private int price; //price of item
-  private double modifier; //scale of the items effect, higher modifier means the item will have a greater
-  private String itemTypeName; //type of item, determines which subclass the item belongs to
+  /**
+   * The name of the item.
+   */
+  private String itemName;
 
-  // constructs the item
-  public Item (String type, String name, int idNum, int priceNum, double mod) {
+  /**
+   * The unique identifier for the item.
+   */
+  private int id;
+
+  /**
+   * The price of the item.
+   */
+  private int price;
+
+  /**
+   * The modifier value associated with the item.
+   */
+  private double modifier;
+
+  /**
+   * The type name of the item.
+   */
+  private String itemTypeName;
+
+  /**
+   * Constructs an Item with the specified type, name, ID, price, and modifier.
+   *
+   * @param type the type name of the item
+   * @param name the name of the item
+   * @param idNum the ID number of the item
+   * @param priceNum the price of the item
+   * @param mod the modifier value of the item
+   */
+  public Item(String type, String name, int idNum, int priceNum, double mod) {
     itemName = name;
     id = idNum;
     price = priceNum;
     modifier = mod;
+    itemTypeName = type;
   }
-  
-  //abstract method to apply the item's effects on a pokemon
-  public abstract void useItem (Pokemon p);
 
-  //all accessors and mutators
-  public String getItemName () {
+  /**
+   * Uses the item on the specified Pokemon.
+   *
+   * @param p the Pokemon to use the item on
+   */
+  public abstract void useItem(Pokemon p);
+
+  /**
+   * Returns the name of the item.
+   *
+   * @return the item name
+   */
+  public String getItemName() {
     return itemName;
   }
-  public void setItemName (String name) {
+
+  /**
+   * Sets the name of the item.
+   *
+   * @param name the new name of the item
+   */
+  public void setItemName(String name) {
     itemName = name;
   }
 
-  public int getId () {
+  /**
+   * Returns the ID of the item.
+   *
+   * @return the item ID
+   */
+  public int getId() {
     return id;
   }
-  public void setId (int n) {
+
+  /**
+   * Sets the ID of the item.
+   *
+   * @param n the new ID of the item
+   */
+  public void setId(int n) {
     id = n;
   }
 
-  public int getPrice () {
+  /**
+   * Returns the price of the item.
+   *
+   * @return the item price
+   */
+  public int getPrice() {
     return price;
   }
-  public void setPrice (int n) {
+
+  /**
+   * Sets the price of the item.
+   *
+   * @param n the new price of the item
+   */
+  public void setPrice(int n) {
     price = n;
   }
 
-  public double getModifier () {
+  /**
+   * Returns the modifier of the item.
+   *
+   * @return the item modifier
+   */
+  public double getModifier() {
     return modifier;
   }
-  public void setModifier (double d) {
+
+  /**
+   * Sets the modifier of the item.
+   *
+   * @param d the new modifier of the item
+   */
+  public void setModifier(double d) {
     modifier = d;
   }
 
-  public String getItemTypeName () {
+  /**
+   * Returns the type name of the item.
+   *
+   * @return the item type name
+   */
+  public String getItemTypeName() {
     return itemTypeName;
   }
-  public void setItemTypeName (String name) {
-    itemTypeName = n;
-  }
-  
-}
 
-    
+  /**
+   * Sets the type name of the item.
+   *
+   * @param name the new type name of the item
+   */
+  public void setItemTypeName(String name) {
+    itemTypeName = name;
+  }
+}
