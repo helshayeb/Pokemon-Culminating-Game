@@ -7,7 +7,7 @@ public class Paralysis extends Condition{
     originalSpd = appliedTo.getSpdStat();
   }
 
-  apply(){
+  public void apply(){
     if(super.getTurnsRemaining() == 4){
       appliedTo.changeSpdStat(SPD_MOD);
       super.reduceTurns();
@@ -19,7 +19,7 @@ public class Paralysis extends Condition{
     }
   }
    
-  toString(){
+  public String toString(){
     return "Paralysis";
   }
 }
