@@ -57,40 +57,38 @@ public class MoveDex{
 
   public boolean saveMoves (String fileName) {
     try {
-       BufferedWriter out = new BufferedWriter (new FileWriter (fileName));
-       out.write(numMoveData);
-       for (int i = 0; i <= numItemData; i++) {
-          if(moveList[i] instancef DamageMove){
-            moveName = in.readLine();
-            moveType = Integer.parseInt(in.readLine());
-            moveID = Integer.parseInt(in.readLine());
-            basePower = Integer.parseInt(in.readLine());
-            in.readLine();
-            moveList[i] = new DamageMove(objectID, moveName, moveType, moveID, basePower);
-          }else if(moveList[i] instancef StatusMove){
-            moveName = in.readLine();
-            moveType = Integer.parseInt(in.readLine());
-            moveID = Integer.parseInt(in.readLine());
-            hpMod = Double.parseDouble(in.readLine());
-            atkMod = Double.parseDouble(in.readLine());
-            defMod = Double.parseDouble(in.readLine());
-            spdMod = Double.parseDouble(in.readLine());
-            recipient = Integer.parseInt(in.readLine());
-            in.readLine()
-            moveList[i] = new StatusMove(objectID, moveName, moveType, moveID, hpMod, atkMod, defMod, spdMod, recipient);
-          }else if(moveList[i] instancef ConditionMove){
-            moveName = in.readLine();
-            moveType = Integer.parseInt(in.readLine());
-            moveID = Integer.parseInt(in.readLine());
-            conditionApplied = Integer.parseInt(in.readLine());
-            in.readLine();
-            moveList[i] = new DamageMove(objectID, moveName, moveType, moveID, conditionApplied);
-          }
+      BufferedWriter out = new BufferedWriter (new FileWriter (fileName));
+      out.write(numMoveData);
+      for (int i = 0; i <= numItemData; i++) {
+        if(moveList[i] instancef DamageMove){
+          out.write(moveList[i].getObjectID());
+          out.write(moveList[i].getMoveName());
+          out.write(moveList[i].getMoveType());
+          out.write(moveList[i].getMoveID());
+          out.write(moveList[i].getBasePower());
+        }else if(moveList[i] instancef StatusMove){
+          out.write(moveList[i].getObjectID());
+          out.write(moveList[i].getMoveName());
+          out.write(moveList[i].getMoveType());
+          out.write(moveList[i].getMoveID());
+          out.write(moveList[i].getHPMod());
+          out.write(moveList[i].getAtkMod());
+          out.write(moveList[i].getDefMod());
+          out.write(moveList[i].getSpdMod());
+          out.write(moveList[i].getRecipient());
+        }else if(moveList[i] instancef ConditionMove){
+          out.write(moveList[i].getObjectID());
+          out.write(moveList[i].getMoveName());
+          out.write(moveList[i].getMoveType());
+          out.write(moveList[i].getMoveID());
+          out.write(moveList[i].getConditionAppliedID());
+        }
+        out.newLine();
        }
        out.close();
        return true;
     }catch (IOException iox) {
-      System.out.println("Error reading file");
+      System.out.println("Error saving file");
       return false;
     }
   }
