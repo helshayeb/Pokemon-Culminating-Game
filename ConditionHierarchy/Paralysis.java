@@ -4,13 +4,14 @@ import Pokemon.*;
 /**
 * This class creates and allows the Paralysis Condition to be used and applied to Pokemon 
 * in the Pokemon game
+* The Paralysis Class drastically reduces the Pokemon's speed stat
 */
 public class Paralysis extends Condition {
 
 	/**
  	* Speed modifier for Paralyzed Pokemon 
 	*/
-	public static final double SPD_MOD = 0.5;
+	public static final double SPD_MOD = 0.11;
 
 	/**
  	* Condition ID for the Paralysis Condition, 1
