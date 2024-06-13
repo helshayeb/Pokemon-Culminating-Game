@@ -149,7 +149,7 @@ public class ItemDex {
      * @param bot The lower bound index for the search range.
      * @return The Item object if found, null otherwise.
      */
-    public Item searchItemById(int id, int top, int bot) {
+    public Item searchItemByID(int id, int top, int bot) {
         int middle = (top + bot) / 2;
         if (itemList[middle].getId() == id) {
             return itemList[middle];
