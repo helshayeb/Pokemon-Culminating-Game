@@ -269,6 +269,7 @@ public class PokemonRunner {
                         System.out.print("That is not a possible option. Try again: ");
                         select3 = sc.nextInt();
                      }
+                     sc.nextLine();
                      Pokemon result;
                      if(select3 == 1){
                         System.out.println("Enter the Pokemon's ID: ");
@@ -282,8 +283,52 @@ public class PokemonRunner {
                            System.out.println("Pokemon not found");
                         }
                      }else if(select3 == 2){
+                        System.out.println("Enter the Pokemon's Name: ");
+                        String name = sc.nextLine();
+   
+                        result = pD.searchPokemonByName(name);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Pokemon: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Pokemon not found");
+                        }
                      }
-                  }else if (select2 == 3){
+                  }else if (select2 == 3){ // User searches for an Item
+                     System.out.println("Enter the number corresponding to how you want to seach for an Item: ");
+                     System.out.println("1) The Item's ID.");
+                     System.out.println("2) The Item's Name.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 2) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     sc.nextLine();
+                     Item result;
+                     if(select3 == 1){
+                        System.out.println("Enter the Pokemon's ID: ");
+                        int id = sc.nextInt();
+   
+                        result = pD.searchItemByID(id);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Pokemon: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Pokemon not found");
+                        }
+                     }else if(select3 == 2){
+                        System.out.println("Enter the Pokemon's Name: ");
+                        String name = sc.nextLine();
+   
+                        result = pD.searchItemByName(name);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Pokemon: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Pokemon not found");
+                        }
+                     }
                   }
                }else if(select1 == 2){
                   System.out.println("Enter the number corresponding to what you want to search for: ");
