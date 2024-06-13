@@ -175,7 +175,7 @@ public class MoveDex {
 	}
 
 	/**
- 	* This method uses sequential search to search for a Pokemon given
+ 	* This method uses sequential search to search for a Move given
 	* @param name Name of the Move being searched for
 	* @return Move if successful, null if not
 	*/
