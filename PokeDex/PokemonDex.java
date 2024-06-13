@@ -1,10 +1,25 @@
 import java.io.*;
 
+/**
+* Creates a PokeDex which can be accessed and used to 
+* manipulate Pokemon
+*/
 public class PokemonDex{
 
+  /**
+ 	* Amount of Pokemon in the database
+	*/
   private int numPokemonData;
+
+  /**
+ 	* Array of Pokemon
+	*/
   private Pokemon[] pokemonList;
 
+  /**
+	* This method is a constructor that initializes the fields of
+	* the MoveDex class
+ 	*/
   public PokemonDex () {
     numPokemonData = 0;
   }
@@ -20,6 +35,11 @@ public class PokemonDex{
     return pokemonList;
   }
 
+  /**
+ 	* This method uses BufferedReader to read in information from a text file given
+        * @param fileName Name of the file being read
+	* @return True if successful, false if it fails to fully read the text file
+	*/
 public boolean readPokemon (String fileName) {
     try {
       BufferedReader in = new BufferedReader (new FileReader (fileName));
@@ -54,7 +74,12 @@ public boolean readPokemon (String fileName) {
   }
   return true;
 }
-  
+
+  /**
+ 	* This method uses BufferedWriter to write information from moveList to the given
+        * @param fileName Name of the file being read
+	* @return True if successful, false if it fails to fully read the text file
+	*/
   public boolean savePokemon (String fileName) {
     try {
       BufferedWriter out = new BufferedWriter (new FileWriter (fileName));
@@ -81,7 +106,12 @@ public boolean readPokemon (String fileName) {
     }
     return true;
   }
-  
+
+  /**
+ 	* This method uses sequential search to search for a Pokemon given
+	* @param name Name of the Pokemon being searched for
+	* @return Pokemon if successful, null if not
+	*/
   public Pokemon searchPokemonByName (String name) {
     for (int i = 0; i < numPokemonData; i++) {
       if ((pokemonList[i].getName()).equals(name)) {
@@ -89,12 +119,28 @@ public boolean readPokemon (String fileName) {
       }
     }
   }
-  
+
+  /**
+ 	* This method is a wrapper method used to search for a Pokemon given
+	* @param id ID of the pokemon being searched for
+	* @return Pokemon if successful, null if not
+	*/
   public Pokemon searchPokemonById (int id) {
    return searchPokemonById (id, numPokemonData-1, 0);
 }
+
+  /**
+ 	* This method uses recursive binary search to search for a move given
+	* @param id ID of the Move being searched
+ 	* @param top Top bound
+ 	* @param bot Bottom bound
+	* @return Pokemon if successful, null if not
+	*/
 public Pokemon searchPokemonById (int id, int top, int bot) {
    int middle = (top + bot) / 2;
+    if (top < bot) {
+      return null;
+    }
    if (pokemonList[middle] == id) {
       return pokemonList[middle];
    } else if (pokemonList[middle] < id) {
@@ -103,7 +149,13 @@ public Pokemon searchPokemonById (int id, int top, int bot) {
       searchPokemonById(id, top, middle + 1);
    }
 }
-  
+
+  /**
+ 	* This method uses two sequential search algorithms to search for all pokemon with the given
+	* @param location Location of the Pokemon being searched
+ 	* @param type Type of the pokemon being searched 
+	* @return Pokemon[] storing all pokemon in the given location with the given type
+	*/
   public Pokemon[] searchPokemonByLocationAndType (String location, int type) {
     int count;
     Pokemon list[];
@@ -124,9 +176,19 @@ public Pokemon searchPokemonById (int id, int top, int bot) {
   }
 }
 
+/**
+ 	* This method is a wrapper method used to sort a list of Pokemon by their Hp stat
+	*/
 public void sortByHpStat () {
     this.sortByHpStat(numPokemonData, false);
   }
+
+  /**
+   * This method uses recursive bubble sort to sort a list of pokemon by their HP stat
+   * with the
+   * @param numChecks The number of checks
+   * @param sorted Stores if the program is sorted or not
+   */
   public void sortByHpStat (int numChecks, boolean sorted) {
     Pokemon temp;
     if (numChecks > 0 || !sorted)
@@ -141,10 +203,19 @@ public void sortByHpStat () {
       }
       this.sortByHpStat(i + 1, sorted);
     }
+
+/**
+ 	* This method is a wrapper method used to sort a list of Pokemon by their attack stat
+	*/
   public void sortByAtkStat () {
      this.sortByAtkStat(1);
   }
 
+  /**
+   * This method uses recursive insertion sort to sort a list of pokemon by their attack stat
+   * with the
+   * @param index The index of the array the sort is on
+   */
   public void sortByAtkStat (int index) {
     if (index < numPokemonData) {
       int i = index;
@@ -158,10 +229,19 @@ public void sortByHpStat () {
       this.sortBtAtkStat(index + 1);
     }
   }
+
+/**
+ 	* This method is a wrapper method used to sort a list of Pokemon by their ID
+	*/
   public void sortPokemonByID  () {
      this.sortByAtkStat(0);
   }
-  
+
+/**
+   * This method uses recursive selection sort to sort a list of pokemon by their attack stat
+   * with the
+   * @param index The index of the array the sort is on
+   */
   public void sortPokemonByID (int start) {
     if (start < numPokemonData) {
       int biggest = pokemonList[start].getID();
@@ -182,6 +262,9 @@ public void sortByHpStat () {
     }
   }
 
+/**
+ 	* This method uses recursive bubble sort to sort pokemon by their type, and then their ID
+	*/
 public void sortPokemonByTypeAndID  () {
   Pokemon temp;
   boolean sorted;
@@ -207,6 +290,21 @@ public void sortPokemonByTypeAndID  () {
   }
 }
 
+/**
+ 	* This method adds a Pokemon to the list of Pokemon when given
+	* @param name Name of the Pokemon 
+ 	* @param type Type of the Pokemon
+  * @param hp HP stat of the Pokemon
+  * @param attack Attack stat of the Pokemon
+  * @param defence Defence stat of the Pokemon
+  * @param speed Speed stat of the Pokemon
+  * @param moveName1 Name of the Pokemon's first move
+  * @param moveName2 Name of the Pokemon's second move
+  * @param moveName3 Name of the Pokemon's third move
+  * @param moveName4 Name of the Pokemon's fourth move
+  * @param loca Name of the Pokemon's location
+	* @return true if successful, false if not
+	*/
 public boolean addPokemon (String name, int type, double hp, double attack, double defence, double speed, String moveName1, String moveName2, String moveName3, String moveName4, String loca) {
   PokeDex pd;
   Move move1 = searchMoveByName(pd.getMvDex().moveName1);
