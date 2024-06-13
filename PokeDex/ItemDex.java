@@ -1,3 +1,6 @@
+package PokeDex;
+
+import ItemHierarchy.*;
 import java.io.*;
 
 /**
@@ -147,13 +150,13 @@ public class ItemDex {
    }
 
    /**
- 	* This method adds a Pokemon to the list of Pokemon when given
-	* @param type Type of the Item 
-	* @param name Name of the Item 
-   * @param price Price of the Item
-   * @param modifier Modifier of the Pokemon
-	* @return true if successful, false if not
-	*/
+* This method adds an item to the list of items when given
+* @param type Type of the Item 
+* @param name Name of the Item 
+* @param price Price of the Item
+* @param modifier Modifier of the Item
+* @return true if successful, false if not
+*/
    public boolean addItems (String type, String name, int price, double modifier) {
       int newId = numItemData;
       if (price < 0 || modifier < 0) {
