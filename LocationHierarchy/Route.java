@@ -1,3 +1,4 @@
+package LocationHierarchy;
 
 public class Route extends Location {
     int[] pokemonInLocation;
