@@ -329,6 +329,76 @@ public class PokemonRunner {
                            System.out.println("Item not found");
                         }
                      }
+                  }else if (select2 == 4){ // User searches for a Move
+                     System.out.println("Enter the number corresponding to how you want to seach for a Move: ");
+                     System.out.println("1) The Move's ID.");
+                     System.out.println("2) The Move's Name.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 2) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     sc.nextLine();
+                     Move result;
+                     if(select3 == 1){
+                        System.out.println("Enter the Move's ID: ");
+                        int id = sc.nextInt();
+   
+                        result = pD.searchMoveById(id);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Move: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Move not found");
+                        }
+                     }else if(select3 == 2){
+                        System.out.println("Enter the Move's Name: ");
+                        String name = sc.nextLine();
+   
+                        result = pD.searchMoveByName(name);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Move: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Move not found");
+                        }
+                     }
+                  }else if (select2 == 5){ // User searches for a Location
+                     System.out.println("Enter the number corresponding to how you want to seach for a Location: ");
+                     System.out.println("1) The Location's ID.");
+                     System.out.println("2) The Location's Name.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 2) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     sc.nextLine();
+                     Location result;
+                     if(select3 == 1){
+                        System.out.println("Enter the Location's ID: ");
+                        int id = sc.nextInt();
+   
+                        result = pD.searchLocationById(id);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Location: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Location not found");
+                        }
+                     }else if(select3 == 2){
+                        System.out.println("Enter the Location's Name: ");
+                        String name = sc.nextLine();
+   
+                        result = pD.searchLocationByName(name);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Location: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Location not found");
+                        }
+                     }
                   }
                }else if(select1 == 2){
                   System.out.println("Enter the number corresponding to what you want to search for: ");
