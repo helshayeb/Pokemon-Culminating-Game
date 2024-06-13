@@ -1,6 +1,6 @@
 package MoveHierarchy;
 
-import Pokemon.Pokemon;
+import Pokemon.*;
 //import ConditionHierarchy.*;
 /**
 * Creates Condition Moves which can be used by Pokemon in Battle
