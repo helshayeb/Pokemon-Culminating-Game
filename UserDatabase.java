@@ -395,7 +395,7 @@ public class UserDatabase {
    }
 
    /**
-   * This method calls healTeam in Person and simulates
+   * This method call healTeam in Person and simulates
    * healing the user's team
    * @param id The user's ID
    */
@@ -405,9 +405,9 @@ public class UserDatabase {
    }
 
    /**
-   * This method calls finds the Person object corresponding 
+   * This method call finds the Person object corresponding 
    * with the
-   * @param id The user's ID
+   * @param name The user's name
    */
    private Person searchPersonByName (String name) {
         int index = -1;
@@ -423,6 +423,11 @@ public class UserDatabase {
         }
    } 
 
+   /**
+   * This method call finds the user object corresponding 
+   * with the
+   * @param id The user's ID
+   */
    private Person searchUserById (int id) {
         int index = -1;
         for (int i = 0; i < numUsers && index == -1; i++) {
@@ -437,6 +442,11 @@ public class UserDatabase {
         }
    } 
 
+   /**
+   * This method call finds the npc object corresponding 
+   * with the
+   * @param id The user's ID
+   */
    private Person searchNPCById (int id) {
         int index = -1;
         for (int i = 0; i < MAX_NPCS && index == -1; i++) {
