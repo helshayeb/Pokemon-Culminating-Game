@@ -1,22 +1,58 @@
 import java.io.*;
+
+/**
+* Creates a PokeDex which can be accessed and used to 
+* manipulate Items
+*/
 public class ItemDex {
-   
-   private int numItemData; //Stores the number of items
+
+    /**
+ 	* Amount of items in the database
+	*/
+   private int numItemData; 
+
+   /**
+ 	* Array of items
+	*/
    private Item[] itemList;
+
+   /**
+	* This method is a constructor that initializes the fields of
+	* the ItemDex class
+ 	*/
    public ItemDex () {
       numItemData = 0;
    }
+
+   /**
+	* This method is an accessor that gets the number of items in
+	* the ItemDex class
+ 	*/
    public int getNumItemData() {
       return numItemData;
    }
+
+   /**
+	* This method is an mutator that sets the number of items in
+	* the ItemDex class
+ 	*/
    public void setNumItemData(int num) {
       numItemData = num;
    }
 
+   /**
+	* This method is an accessor that gets the list of items in
+	* the ItemDex class
+ 	*/
    public Item[] getItemList () {
       return itemList;
    }
 
+   /**
+ 	* This method uses BufferedReader to read in information from a text file given
+   * @param fileName Name of the file being read
+	* @return True if successful, false if it fails to fully read the text file
+	*/
    public boolean readItems (String fileName) {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
@@ -42,7 +78,12 @@ public class ItemDex {
       }
       return true;
    }
-   
+
+   /**
+ 	* This method uses BufferedWriter to write information from moveList to the given
+   * @param fileName Name of the file being read
+	* @return True if successful, false if it fails to fully read the text file
+	*/
    public boolean saveItems (String fileName) {
       try {
          BufferedWriter out = new BufferedWriter (new FileWriter (fileName));
@@ -62,7 +103,12 @@ public class ItemDex {
          return false;
       }
    }
-   
+
+   /**
+ 	* This method uses sequential search to search for an item given
+	* @param name Name of the item being searched for
+	* @return Item if successful, null if not
+	*/
    public Item searchItemByName (String name) {
       for (int i = 0; i < numItemData; i++) {
          if ((itemList[i].getItemName()).equals(name)) {
@@ -70,11 +116,23 @@ public class ItemDex {
          }
       }
    }
-   
+
+   /**
+ 	* This method is a wrapper method used to search for an item given
+	* @param id ID of the item being searched for
+	* @return Item if successful, null if not
+	*/
    public Item searchItemById (int id) {
       return searchItemById (id, numItemData-1, 0);
    }
-   
+
+   /**
+ 	* This method uses recursive binary search to search for an item given
+	* @param id ID of the Move being searched
+ 	* @param top Top bound
+ 	* @param bot Bottom bound
+	* @return Item if successful, null if not
+	*/
    public Item searchItemById (int id, int top, int bot) {
       int middle = (top + bot) / 2;
       if (itemList[middle] == id) {
@@ -87,7 +145,15 @@ public class ItemDex {
          searchItemById(id, top, middle + 1);
          }
    }
-   
+
+   /**
+ 	* This method adds a Pokemon to the list of Pokemon when given
+	* @param type Type of the Item 
+	* @param name Name of the Item 
+   * @param price Price of the Item
+   * @param modifier Modifier of the Pokemon
+	* @return true if successful, false if not
+	*/
    public boolean addItems (String type, String name, int price, double modifier) {
       int newId = numItemData;
       if (price < 0 || modifier < 0) {
