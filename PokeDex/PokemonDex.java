@@ -3,7 +3,6 @@ import java.io.*;
 public class PokemonDex{
 
   private int numPokemonData;
-  private Pokemon pokemonList[];
   private Pokemon[] pokemonList;
 
   public PokemonDex () {
