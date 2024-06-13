@@ -76,7 +76,7 @@ public boolean readPokemon (String fileName) {
 }
 
   /**
- 	* This method uses BufferedWriter to write information from moveList to the given
+ 	* This method uses BufferedWriter to write information from pokemonList to the given
         * @param fileName Name of the file being read
 	* @return True if successful, false if it fails to fully read the text file
 	*/
@@ -130,7 +130,7 @@ public boolean readPokemon (String fileName) {
 }
 
   /**
- 	* This method uses recursive binary search to search for a move given
+ 	* This method uses recursive binary search to search for a pokemon given
 	* @param id ID of the Move being searched
  	* @param top Top bound
  	* @param bot Bottom bound
