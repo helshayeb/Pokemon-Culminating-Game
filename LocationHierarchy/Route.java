@@ -87,4 +87,19 @@ public class Route extends Location {
     public void setRouteNum(int routeNum) {
         this.routeNum = routeNum;
     }
+
+    /**
+     * This method returns information about the Condition Move
+     * in the form of a String
+     * @return String Information about the Move
+     */
+    public String toString(){
+        String str = super.toString();
+        str += ( "\nRoute Number: "+ routeNum);
+        str += ("\nPokemon IDs: ")
+        for(int i = 0; i< pokemonInLocation.length; i++){
+            str+= pokemonInLocation[i]+", ";
+        }
+    }
+    
 }
