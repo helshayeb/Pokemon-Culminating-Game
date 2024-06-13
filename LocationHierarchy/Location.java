@@ -1,3 +1,5 @@
+package LocationHierarchy;
+
 public class Location {
     private String regionType; // Type of region where the location is situated
     private String name; // Name of the location
