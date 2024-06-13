@@ -55,7 +55,7 @@ public class PokemonRunner {
                System.out.println("4) Search for a move.");
                System.out.println("5) Search for a Location.");
                System.out.println("6) Sort the Pokemon database by different factors.");
-               System.out.println("7) Save the current database for future uses.");
+               System.out.println("7) Save the game for future uses (added data will be lost otherwise).");
                System.out.println("0) Exit.");
                select2 = sc.nextInt();
                System.out.println();
