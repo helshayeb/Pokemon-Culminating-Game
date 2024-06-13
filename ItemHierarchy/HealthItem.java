@@ -1,3 +1,7 @@
+package ItemHierarchy;
+
+import Pokemon.*;
+
 /**
 * Creates health items that can heal pokemon
 */
