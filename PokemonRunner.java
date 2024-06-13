@@ -11,7 +11,7 @@ public class PokemonRunner {
       final String ITEM_FILE = "ItemList.txt";
       final String LOCATION_FILE = "LocationList.txt";
       final String MOVE_FILE = "MoveList.txt";
-      final String
+      final String POKEMON_FILE = "PokemonList.txt";
       
       // Declare Scanner
       Scanner sc = new Scanner (System.in);
