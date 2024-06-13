@@ -400,6 +400,16 @@ public class PokemonRunner {
                         }
                      }
                   }else if(select2 == 6){ // User chooses to sort PokemonDex
+                     System.out.println("Enter the number corresponding to how you want to seach for a Location: ");
+                     System.out.println("1) The Location's ID.");
+                     System.out.println("2) The Location's Name.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 2) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     sc.nextLine();
                }else if(select1 == 2){
                   System.out.println("Enter the number corresponding to what you want to search for: ");
                   System.out.println("1) Add an account.");
