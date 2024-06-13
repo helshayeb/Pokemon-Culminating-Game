@@ -142,7 +142,7 @@ public class MoveDex {
 	}
 
 	/**
- 	* This method is a wrapper method used to search for a Pokemon given
+ 	* This method is a wrapper method used to search for a move given
 	* @param id ID of the Move being searched for
 	* @return Move if successful, null if not
 	*/
@@ -153,7 +153,7 @@ public class MoveDex {
 	}
 
 	/**
- 	* This method uses recursive binary search to search for a Pokemon given
+ 	* This method uses recursive binary search to search for a move given
         * @param moveList List of moves to search in
 	* @param id ID of the Move being searched
  	* @param left Left bound
