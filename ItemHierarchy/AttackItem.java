@@ -1,6 +1,5 @@
 package ItemHierarchy;
 
-import PokeDex.*;
 import Pokemon.*;
 
 /**
