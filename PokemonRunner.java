@@ -399,7 +399,7 @@ public class PokemonRunner {
                            System.out.println("Location not found");
                         }
                      }
-                  }
+                  }else if(select2 == 6){ // User chooses to sort PokemonDex
                }else if(select1 == 2){
                   System.out.println("Enter the number corresponding to what you want to search for: ");
                   System.out.println("1) Add an account.");
