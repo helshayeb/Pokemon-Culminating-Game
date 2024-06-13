@@ -1,3 +1,5 @@
+package LocationHierarchy;
+
 public class City extends Location {
     private boolean hasPokeCentre; //If the city has the pokecenter to heal pokemons
     private boolean hasPokestop; // If the city has the pokestop to buy items
