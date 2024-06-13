@@ -1,9 +1,10 @@
 package PersonHierarchy;
 
+import LocationHierarchy.*;
+
 /**
 * A type of Person object that users can battle 
 */
-import LocationHierarchy.*;
 public class NPC extends Person {
    /**
    * This method is a constructor that initializes the fields of
