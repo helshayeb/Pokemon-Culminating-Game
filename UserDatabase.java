@@ -395,7 +395,7 @@ public class UserDatabase {
    }
 
    /**
-   * This method calls healTeam in Person and simulates
+   * This method call healTeam in Person and simulates
    * healing the user's team
    * @param id The user's ID
    */
