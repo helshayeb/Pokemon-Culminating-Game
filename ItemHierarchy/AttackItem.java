@@ -7,3 +7,4 @@ public AttackItem(String type, String name, int idNum, int priceNum, double mod)
 public void useItem(Pokemon p) {
   p.changeAttackStat(this.modifier); //Multiplies the pokemon's attack stat by the item's modifier
 }
+}
