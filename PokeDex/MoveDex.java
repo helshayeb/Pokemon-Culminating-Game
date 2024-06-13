@@ -205,11 +205,15 @@ public class MoveDex {
 	}
 
 	/**
- 	* This method adds a Damage Move to the list of Moves when given
+ 	* This method adds a Status Move to the list of Moves when given
 	* @param name Name of the Move 
  	* @param moveType of the Move
-  	* @param basePower Base power of the Move
-	* @return true if successful, false if not
+	* @param hpMod Health Modifier of the Move
+    	* @param atkMod Attack Modifier of the Move
+    	* @param defMod Defence Modifier of the Move
+    	* @param spdMod Speed Modifier of the Move
+    	* @param recipient Recipient of the Move	
+     	* @return true if successful, false if not
 	*/
 	public boolean addStatusMove(String moveName, int moveType, double hpMod, double atkMod, double defMod,
 			double spdMod, int recipient) {
@@ -222,6 +226,13 @@ public class MoveDex {
 		return true;
 	}
 
+	/**
+ 	* This method adds a Condition Move to the list of Moves when given
+	* @param name Name of the Move 
+ 	* @param moveType of the Move
+  	* @param conditionAppliedID ID of the Condition being applied
+	* @return true if successful, false if not
+	*/
 	public boolean addConditionMove(String moveName, int moveType, int conditionAppliedID) {
 		if (numMoveData >= PokeDex.MAX_SIZE) {
 			return false;
