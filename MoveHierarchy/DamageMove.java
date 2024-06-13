@@ -1,6 +1,7 @@
 package MoveHierarchy;
 
 import Pokemon.*;
+import PokeDex.*;
 /**
 * Creates Damage Moves which can be used by Pokemon in Battle
 * to deal damage to the opposing Pokemon
