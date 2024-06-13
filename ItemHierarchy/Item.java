@@ -129,5 +129,14 @@ public abstract class Item {
   public void setItemTypeName (String name) {
     itemTypeName = name;
   }
+
+  /**
+  * This method is a toString which prints out all of the item's information
+  * @param name The name of the type of the item
+  */
+  public String toString () {
+    return String.format("Item Name: %s%nThis item is a %s%nID: %d%nPrice: %f%nItem's effect: %f%n", itemName, itemTypeName, price, modifier);
+  }
+  
   
 }
