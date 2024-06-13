@@ -1,7 +1,6 @@
 package PokeDex;
 
 public class PokeDex {
-    
 
     private ItemDex itDex;
     private PokemonDex pmDex;
