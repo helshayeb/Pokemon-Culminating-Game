@@ -76,6 +76,10 @@ public class PokemonRunner {
                   System.out.println("4) Add a Move.");
                   System.out.println("0) Exit.");
                   select3 = sc.nextInt();
+                  while (select3 < 0 || select3 > 4) {
+                     System.out.print("That is not a possible option. Try again: ");
+                     select3 = sc.nextInt();
+                  }
                   System.out.println();
                
                   if(select3 == 1){ // User chooses to add a Pokemon
@@ -89,8 +93,6 @@ public class PokemonRunner {
                         System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
                         type = sc.nextInt();
                      }
-                     //yum yum code so good code so good!! 
-                     //i am losing my sanity help
                      System.out.println("Enter the max HP stat of the Pokemon: ");
                      double hps = sc.nextDouble();
                      System.out.println("Enter the attack stat of the Pokemon: ");
@@ -257,10 +259,33 @@ public class PokemonRunner {
                         }
                         mD.addConditionmove(moveName, type, conditionAppliedID);       
                      }
-               }else if(select2 == 2){ // user chooses to 
-                     
-               }
-               else {
+                  }else if(select2 == 2){ // user chooses to search for a Pokemon
+                     System.out.println("Enter the number corresponding to how you want to seach for a Pokemon: ");
+                     System.out.println("1) The Pokemon's ID.");
+                     System.out.println("2) The Pokemon's Name.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 2) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     Pokemon result;
+                     if(select3 == 1){
+                        System.out.println("Enter the Pokemon's ID: ");
+                        int id = sc.nextInt();
+   
+                        result = pD.searchPokemonByID(id);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Pokemon: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Pokemon not found");
+                        }
+                     }else if(select3 == 2){
+                     }
+                  }else if (select2 == 3){
+                  }
+               }else if(select1 == 2){
                   System.out.println("Enter the number corresponding to what you want to search for: ");
                   System.out.println("1) Add an account.");
                   System.out.println("2) Delete an account.");
