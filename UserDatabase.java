@@ -136,7 +136,7 @@ public class UserDatabase {
    */
    public boolean giveItem (int id, String p_name, String i_name) {
       User u = this.searchPersonByID(id);
-      return u.(p_name, i_name);
+      return u.giveItem(p_name, i_name);
    }
 
    /**
