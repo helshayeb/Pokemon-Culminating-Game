@@ -6,6 +6,12 @@ import java.io.*;
 import java.util.*;
 public class PokemonRunner {
    public static void main (String [] args){
+
+      //Declare constants that correspond to the file names of each database
+      final String ITEM_FILE = "ItemList.txt";
+      final String LOCATION_FILE = "LocationList.txt";
+      final String MOVE_FILE = "MoveList.txt";
+      final String
       
       // Declare Scanner
       Scanner sc = new Scanner (System.in);
@@ -422,7 +428,30 @@ public class PokemonRunner {
                      }
                      System.out.println("Done!");
                   }else if(select2 == 7){ // User chooses to save the game
+                     System.out.println("Enter the number corresponding to what you want to save: ");
+                     System.out.println("1) Save the Item database.");
+                     System.out.println("2) Save the Location database.");
+                     System.out.println("3) Save the Move database.");
+                     System.out.println("4) Save the Pokemon database.");
+                     System.out.println("5) Save the entire game.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 5) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     if(select3 == 1){
+                        iD.sortByHpStat();
+                     }else if(select3 == 2){
+                        pD.sortByAtkStat();
+                     }else if(select3 ==3){
+                        pD.sortPokemonByID();
+                     }else if(select3 == 4){
+                        pD.sortPokemonByTypeAndID();
+                     }else if(select3 == 5){
 
+                     }
+                     System.out.println("Done!");
                   }
                }else if(select1 == 2){
                   System.out.println("Enter the number corresponding to what you want to search for: ");
