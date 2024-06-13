@@ -307,26 +307,26 @@ public class PokemonRunner {
                      sc.nextLine();
                      Item result;
                      if(select3 == 1){
-                        System.out.println("Enter the Pokemon's ID: ");
+                        System.out.println("Enter the Item's ID: ");
                         int id = sc.nextInt();
    
-                        result = pD.searchItemByID(id);
+                        result = pD.searchItemById(id);
                         if(result != null){
-                           System.out.println("Found! Here is the information about that Pokemon: ");
+                           System.out.println("Found! Here is the information about that Item: ");
                            System.out.println(result);
                         }else{
-                           System.out.println("Pokemon not found");
+                           System.out.println("Item not found");
                         }
                      }else if(select3 == 2){
-                        System.out.println("Enter the Pokemon's Name: ");
+                        System.out.println("Enter the Item's Name: ");
                         String name = sc.nextLine();
    
                         result = pD.searchItemByName(name);
                         if(result != null){
-                           System.out.println("Found! Here is the information about that Pokemon: ");
+                           System.out.println("Found! Here is the information about that Item: ");
                            System.out.println(result);
                         }else{
-                           System.out.println("Pokemon not found");
+                           System.out.println("Item not found");
                         }
                      }
                   }
