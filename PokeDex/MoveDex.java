@@ -142,9 +142,9 @@ public class MoveDex {
 	}
 
 	/**
- 	* This method uses BufferedWriter to write information from moveList to the given
-        * @param fileName Name of the file being read
-	* @return True if successful, false if it fails to fully read the text file
+ 	* This method is a wrapper method used to search for a Pokemon given
+	* @param id ID of the Move being searched for
+	* @return Move if successful, null if not
 	*/
 	public Move searchMoveByID(int id) {
 		int left = 0;
@@ -152,6 +152,14 @@ public class MoveDex {
 		return searchMoveByID(moveList, id, left, right);
 	}
 
+	/**
+ 	* This method uses recursive binary search to search for a Pokemon given
+        * @param moveList List of moves to search in
+	* @param id ID of the Move being searched
+ 	* @param left Left bound
+ 	* @param right Right bound
+	* @return Move if successful, null if not
+	*/
 	public Move searchMoveByID(Move[] moveList, int id, int left, int right) {
 		int mid = left + (right - left) / 2;
 		if (left > right) {
@@ -166,6 +174,11 @@ public class MoveDex {
 		}
 	}
 
+	/**
+ 	* This method uses sequential search to search for a Pokemon given
+	* @param name Name of the Move being searched for
+	* @return Move if successful, null if not
+	*/
 	public Move searchMoveByName(String name) {
 		for (int i = 0; i < numMoveData; i++) {
 			if (moveList[i].getMoveName().equalsIgnoreCase(name)) {
@@ -175,6 +188,13 @@ public class MoveDex {
 		return null;
 	}
 
+	/**
+ 	* This method adds a Damage Move to the list of Moves when given
+	* @param name Name of the Move 
+ 	* @param moveType of the Move
+  	* @param basePower Base power of the Move
+	* @return true if successful, false if not
+	*/
 	public boolean addDamageMove(String moveName, int moveType, int basePower) {
 		if (numMoveData >= PokeDex.MAX_SIZE) {
 			return false;
@@ -184,6 +204,13 @@ public class MoveDex {
 		return true;
 	}
 
+	/**
+ 	* This method adds a Damage Move to the list of Moves when given
+	* @param name Name of the Move 
+ 	* @param moveType of the Move
+  	* @param basePower Base power of the Move
+	* @return true if successful, false if not
+	*/
 	public boolean addStatusMove(String moveName, int moveType, double hpMod, double atkMod, double defMod,
 			double spdMod, int recipient) {
 		if (numMoveData >= PokeDex.MAX_SIZE) {
