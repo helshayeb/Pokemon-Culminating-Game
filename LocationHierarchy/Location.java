@@ -54,6 +54,11 @@ public class Location {
         return locationID;
     }
 
+    /**
+        * This method returns information about the Location
+        * in the form of a String
+        * @return String Information about the Location
+        */
     public String toString(){
         return ("Region Type: " +regionType + "\nName: " + name + "\nID: " +locationID);
     }
