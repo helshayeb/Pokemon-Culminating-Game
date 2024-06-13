@@ -12,6 +12,8 @@ public class PokemonRunner {
       final String LOCATION_FILE = "LocationList.txt";
       final String MOVE_FILE = "MoveList.txt";
       final String POKEMON_FILE = "PokemonList.txt";
+      final String NPC_FILE = "NPCList.txt";
+      final String USER_FILE = "UserList.txt";
       
       // Declare Scanner
       Scanner sc = new Scanner (System.in);
@@ -441,15 +443,18 @@ public class PokemonRunner {
                         select3 = sc.nextInt();
                      }
                      if(select3 == 1){
-                        iD.sortByHpStat();
+                        iD.saveItems(ITEM_FILE);
                      }else if(select3 == 2){
-                        pD.sortByAtkStat();
+                        lD.saveLocations(LOCATION_FILE);
                      }else if(select3 ==3){
-                        pD.sortPokemonByID();
+                        mD.saveMoves(MOVE_FILE);
                      }else if(select3 == 4){
-                        pD.sortPokemonByTypeAndID();
+                        pD.savePokemon(POKEMON_FILE);
                      }else if(select3 == 5){
-
+                        iD.saveItems(ITEM_FILE);
+                        lD.saveLocations(LOCATION_FILE);
+                        mD.saveMoves(MOVE_FILE);
+                        pD.savePokemon(POKEMON_FILE);
                      }
                      System.out.println("Done!");
                   }
