@@ -703,15 +703,15 @@ public class PokemonRunner {
                      if (select3 == 2) {
                         int id;
                         System.out.println("Enter the ID of the User you want to find: ");
-                        name = sc.nextLine();
-                        System.out.println(uD.searchPersonByName(name));
+                        id = sc.nextInt();
+                        System.out.println(uD.searchUserByID(id));
                      }
 
                      if (select3 == 3) {
                         int id;
-                        System.out.println("Enter the name of Person you want to find: ");
-                        name = sc.nextLine();
-                        System.out.println(uD.searchPersonByName(name));
+                        System.out.println("Enter the ID of the NPC you want to find: ");
+                        id = sc.nextInt();
+                        System.out.println(uD.searchNPCByID(id));
                      }
                   }
                }
