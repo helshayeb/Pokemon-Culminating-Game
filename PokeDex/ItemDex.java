@@ -137,7 +137,7 @@ public class ItemDex {
      * @param id The ID of the item to search for.
      * @return The Item object if found, null otherwise.
      */
-    public Item searchItemById(int id) {
+    public Item searchItemByID(int id) {
         return searchItemById(id, numItemData - 1, 0);
     }
 
