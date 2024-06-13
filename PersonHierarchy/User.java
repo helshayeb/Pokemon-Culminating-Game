@@ -1,6 +1,5 @@
-/**
-* Creates accounts that users can use to play the game
-*/
+package PersonHierarchy;
+
 import java.util.*;
 import PersonHierarchy.*;
 import ConditionHierarchy.*;
@@ -9,6 +8,10 @@ import LocationHierarchy.*;
 import MoveHierarchy.*;
 import Pokemon.*;
 import PokeDex.*;
+
+/**
+* Creates accounts that users can use to play the game
+*/
 public class User extends Person {
 
 
