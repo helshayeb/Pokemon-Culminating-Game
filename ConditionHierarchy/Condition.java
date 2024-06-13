@@ -1,6 +1,6 @@
 package ConditionHierarchy;
 
-import Pokemon.Pokemon;
+import Pokemon.*;
 /**
 * This class creates the Condition abstract class, which allows other Conditions to be used 
 * in the Pokemon game
