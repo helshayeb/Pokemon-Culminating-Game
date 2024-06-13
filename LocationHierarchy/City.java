@@ -75,5 +75,16 @@ public class City extends Location {
         this.haspokeStop = haspokeStop;
     }
 
+    public String toString(){
+        String str = super.toString();
+        if(hasPokeCentre){
+            str += "\nIt has a PokeCentre";
+        }
+        if(hasPokeStop){
+            str += "\nIt has a PokeStop";
+        }
+        return str; 
+    }
+
 }
 
