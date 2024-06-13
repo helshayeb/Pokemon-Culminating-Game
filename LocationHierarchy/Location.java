@@ -53,4 +53,8 @@ public class Location {
     public int getLocationID() {
         return locationID;
     }
+
+    public String toString(){
+        return ("Region Type: " +regionType + "\nName: " + name + "\nID: " +locationID);
+    }
 }
