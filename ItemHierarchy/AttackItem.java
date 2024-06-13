@@ -1,3 +1,8 @@
+package ItemHierarchy;
+
+import PokeDex.*;
+import Pokemon.*;
+
 /**
 * Creates attack items that can increase a pokemon's attack stat
 */
