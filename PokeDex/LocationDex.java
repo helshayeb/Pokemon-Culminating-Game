@@ -1,3 +1,6 @@
+package PokeDex;
+
+import LocationHierarchy.*;
 import java.io.*;
 import java.util.*;
 
