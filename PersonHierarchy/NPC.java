@@ -1,3 +1,5 @@
+package PersonHierarchy;
+
 /**
 * A type of Person object that users can battle 
 */
