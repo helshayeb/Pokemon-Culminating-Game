@@ -1,3 +1,5 @@
+package ItemHierarchy;
+
 /**
 * Creates items that can be held by users and pokemon to affect a pokemon's stats and the outcome of a battle
 */
