@@ -405,11 +405,11 @@ public class UserDatabase {
    }
 
    /**
-   * This method calls finds the Person object corresponding 
-   * with the
-   * @param id The user's ID
+   * This method finds the Person object with the corresponding
+   * name given through the parameter
+   * @param name The user's name
    */
-   private Person searchPersonByName (String name) {
+   public Person searchPersonByName (String name) {
         int index = -1;
         for (int i = 0; i < numUsers && index == -1; i++) {
             if (name.equals(userList[i].getName())) {
@@ -419,11 +419,26 @@ public class UserDatabase {
         if (index != -1) {
             return userList[i];
         } else {
-            return null;
+            for (int i = 0; i < numUsers && index == -1; i++) {
+                if (name.equals(npcList[i].getName())) {
+                    index = i;
+                }
+            }
+            if (index != -1) {
+                return npcList[i];
+            } else {
+                return null;
+            }
         }
    } 
 
-   private Person searchUserById (int id) {
+    /**
+   * This method finds the User object with the corresponding
+   * name given through the parameter
+   * @param id The user's ID
+   * @return User object that corresponds with the given id
+   */
+   public User searchUserById (int id) {
         int index = -1;
         for (int i = 0; i < numUsers && index == -1; i++) {
             if (id == userList[i].getID()) {
@@ -437,7 +452,13 @@ public class UserDatabase {
         }
    } 
 
-   private Person searchNPCById (int id) {
+   /**
+   * This method finds the NPC object with the corresponding
+   * name given through the parameter
+   * @param id The NPC's ID
+   * @return NPC object that corresponds with the given id
+   */
+   public Person searchNPCById (int id) {
         int index = -1;
         for (int i = 0; i < MAX_NPCS && index == -1; i++) {
             if (id == npcList[i].getID()) {

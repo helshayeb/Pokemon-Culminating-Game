@@ -6,6 +6,13 @@ public class PokeDex {
     private LocationDex loDex;
     private MoveDex mvDex;
 
+    public PokeDex (ItemDex iDex, PokemonDex pDex, LocationDex lDex, MoveDex mDex) {
+        itDex = iDex;
+        pmDex = pDex;
+        loDex = lDex;
+        mvDex = mDex;
+    }
+
     public ItemDex getItemDex () {
         return itDex;
     }
