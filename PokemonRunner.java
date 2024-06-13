@@ -400,16 +400,30 @@ public class PokemonRunner {
                         }
                      }
                   }else if(select2 == 6){ // User chooses to sort PokemonDex
-                     System.out.println("Enter the number corresponding to how you want to seach for a Location: ");
-                     System.out.println("1) The Location's ID.");
-                     System.out.println("2) The Location's Name.");
+                     System.out.println("Enter the number corresponding to how you want to sort the Pokemon database: ");
+                     System.out.println("1) Sort by HP stat.");
+                     System.out.println("2) Sort by Attack stat.");
+                     System.out.println("3) Sort by ID.");
+                     System.out.println("4) Sort by Type and ID.");
                      System.out.println("0) Exit.");
                      select3 = sc.nextInt();
-                     while (select3 < 0 || select3 > 2) {
+                     while (select3 < 0 || select3 > 4) {
                         System.out.print("That is not a possible option. Try again: ");
                         select3 = sc.nextInt();
                      }
-                     sc.nextLine();
+                     if(select3 == 1){
+                        pD.sortByHpStat();
+                     }else if(select3 == 2){
+                        pD.sortByAtkStat();
+                     }else if(select3 ==3){
+                        pD.sortPokemonByID();
+                     }else if(select3 == 4){
+                        pD.sortPokemonByTypeAndID();
+                     }
+                     System.out.println("Done!");
+                  }else if(select2 == 7){ // User chooses to save the game
+
+                  }
                }else if(select1 == 2){
                   System.out.println("Enter the number corresponding to what you want to search for: ");
                   System.out.println("1) Add an account.");
