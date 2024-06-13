@@ -1,5 +1,6 @@
 import java.io.*;
 public class ItemDex {
+   
    private int numItemData; //Stores the number of items
    private Item[] itemList;
    public ItemDex () {
@@ -69,9 +70,11 @@ public class ItemDex {
          }
       }
    }
+   
    public Item searchItemById (int id) {
       return searchItemById (id, numItemData-1, 0);
    }
+   
    public Item searchItemById (int id, int top, int bot) {
       int middle = (top + bot) / 2;
       if (itemList[middle] == id) {
