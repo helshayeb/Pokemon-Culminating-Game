@@ -2,6 +2,13 @@
 * Creates accounts that users can use to play the game
 */
 import java.util.*;
+import PersonHierarchy.*;
+import ConditionHierarchy.*;
+import ItemHierarchy.*;
+import LocationHierarchy.*;
+import MoveHierarchy.*;
+import Pokemon.*;
+import PokeDex.*;
 public class User extends Person {
 
 

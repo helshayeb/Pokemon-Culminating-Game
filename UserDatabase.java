@@ -3,6 +3,13 @@
 */
 import java.io.*;
 import java.util.*;
+import PersonHierarchy.*;
+import ConditionHierarchy.*;
+import ItemHierarchy.*;
+import LocationHierarchy.*;
+import MoveHierarchy.*;
+import Pokemon.*;
+import PokeDex.*;
 public class UserDatabase {
 
    /**

@@ -1,6 +1,13 @@
 /**
 * Creates accounts that users can use and creates characters in the game users can battle
 */
+import PersonHierarchy.*;
+import ConditionHierarchy.*;
+import ItemHierarchy.*;
+import LocationHierarchy.*;
+import MoveHierarchy.*;
+import Pokemon.*;
+import PokeDex.*;
 public class Person {
    
    /**

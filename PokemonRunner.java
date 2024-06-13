@@ -4,6 +4,7 @@
 */
 import java.io.*;
 import java.util.*;
+import Pokedex.*;
 public class PokemonRunner {
    public static void main (String [] args){
       
@@ -717,6 +718,7 @@ public class PokemonRunner {
                }
             }
          } 
+         System.out.print("See you next time!");
       } 
       catch (InputMismatchException ime) {
          System.out.println("Please provide proper input.");
