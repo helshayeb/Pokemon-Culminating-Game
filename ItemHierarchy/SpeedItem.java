@@ -1,3 +1,7 @@
+package ItemHierarchy;
+
+import Pokemon.*;
+
 /**
 * Creates speed items that can increase a pokemon's defence stat
 */
