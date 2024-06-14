@@ -18,25 +18,18 @@ public class PokeDex {
         return itDex;
     }
 
-    public ItemDex getPokemonDex () {
+    public PokemonDex getPokemonDex () {
         return pmDex;
     }
 
-    public ItemDex getLocationDex () {
+    public LocationDex getLocationDex () {
         return loDex;
     }
 
-    public ItemDex getMoveDex () {
+    public MoveDex getMoveDex () {
         return mvDex;
     }
 
     public final static int MAX_SIZE = 200;
-    public PokeDex(ItemDex itDex,PokemonDex pmDex, LocationDex loDex,MoveDex mvDex){
-        this.itDex = itDex;
-        this.loDex = loDex;
-        this.mvDex = mvDex;
-        this.pmDex = pmDex;
-    }
-
 
 }
