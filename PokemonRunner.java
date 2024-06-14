@@ -147,7 +147,7 @@ public class PokemonRunner {
                         loca = sc.nextLine();
                      }
                   
-                     pD.addPokemon(name, type, hps, atk, def, spd, m1, m2, m3, m4, loca);
+                     pD.addPokemon(name, type, hps, atk, def, spd, m1, m2, m3, m4, loca, gameDatabase);
                   }else if (select3 == 2){ // User chooses to add an Item
                      sc.nextLine();
                      System.out.println("Enter the type of the Item: Attack, Defence, Health, or Speed");
@@ -222,9 +222,8 @@ public class PokemonRunner {
                            System.out.println("Enter the ID of Pokemon #" + i+1 + ": ");
                            pokeInLoca[i] = sc.nextInt();
                         }
-                        // Remind kelvin to get his program together ffs
                         lD.addRoute(type, name, routeNum, gameDatabase.getLocationDex().getNumLocationsData(), pokeInLoca);
-
+                     
                      }
                      
                   
@@ -246,7 +245,7 @@ public class PokemonRunner {
                         System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
                         type = sc.nextInt();
                      }
-
+                  
                      if(objectID.equalsIgnoreCase("damage")){
                         System.out.println("Enter the base power of the move: ");
                         int basePower = sc.nextInt();
@@ -289,10 +288,11 @@ public class PokemonRunner {
                      }
                      sc.nextLine();
                      Pokemon result;
+                     Pokemon results[];
                      if(select3 == 1){
                         System.out.println("Enter the Pokemon's ID: ");
                         int id = sc.nextInt();
-   
+                     
                         result = pD.searchPokemonById(id);
                         if(result != null){
                            System.out.println("Found! Here is the information about that Pokemon: ");
@@ -303,7 +303,7 @@ public class PokemonRunner {
                      }else if(select3 == 2){
                         System.out.println("Enter the Pokemon's Name: ");
                         String name = sc.nextLine();
-   
+                     
                         result = pD.searchPokemonByName(name);
                         if(result != null){
                            System.out.println("Found! Here is the information about that Pokemon: ");
@@ -314,18 +314,20 @@ public class PokemonRunner {
                      }else if(select3 == 3){
                         System.out.println("Enter the Pokemon's Location: ");
                         String loca = sc.nextLine();
-
+                     
                         System.out.println("Enter the type of the Move: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
                         int type = sc.nextInt();
                         while (type < 0 || type > 8) {
                            System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
                            type = sc.nextInt();
                         }
-   
-                        result = pD.searchPokemonByLocationAndType(loca, type, lD);
-                        if(result != null){
-                           System.out.println("Found! Here is the information about that Pokemon: ");
-                           System.out.println(result);
+                     
+                        results = pD.searchPokemonByLocationAndType(loca, type, lD);
+                        if(results != null){
+                           System.out.println("Found! Here is the information about those Pokemon: ");
+                           for (int i = 0; i < results.length; i++) {
+                              System.out.println(results[i]);
+                           }
                         }else{
                            System.out.println("Pokemon not found");
                         }
@@ -345,7 +347,7 @@ public class PokemonRunner {
                      if(select3 == 1){
                         System.out.println("Enter the Item's ID: ");
                         int id = sc.nextInt();
-   
+                     
                         result = iD.searchItemById(id);
                         if(result != null){
                            System.out.println("Found! Here is the information about that Item: ");
@@ -356,7 +358,7 @@ public class PokemonRunner {
                      }else if(select3 == 2){
                         System.out.println("Enter the Item's Name: ");
                         String name = sc.nextLine();
-   
+                     
                         result = iD.searchItemByName(name);
                         if(result != null){
                            System.out.println("Found! Here is the information about that Item: ");
@@ -380,7 +382,7 @@ public class PokemonRunner {
                      if(select3 == 1){
                         System.out.println("Enter the Move's ID: ");
                         int id = sc.nextInt();
-   
+                     
                         result = mD.searchMoveByID(id);
                         if(result != null){
                            System.out.println("Found! Here is the information about that Move: ");
@@ -391,7 +393,7 @@ public class PokemonRunner {
                      }else if(select3 == 2){
                         System.out.println("Enter the Move's Name: ");
                         String name = sc.nextLine();
-   
+                     
                         result = mD.searchMoveByName(name);
                         if(result != null){
                            System.out.println("Found! Here is the information about that Move: ");
@@ -415,7 +417,7 @@ public class PokemonRunner {
                      if(select3 == 1){
                         System.out.println("Enter the Location's ID: ");
                         int id = sc.nextInt();
-   
+                     
                         result = lD.searchLocationByID(id);
                         if(result != null){
                            System.out.println("Found! Here is the information about that Location: ");
@@ -426,7 +428,7 @@ public class PokemonRunner {
                      }else if(select3 == 2){
                         System.out.println("Enter the Location's Name: ");
                         String name = sc.nextLine();
-   
+                     
                         result = lD.searchLocationByName(name);
                         if(result != null){
                            System.out.println("Found! Here is the information about that Location: ");
@@ -719,7 +721,7 @@ public class PokemonRunner {
                      System.out.println("2) Search User by ID.");
                      System.out.println("3) Search NPC by ID.");
                      select3 = sc.nextInt();
-
+                  
                      if (select3 == 1) {
                         sc.nextLine();
                         String name;
@@ -727,14 +729,14 @@ public class PokemonRunner {
                         name = sc.nextLine();
                         System.out.println(uD.searchPersonByName(name));
                      }
-
+                  
                      if (select3 == 2) {
                         int id;
                         System.out.println("Enter the ID of the User you want to find: ");
                         id = sc.nextInt();
                         System.out.println(uD.searchUserById(id));
                      }
-
+                  
                      if (select3 == 3) {
                         int id;
                         System.out.println("Enter the ID of the NPC you want to find: ");
