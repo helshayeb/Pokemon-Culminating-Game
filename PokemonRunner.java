@@ -61,8 +61,8 @@ public class PokemonRunner {
             
             System.out.println();
             
-            if (select1 == 1) {
-               System.out.println("Enter the number corresponding to what you want to search for: ");
+            if (select1 == 1) { // User chooses to go to the Pokedex
+               System.out.println("Enter the number corresponding to what you want to do in the Pokedex: ");
                System.out.println("1) Add an object to the database.");
                System.out.println("2) Search for a Pokemon.");
                System.out.println("3) Search for an Item.");
