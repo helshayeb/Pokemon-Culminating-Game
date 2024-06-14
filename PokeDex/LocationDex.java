@@ -122,7 +122,7 @@ public class LocationDex {
                     return true;
             } 
         }
-        return false
+        return false;
     }
 
      /**
