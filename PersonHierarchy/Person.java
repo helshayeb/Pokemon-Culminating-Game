@@ -13,7 +13,7 @@ public class Person {
    /**
    * Name of the person
    */
-   protected String name;
+   private String name;
    
    /**
    * Age of the person
