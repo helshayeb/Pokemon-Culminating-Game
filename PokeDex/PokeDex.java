@@ -38,8 +38,5 @@ public class PokeDex {
         this.pmDex = pmDex;
     }
 
-    public double getMultiplier(int typeMove, int typeDefender) {
-        return typeChart[typeMove][typeDefender];
-    }
 
 }

@@ -290,7 +290,16 @@ public class Pokemon{
          currentCondition = null;
       }
    }
-   
+
+   /**
+   * This method is a mutator that sets the item of
+   * the Pokemon when given the 
+   * @param holding Item the Pokemon is holding
+   */
+   public void setItemHolding(Item holding) {
+	   itemHolding = holding;
+   }
+	
    /**
    * This method returns the name of 
    * a type when given its
