@@ -1,10 +1,7 @@
 package PersonHierarchy;
 
-import PersonHierarchy.*;
-import ConditionHierarchy.*;
 import ItemHierarchy.*;
 import LocationHierarchy.*;
-import MoveHierarchy.*;
 import Pokemon.*;
 import PokeDex.*;
 
@@ -16,7 +13,7 @@ public class Person {
    /**
    * Name of the person
    */
-   private String name;
+   protected String name;
    
    /**
    * Age of the person
@@ -51,21 +48,21 @@ public class Person {
    /**
    * The database of the game each person can refer to
    */
-   private static Pokedex pokedexReference;
+   protected static PokeDex pokedexReference;
    
    /**
    * This method is a constructor that initializes the fields of
    * the person when given its name, age, and ID
-   * @param n The name of the person the user inputted
-   * @param a The age of the person the user inputted
+   * @param n The name of the person the user inputed
+   * @param a The age of the person the user inputed
    * @param i The ID of the person, retrieved from the user database
    */
    public Person (String n, int a, int i) {
       name = n;
-      age = a
+      age = a;
       personID = i;
       numPokemon = 0;
-      currentLocation = pokedexReference.getLocationDex.getLocationList()[0];
+      currentLocation = pokedexReference.getLocationDex().getLocList()[0];
    }
 
    /**
@@ -80,9 +77,10 @@ public class Person {
    */
    public Person (String n, int a, int i, int numP, Pokemon[] team, Location loc) {
       name = n;
-      age = a
+      age = a;
       personID = i;
       numPokemon = numP;
+      teamList = team;
       currentLocation = loc;
    }
    
@@ -154,7 +152,7 @@ public class Person {
    * the Pokedex
    * @return The Pokedex object each person has
    */
-   public static int getPokedexReference () {
+   public static PokeDex getPokedexReference () {
       return pokedexReference;
    }
    
@@ -217,7 +215,7 @@ public class Person {
    * the Pokedex object each person has
    * @param pR new Pokedex object each person will have
    */
-   public static void setPokedexReference (Pokedex pR) {
+   public static void setPokedexReference (PokeDex pR) {
       pokedexReference = pR;
    }
 
@@ -232,7 +230,7 @@ public class Person {
    public boolean giveItem (String poke, String it) {
       Pokemon p_temp = this.searchPokemonByNameInTeam(poke);
       int numIt = ((User)this).getNumItems();
-      Item[] inv = this.getInventory();
+      Item[] inv = ((User)this).getInventory();
       if (p_temp == null) {
          return false;
       } 
@@ -244,7 +242,7 @@ public class Person {
          } else {
             int index = -1;
             for (int i = 0; i < numIt; i++) {
-               if (inv[i].getName() == it) {
+               if (inv[i].getItemName() == it) {
                   index = i;
                }
             }
@@ -256,7 +254,7 @@ public class Person {
                for (int i = index; i < numIt; i++) {
                   inv[i] = inv[i+1];
                }
-               this.setNumItems(this.setNumItems() - 1);
+               ((User)this).setNumItems(((User)this).getNumItems() - 1);
                return true;
             }
          }
@@ -269,7 +267,7 @@ public class Person {
     * @param pokeID The Id of the Pokemon that is being added
     */
    public void newPokemon (Pokemon poke) {
-      teamList[numPokemon] = new Pokemon (poke.getName(), poke.getType(), poke.getID(), poke.getMaxHPStat(), poke.getAttackStat(), poke.getDefenceStat(), poke.getSpeedStat(), poke.getMoveList()[0].getMoveID(), poke.getMoveList()[1].getMoveID(), poke.getMoveList()[2].getMoveID(), poke.getMoveList()[3].getMoveID(), poke.getFoundIn().getLocationID());
+      teamList[numPokemon] = new Pokemon (poke.getName(), poke.getType(), poke.getID(), poke.getMaxHPStat(), poke.getAttackStat(), poke.getDefenceStat(), poke.getSpeedStat(), poke.getMoveList()[0], poke.getMoveList()[1], poke.getMoveList()[2], poke.getMoveList()[3], poke.getFoundIn());
       numPokemon++;
    }
 
@@ -279,16 +277,16 @@ public class Person {
     * @param pokeID The Id of the Pokemon that is being reset
     */
    public void resetPokemon (int pokeID) {
-      Pokemon p_temp = this.pokedexReference.getPokemonDex().searchPokemonByID(pokeId);
+      Pokemon p_temp = pokedexReference.getPokemonDex().searchPokemonById(pokeID);
       int index = p_temp.getID(); 
-      int save;
+      int save = -1;
       for (int i = 0; i < numPokemon; i++) {
-         if (index = teamList[i]) {
+         if (index == teamList[i].getID()) {
             save = i;
          }
       }
-      teamList[save] = new Pokemon (p_temp.getName(), p_temp.getType(), p_temp.getID(), p_temp.getMaxHPStat(), p_temp.getAttackStat(), p_temp.getDefenceStat(), p_temp.getSpeedStat(), p_temp.getMoveList()[0].getMoveID(), p_temp.getMoveList()[1].getMoveID(), p_temp.getMoveList()[2].getMoveID(), p_temp.getMoveList()[3].getMoveID(), p_temp.getFoundIn().getLocationID());
-      teamList[save].setCurrentHP(0);
+      teamList[save] = new Pokemon (p_temp.getName(), p_temp.getType(), p_temp.getID(), p_temp.getMaxHPStat(), p_temp.getAttackStat(), p_temp.getDefenceStat(), p_temp.getSpeedStat(), p_temp.getMoveList()[0], p_temp.getMoveList()[1], p_temp.getMoveList()[2], p_temp.getMoveList()[3], p_temp.getFoundIn());
+      teamList[save].changeCurrentHP(-1, 0);
       numPokemon++;
    }
 
@@ -299,7 +297,7 @@ public class Person {
       if (this.currentLocation instanceof City) {
          if (((City)this.currentLocation).getHasPokeCentre()) {
             for (int i = 0; i < numPokemon; i++) {
-               teamList[i].setCurrentHP(teamList[i].getMaxHPStat());
+               teamList[i].changeCurrentHP(1, 0);
             }
             return true;
          } else {
