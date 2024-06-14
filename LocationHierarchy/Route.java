@@ -90,9 +90,9 @@ public class Route extends Location {
     }
 
     /**
-     * This method returns information about the Condition Move
+     * This method returns information about the Route
      * in the form of a String
-     * @return String Information about the Move
+     * @return String Information about the Route
      */
     public String toString(){
         String str = super.toString();
