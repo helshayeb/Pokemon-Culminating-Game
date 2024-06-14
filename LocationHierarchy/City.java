@@ -84,9 +84,10 @@ public class City extends Location {
     }
 
     /**
-     * When 
-     * 
-     */
+   	* This method returns information about the City
+   	* in the form of a String
+   	* @return String Information about the City
+   	*/
     public String toString(){
         String str = super.toString();
         if(hasPokeCentre){
