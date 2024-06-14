@@ -61,7 +61,7 @@ public class ItemDex {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
          numItemData = Integer.parseInt(in.readLine());
          itemList = new Item[PokeDex.MAX_SIZE];
-         String itemTypeName, ItemName;
+         String itemTypeName, itemName;
          int id, price;
          double modifier;
          
@@ -70,8 +70,23 @@ public class ItemDex {
             itemName = (in.readLine());
             id = (Integer.parseInt(in.readLine()));
             price = (Integer.parseInt(in.readLine()));
-            modifer = (Double.parseDouble(in.readLine()));
-            itemList[i] = Item (itemTypeName, name, id, price, modifier);
+            modifier = (Double.parseDouble(in.readLine()));
+            if (itemTypeName.equals("HealthItem")) {
+               itemList[i] = new HealthItem(itemTypeName, itemName, id, price, modifier);
+            }
+            else if (itemTypeName.equals("AttackItem")) {
+               itemList[i] = new AttackItem(itemTypeName, itemName, id, price, modifier);
+            }
+            else if (itemTypeName.equals("DefenceItem")) {
+               itemList[i] = new DefenceItem(itemTypeName, itemName, id, price, modifier);
+            }
+            else if (itemTypeName.equals("SpeedItem")) {
+               itemList[i] = new SpeedItem(itemTypeName, itemName, id, price, modifier);
+            }
+            else {
+               return false;
+            }
+               
          }
          in.close();
       }
@@ -96,7 +111,7 @@ public class ItemDex {
             out.write(itemList[i].getItemName());
             out.write(itemList[i].getId());
             out.write(itemList[i].getPrice());
-            out.write(itemList[i].getModifier());
+            out.write(String.format("%.2f", itemList[i].getModifier()));
          }
          out.close();
          return true;
@@ -118,6 +133,7 @@ public class ItemDex {
             return itemList[i];
          }
       }
+      return null;
    }
 
    /**
@@ -138,15 +154,15 @@ public class ItemDex {
 	*/
    public Item searchItemById (int id, int top, int bot) {
       int middle = (top + bot) / 2;
-      if (itemList[middle] == id) {
+      if (itemList[middle].getId() == id) {
          return itemList[middle];
       } else if (top == bot) {
          return null;
-      }else if (itemList[middle] < id) {
-         searchItemById(id, middle - 1, bot);
+      }else if (itemList[middle].getId() < id) {
+         return searchItemById(id, middle - 1, bot);
       } else {
-         searchItemById(id, top, middle + 1);
-         }
+         return searchItemById(id, top, middle + 1);
+      }
    }
 
    /**
@@ -163,9 +179,24 @@ public class ItemDex {
          return false;
       }
       else {
-         itemList[newId] = Item (type, name, newId, price, modifier);
+         if (itemList[newId].getItemTypeName().equals("HealthItem")) {
+            itemList[newId] = new HealthItem(type, name, newId, price, modifier);
+         }
+         else if (itemList[newId].getItemTypeName().equals("AttackItem")) {
+            itemList[newId] = new AttackItem(type, name, newId, price, modifier);
+         }
+         else if (itemList[newId].getItemTypeName().equals("DefenceItem")) {
+            itemList[newId] = new DefenceItem(type, name, newId, price, modifier);
+         }
+         else if (itemList[newId].getItemTypeName().equals("SpeedItem")) {
+            itemList[newId] = new SpeedItem(type, name, newId, price, modifier);
+         }
+         else {
+            return false;
+         }
+      
          numItemData ++;
          return true;
       }
    }           
-   }
+}

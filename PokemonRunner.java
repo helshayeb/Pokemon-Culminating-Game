@@ -35,7 +35,7 @@ public class PokemonRunner {
       lD.readLocations(LOCATION_FILE);
       iD.readItems(ITEM_FILE);
       mD.readMoves(MOVE_FILE);
-      pD.readPokemon(POKEMON_FILE);
+      pD.readPokemon(POKEMON_FILE, gameDatabase);
       uD.readNPCs(NPC_FILE, gameDatabase);
       uD.readUsers(USER_FILE, gameDatabase);
       
