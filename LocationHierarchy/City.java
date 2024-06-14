@@ -59,7 +59,7 @@ public class City extends Location {
      * 
      */
     public boolean getHasPokeStop() {
-        return haspokeStop;
+        return hasPokestop;
     }
     // Mutators (Setters)
     /**
@@ -73,8 +73,8 @@ public class City extends Location {
      * Sets if the city has the pokeStop to heal pokemons.
      * @param updated information of if the city has the pokeStop to heal pokemons.
      */
-    public void setHaspokeStop(boolean haspokeStop) {
-        this.haspokeStop = haspokeStop;
+    public void setHasPokeStop(boolean haspokeStop) {
+        this.hasPokestop = haspokeStop;
     }
 
     public String toString(){
@@ -82,7 +82,7 @@ public class City extends Location {
         if(hasPokeCentre){
             str += "\nIt has a PokeCentre";
         }
-        if(hasPokeStop){
+        if(hasPokestop){
             str += "\nIt has a PokeStop";
         }
         return str; 
