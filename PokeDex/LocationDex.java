@@ -49,12 +49,13 @@ public class LocationDex {
     public boolean readLocations(String fileName){
         try{
             BufferedReader br = new BufferedReader(new FileReader(fileName));
-            for (int i = 0; i < Integer.parseInt(br.readLine()); i++) {
+            int numLoca = Integer.parseInt(br.readLine());
+            for (int i = 0; i < numLoca; i++) {
 
                 String type = br.readLine().toLowerCase();
                 if (type.equals("city") || type.equals("c")) {
                     locList[i] = new City(br.readLine(), br.readLine(), Integer.parseInt(br.readLine()),Boolean.parseBoolean(br.readLine()),Boolean.parseBoolean(br.readLine()));
-                    numData++;
+                    numLocationsData++;
                 } else if(type.equals("route")||type.equals("r")){
                     String region = br.readLine();
                     String name = br.readLine();
@@ -63,7 +64,7 @@ public class LocationDex {
                     br.readLine();
                     int[] list= {Integer.parseInt(br.readLine()),Integer.parseInt(br.readLine()),Integer.parseInt(br.readLine())};
                     locList[i] = new Route(region, name, id, routeNum, list);
-                    numData++;
+                    numLocationsData++;
                 } else {
                     return false;
                 }
@@ -86,7 +87,7 @@ public class LocationDex {
     */
     public Location searchLocationByID(int id){
         int left = 0;
-        int right = numData-1;
+        int right = numLocationsData-1;
         return searchLocationByID(locList, id, left, right);
     }
    /**
@@ -102,9 +103,9 @@ public class LocationDex {
         if(left>right){
             return null;
         }
-        if(locList[mid].getLoactionID() == id){
+        if(locList[mid].getLocationID() == id){
             return locList[mid];
-        }else if(locList[mid].getLoactionID() > id){
+        }else if(locList[mid].getLocationID() > id){
         return searchLocationByID(locList, id, left, mid-1);
     }else{
         return searchLocationByID(locList, id, mid+1, right);
@@ -116,7 +117,7 @@ public class LocationDex {
     * @return The Location object if found, otherwise null.
     */
     public Location searchLocationByName(String name){
-        for(int i = 0; i < numData; i++){
+        for(int i = 0; i < numLocationsData; i++){
             if(locList[i].getName().equalsIgnoreCase(name)){
                 return locList[i];
             }
@@ -131,8 +132,8 @@ public class LocationDex {
     * @param store Whether the city has a Poké Mart.
     */
     public void addCity(String type, String name, boolean pokeCenter, boolean store){
-        locList[numData] = new City(type, name, numData ,pokeCenter, store);
-        numData++;
+        locList[numLocationsData] = new City(type, name, numLocationsData ,pokeCenter, store);
+        numLocationsData++;
     }
    /**
     * Method to add a city to locList.
@@ -140,8 +141,8 @@ public class LocationDex {
     * @param store Whether the city has a Poké Mart.
     */
     public void addCity( boolean pokeCenter, boolean store){
-        locList[numData] = new City(numData, pokeCenter,store);
-        numData++;
+        locList[numLocationsData] = new City(numLocationsData, pokeCenter,store);
+        numLocationsData++;
     }
    /**
     * Method to add a route to locList.
@@ -152,9 +153,9 @@ public class LocationDex {
     * @param pokes An array of Pokémon on the route.
     */
     public void addRoute(String type, String name, int routeNum, int id,int[] pokes){
-        if(!duplicateRouteNum){
-            locList[numData] = new Route(type,name,routeNum, numData,pokes);
-            numData++;
+        if(!duplicateRouteNum(routeNum)){
+            locList[numLocationsData] = new Route(type,name,routeNum, numLocationsData,pokes);
+            numLocationsData++;
         }
     }
    /**
@@ -164,9 +165,9 @@ public class LocationDex {
     * @param routeNum The route number.
     */
     public void addRoute(String type, String name, int routeNum){
-        if(!duplicateRouteNum){
-            locList[numData] = new Route(type, name, routeNum, numData);
-            numData++;
+        if(!duplicateRouteNum(routeNum)){
+            locList[numLocationsData] = new Route(type, name, routeNum, numLocationsData);
+            numLocationsData++;
         }
     }
     /**
@@ -175,9 +176,9 @@ public class LocationDex {
     * @return true if there is a duplicate, otherwise false.
     */
     private boolean duplicateRouteNum(int rNum){
-        for(int i = 0; i < numData; i++){
+        for(int i = 0; i < numLocationsData; i++){
             if(locList[i] instanceof Route){
-                if((Route)(locList).getRouteNum() == rNum)
+                if(((Route)(locList[i])).getRouteNum() == rNum)
                     return true;
             } 
         }
@@ -198,10 +199,10 @@ public class LocationDex {
             for (int i = 0; i < locList.length; i++) {
                 if(locList[i] instanceof City)/*If it is city or not*/{
                     City temp = (City)(locList[i]);
-                    bw.write("City\n"+ temp.getRegionType()+"\n"+ temp.getName()+"\n"+ temp.getLoactionID() +"\n"+temp.getHasStore() +"\n"+temp.getHasPokeCentre()+"\n");
+                    bw.write("City\n"+ temp.getRegionType()+"\n"+ temp.getName()+"\n"+ temp.getLocationID() +"\n"+temp.getHasPokeStop() +"\n"+temp.getHasPokeCentre()+"\n");
                 } else if(locList[i] instanceof Route)/*If it is route or not*/{
                     Route tempp = (Route)locList[i];
-                    bw.write("Route\n" +"\n"+tempp.getRegionType()+"\n"+ tempp.getName()+"\n"+ tempp.getLoactionID() + "\n"+ tempp.getRouteNum() + "\n"+tempp.getNumPokemon());
+                    bw.write("Route\n" +"\n"+tempp.getRegionType()+"\n"+ tempp.getName()+"\n"+ tempp.getLocationID() + "\n"+ tempp.getRouteNum() + "\n"+tempp.getNumPokemon());
                     for (int j = 0; j < tempp.getNumPokemon(); j++) {
                         bw.write(tempp.getPokemonInLocation()[i]+"\n");
                     }
