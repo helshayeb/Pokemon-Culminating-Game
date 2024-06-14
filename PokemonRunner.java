@@ -2,12 +2,12 @@
 * This class makes it so the user can interact with everything 
 * in the Pokemon game
 */
-import java.io.*;
 import java.util.*;
 import Pokemon.*;
 import ItemHierarchy.*;
 import LocationHierarchy.*;
 import MoveHierarchy.Move;
+import PersonHierarchy.Person;
 import PokeDex.*;
 public class PokemonRunner {
    public static void main (String [] args){
@@ -29,17 +29,17 @@ public class PokemonRunner {
       ItemDex iD = new ItemDex ();
       MoveDex mD = new MoveDex ();
       UserDatabase uD = new UserDatabase ();
+      PokeDex gameDatabase = new PokeDex (iD, pD, lD, mD);
       
       // Read in text files
       lD.readLocations(LOCATION_FILE);
       iD.readItems(ITEM_FILE);
       mD.readMoves(MOVE_FILE);
       pD.readPokemon(POKEMON_FILE);
-      //uD.readNPCs("NPCList.txt");
-      //uD.readUsers("UserList.txt");
+      uD.readNPCs(NPC_FILE, gameDatabase);
+      uD.readUsers(USER_FILE, gameDatabase);
       
       // Create central dex/database
-      PokeDex gameDatabase = new PokeDex (iD, pD, lD, mD);
       
       try {
          int select1 = -1;
@@ -222,7 +222,7 @@ public class PokemonRunner {
                            pokeInLoca[i] = sc.nextInt();
                         }
                         // Remind kelvin to get his program together ffs
-                        lD.addRoute(type, name, routeNum, pokeInLoca);
+                        lD.addRoute(type, name, routeNum, gameDatabase.getLocationDex().getNumLocationsData(), pokeInLoca);
 
                      }
                      
@@ -498,7 +498,7 @@ public class PokemonRunner {
                      age = sc.nextInt();
                   
                   // Call addUser method and output error message if errors occurs
-                     if (addUser(name, age)) {
+                     if (uD.addUser(name, age)) {
                         System.out.println("User has been successfully added.");
                      } else {
                         System.out.println("Too many users. Please remove a user before adding another user.");
@@ -517,7 +517,7 @@ public class PokemonRunner {
                      name = sc.nextLine();
                   
                   // Call removeUser method and output error message if errors occurs
-                     if (removeUser(name)) {
+                     if (uD.removeUser(name)) {
                         System.out.println("User has been successfully removed.");
                      } else {
                         System.out.println("User not found.");
@@ -563,12 +563,12 @@ public class PokemonRunner {
                            sc.nextLine();
                            System.out.println("What Pokemon do you want to catch? ");
                            name = sc.nextLine();
-                           p = gameDatabase.getPokemonDex().searchPokemonByName();
+                           p = gameDatabase.getPokemonDex().searchPokemonByName(name);
                         
                            while (p == null) {
                               System.out.print("Pokemon not found. Try again:");
                               name = sc.nextLine();
-                              p = gameDatabase.getPokemonDex().searchPokemonByName();
+                              p = gameDatabase.getPokemonDex().searchPokemonByName(name);
                            }
                         
                            if (uD.catchPokemon(account, p)) {
@@ -587,15 +587,15 @@ public class PokemonRunner {
                            sc.nextLine();
                            System.out.println("What Pokemon do you want to release? ");
                            name = sc.nextLine();
-                           p = gameDatabase.getPokemonDex().searchPokemonByName();
+                           p = gameDatabase.getPokemonDex().searchPokemonByName(name);
                         
                            while (p == null) {
                               System.out.print("Pokemon not found. Try again: ");
                               name = sc.nextLine();
-                              p = gameDatabase.getPokemonDex().searchPokemonByName();
+                              p = gameDatabase.getPokemonDex().searchPokemonByName(name);
                            }
                         
-                           if (uD.releasePokemon(account, p)) {
+                           if (uD.releasePokemon(account, p.getName())) {
                               System.out.println("Pokemon successfully released.");
                            } else {
                               System.out.println("Pokemon could not br released. Please check if you fit the following requirements: ");
@@ -637,7 +637,7 @@ public class PokemonRunner {
                            System.out.print("Enter the name of the Item you are giving to the Pokemon: ");
                            i_name = sc.nextLine();
                         
-                           if (uD.giveItem(p_name, i_name)) {
+                           if (uD.giveItem(account, p_name, i_name)) {
                               System.out.println("Item was given successfully.");
                            } else {
                               System.out.println("Item was not given successfully. Please check that the Pokemon and Item are in your team and inventory.");
@@ -678,8 +678,8 @@ public class PokemonRunner {
                            System.out.println("Enter the type of person you want to you want to see the team of: ");
                            type = sc.nextLine();
                            System.out.println("Enter the ID of the person: ");
-                           personID = sc.nextInt();
-                           uD.displayPokemon(personID, type);
+                           personId = sc.nextInt();
+                           uD.displayPokemon(personId, type);
                         }
                      
                         if (select3 == 8) {
@@ -712,14 +712,14 @@ public class PokemonRunner {
                         int id;
                         System.out.println("Enter the ID of the User you want to find: ");
                         id = sc.nextInt();
-                        System.out.println(uD.searchUserByID(id));
+                        System.out.println(uD.searchUserById(id));
                      }
 
                      if (select3 == 3) {
                         int id;
                         System.out.println("Enter the ID of the NPC you want to find: ");
                         id = sc.nextInt();
-                        System.out.println(uD.searchNPCByID(id));
+                        System.out.println(uD.searchNPCById(id));
                      }
                   }
                }
