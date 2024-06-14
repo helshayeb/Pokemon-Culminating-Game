@@ -1,8 +1,14 @@
 package LocationHierarchy;
 
 public class City extends Location {
-    private boolean hasPokeCentre; //If the city has the pokecenter to heal pokemons
-    private boolean hasPokestop; // If the city has the pokestop to buy items
+    /**
+    *If the city has the pokecenter to heal pokemons
+    */
+    private boolean hasPokeCentre; 
+    /**
+    * If the city has the pokestop to buy items
+    */
+    private boolean hasPokestop; //
 
     /**
      * Constructs a new City object with specified type, name, id, pokeCenter, and pokeStop.
@@ -77,6 +83,10 @@ public class City extends Location {
         this.hasPokestop = haspokeStop;
     }
 
+    /**
+     * When 
+     * 
+     */
     public String toString(){
         String str = super.toString();
         if(hasPokeCentre){
