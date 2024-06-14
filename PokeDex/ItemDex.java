@@ -66,6 +66,8 @@ public class ItemDex {
          double modifier;
          
          for (int i = 0; i < numItemData; i++) {
+	    in.readLine();
+            in.readLine();
             itemTypeName = (in.readLine());
             itemName = (in.readLine());
             id = (Integer.parseInt(in.readLine()));
