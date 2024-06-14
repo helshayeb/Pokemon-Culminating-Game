@@ -1,7 +1,4 @@
-/**
-* This class makes it so the user can interact with everything 
-* in the Pokemon game
-*/
+
 import java.util.*;
 import Pokemon.*;
 import ItemHierarchy.*;
@@ -9,6 +6,10 @@ import LocationHierarchy.*;
 import MoveHierarchy.Move;
 import PersonHierarchy.Person;
 import PokeDex.*;
+/**
+* This class makes it so the user can interact with everything 
+* in the Pokemon game
+*/
 public class PokemonRunner {
    public static void main (String [] args){
       
@@ -60,8 +61,8 @@ public class PokemonRunner {
             
             System.out.println();
             
-            if (select1 == 1) {
-               System.out.println("Enter the number corresponding to what you want to search for: ");
+            if (select1 == 1) { // User chooses to go to the Pokedex
+               System.out.println("Enter the number corresponding to what you want to do in the Pokedex: ");
                System.out.println("1) Add an object to the database.");
                System.out.println("2) Search for a Pokemon.");
                System.out.println("3) Search for an Item.");
@@ -279,9 +280,10 @@ public class PokemonRunner {
                      System.out.println("Enter the number corresponding to how you want to seach for a Pokemon: ");
                      System.out.println("1) The Pokemon's ID.");
                      System.out.println("2) The Pokemon's Name.");
+                     System.out.println("3) The Pokemon's Location and Type.");
                      System.out.println("0) Exit.");
                      select3 = sc.nextInt();
-                     while (select3 < 0 || select3 > 2) {
+                     while (select3 < 0 || select3 > 3) {
                         System.out.print("That is not a possible option. Try again: ");
                         select3 = sc.nextInt();
                      }
@@ -303,6 +305,24 @@ public class PokemonRunner {
                         String name = sc.nextLine();
    
                         result = pD.searchPokemonByName(name);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Pokemon: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Pokemon not found");
+                        }
+                     }else if(select3 == 3){
+                        System.out.println("Enter the Pokemon's Location: ");
+                        String loca = sc.nextLine();
+
+                        System.out.println("Enter the type of the Move: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
+                        int type = sc.nextInt();
+                        while (type < 0 || type > 8) {
+                           System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
+                           type = sc.nextInt();
+                        }
+   
+                        result = pD.searchPokemonByLocationAndType(loca, type, lD);
                         if(result != null){
                            System.out.println("Found! Here is the information about that Pokemon: ");
                            System.out.println(result);

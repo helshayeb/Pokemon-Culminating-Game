@@ -1,8 +1,17 @@
 package LocationHierarchy;
 
 public class Route extends Location {
+    /**
+    * An array of pokemon IDs in the Location
+    */
     int[] pokemonInLocation;
+    /**
+    * The number of the Pokemons in the Array
+    */
     int numPokemon = 0;
+    /**
+    * The unique Identification number of the Route
+    */
     int routeNum;
 
     /**
@@ -90,17 +99,18 @@ public class Route extends Location {
     }
 
     /**
-     * This method returns information about the Condition Move
+     * This method returns information about the Route
      * in the form of a String
-     * @return String Information about the Move
+     * @return String Information about the Route
      */
     public String toString(){
         String str = super.toString();
         str += ( "\nRoute Number: "+ routeNum);
-        str += ("\nPokemon IDs: ")
+        str += ("\nPokemon IDs: ");
         for(int i = 0; i< pokemonInLocation.length; i++){
             str+= pokemonInLocation[i]+", ";
         }
+        return str;
     }
     
 }

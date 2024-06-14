@@ -1,9 +1,18 @@
 package LocationHierarchy;
 
 public class Location {
-    private String regionType; // Type of region where the location is situated
-    private String name; // Name of the location
-    private int locationID; // Unique identifier for the location
+    /**
+    *  Type of region where the location is situated
+    */
+    private String regionType; 
+    /**
+    *  Name of the location
+    */
+    private String name; 
+    /**
+    *  Unique identifier for the location
+    */
+    private int locationID; 
 
     /**
      * Constructs a new Location object with specified type, name, and id.
