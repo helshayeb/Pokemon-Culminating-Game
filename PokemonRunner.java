@@ -1,7 +1,4 @@
-/**
-* This class makes it so the user can interact with everything 
-* in the Pokemon game
-*/
+
 import java.util.*;
 import Pokemon.*;
 import ItemHierarchy.*;
@@ -9,6 +6,10 @@ import LocationHierarchy.*;
 import MoveHierarchy.Move;
 import PersonHierarchy.Person;
 import PokeDex.*;
+/**
+* This class makes it so the user can interact with everything 
+* in the Pokemon game
+*/
 public class PokemonRunner {
    public static void main (String [] args){
       
