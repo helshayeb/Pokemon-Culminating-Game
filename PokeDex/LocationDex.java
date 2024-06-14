@@ -217,12 +217,4 @@ public class LocationDex {
             return false;
         }
     }
-
-    /**
-    * Returns a string representation of the LocationDex.
-    * @return A string representation of the LocationDex.
-    */
-    public String toString(){
-        return locList.toString();
-    }
 }
