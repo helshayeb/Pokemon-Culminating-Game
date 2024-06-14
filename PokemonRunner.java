@@ -224,7 +224,7 @@ public class PokemonRunner {
                      sc.nextLine();
                      System.out.println("Enter the kind of Move you wish to add: Damage, Status, or Condition");
                      String objectID = sc.nextLine();
-                     while (!(objectID.equalsIgnoreCase("damage")) || (objectID.equalsIgnoreCase("Status")) || (objectID.equalsIgnoreCase("Condition")))) {
+                     while (!(objectID.equalsIgnoreCase("damage")) || (objectID.equalsIgnoreCase("Status")) || (objectID.equalsIgnoreCase("Condition"))) {
                         System.out.print("That is not a possible option. Enter Damage, Status, or Condition");
                         objectID = sc.nextLine();
                      }
