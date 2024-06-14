@@ -25,6 +25,6 @@ public class DefenceItem extends Item {
     * @param p The pokemon the defence item's effect will be applied to
     */
     public void useItem(Pokemon p) {
-      p.changeDefenceStat(this.modifier); //Multiplies the pokemon's defence stat by the item's modifier
+      p.changeDefStat(this.getModifier()); //Multiplies the pokemon's defence stat by the item's modifier
     }
 }

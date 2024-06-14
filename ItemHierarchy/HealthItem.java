@@ -25,11 +25,11 @@ public HealthItem(String type, String name, int idNum, int priceNum, double mod)
 * @param p The pokemon the health item's effect will be applied to
 */
 public void useItem(Pokemon p) {
-  if (p.getCurrentHp() + modifier <= p.getMaxHpStat()) {
-    p.changeCurrentHp(0, this.modifier);
+  if (p.getCurrentHP() + this.getModifier() <= p.getMaxHPStat()) {
+    p.changeCurrentHP(0, this.getModifier());
 }
   else {
-    p.changeCurrentHp(0, this.modifier); 
+    p.changeCurrentHP(0, this.getModifier()); 
   }
 }
 }

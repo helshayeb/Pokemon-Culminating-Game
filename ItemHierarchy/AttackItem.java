@@ -25,6 +25,6 @@ public class AttackItem extends Item {
     * @param p The pokemon the attack item's effect will be applied to
     */
     public void useItem(Pokemon p) {
-      p.changeAttackStat(this.modifier); //Multiplies the pokemon's attack stat by the item's modifier
+      p.changeAtkStat(this.getModifier()); //Multiplies the pokemon's attack stat by the item's modifier
     }
 }

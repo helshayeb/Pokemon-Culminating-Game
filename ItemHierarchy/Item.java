@@ -114,7 +114,7 @@ public abstract class Item {
   * @param m The modifier of the item
   */
   public void setModifier (double m) {
-    modifier = d;
+    modifier = m;
   }
 
   /**

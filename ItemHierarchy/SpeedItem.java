@@ -25,6 +25,6 @@ public class SpeedItem extends Item {
     * @param p The pokemon the speed item's effect will be applied to
     */
     public void useItem(Pokemon p) {
-      p.changeSpeedStat(this.modifier); //Multiplies the pokemon's speed stat by the item's modifier
+      p.changeSpdStat(this.getModifier()); //Multiplies the pokemon's speed stat by the item's modifier
     }
 }

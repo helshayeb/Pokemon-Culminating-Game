@@ -59,7 +59,7 @@ public class ItemDex {
    public boolean readItems (String fileName) {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
-         numItemData = in.readLine();
+         numItemData = Integer.parseInt(in.readLine());
          itemList = new Item[PokeDex.MAX_SIZE];
          String itemTypeName, ItemName;
          int id, price;
@@ -70,7 +70,7 @@ public class ItemDex {
             itemName = (in.readLine());
             id = (Integer.parseInt(in.readLine()));
             price = (Integer.parseInt(in.readLine()));
-            modifer = (Double.parseDouble(in.readLine());
+            modifer = (Double.parseDouble(in.readLine()));
             itemList[i] = Item (itemTypeName, name, id, price, modifier);
          }
          in.close();
