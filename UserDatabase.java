@@ -2,12 +2,9 @@
 * A list of all the users and NPCs, making it so users can interact with the game
 */
 import java.io.*;
-import java.util.*;
 import PersonHierarchy.*;
-import ConditionHierarchy.*;
 import ItemHierarchy.*;
 import LocationHierarchy.*;
-import MoveHierarchy.*;
 import Pokemon.*;
 import PokeDex.*;
 public class UserDatabase {
@@ -54,7 +51,7 @@ public class UserDatabase {
    * the maximum number of NPCs possible the list can contain
    * @return Maximum number of objects possible in the npcList array
    */
-   public static int getMaxNpcs () {
+   public int getMaxNpcs () {
      return MAX_NPCS;
    }
 
@@ -103,7 +100,7 @@ public class UserDatabase {
    * if there are too many users
    */
    public boolean addUser(String name, int age) {
-      if (numUsers < MAX_SIZE) {
+      if (numUsers < PokeDex.MAX_SIZE) {
          userList[numUsers] = new User (name, age, numUsers);
          numUsers++;
          return true;
@@ -122,7 +119,7 @@ public class UserDatabase {
    public boolean removeUser(String name) {
       Person p = this.searchPersonByName(name);
       if (p instanceof User) {
-         for (int i = p.getID(); p.getID() < numUsers; i++) {
+         for (int i = p.getPersonID(); p.getPersonID() < numUsers; i++) {
             userList[i] = userList[1+i];
          }
          numUsers--;
@@ -142,7 +139,7 @@ public class UserDatabase {
    * the Pokemon or Item was not found
    */
    public boolean giveItem (int id, String p_name, String i_name) {
-      User u = this.searchPersonByID(id);
+      User u = this.searchUserById(id);
       return u.giveItem(p_name, i_name);
    }
 
@@ -157,7 +154,7 @@ public class UserDatabase {
    public Person battleTrainer (int id, String name) {
       final int MONEY_FROM_WIN = 500;
       Person winner;
-      User u1 = this.searchPersonByID(id);
+      User u1 = this.searchUserById(id);
       Person u2 = this.searchPersonByName(name);
       if (u2 == null) {
          return null;
@@ -179,7 +176,7 @@ public class UserDatabase {
    * or if a mistake occurs
    */
    public boolean releasePokemon (int id, String name) {
-      User u = this.searchPersonByID(id);
+      User u = this.searchUserById(id);
       Pokemon p = u.searchPokemonByNameInTeam(name);
       if (p == null) {
         return false;
@@ -196,7 +193,7 @@ public class UserDatabase {
    * location could not be found.
    */
    public void moveTo (int id, Location loc) {
-      Person u = this.searchPersonByID(id);
+      Person u = this.searchUserById(id);
       ((User)u).moveTo(loc);
    }
    
@@ -211,7 +208,7 @@ public class UserDatabase {
    * with a PokeStop
    */
    public boolean buyItem (int id, Item it) {
-      Person u = this.searchPersonByID(id);
+      Person u = this.searchUserById(id);
       return ((User)u).buyItem(it);
    }
 
@@ -225,8 +222,8 @@ public class UserDatabase {
    * already on the User's team
    */
    public boolean catchPokemon (int id, Pokemon p) {
-      Person u = this.searchPersonByID(id);
-      return ((User)u).catchPokemon(P);
+      Person u = this.searchUserById(id);
+      return ((User)u).catchPokemon(p);
    }
 
    /**
@@ -237,7 +234,7 @@ public class UserDatabase {
    */
    public void displayPokemon (int id, String type) {
       if (type.equalsIgnoreCase("User")) {
-        User u = this.searchUserByID(id);
+        User u = this.searchUserById(id);
         if (u == null) {
             System.out.println("Person not found.");
         } else {
@@ -245,7 +242,7 @@ public class UserDatabase {
         }
       }
       else if (type.equalsIgnoreCase("NPC")) {
-        NPC n = this.searchNPCByID(id);
+        NPC n = this.searchNPCById(id);
         if (n == null) {
             System.out.println("Person not found.");
         } else {
@@ -267,13 +264,14 @@ public class UserDatabase {
    public boolean readUsers (String fileName, PokeDex pD) {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
-         numUsers = in.readLine();
-         userList = new User[MAX_SIZE];
+         numUsers = Integer.parseInt(in.readLine());
+         userList = new User[PokeDex.MAX_SIZE];
          String userName;
          int id, money, age, numPoke, numIt, pokeID, itemID, curLocID;
          Pokemon[] team; 
+         Item[] inv;
          Location curLoc;
-         for (int i = 0; i < numItemData; i++) {
+         for (int i = 0; i < numUsers; i++) {
             in.readLine();
             userName = in.readLine();
             id = Integer.parseInt(in.readLine());
@@ -283,21 +281,21 @@ public class UserDatabase {
             numIt = Integer.parseInt(in.readLine());
             curLocID = Integer.parseInt(in.readLine());
             
-            curLoc = searchLocationById(curLocID);
+            curLoc = pD.getLocationDex().searchLocationByID(curLocID);
 
             team = new Pokemon [Person.getMaxPokemon()];
             for (int j = 0; j < numPoke; j++) {
                 pokeID = Integer.parseInt(in.readLine());
-                team[j] = pD.searchPokemonById();
+                team[j] = pD.getPokemonDex().searchPokemonById(pokeID);
             }
 
-            inv = new Item [MAX_SIZE];
+            inv = new Item [PokeDex.MAX_SIZE];
             for (int j = 0; j < numIt; j++) {
                 itemID = Integer.parseInt(in.readLine());
-                inv[j] = pD.searchItemById();
+                inv[j] = pD.getItemDex().searchItemById(itemID);
             }
 
-            userList[i] = new User (name, age, i, numPoke, team, curLoc, money, numIt, inv);
+            userList[i] = new User (userName, age, id, numPoke, team, curLoc, money, numIt, inv);
          }
          in.close();
       }
@@ -318,14 +316,12 @@ public class UserDatabase {
    public boolean readNPCs (String fileName, PokeDex pD) {
       try {
          BufferedReader in = new BufferedReader(new FileReader(fileName));
-         MAX_NPCS = in.readLine();
-         npcList = new User[MAX_NPCS];
+         npcList = new NPC [MAX_NPCS];
          String userName;
          int id, age, numPoke, pokeID, itemID, curLocID;
          Pokemon[] team; 
-         Item[] inv;
          Location curLoc;
-         for (int i = 0; i < numItemData; i++) {
+         for (int i = 0; i < MAX_NPCS; i++) {
             in.readLine();
             userName = in.readLine();
             id = Integer.parseInt(in.readLine());
@@ -333,19 +329,24 @@ public class UserDatabase {
             numPoke = Integer.parseInt(in.readLine());
             curLocID = Integer.parseInt(in.readLine());
 
-            curLoc = searchLocationById(curLocID);
+            curLoc = pD.getLocationDex().searchLocationByID(curLocID);
 
             team = new Pokemon [Person.getMaxPokemon()];
             for (int j = 0; j < numPoke; j++) {
                 pokeID = Integer.parseInt(in.readLine());
-                team[j] = pD.searchPokemonById();
+                team[j] = pD.getPokemonDex().searchPokemonById(pokeID);
             }
-            npcList[i] = new NPC (name, age, i, numPoke, team, curLoc);
+            npcList[i] = new NPC (userName, age, id, numPoke, team, curLoc);
 
-            inv = new Item [MAX_SIZE];
             for (int j = 0; j < numPoke; j++) {
                 itemID = Integer.parseInt(in.readLine());
-                npcList[i].giveItem(team[j], itemID);
+                Item it = null;
+                for (int k = 0; k < pD.getItemDex().getNumItemData(); k++) {
+                	if (itemID == pD.getItemDex().getItemList()[k].getId()) {
+                		it = pD.getItemDex().getItemList()[k];
+                	}
+                }
+                npcList[i].giveItem(team[j].getName(), it.getItemName());
             }
          }
          in.close();
@@ -384,11 +385,11 @@ public class UserDatabase {
         out.newLine();
         out.write(userList[i].getCurrentLocation().getLocationID() + "");
         out.newLine();
-        for (int j = 0; j < getNumPokemon(); j++) {
+        for (int j = 0; j < userList[i].getNumPokemon(); j++) {
             out.write(userList[i].getTeamList()[j].getID() + "");
             out.newLine();
         }
-        for (int j = 0; j < getNumItems(); j++) {
+        for (int j = 0; j < userList[i].getNumItems(); j++) {
             out.write(userList[i].getInventory()[j].getId() + "");
             out.newLine();
         }
@@ -407,7 +408,7 @@ public class UserDatabase {
    * @param id The user's ID
    */
    public boolean healTeam (int id) {
-      User u = this.searchPersonByID(id);
+      User u = this.searchUserById(id);
       return u.healTeam();
    }
 
@@ -424,7 +425,7 @@ public class UserDatabase {
             }
         }
         if (index != -1) {
-            return userList[i];
+            return userList[index];
         } else {
             for (int i = 0; i < numUsers && index == -1; i++) {
                 if (name.equals(npcList[i].getName())) {
@@ -432,7 +433,7 @@ public class UserDatabase {
                 }
             }
             if (index != -1) {
-                return npcList[i];
+                return npcList[index];
             } else {
                 return null;
             }
@@ -448,12 +449,12 @@ public class UserDatabase {
    public User searchUserById (int id) {
         int index = -1;
         for (int i = 0; i < numUsers && index == -1; i++) {
-            if (id == userList[i].getID()) {
+            if (id == userList[i].getPersonID()) {
                 index = i;
             }
         }
         if (index != -1) {
-            return userList[i];
+            return userList[index];
         } else {
             return null;
         }
@@ -465,15 +466,15 @@ public class UserDatabase {
    * @param id The NPC's ID
    * @return NPC object that corresponds with the given id
    */
-   public Person searchNPCById (int id) {
+   public NPC searchNPCById (int id) {
         int index = -1;
         for (int i = 0; i < MAX_NPCS && index == -1; i++) {
-            if (id == npcList[i].getID()) {
+            if (id == npcList[i].getPersonID()) {
                 index = i;
             }
         }
         if (index != -1) {
-            return npcList[i];
+            return npcList[index];
         } else {
             return null;
         }
