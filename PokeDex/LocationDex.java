@@ -5,20 +5,38 @@ import java.io.*;
 import java.util.*;
 
 public class LocationDex {
+    /**
+    * The number of locations data stored in the LocationDex.
+    */
     int numLocationsData;
+    /**
+    * Maximum size of the locList array.
+    */
     int MAX_SIZE = 10;
+    /**
+    * An array to store Location objects.
+    */
     Location[] locList;
-    
+    /**
+    * Constructor for LocationDex class.
+    * Initializes numLocationsData to 0.
+    */
     public LocationDex () {
         numLocationsData = 0;
     }
 
-    // Accessor method for numLocationsData
+    /**
+    * Accessor method for numLocationsData.
+    * @return The number of locations data.
+    */
    public int getNumLocationsData() {
       return numLocationsData;
    }
 
-   // Accessor method for locList
+   /**
+    * Accessor method for locList.
+    * @return The array of Location objects.
+    */
    public Location[] getLocList() {
       return locList;
    }
@@ -61,13 +79,24 @@ public class LocationDex {
         }
     }
     
-   //Wrapper method
+   /**
+    * Wrapper method for searching a location by its ID.
+    * @param id The ID of the location to search.
+    * @return The Location object if found, otherwise null.
+    */
     public Location searchLocationByID(int id){
         int left = 0;
         int right = numData-1;
         return searchLocationByID(locList, id, left, right);
     }
-   // Method to search for a location by its ID using recursive binary search
+   /**
+    * Method to search for a location by its ID using recursive binary search.
+    * @param locList The array of Location objects.
+    * @param id The ID of the location to search.
+    * @param left The left index for binary search.
+    * @param right The right index for binary search.
+    * @return The Location object if found, otherwise null.
+    */
     public Location searchLocationByID(Location[] locList, int id, int left, int right){
         int mid = left+(right-left)/2;
         if(left>right){
@@ -81,7 +110,11 @@ public class LocationDex {
         return searchLocationByID(locList, id, mid+1, right);
     }
 }
-
+    /**
+    * Searches for a location by its name.
+    * @param name The name of the location to search.
+    * @return The Location object if found, otherwise null.
+    */
     public Location searchLocationByName(String name){
         for(int i = 0; i < numData; i++){
             if(locList[i].getName().equalsIgnoreCase(name)){
@@ -90,31 +123,57 @@ public class LocationDex {
         }
         return null;
     }
-   // Method to add a city to locList
+   /**
+    * Method to add a city to locList.
+    * @param type The type of the city.
+    * @param name The name of the city.
+    * @param pokeCenter Whether the city has a Pokémon Center.
+    * @param store Whether the city has a Poké Mart.
+    */
     public void addCity(String type, String name, boolean pokeCenter, boolean store){
         locList[numData] = new City(type, name, numData ,pokeCenter, store);
         numData++;
     }
-   // Method to add a city to locList
+   /**
+    * Method to add a city to locList.
+    * @param pokeCenter Whether the city has a Pokémon Center.
+    * @param store Whether the city has a Poké Mart.
+    */
     public void addCity( boolean pokeCenter, boolean store){
         locList[numData] = new City(numData, pokeCenter,store);
         numData++;
     }
-   // Method to add a route to locList
+   /**
+    * Method to add a route to locList.
+    * @param type The type of the route.
+    * @param name The name of the route.
+    * @param routeNum The route number.
+    * @param id The ID of the route.
+    * @param pokes An array of Pokémon on the route.
+    */
     public void addRoute(String type, String name, int routeNum, int id,int[] pokes){
         if(!duplicateRouteNum){
             locList[numData] = new Route(type,name,routeNum, numData,pokes);
             numData++;
         }
     }
-   // Method to add a route to locList
+   /**
+    * Method to add a route to locList.
+    * @param type The type of the route.
+    * @param name The name of the route.
+    * @param routeNum The route number.
+    */
     public void addRoute(String type, String name, int routeNum){
         if(!duplicateRouteNum){
             locList[numData] = new Route(type, name, routeNum, numData);
             numData++;
         }
     }
-
+    /**
+    * Checks if there is a duplicate route number.
+    * @param rNum The route number to check for duplication.
+    * @return true if there is a duplicate, otherwise false.
+    */
     private boolean duplicateRouteNum(int rNum){
         for(int i = 0; i < numData; i++){
             if(locList[i] instanceof Route){
@@ -159,6 +218,10 @@ public class LocationDex {
         }
     }
 
+    /**
+    * Returns a string representation of the LocationDex.
+    * @return A string representation of the LocationDex.
+    */
     public String toString(){
         return locList.toString();
     }
