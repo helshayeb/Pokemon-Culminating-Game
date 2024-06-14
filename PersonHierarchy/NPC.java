@@ -1,6 +1,7 @@
 package PersonHierarchy;
 
 import LocationHierarchy.*;
+import Pokemon.Pokemon;
 
 /**
 * A type of Person object that users can battle 
@@ -14,7 +15,7 @@ public class NPC extends Person {
    * @param i The ID of the person, retrieved from the user database
    */
    public NPC (String n, int a, int i) {
-      super(n, a, i, 0, pokedexReference.getLocationDex.getLocationList()[0]);
+      super(n, a, i, 0, null, pokedexReference.getLocationDex().getLocList()[0]);
    }
 
    /**
@@ -25,7 +26,7 @@ public class NPC extends Person {
    * @param i The ID of the person, retrieved from the user database
    */
    public NPC (String n, int a, int i, int numP, Pokemon[] team, Location loc) {
-      super(n, a, i, numP, loc);
+      super(n, a, i, numP, team, loc);
    }
 
    /**
@@ -33,11 +34,12 @@ public class NPC extends Person {
    * @return String of the NPC object
    */
    public String toString () {
-      String s = "Name: " + name + "\nAge: " + age + "\nID: " + id + "\nNumber of Pokemon: " + numPokemon;
-      for (int i = 0; i < numPokemon; i++) {
-         s += teamList[i] + "\n";
+	  int numPoke = this.getNumPokemon();
+      String s = "Name: " + this.getName() + "\nAge: " + this.getAge() + "\nID: " + this.getPersonID() + "\nNumber of Pokemon: " + numPoke;
+      for (int i = 0; i < numPoke; i++) {
+         s += this.getTeamList()[i] + "\n";
       }
-      s += currentLocation.getName();
+      s += this.getCurrentLocation().getName();
       return s;
    }
 
