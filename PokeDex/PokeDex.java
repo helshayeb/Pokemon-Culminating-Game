@@ -18,15 +18,15 @@ public class PokeDex {
         return itDex;
     }
 
-    public ItemDex getPokemonDex () {
+    public PokemonDex getPokemonDex () {
         return pmDex;
     }
 
-    public ItemDex getLocationDex () {
+    public LocationDex getLocationDex () {
         return loDex;
     }
 
-    public ItemDex getMoveDex () {
+    public MoveDex getMoveDex () {
         return mvDex;
     }
 
