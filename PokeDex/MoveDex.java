@@ -149,7 +149,7 @@ public class MoveDex {
 	public Move searchMoveByID(int id) {
 		int left = 0;
 		int right = numMoveData - 1;
-		return searchMoveByID(moveList, id, left, right);
+		return searchMoveByID(id, left, right);
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class MoveDex {
  	* @param right Right bound
 	* @return Move if successful, null if not
 	*/
-	public Move searchMoveByID(Move[] moveList, int id, int left, int right) {
+	public Move searchMoveByID(int id, int left, int right) {
 		int mid = left + (right - left) / 2;
 		if (left > right) {
 			return null;
@@ -168,9 +168,9 @@ public class MoveDex {
 		if (moveList[mid].getMoveID() == id) {
 			return moveList[mid];
 		} else if (moveList[mid].getMoveID() > id) {
-			return searchMoveByID(moveList, id, left, mid - 1);
+			return searchMoveByID(id, left, mid - 1);
 		} else {
-			return searchMoveByID(moveList, id, mid + 1, right);
+			return searchMoveByID(id, mid + 1, right);
 		}
 	}
 
