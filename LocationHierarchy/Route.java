@@ -1,8 +1,17 @@
 package LocationHierarchy;
 
 public class Route extends Location {
+    /**
+    * An array of pokemon IDs in the Location
+    */
     int[] pokemonInLocation;
+    /**
+    * The number of the Pokemons in the Array
+    */
     int numPokemon = 0;
+    /**
+    * The unique Identification number of the Route
+    */
     int routeNum;
 
     /**
