@@ -16,7 +16,7 @@ public class LocationDex {
     /**
     * An array to store Location objects.
     */
-    Location[] locList;
+    Location[] locList = new Location[PokeDex.MAX_SIZE];
     /**
     * Constructor for LocationDex class.
     * Initializes numLocationsData to 0.
@@ -46,12 +46,13 @@ public class LocationDex {
      * @param fileName The name of the file to read from.
      * @return true if the file was successfully loaded, false otherwise.
      */
-    public boolean readLocations(String fileName){
+    public boolean readLocations(String fileName, PokemonDex PD){
         try{
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             int numLoca = Integer.parseInt(br.readLine());
             for (int i = 0; i < numLoca; i++) {
-
+                br.readLine();
+                br.readLine();
                 String type = br.readLine().toLowerCase();
                 if (type.equals("city") || type.equals("c")) {
                     locList[i] = new City(br.readLine(), br.readLine(), Integer.parseInt(br.readLine()),Boolean.parseBoolean(br.readLine()),Boolean.parseBoolean(br.readLine()));
@@ -61,14 +62,17 @@ public class LocationDex {
                     String name = br.readLine();
                     int id = Integer.parseInt(br.readLine());
                     int routeNum = Integer.parseInt(br.readLine());
-                    br.readLine();
-                    int[] list= {Integer.parseInt(br.readLine()),Integer.parseInt(br.readLine()),Integer.parseInt(br.readLine())};
+                    int len = Integer.parseInt(br.readLine());
+                    int[] list = new int[len];
+                    for (int j = 0; j < len; j++) {
+                        list[j] = PD.searchPokemonByName(br.readLine()).getID();
+                    }
                     locList[i] = new Route(region, name, id, routeNum, list);
                     numLocationsData++;
                 } else {
                     return false;
                 }
-                br.readLine();
+
             }
             return true;
         } catch(IOException iox){
@@ -79,6 +83,7 @@ public class LocationDex {
             return false;
         }
     }
+
     
    /**
     * Wrapper method for searching a location by its ID.
@@ -190,13 +195,14 @@ public class LocationDex {
      * @param fileName The name of the file to save to.
      * @return true if the data was successfully saved, false otherwise.
      */
-    public boolean saveLocations(String fileName){
+    public boolean saveLocations(String fileName, PokemonDex PD){
         try{
             File file = new File(fileName);
             file.createNewFile();
             BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
-            bw.write(locList.length); /*Number of Location*/
+            bw.write(locList.length+"\n"); /*Number of Location*/
             for (int i = 0; i < locList.length; i++) {
+                bw.write("\n\n");
                 if(locList[i] instanceof City)/*If it is city or not*/{
                     City temp = (City)(locList[i]);
                     bw.write("City\n"+ temp.getRegionType()+"\n"+ temp.getName()+"\n"+ temp.getLocationID() +"\n"+temp.getHasPokeStop() +"\n"+temp.getHasPokeCentre()+"\n");
@@ -204,10 +210,9 @@ public class LocationDex {
                     Route tempp = (Route)locList[i];
                     bw.write("Route\n" +"\n"+tempp.getRegionType()+"\n"+ tempp.getName()+"\n"+ tempp.getLocationID() + "\n"+ tempp.getRouteNum() + "\n"+tempp.getNumPokemon());
                     for (int j = 0; j < tempp.getNumPokemon(); j++) {
-                        bw.write(tempp.getPokemonInLocation()[i]+"\n");
+                        bw.write(PD.searchPokemonById(tempp.getPokemonInLocation()[i])+"\n");
                     }
                 }
-                bw.write("\n");
             }
             return true;
         }catch(IOException iox){
