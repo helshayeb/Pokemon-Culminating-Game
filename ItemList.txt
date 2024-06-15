@@ -1,4 +1,4 @@
-﻿15
+15
 
 
 HealthItem
