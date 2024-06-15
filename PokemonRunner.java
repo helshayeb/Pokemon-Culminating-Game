@@ -475,17 +475,18 @@ public class PokemonRunner {
                      if(select3 == 1){
                         iD.saveItems(ITEM_FILE);
                      }else if(select3 == 2){
-                        lD.saveLocations(LOCATION_FILE);
+                        lD.saveLocations(LOCATION_FILE, pD);
                      }else if(select3 ==3){
                         mD.saveMoves(MOVE_FILE);
                      }else if(select3 == 4){
                         pD.savePokemon(POKEMON_FILE);
                      }else if(select3 == 5){
                         iD.saveItems(ITEM_FILE);
-                        lD.saveLocations(LOCATION_FILE);
+                        lD.saveLocations(LOCATION_FILE, pD);
                         mD.saveMoves(MOVE_FILE);
                         pD.savePokemon(POKEMON_FILE);
                      }
+                     
                      System.out.println("Done!");
                   }
                }else if(select1 == 2){
