@@ -340,13 +340,15 @@ public class UserDatabase {
 
             for (int j = 0; j < numPoke; j++) {
                 itemID = Integer.parseInt(in.readLine());
-                Item it = null;
-                for (int k = 0; k < pD.getItemDex().getNumItemData(); k++) {
-                	if (itemID == pD.getItemDex().getItemList()[k].getId()) {
-                		it = pD.getItemDex().getItemList()[k];
-                	}
+                if (itemID != -1) {
+                  Item it = null;
+                  for (int k = 0; k < pD.getItemDex().getNumItemData(); k++) {
+                	   if (itemID == pD.getItemDex().getItemList()[k].getId()) {
+                		   it = pD.getItemDex().getItemList()[k];
+                	   }
+                  }
+                  npcList[i].giveItem(team[j].getName(), it.getItemName());
                 }
-                npcList[i].giveItem(team[j].getName(), it.getItemName());
             }
          }
          in.close();
