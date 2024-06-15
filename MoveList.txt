@@ -181,6 +181,7 @@ Venom Drench
 0.66
 1
 0.66
+1
 
 Status 
 Bulldoze
