@@ -33,10 +33,10 @@ public class PokemonRunner {
       PokeDex gameDatabase = new PokeDex (iD, pD, lD, mD);
       
       // Read in text files
-      lD.readLocations(LOCATION_FILE);
       iD.readItems(ITEM_FILE);
       mD.readMoves(MOVE_FILE);
       pD.readPokemon(POKEMON_FILE, gameDatabase);
+      lD.readLocations(LOCATION_FILE, pD);
       uD.readNPCs(NPC_FILE, gameDatabase);
       uD.readUsers(USER_FILE, gameDatabase);
       
