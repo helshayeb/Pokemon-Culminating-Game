@@ -63,12 +63,13 @@ public class PokemonDex{
          BufferedReader in = new BufferedReader (new FileReader (fileName));
          numPokemonData = Integer.parseInt(in.readLine());
          pokemonList = new Pokemon[numPokemonData];
-         String name = in.readLine();
+         String name;
          int type, id;
          double hp, attack, defence, speed;
          Move move1, move2, move3, move4;
          Location foundIn;
          for (int i = 0; i < numPokemonData; i++) {
+            System.out.println(i);
             name = in.readLine();
             type = Integer.parseInt(in.readLine());
             id = Integer.parseInt(in.readLine());
@@ -81,6 +82,7 @@ public class PokemonDex{
             move3 = pD.getMoveDex().searchMoveByID(Integer.parseInt(in.readLine()));
             move4 = pD.getMoveDex().searchMoveByID(Integer.parseInt(in.readLine()));
             foundIn = pD.getLocationDex().searchLocationByID(Integer.parseInt(in.readLine()));
+            in.readLine();
          
             pokemonList[i] = new Pokemon (name, type, id, hp, attack, defence, speed, move1, move2, move3, move4, foundIn);
          }
@@ -145,6 +147,7 @@ public class PokemonDex{
 	* @return Pokemon if successful, null if not
 	*/
    public Pokemon searchPokemonById (int id) {
+   System.out.println(numPokemonData);
       return searchPokemonById (id, numPokemonData-1, 0);
    }
 
@@ -158,12 +161,15 @@ public class PokemonDex{
    public Pokemon searchPokemonById (int id, int top, int bot) {
       int middle = (top + bot) / 2;
       if (top < bot) {
+
          return null;
       }
       if (pokemonList[middle].getID() == id) {
          return pokemonList[middle];
-      } else if (pokemonList[middle].getID() < id) {
+
+      } else if (pokemonList[middle].getID() > id) {
          return searchPokemonById(id, middle - 1, bot);
+
       } else {
          return searchPokemonById(id, top, middle + 1);
       }

@@ -33,10 +33,10 @@ public class PokemonRunner {
       PokeDex gameDatabase = new PokeDex (iD, pD, lD, mD);
       
       // Read in text files
-      lD.readLocations(LOCATION_FILE);
       iD.readItems(ITEM_FILE);
       mD.readMoves(MOVE_FILE);
       pD.readPokemon(POKEMON_FILE, gameDatabase);
+      lD.readLocations(LOCATION_FILE, pD);
       uD.readNPCs(NPC_FILE, gameDatabase);
       uD.readUsers(USER_FILE, gameDatabase);
       
@@ -475,17 +475,18 @@ public class PokemonRunner {
                      if(select3 == 1){
                         iD.saveItems(ITEM_FILE);
                      }else if(select3 == 2){
-                        lD.saveLocations(LOCATION_FILE);
+                        lD.saveLocations(LOCATION_FILE, pD);
                      }else if(select3 ==3){
                         mD.saveMoves(MOVE_FILE);
                      }else if(select3 == 4){
                         pD.savePokemon(POKEMON_FILE);
                      }else if(select3 == 5){
                         iD.saveItems(ITEM_FILE);
-                        lD.saveLocations(LOCATION_FILE);
+                        lD.saveLocations(LOCATION_FILE, pD);
                         mD.saveMoves(MOVE_FILE);
                         pD.savePokemon(POKEMON_FILE);
                      }
+                     
                      System.out.println("Done!");
                   }
                }else if(select1 == 2){

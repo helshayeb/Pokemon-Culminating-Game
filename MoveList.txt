@@ -181,6 +181,7 @@ Venom Drench
 0.66
 1
 0.66
+1
 
 Status 
 Bulldoze
@@ -190,6 +191,7 @@ Bulldoze
 1
 1
 0.33
+1
 
 Damage
 Earth Power

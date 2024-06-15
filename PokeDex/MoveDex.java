@@ -47,7 +47,7 @@ public class MoveDex {
 	public boolean readMoves(String fileName) {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(fileName));
-			numMoveData = Integer.parseInt(in.readLine());
+			numMoveData = Integer.parseInt(in.readLine().trim());
 			moveList = new Move[PokeDex.MAX_SIZE];
 			String objectID;
 			String moveName;
@@ -61,32 +61,32 @@ public class MoveDex {
 			int recipient;
 			int conditionApplied;
 			for (int i = 0; i < numMoveData; i++) {
-				objectID = in.readLine();
+				objectID = in.readLine().trim();
 				if (objectID.equalsIgnoreCase("Damage")) {
-					moveName = in.readLine();
-					moveType = Integer.parseInt(in.readLine());
-					moveID = Integer.parseInt(in.readLine());
-					basePower = Integer.parseInt(in.readLine());
-					in.readLine();
+					moveName = in.readLine().trim();
+					moveType = Integer.parseInt(in.readLine().trim());
+					moveID = Integer.parseInt(in.readLine().trim());
+					basePower = Integer.parseInt(in.readLine().trim());
+					in.readLine().trim();
 					moveList[i] = new DamageMove(objectID, moveName, moveType, moveID, basePower);
 				} else if (objectID.equalsIgnoreCase("Status")) {
-					moveName = in.readLine();
-					moveType = Integer.parseInt(in.readLine());
-					moveID = Integer.parseInt(in.readLine());
-					hpMod = Double.parseDouble(in.readLine());
-					atkMod = Double.parseDouble(in.readLine());
-					defMod = Double.parseDouble(in.readLine());
-					spdMod = Double.parseDouble(in.readLine());
-					recipient = Integer.parseInt(in.readLine());
-					in.readLine();
+					moveName = in.readLine().trim();
+					moveType = Integer.parseInt(in.readLine().trim());
+					moveID = Integer.parseInt(in.readLine().trim());
+					hpMod = Double.parseDouble(in.readLine().trim());
+					atkMod = Double.parseDouble(in.readLine().trim());
+					defMod = Double.parseDouble(in.readLine().trim());
+					spdMod = Double.parseDouble(in.readLine().trim());
+					recipient = Integer.parseInt(in.readLine().trim());
+					in.readLine().trim();
 					moveList[i] = new StatusMove(objectID, moveName, moveType, moveID, hpMod, atkMod, defMod, spdMod,
 							recipient);
 				} else if (objectID.equalsIgnoreCase("Condition")) {
-					moveName = in.readLine();
-					moveType = Integer.parseInt(in.readLine());
-					moveID = Integer.parseInt(in.readLine());
-					conditionApplied = Integer.parseInt(in.readLine());
-					in.readLine();
+					moveName = in.readLine().trim();
+					moveType = Integer.parseInt(in.readLine().trim());
+					moveID = Integer.parseInt(in.readLine().trim());
+					conditionApplied = Integer.parseInt(in.readLine().trim());
+					in.readLine().trim();
 					moveList[i] = new DamageMove(objectID, moveName, moveType, moveID, conditionApplied);
 				}
 			}
