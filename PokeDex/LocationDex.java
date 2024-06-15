@@ -33,7 +33,6 @@ public class LocationDex {
                 String type = br.readLine().toLowerCase();
                 if (type.equals("city") || type.equals("c")) {
                     locList[i] = new City(br.readLine(), br.readLine(), Integer.parseInt(br.readLine()),Boolean.parseBoolean(br.readLine()),Boolean.parseBoolean(br.readLine()));
-                    numLocationsData++;
                     numData++;
                 } else if(type.equals("route")||type.equals("r")){
                     String region = br.readLine();
