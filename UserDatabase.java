@@ -345,9 +345,9 @@ public class UserDatabase {
                    for (int k = 0; k < pD.getItemDex().getNumItemData(); k++) {
                    	if (itemID == pD.getItemDex().getItemList()[k].getId()) {
                    		it = pD.getItemDex().getItemList()[k];
+                        npcList[i].giveItem(team[j].getName(), it.getItemName());
                    	}
                    }
-                   npcList[i].giveItem(team[j].getName(), it.getItemName());
                 }
             }
          }
