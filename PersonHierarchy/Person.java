@@ -227,10 +227,8 @@ public class Person {
     * @param it The name of the Item
     * @return True if the item was successfully given and false otherwise
     */
-   public boolean giveItem (String poke, String it) {
+  public boolean giveItem (String poke, String it) {
       Pokemon p_temp = this.searchPokemonByNameInTeam(poke);
-      int numIt = ((User)this).getNumItems();
-      Item[] inv = ((User)this).getInventory();
       if (p_temp == null) {
          return false;
       } 
@@ -240,6 +238,8 @@ public class Person {
             p_temp.setItemHolding(i_temp);
             return true;
          } else {
+            int numIt = ((User)this).getNumItems();
+            Item[] inv = ((User)this).getInventory();
             int index = -1;
             for (int i = 0; i < numIt; i++) {
                if (inv[i].getItemName() == it) {

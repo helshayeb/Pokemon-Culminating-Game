@@ -31,6 +31,7 @@ public class PokemonRunner {
       MoveDex mD = new MoveDex ();
       UserDatabase uD = new UserDatabase ();
       PokeDex gameDatabase = new PokeDex (iD, pD, lD, mD);
+      Person.setPokedexReference(gameDatabase);
       
       // Read in text files
       iD.readItems(ITEM_FILE);
