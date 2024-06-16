@@ -46,7 +46,7 @@ public class LocationDex {
     * @param fileName The name of the file to read from.
     * @return true if the file was successfully loaded, false otherwise.
     */
-   public boolean readLocations(String fileName, PokeDex PD){
+   public boolean readLocations(String fileName){
       try{
          BufferedReader br = new BufferedReader(new FileReader(fileName));
          int numLoca = Integer.parseInt(br.readLine());
@@ -194,7 +194,7 @@ public class LocationDex {
     * @param fileName The name of the file to save to.
     * @return true if the data was successfully saved, false otherwise.
     */
-   public boolean saveLocations(String fileName, PokeDex PD){
+   public boolean saveLocations(String fileName){
       try{
          File file = new File(fileName);
          file.createNewFile();
