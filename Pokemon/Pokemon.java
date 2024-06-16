@@ -373,7 +373,7 @@ public class Pokemon{
       }else{
 	      cond = currentCondition.toString();
       }
-      String pokemonInfo = "Name: " + name + "\nType: " + getTypeName(type) + "\nID: " + id + "\nMax Health: " + maxHPStat + "\nAttack Stat: " + attackStat + "\nDefence Stat: " + defenceStat + "\nSpeedStat: " + speedStat + "\nMoves:\n" + moveList[0].getMoveName() + "\n" + moveList[1].getMoveName() + "\n" + moveList[2].getMoveName() + "\n" + moveList[3].getMoveName() + "\nCondition: " + cond + "\nLocation: " + ((Route)foundIn).getRouteNum();  
+      String pokemonInfo = "Name: " + name + "\nType: " + getTypeName(type) + "\nID: " + id + "\nMax Health: " + maxHPStat + "\nAttack Stat: " + attackStat + "\nDefence Stat: " + defenceStat + "\nSpeedStat: " + speedStat + "\nMoves:\n" + moveList[0].getMoveName() + "\n" + moveList[1].getMoveName() + "\n" + moveList[2].getMoveName() + "\n" + moveList[3].getMoveName() + "\nCondition: " + cond + "\nLocation: Route: " + ((Route)foundIn).getRouteNum();  
       return pokemonInfo;
    }
 }
