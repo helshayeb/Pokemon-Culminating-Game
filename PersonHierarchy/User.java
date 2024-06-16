@@ -242,61 +242,82 @@ public class User extends Person {
          return p_winner;
       }
       else {
-      try {
-         System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
-         challenger_pokemon = sc.nextInt() - 1;
-      
-         while (chal_team[challenger_pokemon].getCurrentHP() == 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
-            if (chal_team[challenger_pokemon].getCurrentHP() == 0 ) {
-               System.out.print("That Pokemon is dead. Please select another: ");
-            }
-            else {
-               System.out.print("That was not in the specified range. Please try another number: ");
-            }
+         try {
+            System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
             challenger_pokemon = sc.nextInt() - 1;
-            System.out.println();
-         }
          
-         defender_pokemon = ((int)Math.random() * (def_num_poke));
-      
-         while (chal_team[defender_pokemon].getCurrentHP() == 0) {
-            defender_pokemon = ((int)Math.random() * (def_num_poke));
-         }
-         
-         winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
-      
-         while (challenger_pokemon_left > 0 && defender_pokemon_left > 0) {
-            if (winner == chal_team[challenger_pokemon]) {
-               defender_pokemon_left--;
-               if (defender_pokemon_left > 0) {
-                  defender_pokemon = ((int)Math.random() * (def_num_poke));
-                  while (def_team[defender_pokemon].getCurrentHP() == 0) {
-                     defender_pokemon = ((int)Math.random() * (def_num_poke));
-                  }
-                  winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
+            while (chal_team[challenger_pokemon].getCurrentHP() == 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
+               if (chal_team[challenger_pokemon].getCurrentHP() == 0 ) {
+                  System.out.print("That Pokemon is dead. Please select another: ");
                }
-            } 
-            else {
-               challenger_pokemon_left--;
-               if (challenger_pokemon_left > 0) {
-                  System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
-                  challenger_pokemon = sc.nextInt() - 1;
-                  while (chal_team[challenger_pokemon].getCurrentHP() == 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
-                     if (chal_team[challenger_pokemon].getCurrentHP() == 0 ) {
-                        System.out.print("That Pokemon is dead. Please select another: ");
-                     }
-                     else {
-                        System.out.print("That was not in the specified range. Please try another number: ");
-                     }
-                     challenger_pokemon = sc.nextInt() - 1;
-                     System.out.println();
-                  }
-                  winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
+               else {
+                  System.out.print("That was not in the specified range. Please try another number: ");
                }
+               challenger_pokemon = sc.nextInt() - 1;
+               System.out.println();
             }
          
+            defender_pokemon = ((int)Math.random() * (def_num_poke));
+         
+            while (chal_team[defender_pokemon].getCurrentHP() == 0) {
+               defender_pokemon = ((int)(Math.random() * (def_num_poke)));
+            }
+         
+            winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
+         
+            while (challenger_pokemon_left > 0 && defender_pokemon_left > 0) {
+               if (winner == chal_team[challenger_pokemon]) {
+                  defender_pokemon_left--;
+                  if (defender_pokemon_left > 0) {
+                     defender_pokemon = ((int)(Math.random() * (def_num_poke)));
+                     while (def_team[defender_pokemon].getCurrentHP() == 0) {
+                        defender_pokemon = ((int)Math.random() * (def_num_poke));
+                     }
+                     winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
+                  }
+               } 
+               else {
+                  challenger_pokemon_left--;
+                  if (challenger_pokemon_left > 0) {
+                     System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
+                     challenger_pokemon = sc.nextInt() - 1;
+                     while (chal_team[challenger_pokemon].getCurrentHP() == 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
+                        if (chal_team[challenger_pokemon].getCurrentHP() == 0 ) {
+                           System.out.print("That Pokemon is dead. Please select another: ");
+                        }
+                        else {
+                           System.out.print("That was not in the specified range. Please try another number: ");
+                        }
+                        challenger_pokemon = sc.nextInt() - 1;
+                        System.out.println();
+                     }
+                     winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
+                  }
+               }
+            
+               for (int i = 0; i < chal_num_poke; i++) {
+                  this.resetPokemon(chal_team[i].getID());
+               }
+            
+               for (int i = 0; i < def_num_poke; i++) {
+                  other.resetPokemon(def_team[i].getID());
+                  other.moveTo(other.getPokedexReference().getLocationDex().getLocList()[11]);
+                  other.healTeam();
+               }
+            
+               if (challenger_pokemon_left == 0) {
+                  p_winner = other;
+               } else {
+                  p_winner = this;
+               }
+            }
+            return p_winner;
+         }
+         catch (InputMismatchException ime) {
             for (int i = 0; i < chal_num_poke; i++) {
-               this.resetPokemon(chal_team[i].getID());
+               this.resetPokemon(def_team[i].getID());
+               this.moveTo(this.getPokedexReference().getLocationDex().getLocList()[11]);
+               this.healTeam();
             }
          
             for (int i = 0; i < def_num_poke; i++) {
@@ -305,29 +326,8 @@ public class User extends Person {
                other.healTeam();
             }
          
-            if (challenger_pokemon_left == 0) {
-               p_winner = other;
-            } else {
-               p_winner = this;
-            }
+            return null;
          }
-         return p_winner;
-      }
-      catch (InputMismatchException ime) {
-         for (int i = 0; i < chal_num_poke; i++) {
-            this.resetPokemon(def_team[i].getID());
-            this.moveTo(this.getPokedexReference().getLocationDex().getLocList()[11]);
-            this.healTeam();
-         }
-      
-         for (int i = 0; i < def_num_poke; i++) {
-            other.resetPokemon(def_team[i].getID());
-            other.moveTo(other.getPokedexReference().getLocationDex().getLocList()[11]);
-            other.healTeam();
-         }
-      
-         return null;
-      }
       }
    }
 
