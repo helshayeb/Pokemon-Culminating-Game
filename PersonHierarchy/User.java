@@ -262,7 +262,9 @@ public class User extends Person {
             while (def_team[defender_pokemon].getCurrentHP() <= 0) {
                defender_pokemon = ((int)(Math.random() * (def_num_poke)));
             }
-         
+            
+            System.out.println(other.getName() + " sent out " + def_team[defender_pokemon].getName());
+            
             winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
          
             while (challenger_pokemon_left > 0 && defender_pokemon_left > 0) {
