@@ -87,7 +87,7 @@ public class MoveDex {
 					moveID = Integer.parseInt(in.readLine().trim());
 					conditionApplied = Integer.parseInt(in.readLine().trim());
 					in.readLine().trim();
-					moveList[i] = new DamageMove(objectID, moveName, moveType, moveID, conditionApplied);
+					moveList[i] = new ConditionMove(objectID, moveName, moveType, moveID, conditionApplied);
 				}
 			}
 			in.close();
