@@ -267,7 +267,6 @@ public class User extends Person {
          
             while (challenger_pokemon_left > 0 && defender_pokemon_left > 0) {
                if (def_team[defender_pokemon].getCurrentHP() <= 0) {
-                  System.out.println("balls");
                   defender_pokemon_left--;
                   if (defender_pokemon_left > 0) {
                      defender_pokemon = ((int)(Math.random() * (def_num_poke)));
