@@ -2,7 +2,7 @@ package LocationHierarchy;
 
 public class Route extends Location {
     /**
-    * An array of pokemon IDs in the Location
+    * An array of pokemon names in the Location
     */
     String[] pokemonInLocation;
     /**
@@ -19,8 +19,9 @@ public class Route extends Location {
      * 
      * @param type The type of region where the location is situated.
      * @param name The name of the location.
+     * @param routeNum The route's number.
      * @param id The unique identifier for the location.
-     * @param pokes The list of pokemon ids
+     * @param pokes The list of pokemon names
      */
     public Route(String type, String name, int routeNum, int id, String[] pokes){
         super(type, name, id);
@@ -33,6 +34,7 @@ public class Route extends Location {
      * 
      * @param type The type of region where the location is situated.
      * @param name The name of the location.
+     * @param routeNum The route's number.
      * @param id The unique identifier for the location.
      */
     public Route(String type, String name, int routeNum, int id){
@@ -42,9 +44,10 @@ public class Route extends Location {
     }
 
     /**
-     * Constructs a new Route object with specified type, name, id.
+     * Constructs a new Route object with specified id, route number, and list pof Pokemon names.
      * 
      * @param id The unique identifier for the location.
+     * @param routeNum The route's number.
      * @param pokes The list of pokemon ids
      */
     public Route(int id, int routeNum, String[] pokes){
