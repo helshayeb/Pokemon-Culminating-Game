@@ -1,4 +1,4 @@
-10
+18
 
 
 Route
@@ -15,7 +15,7 @@ Skiploom
 Shaymin
 
 
-Route 
+Route
 Ocean
 Route: 2
 1
@@ -157,7 +157,7 @@ true
 true
 
 
-City 
+City
 Town
 Oldale Town
 12
@@ -165,7 +165,7 @@ true
 true
 
 
-City 
+City
 City
 Petalburg City
 13
