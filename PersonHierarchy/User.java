@@ -440,15 +440,19 @@ public class User extends Person {
       
          switch (select) {
             case 1:
+               System.out.println(challenger.getName() + " used " + challenger.getMoveList()[0]);
                challenger.attack(defender, challenger.getMoveList()[0]);
                break;
             case 2:
+               System.out.println(challenger.getName() + " used " + challenger.getMoveList()[0]);
                challenger.attack(defender, challenger.getMoveList()[1]);
                break;
             case 3:
+               System.out.println(challenger.getName() + " used " + challenger.getMoveList()[0]);
                challenger.attack(defender, challenger.getMoveList()[2]);
                break;
             case 4:
+               System.out.println(challenger.getName() + " used " + challenger.getMoveList()[0]);
                challenger.attack(defender, challenger.getMoveList()[3]);
                break;
             case 5:
@@ -457,6 +461,8 @@ public class User extends Person {
                   this.userTurn(challenger, defender);
                } else {
                   challenger.consumeItem(challenger.getItemHolding());
+                  System.out.println(challenger.getName() + " used their item.");
+                  challenger.setItemHolding(null);
                }
                break;
             default:
