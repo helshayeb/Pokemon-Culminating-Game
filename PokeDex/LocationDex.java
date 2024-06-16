@@ -46,7 +46,7 @@ public class LocationDex {
     * @param fileName The name of the file to read from.
     * @return true if the file was successfully loaded, false otherwise.
     */
-   public boolean readLocations(String fileName){
+   public boolean readLocations(String fileName, PokeDex PD){
       try{
          BufferedReader br = new BufferedReader(new FileReader(fileName));
          int numLoca = Integer.parseInt(br.readLine());
