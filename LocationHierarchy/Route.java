@@ -4,7 +4,7 @@ public class Route extends Location {
     /**
     * An array of pokemon IDs in the Location
     */
-    int[] pokemonInLocation;
+    int[] pokemonInLocation = new int[200];
     /**
     * The number of the Pokemons in the Array
     */
@@ -24,7 +24,10 @@ public class Route extends Location {
      */
     public Route(String type, String name, int routeNum, int id,int[] pokes){
         super(type, name, id);
-        pokemonInLocation = pokes;
+        for (int i = 0; i < pokes.length; i++) {
+            pokemonInLocation[numPokemon] = pokes[i];
+            numPokemon ++;
+        }
         this.routeNum = routeNum;
     }
 
@@ -37,7 +40,6 @@ public class Route extends Location {
      */
     public Route(String type, String name, int routeNum, int id){
         super(type, name, id);
-        pokemonInLocation = new int[200];
         this.routeNum = routeNum;
     }
 
@@ -49,16 +51,17 @@ public class Route extends Location {
      */
     public Route(int id, int routeNum,int[] pokes){
         super(id);
-        pokemonInLocation = pokes;
+        for (int i = 0; i < pokes.length; i++) {
+            pokemonInLocation[numPokemon] = pokes[i];
+            numPokemon ++;
+        }
         this.routeNum = routeNum;
     }
 
     // Accessors (Getters)
     /**
      * Accesses pokemonInLocation.
-     * 
-     * @param id The unique identifier for the location.
-     * @param pokes The list of pokemon ids
+     *
      */
     public int[] getPokemonInLocation() {
         return pokemonInLocation;
@@ -67,7 +70,7 @@ public class Route extends Location {
     // Accessors (Getters)
     /**
      * Accesses pokemonInLocation.
-     * 
+     * return: numPokemon
      */
     public int getNumPokemon(){
         return numPokemon;
@@ -75,7 +78,7 @@ public class Route extends Location {
 
     /**
      * Accesses routeNum.
-     * 
+     * return: routeNum
      */
     public int getRouteNum() {
         return routeNum;
@@ -92,7 +95,7 @@ public class Route extends Location {
 
     /**
      * Changes routeNum.
-     * 
+     * @param routeNum
      */
     public void setRouteNum(int routeNum) {
         this.routeNum = routeNum;
