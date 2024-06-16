@@ -105,13 +105,7 @@ public class Route extends Location {
      * @return String Information about the Route
      */
     public String toString(){
-        String str = super.toString();
-        str += ("\nRoute Number: "+ routeNum);
-        str += ("\nPokemon IDs: ");
-        for(int i = 0; i< pokemonInLocation.length; i++){
-            str+= pokemonInLocation[i]+", ";
-        }
-        return str;
+        return "Route: " + routeNum;
     }
     
 }
