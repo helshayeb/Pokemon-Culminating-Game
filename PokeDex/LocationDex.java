@@ -1,21 +1,42 @@
+package PokeDex;
+
+import LocationHierarchy.*;
 import java.io.*;
 import java.util.*;
 
 public class LocationDex {
+    /**
+    * The number of locations data stored in the LocationDex.
+    */
     int numLocationsData;
+    /**
+    * Maximum size of the locList array.
+    */
     int MAX_SIZE = 10;
-    Location[] locList;
-    
+    /**
+    * An array to store Location objects.
+    */
+    Location[] locList = new Location[PokeDex.MAX_SIZE];
+    /**
+    * Constructor for LocationDex class.
+    * Initializes numLocationsData to 0.
+    */
     public LocationDex () {
         numLocationsData = 0;
     }
 
-    // Accessor method for numLocationsData
+    /**
+    * Accessor method for numLocationsData.
+    * @return The number of locations data.
+    */
    public int getNumLocationsData() {
       return numLocationsData;
    }
 
-   // Accessor method for locList
+   /**
+    * Accessor method for locList.
+    * @return The array of Location objects.
+    */
    public Location[] getLocList() {
       return locList;
    }
@@ -25,28 +46,33 @@ public class LocationDex {
      * @param fileName The name of the file to read from.
      * @return true if the file was successfully loaded, false otherwise.
      */
-    public boolean readLocations(String fileName){
+    public boolean readLocations(String fileName, PokemonDex PD){
         try{
             BufferedReader br = new BufferedReader(new FileReader(fileName));
-            for (int i = 0; i < Integer.parseInt(br.readLine()); i++) {
-
+            int numLoca = Integer.parseInt(br.readLine());
+            for (int i = 0; i < numLoca; i++) {
+                br.readLine();
+                br.readLine();
                 String type = br.readLine().toLowerCase();
                 if (type.equals("city") || type.equals("c")) {
                     locList[i] = new City(br.readLine(), br.readLine(), Integer.parseInt(br.readLine()),Boolean.parseBoolean(br.readLine()),Boolean.parseBoolean(br.readLine()));
-                    numData++;
+                    numLocationsData++;
                 } else if(type.equals("route")||type.equals("r")){
                     String region = br.readLine();
                     String name = br.readLine();
                     int id = Integer.parseInt(br.readLine());
                     int routeNum = Integer.parseInt(br.readLine());
-                    br.readLine();
-                    int[] list= {Integer.parseInt(br.readLine()),Integer.parseInt(br.readLine()),Integer.parseInt(br.readLine())};
+                    int len = Integer.parseInt(br.readLine());
+                    int[] list = new int[len];
+                    for (int j = 0; j < len; j++) {
+                        list[j] = PD.searchPokemonByName(br.readLine()).getID();
+                    }
                     locList[i] = new Route(region, name, id, routeNum, list);
-                    numData++;
+                    numLocationsData++;
                 } else {
                     return false;
                 }
-                br.readLine();
+
             }
             return true;
         } catch(IOException iox){
@@ -58,93 +84,135 @@ public class LocationDex {
         }
     }
 
-   //Wrapper method
+    
+   /**
+    * Wrapper method for searching a location by its ID.
+    * @param id The ID of the location to search.
+    * @return The Location object if found, otherwise null.
+    */
     public Location searchLocationByID(int id){
         int left = 0;
-        int right = numData-1;
+        int right = numLocationsData-1;
         return searchLocationByID(locList, id, left, right);
     }
-   // Method to search for a location by its ID using recursive binary search
+   /**
+    * Method to search for a location by its ID using recursive binary search.
+    * @param locList The array of Location objects.
+    * @param id The ID of the location to search.
+    * @param left The left index for binary search.
+    * @param right The right index for binary search.
+    * @return The Location object if found, otherwise null.
+    */
     public Location searchLocationByID(Location[] locList, int id, int left, int right){
         int mid = left+(right-left)/2;
         if(left>right){
             return null;
         }
-        if(locList[mid].getLoactionID() == id){
+        if(locList[mid].getLocationID() == id){
             return locList[mid];
-        }else if(locList[mid].getLoactionID() > id){
+        }else if(locList[mid].getLocationID() > id){
         return searchLocationByID(locList, id, left, mid-1);
     }else{
         return searchLocationByID(locList, id, mid+1, right);
     }
 }
-
+    /**
+    * Searches for a location by its name.
+    * @param name The name of the location to search.
+    * @return The Location object if found, otherwise null.
+    */
     public Location searchLocationByName(String name){
-        for(int i = 0; i < numData; i++){
+        for(int i = 0; i < numLocationsData; i++){
             if(locList[i].getName().equalsIgnoreCase(name)){
                 return locList[i];
             }
         }
         return null;
     }
-   // Method to add a city to locList
+   /**
+    * Method to add a city to locList.
+    * @param type The type of the city.
+    * @param name The name of the city.
+    * @param pokeCenter Whether the city has a Pokémon Center.
+    * @param store Whether the city has a Poké Mart.
+    */
     public void addCity(String type, String name, boolean pokeCenter, boolean store){
-        locList[numData] = new City(type, name, numData ,pokeCenter, store);
-        numData++;
+        locList[numLocationsData] = new City(type, name, numLocationsData ,pokeCenter, store);
+        numLocationsData++;
     }
-   // Method to add a city to locList
+   /**
+    * Method to add a city to locList.
+    * @param pokeCenter Whether the city has a Pokémon Center.
+    * @param store Whether the city has a Poké Mart.
+    */
     public void addCity( boolean pokeCenter, boolean store){
-        locList[numData] = new City(numData, pokeCenter,store);
-        numData++;
+        locList[numLocationsData] = new City(numLocationsData, pokeCenter,store);
+        numLocationsData++;
     }
-   // Method to add a route to locList
+   /**
+    * Method to add a route to locList.
+    * @param type The type of the route.
+    * @param name The name of the route.
+    * @param routeNum The route number.
+    * @param id The ID of the route.
+    * @param pokes An array of Pokémon on the route.
+    */
     public void addRoute(String type, String name, int routeNum, int id,int[] pokes){
-        if(!duplicateRouteNum){
-            locList[numData] = new Route(type,name,routeNum, numData,pokes);
-            numData++;
+        if(!duplicateRouteNum(routeNum)){
+            locList[numLocationsData] = new Route(type,name,routeNum, numLocationsData,pokes);
+            numLocationsData++;
         }
     }
-   // Method to add a route to locList
+   /**
+    * Method to add a route to locList.
+    * @param type The type of the route.
+    * @param name The name of the route.
+    * @param routeNum The route number.
+    */
     public void addRoute(String type, String name, int routeNum){
-        if(!duplicateRouteNum){
-            locList[numData] = new Route(type, name, routeNum, numData);
-        numData++;
+        if(!duplicateRouteNum(routeNum)){
+            locList[numLocationsData] = new Route(type, name, routeNum, numLocationsData);
+            numLocationsData++;
+        }
     }
-    }
-
+    /**
+    * Checks if there is a duplicate route number.
+    * @param rNum The route number to check for duplication.
+    * @return true if there is a duplicate, otherwise false.
+    */
     private boolean duplicateRouteNum(int rNum){
-        for(int i = 0; i < numData; i++){
+        for(int i = 0; i < numLocationsData; i++){
             if(locList[i] instanceof Route){
-                if((Route)(locList).getRouteNum() == rNum)
+                if(((Route)(locList[i])).getRouteNum() == rNum)
                     return true;
             } 
         }
-        return false
+        return false;
     }
 
-    /**
+     /**
      * Saves location data from locList array to a file.
      * @param fileName The name of the file to save to.
      * @return true if the data was successfully saved, false otherwise.
      */
-    public boolean saveLocations(String fileName){
+    public boolean saveLocations(String fileName, PokemonDex PD){
         try{
             File file = new File(fileName);
             file.createNewFile();
             BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
-            bw.write(locList.length); /*Number of Location*/
+            bw.write(locList.length+"\n"); /*Number of Location*/
             for (int i = 0; i < locList.length; i++) {
+                bw.write("\n\n");
                 if(locList[i] instanceof City)/*If it is city or not*/{
                     City temp = (City)(locList[i]);
-                    bw.write("City\n"+ temp.getRegionType()+"\n"+ temp.getName()+"\n"+ temp.getLoactionID() +"\n"+temp.getHasStore() +"\n"+temp.getHasPokeCentre()+"\n");
+                    bw.write("City\n"+ temp.getRegionType()+"\n"+ temp.getName()+"\n"+ temp.getLocationID() +"\n"+temp.getHasPokeStop() +"\n"+temp.getHasPokeCentre()+"\n");
                 } else if(locList[i] instanceof Route)/*If it is route or not*/{
                     Route tempp = (Route)locList[i];
-                    bw.write("Route\n" +"\n"+tempp.getRegionType()+"\n"+ tempp.getName()+"\n"+ tempp.getLoactionID() + "\n"+ tempp.getRouteNum() + "\n"+tempp.getNumPokemon());
+                    bw.write("Route\n" +"\n"+tempp.getRegionType()+"\n"+ tempp.getName()+"\n"+ tempp.getLocationID() + "\n"+ tempp.getRouteNum() + "\n"+tempp.getNumPokemon());
                     for (int j = 0; j < tempp.getNumPokemon(); j++) {
-                        bw.write(tempp.getPokemonInLocation()[i]+"\n");
+                        bw.write(PD.searchPokemonById(tempp.getPokemonInLocation()[i])+"\n");
                     }
                 }
-                bw.write("\n");
             }
             return true;
         }catch(IOException iox){
@@ -154,9 +222,5 @@ public class LocationDex {
             System.out.println("Some other error occurred");
             return false;
         }
-    }
-
-    public String toString(){
-        return locList.toString();
     }
 }
