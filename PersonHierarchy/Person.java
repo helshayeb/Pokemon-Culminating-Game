@@ -227,7 +227,7 @@ public class Person {
     * @param it The name of the Item
     * @return True if the item was successfully given and false otherwise
     */
-  public boolean giveItem (String poke, String it) {
+   public boolean giveItem (String poke, String it) {
       Pokemon p_temp = this.searchPokemonByNameInTeam(poke);
       if (p_temp == null) {
          return false;
