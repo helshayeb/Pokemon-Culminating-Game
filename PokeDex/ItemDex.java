@@ -160,7 +160,7 @@ public class ItemDex {
          return itemList[middle];
       } else if (top == bot) {
          return null;
-      }else if (itemList[middle].getId() < id) {
+      }else if (itemList[middle].getId() > id) {
          return searchItemById(id, middle - 1, bot);
       } else {
          return searchItemById(id, top, middle + 1);
