@@ -369,7 +369,7 @@ public class UserDatabase {
    public boolean saveUsers (String fileName) {
     try {
        BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
-       out.write(numUsers);
+       out.write("" + numUsers);
        out.newLine();
        for (int i = 0; i < numUsers; i++) {
         out.newLine();

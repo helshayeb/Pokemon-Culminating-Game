@@ -37,7 +37,7 @@ public class PokemonRunner {
       iD.readItems(ITEM_FILE);
       mD.readMoves(MOVE_FILE);
       pD.readPokemon(POKEMON_FILE, gameDatabase);
-      lD.readLocations(LOCATION_FILE, pD);
+      lD.readLocations(LOCATION_FILE, gameDatabase);
       uD.readNPCs(NPC_FILE, gameDatabase);
       uD.readUsers(USER_FILE, gameDatabase);
       
@@ -278,222 +278,222 @@ public class PokemonRunner {
                            }
                            mD.addConditionMove(moveName, type, conditionAppliedID);       
                         }
-                     }else if(select2 == 2){ // user chooses to search for a Pokemon
-                        System.out.println("Enter the number corresponding to how you want to seach for a Pokemon: ");
-                        System.out.println("1) The Pokemon's ID.");
-                        System.out.println("2) The Pokemon's Name.");
-                        System.out.println("3) The Pokemon's Location and Type.");
-                        System.out.println("0) Exit.");
-                        select3 = sc.nextInt();
-                        while (select3 < 0 || select3 > 3) {
-                           System.out.print("That is not a possible option. Try again: ");
-                           select3 = sc.nextInt();
-                        }
-                        sc.nextLine();
-                        Pokemon result;
-                        Pokemon results[];
-                        if(select3 == 1){
-                           System.out.println("Enter the Pokemon's ID: ");
-                           int id = sc.nextInt();
-                        
-                           result = pD.searchPokemonById(id);
-                           if(result != null){
-                              System.out.println("Found! Here is the information about that Pokemon: ");
-                              System.out.println(result);
-                           }else{
-                              System.out.println("Pokemon not found");
-                           }
-                        }else if(select3 == 2){
-                           System.out.println("Enter the Pokemon's Name: ");
-                           String name = sc.nextLine();
-                        
-                           result = pD.searchPokemonByName(name);
-                           if(result != null){
-                              System.out.println("Found! Here is the information about that Pokemon: ");
-                              System.out.println(result);
-                           }else{
-                              System.out.println("Pokemon not found");
-                           }
-                        }else if(select3 == 3){
-                           System.out.println("Enter the Pokemon's Location: ");
-                           String loca = sc.nextLine();
-                        
-                           System.out.println("Enter the type of the Move: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
-                           int type = sc.nextInt();
-                           while (type < 0 || type > 8) {
-                              System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
-                              type = sc.nextInt();
-                           }
-                        
-                           results = pD.searchPokemonByLocationAndType(loca, type, lD);
-                           if(results != null){
-                              System.out.println("Found! Here is the information about those Pokemon: ");
-                              for (int i = 0; i < results.length; i++) {
-                                 System.out.println(results[i]);
-                              }
-                           }else{
-                              System.out.println("Pokemon not found");
-                           }
-                        }
-                     }else if (select2 == 3){ // User searches for an Item
-                        System.out.println("Enter the number corresponding to how you want to seach for an Item: ");
-                        System.out.println("1) The Item's ID.");
-                        System.out.println("2) The Item's Name.");
-                        System.out.println("0) Exit.");
-                        select3 = sc.nextInt();
-                        while (select3 < 0 || select3 > 2) {
-                           System.out.print("That is not a possible option. Try again: ");
-                           select3 = sc.nextInt();
-                        }
-                        sc.nextLine();
-                        Item result;
-                        if(select3 == 1){
-                           System.out.println("Enter the Item's ID: ");
-                           int id = sc.nextInt();
-                        
-                           result = iD.searchItemById(id);
-                           if(result != null){
-                              System.out.println("Found! Here is the information about that Item: ");
-                              System.out.println(result);
-                           }else{
-                              System.out.println("Item not found");
-                           }
-                        }else if(select3 == 2){
-                           System.out.println("Enter the Item's Name: ");
-                           String name = sc.nextLine();
-                        
-                           result = iD.searchItemByName(name);
-                           if(result != null){
-                              System.out.println("Found! Here is the information about that Item: ");
-                              System.out.println(result);
-                           }else{
-                              System.out.println("Item not found");
-                           }
-                        }
-                     }else if (select2 == 4){ // User searches for a Move
-                        System.out.println("Enter the number corresponding to how you want to seach for a Move: ");
-                        System.out.println("1) The Move's ID.");
-                        System.out.println("2) The Move's Name.");
-                        System.out.println("0) Exit.");
-                        select3 = sc.nextInt();
-                        while (select3 < 0 || select3 > 2) {
-                           System.out.print("That is not a possible option. Try again: ");
-                           select3 = sc.nextInt();
-                        }
-                        sc.nextLine();
-                        Move result;
-                        if(select3 == 1){
-                           System.out.println("Enter the Move's ID: ");
-                           int id = sc.nextInt();
-                        
-                           result = mD.searchMoveByID(id);
-                           if(result != null){
-                              System.out.println("Found! Here is the information about that Move: ");
-                              System.out.println(result);
-                           }else{
-                              System.out.println("Move not found");
-                           }
-                        }else if(select3 == 2){
-                           System.out.println("Enter the Move's Name: ");
-                           String name = sc.nextLine();
-                        
-                           result = mD.searchMoveByName(name);
-                           if(result != null){
-                              System.out.println("Found! Here is the information about that Move: ");
-                              System.out.println(result);
-                           }else{
-                              System.out.println("Move not found");
-                           }
-                        }
-                     }else if (select2 == 5){ // User searches for a Location
-                        System.out.println("Enter the number corresponding to how you want to seach for a Location: ");
-                        System.out.println("1) The Location's ID.");
-                        System.out.println("2) The Location's Name.");
-                        System.out.println("0) Exit.");
-                        select3 = sc.nextInt();
-                        while (select3 < 0 || select3 > 2) {
-                           System.out.print("That is not a possible option. Try again: ");
-                           select3 = sc.nextInt();
-                        }
-                        sc.nextLine();
-                        Location result;
-                        if(select3 == 1){
-                           System.out.println("Enter the Location's ID: ");
-                           int id = sc.nextInt();
-                        
-                           result = lD.searchLocationByID(id);
-                           if(result != null){
-                              System.out.println("Found! Here is the information about that Location: ");
-                              System.out.println(result);
-                           }else{
-                              System.out.println("Location not found");
-                           }
-                        }else if(select3 == 2){
-                           System.out.println("Enter the Location's Name: ");
-                           String name = sc.nextLine();
-                        
-                           result = lD.searchLocationByName(name);
-                           if(result != null){
-                              System.out.println("Found! Here is the information about that Location: ");
-                              System.out.println(result);
-                           }else{
-                              System.out.println("Location not found");
-                           }
-                        }
-                     }else if(select2 == 6){ // User chooses to sort PokemonDex
-                        System.out.println("Enter the number corresponding to how you want to sort the Pokemon database: ");
-                        System.out.println("1) Sort by HP stat.");
-                        System.out.println("2) Sort by Attack stat.");
-                        System.out.println("3) Sort by ID.");
-                        System.out.println("4) Sort by Type and ID.");
-                        System.out.println("0) Exit.");
-                        select3 = sc.nextInt();
-                        while (select3 < 0 || select3 > 4) {
-                           System.out.print("That is not a possible option. Try again: ");
-                           select3 = sc.nextInt();
-                        }
-                        if(select3 == 1){
-                           pD.sortByHpStat();
-                        }else if(select3 == 2){
-                           pD.sortByAtkStat();
-                        }else if(select3 ==3){
-                           pD.sortPokemonByID();
-                        }else if(select3 == 4){
-                           pD.sortPokemonByTypeAndID();
-                        }
-                        System.out.println("Done!");
-                     }else if(select2 == 7){ // User chooses to save the game
-                        System.out.println("Enter the number corresponding to what you want to save: ");
-                        System.out.println("1) Save the Item database.");
-                        System.out.println("2) Save the Location database.");
-                        System.out.println("3) Save the Move database.");
-                        System.out.println("4) Save the Pokemon database.");
-                        System.out.println("5) Save the entire game.");
-                        System.out.println("0) Exit.");
-                        select3 = sc.nextInt();
-                        while (select3 < 0 || select3 > 5) {
-                           System.out.print("That is not a possible option. Try again: ");
-                           select3 = sc.nextInt();
-                        }
-                        if(select3 == 1){
-                           iD.saveItems(ITEM_FILE);
-                        }else if(select3 == 2){
-                           lD.saveLocations(LOCATION_FILE, pD);
-                        }else if(select3 ==3){
-                           mD.saveMoves(MOVE_FILE);
-                        }else if(select3 == 4){
-                           pD.savePokemon(POKEMON_FILE);
-                        }else if(select3 == 5){
-                           iD.saveItems(ITEM_FILE);
-                           lD.saveLocations(LOCATION_FILE, pD);
-                           mD.saveMoves(MOVE_FILE);
-                           pD.savePokemon(POKEMON_FILE);
-                        }
-                     
-                        System.out.println("Done!");
                      }
+                  }else if(select2 == 2){ // user chooses to search for a Pokemon
+                     System.out.println("Enter the number corresponding to how you want to seach for a Pokemon: ");
+                     System.out.println("1) The Pokemon's ID.");
+                     System.out.println("2) The Pokemon's Name.");
+                     System.out.println("3) The Pokemon's Location and Type.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 3) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     sc.nextLine();
+                     Pokemon result;
+                     Pokemon results[];
+                     if(select3 == 1){
+                        System.out.println("Enter the Pokemon's ID: ");
+                        int id = sc.nextInt();
+                        
+                        result = pD.searchPokemonById(id);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Pokemon: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Pokemon not found");
+                        }
+                     }else if(select3 == 2){
+                        System.out.println("Enter the Pokemon's Name: ");
+                        String name = sc.nextLine();
+                        
+                        result = pD.searchPokemonByName(name);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Pokemon: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Pokemon not found");
+                        }
+                     }else if(select3 == 3){
+                        System.out.println("Enter the Pokemon's Location: ");
+                        String loca = sc.nextLine();
+                        
+                        System.out.println("Enter the type of the Move: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
+                        int type = sc.nextInt();
+                        while (type < 0 || type > 8) {
+                           System.out.print("That is not a possible option. Enter a number from 0 to 8: \n0 = Normal \n1 = Flying \n2 = Poison \n3 = Ground \n4 = Fire \n5 = Water \n6 = Grass \n7 = Electric \n8 = Psychic");
+                           type = sc.nextInt();
+                        }
+                        
+                        results = pD.searchPokemonByLocationAndType(loca, type, lD);
+                        if(results != null){
+                           System.out.println("Found! Here is the information about those Pokemon: ");
+                           for (int i = 0; i < results.length; i++) {
+                              System.out.println(results[i]);
+                           }
+                        }else{
+                           System.out.println("Pokemon not found");
+                        }
+                     }
+                  }else if (select2 == 3){ // User searches for an Item
+                     System.out.println("Enter the number corresponding to how you want to seach for an Item: ");
+                     System.out.println("1) The Item's ID.");
+                     System.out.println("2) The Item's Name.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 2) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     sc.nextLine();
+                     Item result;
+                     if(select3 == 1){
+                        System.out.println("Enter the Item's ID: ");
+                        int id = sc.nextInt();
+                        
+                        result = iD.searchItemById(id);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Item: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Item not found");
+                        }
+                     }else if(select3 == 2){
+                        System.out.println("Enter the Item's Name: ");
+                        String name = sc.nextLine();
+                        
+                        result = iD.searchItemByName(name);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Item: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Item not found");
+                        }
+                     }
+                  }else if (select2 == 4){ // User searches for a Move
+                     System.out.println("Enter the number corresponding to how you want to seach for a Move: ");
+                     System.out.println("1) The Move's ID.");
+                     System.out.println("2) The Move's Name.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 2) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     sc.nextLine();
+                     Move result;
+                     if(select3 == 1){
+                        System.out.println("Enter the Move's ID: ");
+                        int id = sc.nextInt();
+                        
+                        result = mD.searchMoveByID(id);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Move: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Move not found");
+                        }
+                     }else if(select3 == 2){
+                        System.out.println("Enter the Move's Name: ");
+                        String name = sc.nextLine();
+                        
+                        result = mD.searchMoveByName(name);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Move: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Move not found");
+                        }
+                     }
+                  }else if (select2 == 5){ // User searches for a Location
+                     System.out.println("Enter the number corresponding to how you want to seach for a Location: ");
+                     System.out.println("1) The Location's ID.");
+                     System.out.println("2) The Location's Name.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 2) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     sc.nextLine();
+                     Location result;
+                     if(select3 == 1){
+                        System.out.println("Enter the Location's ID: ");
+                        int id = sc.nextInt();
+                        
+                        result = lD.searchLocationByID(id);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Location: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Location not found");
+                        }
+                     }else if(select3 == 2){
+                        System.out.println("Enter the Location's Name: ");
+                        String name = sc.nextLine();
+                        
+                        result = lD.searchLocationByName(name);
+                        if(result != null){
+                           System.out.println("Found! Here is the information about that Location: ");
+                           System.out.println(result);
+                        }else{
+                           System.out.println("Location not found");
+                        }
+                     }
+                  }else if(select2 == 6){ // User chooses to sort PokemonDex
+                     System.out.println("Enter the number corresponding to how you want to sort the Pokemon database: ");
+                     System.out.println("1) Sort by HP stat.");
+                     System.out.println("2) Sort by Attack stat.");
+                     System.out.println("3) Sort by ID.");
+                     System.out.println("4) Sort by Type and ID.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 4) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     if(select3 == 1){
+                        pD.sortByHpStat();
+                     }else if(select3 == 2){
+                        pD.sortByAtkStat();
+                     }else if(select3 ==3){
+                        pD.sortPokemonByID();
+                     }else if(select3 == 4){
+                        pD.sortPokemonByTypeAndID();
+                     }
+                     System.out.println("Done!");
+                  }else if(select2 == 7){ // User chooses to save the game
+                     System.out.println("Enter the number corresponding to what you want to save: ");
+                     System.out.println("1) Save the Item database.");
+                     System.out.println("2) Save the Location database.");
+                     System.out.println("3) Save the Move database.");
+                     System.out.println("4) Save the Pokemon database.");
+                     System.out.println("5) Save the entire game.");
+                     System.out.println("0) Exit.");
+                     select3 = sc.nextInt();
+                     while (select3 < 0 || select3 > 5) {
+                        System.out.print("That is not a possible option. Try again: ");
+                        select3 = sc.nextInt();
+                     }
+                     if(select3 == 1){
+                        iD.saveItems(ITEM_FILE);
+                     }else if(select3 == 2){
+                        lD.saveLocations(LOCATION_FILE, pD);
+                     }else if(select3 ==3){
+                        mD.saveMoves(MOVE_FILE);
+                     }else if(select3 == 4){
+                        pD.savePokemon(POKEMON_FILE);
+                     }else if(select3 == 5){
+                        iD.saveItems(ITEM_FILE);
+                        lD.saveLocations(LOCATION_FILE, pD);
+                        mD.saveMoves(MOVE_FILE);
+                        pD.savePokemon(POKEMON_FILE);
+                     }
+                     
+                     System.out.println("Done!");
                   }
-               }
+               }     
             }
             else if(select1 == 2){
                System.out.println("Enter the number corresponding to what you want to search for: ");
