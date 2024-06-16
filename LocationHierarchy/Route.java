@@ -2,9 +2,9 @@ package LocationHierarchy;
 
 public class Route extends Location {
     /**
-    * An array of pokemon names in the Location
+    * An array of pokemon IDs in the Location
     */
-    String[] pokemonInLocation;
+    String[] pokemonInLocation = new String[200];
     /**
     * The number of the Pokemons in the Array
     */
@@ -20,11 +20,16 @@ public class Route extends Location {
      * @param type The type of region where the location is situated.
      * @param name The name of the location.
      * @param id The unique identifier for the location.
-     * @param pokes The list of pokemon names
+     * @param pokes The list of pokemon ids
      */
-    public Route(String type, String name, int id, int routeNum, String[] pokes){
+    public Route(String type, String name, int routeNum, int id, String[] pokes){
         super(type, name, id);
-        pokemonInLocation = pokes;
+        for (int i = 0; i < pokes.length; i++) {
+            if(pokes[i] != null) {
+                pokemonInLocation[numPokemon] = pokes[i];
+                numPokemon++;
+            }
+        }
         this.routeNum = routeNum;
     }
 
@@ -37,29 +42,30 @@ public class Route extends Location {
      */
     public Route(String type, String name, int routeNum, int id){
         super(type, name, id);
-        pokemonInLocation = new String[200];
         this.routeNum = routeNum;
     }
 
     /**
-     * Constructs a new Route object with specified id, route number, and list pof Pokemon names.
+     * Constructs a new Route object with specified type, name, id.
      * 
      * @param id The unique identifier for the location.
-     * @param routeNum The route's number.
      * @param pokes The list of pokemon ids
      */
-    public Route(int id, int routeNum, String[] pokes){
+    public Route(int id, int routeNum, String [] pokes){
         super(id);
-        pokemonInLocation = pokes;
+        for (int i = 0; i < pokes.length; i++) {
+            if(pokes[i] != null) {
+                pokemonInLocation[numPokemon] = pokes[i];
+                numPokemon++;
+            }
+        }
         this.routeNum = routeNum;
     }
 
     // Accessors (Getters)
     /**
      * Accesses pokemonInLocation.
-     * 
-     * @param id The unique identifier for the location.
-     * @param pokes The list of pokemon ids
+     *
      */
     public String[] getPokemonInLocation() {
         return pokemonInLocation;
@@ -68,7 +74,7 @@ public class Route extends Location {
     // Accessors (Getters)
     /**
      * Accesses pokemonInLocation.
-     * 
+     * return: numPokemon
      */
     public int getNumPokemon(){
         return numPokemon;
@@ -76,7 +82,7 @@ public class Route extends Location {
 
     /**
      * Accesses routeNum.
-     * 
+     * return: routeNum
      */
     public int getRouteNum() {
         return routeNum;
@@ -87,13 +93,13 @@ public class Route extends Location {
      * Changes pokemonInLocation.
      * 
      */
-    public void setPokemonInLocation(String[] pokemonInLocation) {
+    public void setPokemonInLocation(String [] pokemonInLocation) {
         this.pokemonInLocation = pokemonInLocation;
     }
 
     /**
      * Changes routeNum.
-     * 
+     * @param routeNum
      */
     public void setRouteNum(int routeNum) {
         this.routeNum = routeNum;
@@ -106,7 +112,7 @@ public class Route extends Location {
      */
     public String toString(){
         String str = super.toString();
-        str += ("\nRoute Number: "+ routeNum);
+        str += ( "\nRoute Number: "+ routeNum);
         str += ("\nPokemon IDs: ");
         for(int i = 0; i< pokemonInLocation.length; i++){
             str+= pokemonInLocation[i]+", ";
