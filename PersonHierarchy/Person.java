@@ -63,6 +63,7 @@ public class Person {
       personID = i;
       numPokemon = 0;
       currentLocation = pokedexReference.getLocationDex().getLocList()[0];
+      teamList = new Pokemon[MAX_POKEMON];
    }
 
    /**
@@ -278,16 +279,23 @@ public class Person {
     */
    public void resetPokemon (int pokeID) {
       Pokemon p_temp = pokedexReference.getPokemonDex().searchPokemonById(pokeID);
-      int index = p_temp.getID(); 
       int save = -1;
       for (int i = 0; i < numPokemon; i++) {
-         if (index == teamList[i].getID()) {
+         if (pokeID == teamList[i].getID()) {
             save = i;
          }
       }
       teamList[save] = new Pokemon (p_temp.getName(), p_temp.getType(), p_temp.getID(), p_temp.getMaxHPStat(), p_temp.getAttackStat(), p_temp.getDefenceStat(), p_temp.getSpeedStat(), p_temp.getMoveList()[0], p_temp.getMoveList()[1], p_temp.getMoveList()[2], p_temp.getMoveList()[3], p_temp.getFoundIn());
       teamList[save].changeCurrentHP(-1, 0);
-      numPokemon++;
+   }
+   
+   /**
+   * Simulates moving to another location in order to fulfill
+   * requirements for certain actions
+   * @param loc Location object of where the User wants to go
+   */
+   public void moveTo (Location loc) {
+      this.setCurrentLocation(loc);
    }
 
    /**
