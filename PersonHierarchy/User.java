@@ -233,12 +233,12 @@ public class User extends Person {
       }
       else if (challenger_pokemon_left == 0) {
          System.out.println("Challenger does not have enough Pokemon to battle");
-         winner = defender;
+         winner = other;
          return winner;
       }
       else if (defender_pokemon_left == 0) {
          System.out.println("Defender does not have enough Pokemon to battle");
-         winner = challenger;
+         winner = this;
          return winner;
       }
       else {
@@ -270,7 +270,7 @@ public class User extends Person {
                defender_pokemon_left--;
                if (defender_pokemon_left > 0) {
                   defender_pokemon = ((int)Math.random() * (def_num_poke));
-                  while (chal_team[defender_pokemon].getCurrentHP() == 0) {
+                  while (def_team[defender_pokemon].getCurrentHP() == 0) {
                      defender_pokemon = ((int)Math.random() * (def_num_poke));
                   }
                   winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
@@ -278,12 +278,9 @@ public class User extends Person {
             } 
             else {
                challenger_pokemon_left--;
-               System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
-               challenger_pokemon = sc.nextInt() - 1;
-            
                if (challenger_pokemon_left > 0) {
                   System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
-                  challenger_pokemon = sc.nextInt();
+                  challenger_pokemon = sc.nextInt() - 1;
                   while (chal_team[challenger_pokemon].getCurrentHP() == 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
                      if (chal_team[challenger_pokemon].getCurrentHP() == 0 ) {
                         System.out.print("That Pokemon is dead. Please select another: ");
