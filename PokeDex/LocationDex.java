@@ -46,7 +46,7 @@ public class LocationDex {
      * @param fileName The name of the file to read from.
      * @return true if the file was successfully loaded, false otherwise.
      */
-    public boolean readLocations(String fileName, PokemonDex PD){
+    public boolean readLocations(String fileName, PokeDex PD){
         try{
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             int numLoca = Integer.parseInt(br.readLine());
@@ -65,14 +65,14 @@ public class LocationDex {
                     int len = Integer.parseInt(br.readLine());
                     int[] list = new int[len];
                     for (int j = 0; j < len; j++) {
-                        list[j] = PD.searchPokemonByName(br.readLine()).getID();
+                        list[j] = PD.getPokemonDex().searchPokemonByName(br.readLine()).getID();
                     }
                     locList[i] = new Route(region, name, id, routeNum, list);
                     numLocationsData++;
                 } else {
                     return false;
                 }
-
+               //System.out.print(locList[i]);
             }
             return true;
         } catch(IOException iox){
