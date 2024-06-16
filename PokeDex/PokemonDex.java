@@ -62,7 +62,7 @@ public class PokemonDex{
       try {
          BufferedReader in = new BufferedReader (new FileReader (fileName));
          numPokemonData = Integer.parseInt(in.readLine());
-         pokemonList = new Pokemon[numPokemonData];
+         pokemonList = new Pokemon[PokeDex.MAX_SIZE];
          String name;
          int type, id;
          double hp, attack, defence, speed;
@@ -105,17 +105,17 @@ public class PokemonDex{
          out.write(numPokemonData);
          for (int i = 0; i < numPokemonData; i++) {
             out.write(pokemonList[i].getName());
-            out.write(pokemonList[i].getType());
-            out.write(pokemonList[i].getID());
-            out.write(String.format("%2.f", pokemonList[i].getMaxHPStat()));
-            out.write(String.format("%2.f",pokemonList[i].getAttackStat()));
-            out.write(String.format("%2.f",pokemonList[i].getDefenceStat()));
-            out.write(String.format("%2.f",pokemonList[i].getSpeedStat()));
-            out.write(pokemonList[i].getMoveList()[0].getMoveID());
-            out.write(pokemonList[i].getMoveList()[1].getMoveID());
-            out.write(pokemonList[i].getMoveList()[2].getMoveID());
-            out.write(pokemonList[i].getMoveList()[3].getMoveID());
-            out.write(pokemonList[i].getFoundIn().getLocationID());
+            out.write(pokemonList[i].getType() + "");
+            out.write(pokemonList[i].getID() + "");
+            out.write("" + String.format("%.2f", pokemonList[i].getMaxHPStat()));
+            out.write("" + String.format("%.2f",pokemonList[i].getAttackStat()));
+            out.write("" + String.format("%.2f",pokemonList[i].getDefenceStat()));
+            out.write("" + String.format("%.2f",pokemonList[i].getSpeedStat()));
+            out.write(pokemonList[i].getMoveList()[0].getMoveID() + "");
+            out.write(pokemonList[i].getMoveList()[1].getMoveID() + "");
+            out.write(pokemonList[i].getMoveList()[2].getMoveID() + "");
+            out.write(pokemonList[i].getMoveList()[3].getMoveID() + "");
+            out.write(pokemonList[i].getFoundIn().getLocationID() + "");
          }
          out.close();
       }
@@ -159,15 +159,15 @@ public class PokemonDex{
    public Pokemon searchPokemonById (int id, int top, int bot) {
       int middle = (top + bot) / 2;
       if (top < bot) {
-
+      
          return null;
       }
       if (pokemonList[middle].getID() == id) {
          return pokemonList[middle];
-
+      
       } else if (pokemonList[middle].getID() > id) {
          return searchPokemonById(id, middle - 1, bot);
-
+      
       } else {
          return searchPokemonById(id, top, middle + 1);
       }
@@ -211,21 +211,19 @@ public class PokemonDex{
    * @param numChecks The number of checks
    * @param sorted Stores if the program is sorted or not
    */
-     public void sortByHpStat (int numChecks, boolean sorted) {
+   public void sortByHpStat (int numChecks, boolean sorted) {
       Pokemon temp;
-      if (numChecks > 0 || !sorted) {
+      if (numChecks > 0 || !sorted)
          sorted = true;
-         for (int i = 1; i < numChecks - 1; i++) {
-            if (pokemonList[i].getMaxHPStat() > pokemonList[i - 1].getMaxHPStat()) {
-               sorted = false;
-               temp = pokemonList[i];
-               pokemonList[i] = pokemonList[i - 1];
-               pokemonList[i - 1] = temp;
-            }
+      for (int i = 1; i < numPokemonData - 1; i++) {
+         if (pokemonList[i].getMaxHPStat() > pokemonList[i - 1].getMaxHPStat()) {
+            sorted = false;
+            temp = pokemonList[i];
+            pokemonList[i] = pokemonList[i - 1];
+            pokemonList[i - 1] = temp;
          }
-
-         this.sortByHpStat(numChecks - 1, sorted);
       }
+      this.sortByHpStat(numChecks + 1, sorted);
    }
 
 /**
@@ -245,7 +243,7 @@ public class PokemonDex{
          int i = index;
          Pokemon p_save = pokemonList[i];
          double atk_save = pokemonList[i].getAttackStat();
-         while (i > 0 && atk_save > pokemonList[i - 1].getAttackStat()) {
+         while (index > 0 && atk_save > pokemonList[i - 1].getAttackStat()) {
             pokemonList[i] = pokemonList[i - 1];
             i--;
          }
@@ -335,7 +333,12 @@ public class PokemonDex{
       Move move3 = pD.getMoveDex().searchMoveByName(moveName3);
       Move move4 = pD.getMoveDex().searchMoveByName(moveName4);
       Location foundIn = pD.getLocationDex().searchLocationByName(loca);
-      pokemonList[numPokemonData] = new Pokemon (name, type, numPokemonData, hp, attack, defence, speed, move1, move2, move3, move4, foundIn);
+      if (move1 == null || move2 == null || move3 == null || move4 == null || foundIn == null || foundIn instanceof City) {
+         return false;
+      } else {
+         pokemonList[numPokemonData] = new Pokemon (name, type, numPokemonData, hp, attack, defence, speed, move1, move2, move3, move4, foundIn);
+         pD.getLocationDex().addPokemonToLocation(((Route)foundIn), name);
+      }
       return true;
    }
 }
