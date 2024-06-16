@@ -267,6 +267,7 @@ public class User extends Person {
          
             while (challenger_pokemon_left > 0 && defender_pokemon_left > 0) {
                if (winner == chal_team[challenger_pokemon]) {
+                  System.out.println("balls");
                   defender_pokemon_left--;
                   if (defender_pokemon_left > 0) {
                      defender_pokemon = ((int)(Math.random() * (def_num_poke)));
@@ -444,15 +445,15 @@ public class User extends Person {
                challenger.attack(defender, challenger.getMoveList()[0]);
                break;
             case 2:
-               System.out.println(challenger.getName() + " used " + challenger.getMoveList()[0]);
+               System.out.println(challenger.getName() + " used " + challenger.getMoveList()[1]);
                challenger.attack(defender, challenger.getMoveList()[1]);
                break;
             case 3:
-               System.out.println(challenger.getName() + " used " + challenger.getMoveList()[0]);
+               System.out.println(challenger.getName() + " used " + challenger.getMoveList()[2]);
                challenger.attack(defender, challenger.getMoveList()[2]);
                break;
             case 4:
-               System.out.println(challenger.getName() + " used " + challenger.getMoveList()[0]);
+               System.out.println(challenger.getName() + " used " + challenger.getMoveList()[3]);
                challenger.attack(defender, challenger.getMoveList()[3]);
                break;
             case 5:
