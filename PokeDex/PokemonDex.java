@@ -245,7 +245,7 @@ public class PokemonDex{
          int i = index;
          Pokemon p_save = pokemonList[i];
          double atk_save = pokemonList[i].getAttackStat();
-         while (index > 0 && atk_save > pokemonList[i - 1].getAttackStat()) {
+         while (i > 0 && atk_save > pokemonList[i - 1].getAttackStat()) {
             pokemonList[i] = pokemonList[i - 1];
             i--;
          }
