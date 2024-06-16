@@ -429,7 +429,7 @@ public class UserDatabase {
         if (index != -1) {
             return userList[index];
         } else {
-            for (int i = 0; i < numUsers && index == -1; i++) {
+            for (int i = 0; i < MAX_NPCS && index == -1; i++) {
                 if (name.equals(npcList[i].getName())) {
                     index = i;
                 }
