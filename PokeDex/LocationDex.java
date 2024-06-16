@@ -46,7 +46,7 @@ public class LocationDex {
      * @param fileName The name of the file to read from.
      * @return true if the file was successfully loaded, false otherwise.
      */
-    public boolean readLocations(String fileName, PokemonDex PD){
+    public boolean readLocations(String fileName){
         try{
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             int numLoca = Integer.parseInt(br.readLine());
@@ -63,9 +63,9 @@ public class LocationDex {
                     int id = Integer.parseInt(br.readLine());
                     int routeNum = Integer.parseInt(br.readLine());
                     int len = Integer.parseInt(br.readLine());
-                    int[] list = new int[len];
+                    String[] list = new String[len];
                     for (int j = 0; j < len; j++) {
-                        list[j] = PD.searchPokemonByName(br.readLine()).getID();
+                        list[j] = br.readLine();
                     }
                     locList[i] = new Route(region, name, id, routeNum, list);
                     numLocationsData++;
@@ -157,7 +157,7 @@ public class LocationDex {
     * @param id The ID of the route.
     * @param pokes An array of Pokémon on the route.
     */
-    public void addRoute(String type, String name, int routeNum, int id,int[] pokes){
+    public void addRoute(String type, String name, int routeNum, int id,String[] pokes){
         if(!duplicateRouteNum(routeNum)){
             locList[numLocationsData] = new Route(type,name,routeNum, numLocationsData,pokes);
             numLocationsData++;
@@ -195,32 +195,32 @@ public class LocationDex {
      * @param fileName The name of the file to save to.
      * @return true if the data was successfully saved, false otherwise.
      */
-    public boolean saveLocations(String fileName, PokemonDex PD){
-        try{
-            File file = new File(fileName);
-            file.createNewFile();
-            BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
-            bw.write(locList.length+"\n"); /*Number of Location*/
-            for (int i = 0; i < locList.length; i++) {
-                bw.write("\n\n");
-                if(locList[i] instanceof City)/*If it is city or not*/{
-                    City temp = (City)(locList[i]);
-                    bw.write("City\n"+ temp.getRegionType()+"\n"+ temp.getName()+"\n"+ temp.getLocationID() +"\n"+temp.getHasPokeStop() +"\n"+temp.getHasPokeCentre()+"\n");
-                } else if(locList[i] instanceof Route)/*If it is route or not*/{
-                    Route tempp = (Route)locList[i];
-                    bw.write("Route\n" +"\n"+tempp.getRegionType()+"\n"+ tempp.getName()+"\n"+ tempp.getLocationID() + "\n"+ tempp.getRouteNum() + "\n"+tempp.getNumPokemon());
-                    for (int j = 0; j < tempp.getNumPokemon(); j++) {
-                        bw.write(PD.searchPokemonById(tempp.getPokemonInLocation()[i])+"\n");
-                    }
-                }
-            }
-            return true;
-        }catch(IOException iox){
-            System.out.println("File Not Found");
-            return false;
-        } catch(Exception x){
-            System.out.println("Some other error occurred");
-            return false;
-        }
-    }
+     public boolean saveLocations(String fileName){
+         try{
+             File file = new File(fileName);
+             file.createNewFile();
+             BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
+             bw.write(locList.length+"\n"); /*Number of Location*/
+             for (int i = 0; i < locList.length; i++) {
+                 bw.write("\n\n");
+                 if(locList[i] instanceof City)/*If it is city or not*/{
+                     City temp = (City)(locList[i]);
+                     bw.write("City\n"+ temp.getRegionType()+"\n"+ temp.getName()+"\n"+ temp.getLocationID() +"\n"+temp.getHasPokeStop() +"\n"+temp.getHasPokeCentre()+"\n");
+                 } else if(locList[i] instanceof Route)/*If it is route or not*/{
+                     Route tempp = (Route)(locList[i]);
+                     bw.write("Route\n" +"\n"+tempp.getRegionType()+"\n"+ tempp.getName()+"\n"+ tempp.getLocationID() + "\n"+ tempp.getRouteNum() + "\n"+tempp.getNumPokemon());
+                     for (int j = 0; j < tempp.getNumPokemon(); j++) {
+                         bw.write(tempp.getPokemonInLocation()[i]+"\n");
+                     }
+                 }
+             }
+             return true;
+         }catch(IOException iox){
+             System.out.println("File Not Found");
+             return false;
+         } catch(Exception x){
+             System.out.println("Some other error occurred");
+             return false;
+         }
+     }
 }
