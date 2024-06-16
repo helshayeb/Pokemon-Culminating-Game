@@ -36,7 +36,7 @@ public class PokemonRunner {
       // Read in text files
       iD.readItems(ITEM_FILE);
       mD.readMoves(MOVE_FILE);
-      lD.readLocations(LOCATION_FILE, gameDatabase);
+      lD.readLocations(LOCATION_FILE);
       pD.readPokemon(POKEMON_FILE, gameDatabase);
       uD.readNPCs(NPC_FILE, gameDatabase);
       uD.readUsers(USER_FILE, gameDatabase);
@@ -481,14 +481,14 @@ public class PokemonRunner {
                      if(select3 == 1){
                         iD.saveItems(ITEM_FILE);
                      }else if(select3 == 2){
-                        lD.saveLocations(LOCATION_FILE, gameDatabase);
+                        lD.saveLocations(LOCATION_FILE);
                      }else if(select3 ==3){
                         mD.saveMoves(MOVE_FILE);
                      }else if(select3 == 4){
                         pD.savePokemon(POKEMON_FILE);
                      }else if(select3 == 5){
                         iD.saveItems(ITEM_FILE);
-                        lD.saveLocations(LOCATION_FILE, gameDatabase);
+                        lD.saveLocations(LOCATION_FILE);
                         mD.saveMoves(MOVE_FILE);
                         pD.savePokemon(POKEMON_FILE);
                      }
@@ -500,7 +500,7 @@ public class PokemonRunner {
             else if(select1 == 2){
                select2 = -1;
                while (select2 != 0) {
-                  System.out.println("Enter the number corresponding to what you want to search for: ");
+                  System.out.println("Enter the number corresponding to what you want to do: ");
                   System.out.println("1) Add an account.");
                   System.out.println("2) Delete an account.");
                   System.out.println("3) Play in an account");
@@ -770,6 +770,7 @@ public class PokemonRunner {
                         name = sc.nextLine();
                         p0 = uD.searchPersonByName(name);
                         if (p0 != null) {
+                           System.out.println();
                            System.out.println(p0);
                         } else {
                            System.out.println("Person not found.");
@@ -784,6 +785,7 @@ public class PokemonRunner {
                         id = sc.nextInt();
                         u0 = uD.searchUserById(id);
                         if (u0 != null) {
+                           System.out.println();
                            System.out.println(u0);
                         } else {
                            System.out.println("Person not found.");
@@ -798,6 +800,7 @@ public class PokemonRunner {
                         id = sc.nextInt();
                         n0 = uD.searchNPCById(id);
                         if (n0 != null) {
+                           System.out.println();
                            System.out.println(n0);
                         } else {
                            System.out.println("Person not found.");
