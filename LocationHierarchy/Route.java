@@ -4,7 +4,7 @@ public class Route extends Location {
     /**
     * An array of pokemon IDs in the Location
     */
-    int[] pokemonInLocation = new int[200];
+    String[] pokemonInLocation = new String[200];
     /**
     * The number of the Pokemons in the Array
     */
@@ -22,11 +22,13 @@ public class Route extends Location {
      * @param id The unique identifier for the location.
      * @param pokes The list of pokemon ids
      */
-    public Route(String type, String name, int routeNum, int id,int[] pokes){
+    public Route(String type, String name, int routeNum, int id, String[] pokes){
         super(type, name, id);
         for (int i = 0; i < pokes.length; i++) {
-            pokemonInLocation[numPokemon] = pokes[i];
-            numPokemon ++;
+            if(pokes[i] != null) {
+                pokemonInLocation[numPokemon] = pokes[i];
+                numPokemon++;
+            }
         }
         this.routeNum = routeNum;
     }
@@ -49,11 +51,13 @@ public class Route extends Location {
      * @param id The unique identifier for the location.
      * @param pokes The list of pokemon ids
      */
-    public Route(int id, int routeNum,int[] pokes){
+    public Route(int id, int routeNum, String [] pokes){
         super(id);
         for (int i = 0; i < pokes.length; i++) {
-            pokemonInLocation[numPokemon] = pokes[i];
-            numPokemon ++;
+            if(pokes[i] != null) {
+                pokemonInLocation[numPokemon] = pokes[i];
+                numPokemon++;
+            }
         }
         this.routeNum = routeNum;
     }
@@ -63,7 +67,7 @@ public class Route extends Location {
      * Accesses pokemonInLocation.
      *
      */
-    public int[] getPokemonInLocation() {
+    public String[] getPokemonInLocation() {
         return pokemonInLocation;
     }
 
@@ -89,7 +93,7 @@ public class Route extends Location {
      * Changes pokemonInLocation.
      * 
      */
-    public void setPokemonInLocation(int[] pokemonInLocation) {
+    public void setPokemonInLocation(String [] pokemonInLocation) {
         this.pokemonInLocation = pokemonInLocation;
     }
 
