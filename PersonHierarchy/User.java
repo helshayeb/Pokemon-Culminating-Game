@@ -320,7 +320,7 @@ public class User extends Person {
          }
          catch (InputMismatchException ime) {
             for (int i = 0; i < chal_num_poke; i++) {
-               this.resetPokemon(def_team[i].getID());
+               this.resetPokemon(chal_team[i].getID());
                this.moveTo(this.getPokedexReference().getLocationDex().getLocList()[11]);
                this.healTeam();
             }
