@@ -45,7 +45,6 @@ public class DamageMove extends Move{
       double multiplier = MoveDex.TYPECHART[super.getMoveType()] [p2.getType()];
       double damageDone = -0.2*(p1.getAttackStat()*basePower)/p2.getDefenceStat()*multiplier;
       p2.changeCurrentHP(0, damageDone);
-      System.out.println("Dealt " + (-1*damageDone) + " Damage!");
    }
 
    /**
