@@ -247,4 +247,20 @@ public class LocationDex {
          return false;
       }
    }
-}
+   
+   /**
+    * Adds a Pokemon to an existing location when a new Pokemon is created
+    * @param loc Location object of where the Pokemon will be
+    * @param p_name Name of the Pokemon
+    */
+   public void addPokemonToLocation (Route loc, String p_name) {
+      int index = -1;
+      for (int i = 0; i < numLocationsData; i++) {
+         if (loc == locList[i]) {
+            index = i;
+         }
+      }
+      ((Route)locList[index]).getPokemonInLocation()[((Route)locList[index]).getNumPokemon()] = p_name;
+      ((Route)locList[index]).setNumPokemon(((Route)locList[index]).getNumPokemon() + 1);
+   }
+ }
