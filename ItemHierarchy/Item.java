@@ -41,6 +41,7 @@ public abstract class Item {
    * @param mod The modifier of the item, retrieved from the ItemDex
    */
   public Item (String type, String name, int idNum, int priceNum, double mod) {
+    itemTypeName = type;
     itemName = name;
     id = idNum;
     price = priceNum;
