@@ -110,26 +110,45 @@ public class MoveDex {
 			for (int i = 0; i <= numMoveData; i++) {
 				if (moveList[i] instanceof DamageMove) {
 					out.write(moveList[i].getObjectID());
+					out.newLine();
 					out.write(moveList[i].getMoveName());
+					out.newLine();
 					out.write(moveList[i].getMoveType());
+					out.newLine();
 					out.write(moveList[i].getMoveID());
+					out.newLine();
 					out.write(((DamageMove) moveList[i]).getBasePower());
+					out.newLine();
 				} else if (moveList[i] instanceof StatusMove) {
 					out.write(moveList[i].getObjectID());
+					out.newLine();
 					out.write(moveList[i].getMoveName());
+					out.newLine();
 					out.write(moveList[i].getMoveType());
+					out.newLine();
 					out.write(moveList[i].getMoveID());
+					out.newLine();
 					out.write("" + ((StatusMove) moveList[i]).getHPMod());
+					out.newLine();
 					out.write("" + ((StatusMove) moveList[i]).getAtkMod());
+					out.newLine();
 					out.write("" + ((StatusMove) moveList[i]).getDefMod());
+					out.newLine();
 					out.write("" + ((StatusMove) moveList[i]).getSpdMod());
+					out.newLine();
 					out.write(((StatusMove) moveList[i]).getRecipient());
+					out.newLine();
 				} else if (moveList[i] instanceof ConditionMove) {
 					out.write(moveList[i].getObjectID());
+					out.newLine();
 					out.write(moveList[i].getMoveName());
+					out.newLine();
 					out.write(moveList[i].getMoveType());
+					out.newLine();
 					out.write(moveList[i].getMoveID());
+					out.newLine();
 					out.write(((ConditionMove) moveList[i]).getConditionAppliedID());
+					out.newLine();
 				}
 				out.newLine();
 			}
