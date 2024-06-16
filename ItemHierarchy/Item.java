@@ -138,7 +138,7 @@ public abstract class Item {
   * @param name The name of the type of the item
   */
   public String toString () {
-    return String.format("Item Name: %s%nThis item is a %s%nID: %d%nPrice: %f%nItem's effect: %f%n", itemName, itemTypeName, price, modifier);
+    return String.format("Item Name: %s%nThis item is a %s%nID: %d%nPrice: %f%nItem's effect: %f%n", itemName, itemTypeName, id, price, modifier);
   }
   
   
