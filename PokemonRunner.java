@@ -220,22 +220,11 @@ public class PokemonRunner {
                               foundSize = sc.nextInt();
                            }
                            System.out.println("Enter the names of Pokemon found in the Route");
-                           sc.nextLine(); 
                            String[] pokeInLoca = new String[10];
-                           String pTempName;
-                           boolean validPName = false;
                            for(int i = 0; i < foundSize; i++){
                               System.out.println("Enter the name of Pokemon #" + i+1 + ": ");
-                              pTempName = sc.nextLine();
-                              if(pD.searchPokemonByName(pTempName) == null){
-                                 while (!validPName) {
-                                    System.out.print("That is not a possible option. Enter a valid Pokemon name: ");
-                                    pTempName = sc.nextInt();
-                                    if(pD.searchPokemonByName(pTempName) != null){
-                                       validPName = true;
-                                    }
-                                 }  
-                              }  
+                              sc.nextLine();
+                              pokeInLoca[i] = sc.nextLine();
                            }
                            lD.addRoute(type, name, routeNum, gameDatabase.getLocationDex().getNumLocationsData(), pokeInLoca);
                         
