@@ -355,13 +355,17 @@ public class UserDatabase {
             for (int j = 0; j < numPoke; j++) {
                itemID = Integer.parseInt(in.readLine());
                if(itemID != -1){
-                  Item it = null;
-                  for (int k = 0; k < pD.getItemDex().getNumItemData(); k++) {
-                     if (itemID == pD.getItemDex().getItemList()[k].getId()) {
-                        it = pD.getItemDex().getItemList()[k];
-                     }
+                  Item i_temp = pD.getItemDex().searchItemById(itemID);
+                  if (i_temp instanceof AttackItem) {
+                     i_temp = new AttackItem (i_temp.getItemTypeName(), i_temp.getItemName(), i_temp.getId(), i_temp.getPrice(), i_temp.getModifier());
+                  } else if (i_temp instanceof DefenceItem) {
+                     i_temp = new DefenceItem (i_temp.getItemTypeName(), i_temp.getItemName(), i_temp.getId(), i_temp.getPrice(), i_temp.getModifier());
+                  } else if (i_temp instanceof HealthItem) {
+                     i_temp = new HealthItem (i_temp.getItemTypeName(), i_temp.getItemName(), i_temp.getId(), i_temp.getPrice(), i_temp.getModifier());
+                  } else {
+                     i_temp = new SpeedItem (i_temp.getItemTypeName(), i_temp.getItemName(), i_temp.getId(), i_temp.getPrice(), i_temp.getModifier());
                   }
-                  npcList[i].giveItem(team[j].getName(), it.getItemName());
+                  npcList[i].giveItem(team[j].getName(), i_temp.getItemName());
                }
             }
          }
