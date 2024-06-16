@@ -479,7 +479,6 @@ Volt Tackle
 63
 120
 
-
 Status 
 Calm Mind
 8
@@ -553,3 +552,4 @@ Light That Burns the Sky
 8
 72
 300
+ 
