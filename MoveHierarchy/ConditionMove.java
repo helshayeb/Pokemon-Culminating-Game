@@ -60,6 +60,7 @@ public class ConditionMove extends Move{
 	*/
  	public void useMove(Pokemon p1, Pokemon p2){
 		p2.setCondition(conditionAppliedID);
+		System.out.println("Applied a condition!"); 
 	}
 
 	/**
