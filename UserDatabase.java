@@ -119,7 +119,7 @@ public class UserDatabase {
    public boolean removeUser(String name) {
       Person p = this.searchPersonByName(name);
       if (p instanceof User) {
-         for (int i = p.getPersonID(); p.getPersonID() < numUsers; i++) {
+         for (int i = p.getPersonID(); i < numUsers; i++) {
             userList[i] = userList[1+i];
          }
          numUsers--;
@@ -340,14 +340,14 @@ public class UserDatabase {
 
             for (int j = 0; j < numPoke; j++) {
                 itemID = Integer.parseInt(in.readLine());
-                if (itemID != -1) {
-                  Item it = null;
-                  for (int k = 0; k < pD.getItemDex().getNumItemData(); k++) {
-                	   if (itemID == pD.getItemDex().getItemList()[k].getId()) {
-                		   it = pD.getItemDex().getItemList()[k];
-                	   }
-                  }
-                  npcList[i].giveItem(team[j].getName(), it.getItemName());
+                if(itemID != -1){
+                   Item it = null;
+                   for (int k = 0; k < pD.getItemDex().getNumItemData(); k++) {
+                   	if (itemID == pD.getItemDex().getItemList()[k].getId()) {
+                   		it = pD.getItemDex().getItemList()[k];
+                   	}
+                   }
+                   npcList[i].giveItem(team[j].getName(), it.getItemName());
                 }
             }
          }
@@ -369,7 +369,7 @@ public class UserDatabase {
    public boolean saveUsers (String fileName) {
     try {
        BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
-       out.write("" + numUsers);
+       out.write(numUsers + "");
        out.newLine();
        for (int i = 0; i < numUsers; i++) {
         out.newLine();
