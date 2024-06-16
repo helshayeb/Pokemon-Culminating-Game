@@ -36,7 +36,7 @@ public class PokemonRunner {
       // Read in text files
       iD.readItems(ITEM_FILE);
       mD.readMoves(MOVE_FILE);
-      lD.readLocations(LOCATION_FILE);
+      lD.readLocations(LOCATION_FILE, gameDatabase);
       pD.readPokemon(POKEMON_FILE, gameDatabase);
       uD.readNPCs(NPC_FILE, gameDatabase);
       uD.readUsers(USER_FILE, gameDatabase);
@@ -481,14 +481,14 @@ public class PokemonRunner {
                      if(select3 == 1){
                         iD.saveItems(ITEM_FILE);
                      }else if(select3 == 2){
-                        lD.saveLocations(LOCATION_FILE;
+                        lD.saveLocations(LOCATION_FILE, gameDatabase);
                      }else if(select3 ==3){
                         mD.saveMoves(MOVE_FILE);
                      }else if(select3 == 4){
                         pD.savePokemon(POKEMON_FILE);
                      }else if(select3 == 5){
                         iD.saveItems(ITEM_FILE);
-                        lD.saveLocations(LOCATION_FILE);
+                        lD.saveLocations(LOCATION_FILE, gameDatabase);
                         mD.saveMoves(MOVE_FILE);
                         pD.savePokemon(POKEMON_FILE);
                      }
@@ -498,291 +498,320 @@ public class PokemonRunner {
                }
             }
             else if(select1 == 2){
-               System.out.println("Enter the number corresponding to what you want to search for: ");
-               System.out.println("1) Add an account.");
-               System.out.println("2) Delete an account.");
-               System.out.println("3) Play in an account");
-               System.out.println("4) Search for a Person.");
-               System.out.println("5) Save all users.");
-               System.out.println("0) Exit.");
-               select2 = sc.nextInt();
-               System.out.println();
-               
-               while (select2 < 0 || select2 > 5) {
-                  System.out.print("That is not a possible option. Try again: ");
+               select2 = -1;
+               while (select2 != 0) {
+                  System.out.println("Enter the number corresponding to what you want to search for: ");
+                  System.out.println("1) Add an account.");
+                  System.out.println("2) Delete an account.");
+                  System.out.println("3) Play in an account");
+                  System.out.println("4) Search for a Person.");
+                  System.out.println("5) Save all users.");
+                  System.out.println("0) Exit.");
                   select2 = sc.nextInt();
-               }
+                  System.out.println();
                
-               System.out.println();
+                  while (select2 < 0 || select2 > 5) {
+                     System.out.print("That is not a possible option. Try again: ");
+                     select2 = sc.nextInt();
+                  }
                
-               if (select2 == 1) {
+                  System.out.println();
+               
+                  if (select2 == 1) {
                   // Filter
-                  sc.nextLine();
+                     sc.nextLine();
                   
                   // Create variables
-                  String name;
-                  int age;
+                     String name;
+                     int age;
                   
                   // Ask for input
-                  System.out.print("Enter the name of the account: ");
-                  name = sc.nextLine();
-                  System.out.print("Enter your age: ");
-                  age = sc.nextInt();
+                     System.out.print("Enter the name of the account: ");
+                     name = sc.nextLine();
+                     System.out.print("Enter your age: ");
+                     age = sc.nextInt();
                   
                   // Call addUser method and output error message if errors occurs
-                  if (uD.addUser(name, age)) {
-                     System.out.println("User has been successfully added.");
-                  } else {
-                     System.out.println("Too many users. Please remove a user before adding another user.");
-                  }
+                     if (uD.addUser(name, age)) {
+                        System.out.println("User has been successfully added.");
+                     } else {
+                        System.out.println("Too many users. Please remove a user before adding another user.");
+                     }
                   
-               }
-               if (select2 == 2) {
+                  }
+                  if (select2 == 2) {
                   // Filter
-                  sc.nextLine();
+                     sc.nextLine();
                   
                   // Create variables
-                  String name;
+                     String name;
                   
                   // Ask for input
-                  System.out.print("Enter the name of the account you want removed: ");
-                  name = sc.nextLine();
+                     System.out.print("Enter the name of the account you want removed: ");
+                     name = sc.nextLine();
                   
                   // Call removeUser method and output error message if errors occurs
-                  if (uD.removeUser(name)) {
-                     System.out.println("User has been successfully removed.");
-                  } else {
-                     System.out.println("User not found.");
+                     if (uD.removeUser(name)) {
+                        System.out.println("User has been successfully removed.");
+                     } else {
+                        System.out.println("User not found.");
+                     }
                   }
-               }
                
-               if (select2 == 3) {
-                  select3 = -1;
-                  while (select3 != 0) {
-                     int account;
-                     int numUsers = uD.getNumUsers();
-                     if (numUsers != 0) {
-                        System.out.println("Enter account: ");
-                        for (int i = 0; i < numUsers; i++) {
-                           System.out.println((i+1) + ") " + uD.getUserList()[i].getName());
-                        }
-                        account = sc.nextInt() - 1;
-                     
-                        while (account < 0 || account > numUsers - 1) {
-                           System.out.print("That is not a possible option. Try again: ");
+                  if (select2 == 3) {
+                     select3 = -1;
+                     while (select3 != 0) {
+                        int account;
+                        int numUsers = uD.getNumUsers();
+                        if (numUsers != 0) {
+                           System.out.println("Enter account: ");
+                           for (int i = 0; i < numUsers; i++) {
+                              System.out.println((i+1) + ") " + uD.getUserList()[i].getName());
+                           }
                            account = sc.nextInt() - 1;
-                        }
-                     
-                        System.out.println("Select an option:");
-                        System.out.println("1) Catch a Pokemon.");
-                        System.out.println("2) Release a Pokemon.");
-                        System.out.println("3) Buy an item.");
-                        System.out.println("4) Give an item to a Pokemon");
-                        System.out.println("5) Move to a new Location.");
-                        System.out.println("6) Heal your team");
-                        System.out.println("7) Display a person's team.");
-                        System.out.println("8) Battle someone.");
-                        System.out.println("0) Exit.");
-                        select3 = sc.nextInt();
-                     
-                        while (select3 < 0 || select3 > 8) {
-                           System.out.print("That is not a possible option. Try again: ");
-                           account = sc.nextInt();
-                        }
-                     
-                        if (select3 == 1) {
-                           Pokemon p;
-                           String name;
-                           sc.nextLine();
-                           System.out.println("What Pokemon do you want to catch? ");
-                           name = sc.nextLine();
-                           p = gameDatabase.getPokemonDex().searchPokemonByName(name);
+                           System.out.println();
                         
-                           while (p == null) {
-                              System.out.print("Pokemon not found. Try again:");
+                           while (account < 0 || account > numUsers - 1) {
+                              System.out.print("That is not a possible option. Try again: ");
+                              account = sc.nextInt() - 1;
+                           }
+                        
+                           System.out.println("Select an option:");
+                           System.out.println("1) Catch a Pokemon.");
+                           System.out.println("2) Release a Pokemon.");
+                           System.out.println("3) Buy an item.");
+                           System.out.println("4) Give an item to a Pokemon");
+                           System.out.println("5) Move to a new Location.");
+                           System.out.println("6) Heal your team");
+                           System.out.println("7) Display a person's team.");
+                           System.out.println("8) Battle someone.");
+                           System.out.println("0) Exit.");
+                           select3 = sc.nextInt();
+                        
+                           while (select3 < 0 || select3 > 8) {
+                              System.out.print("That is not a possible option. Try again: ");
+                              account = sc.nextInt();
+                           }
+                        
+                           System.out.println();
+                        
+                           if (select3 == 1) {
+                              Pokemon p;
+                              String name;
+                              sc.nextLine();
+                              System.out.println("What Pokemon do you want to catch? ");
                               name = sc.nextLine();
                               p = gameDatabase.getPokemonDex().searchPokemonByName(name);
+                           
+                              while (p == null) {
+                                 System.out.print("Pokemon not found. Try again:");
+                                 name = sc.nextLine();
+                                 p = gameDatabase.getPokemonDex().searchPokemonByName(name);
+                              }
+                           
+                              if (uD.catchPokemon(account, p)) {
+                                 System.out.println("Pokemon caught successfully.");
+                              } else {
+                                 System.out.println("Something went wrong. Please check if you fit the following requirements: ");
+                                 System.out.println("Correct Location");
+                                 System.out.println("Less than 6 Pokemon in your team");
+                                 System.out.println("Pokemon is already in your team");
+                              }
+                              System.out.println();
                            }
                         
-                           if (uD.catchPokemon(account, p)) {
-                              System.out.println("Pokemon caught successfully.");
-                           } else {
-                              System.out.println("Something went wrong. Please check if you fit the following requirements: ");
-                              System.out.println("Correct Location");
-                              System.out.println("Less than 6 Pokemon in your team");
-                              System.out.println("Pokemon is already in your team");
-                           }
-                        }
-                     
-                        if (select3 == 2) {
-                           Pokemon p;
-                           String name;
-                           sc.nextLine();
-                           System.out.println("What Pokemon do you want to release? ");
-                           name = sc.nextLine();
-                           p = gameDatabase.getPokemonDex().searchPokemonByName(name);
-                        
-                           while (p == null) {
-                              System.out.print("Pokemon not found. Try again: ");
+                           if (select3 == 2) {
+                              Pokemon p;
+                              String name;
+                              sc.nextLine();
+                              System.out.println("What Pokemon do you want to release? ");
                               name = sc.nextLine();
                               p = gameDatabase.getPokemonDex().searchPokemonByName(name);
+                           
+                              while (p == null) {
+                                 System.out.print("Pokemon not found. Try again: ");
+                                 name = sc.nextLine();
+                                 p = gameDatabase.getPokemonDex().searchPokemonByName(name);
+                              }
+                           
+                              if (uD.releasePokemon(account, p.getName())) {
+                                 System.out.println("Pokemon successfully released.");
+                              } else {
+                                 System.out.println("Pokemon could not br released. Please check if you fit the following requirements: ");
+                                 System.out.println("Pokemon is in your team.");
+                                 System.out.println("You have at least 1 Pokemon in your team.");
+                              }
+                              System.out.println();
                            }
                         
-                           if (uD.releasePokemon(account, p.getName())) {
-                              System.out.println("Pokemon successfully released.");
-                           } else {
-                              System.out.println("Pokemon could not br released. Please check if you fit the following requirements: ");
-                              System.out.println("Pokemon is in your team.");
-                              System.out.println("You have at least 1 Pokemon in your team.");
-                           }
-                        }
-                     
-                        if (select3 == 3) {
-                           sc.nextLine();
-                           String name;
-                           Item i;
-                        
-                           System.out.print("Enter the name of the item you want to buy: ");
-                           name = sc.nextLine();
-                           i = gameDatabase.getItemDex().searchItemByName(name);
-                        
-                           while (i == null) {
-                              System.out.print("Item not found. Try again: ");
+                           if (select3 == 3) {
+                              sc.nextLine();
+                              String name;
+                              Item i;
+                           
+                              System.out.print("Enter the name of the item you want to buy: ");
                               name = sc.nextLine();
                               i = gameDatabase.getItemDex().searchItemByName(name);
+                           
+                              while (i == null) {
+                                 System.out.print("Item not found. Try again: ");
+                                 name = sc.nextLine();
+                                 i = gameDatabase.getItemDex().searchItemByName(name);
+                              }
+                           
+                              if (uD.buyItem(account, i)) {
+                                 System.out.println("Item bought successfully.");
+                              } else {
+                                 System.out.println("Item was not bought. Please check if you fit the following requirements: ");
+                                 System.out.println("Enough money");
+                                 System.out.println("In a city with a PokeStop");
+                                 System.out.println("Too many items");
+                              }
+                              System.out.println();
                            }
                         
-                           if (uD.buyItem(account, i)) {
-                              System.out.println("Item bought successfully.");
-                           } else {
-                              System.out.println("Item was not bought. Please check if you fit the following requirements: ");
-                              System.out.println("Enough money");
-                              System.out.println("In a city with a PokeStop");
-                              System.out.println("Too many items");
+                           if (select3 == 4) {
+                              String p_name, i_name;
+                              sc.nextLine();
+                              System.out.print("Enter the name of the Pokemon you want to give the item to: ");
+                              p_name = sc.nextLine();
+                              System.out.print("Enter the name of the Item you are giving to the Pokemon: ");
+                              i_name = sc.nextLine();
+                           
+                              if (uD.giveItem(account, p_name, i_name)) {
+                                 System.out.println("Item was given successfully.");
+                              } else {
+                                 System.out.println("Item was not given successfully. Please check that the Pokemon and Item are in your team and inventory.");
+                              }
+                              System.out.println();
                            }
-                        }
-                     
-                        if (select3 == 4) {
-                           String p_name, i_name;
-                           sc.nextLine();
-                           System.out.print("Enter the name of the Pokemon you want to give the item to: ");
-                           p_name = sc.nextLine();
-                           System.out.print("Enter the name of the Item you are giving to the Pokemon: ");
-                           i_name = sc.nextLine();
                         
-                           if (uD.giveItem(account, p_name, i_name)) {
-                              System.out.println("Item was given successfully.");
-                           } else {
-                              System.out.println("Item was not given successfully. Please check that the Pokemon and Item are in your team and inventory.");
-                           }
-                        }
-                     
-                        if (select3 == 5) {
-                           sc.nextLine();
-                           String name;
-                           Location loc;
-                        
-                           System.out.print("Enter the name of the location you want to move to: ");
-                           name = sc.nextLine();
-                           loc = gameDatabase.getLocationDex().searchLocationByName(name);
-                        
-                           while (loc == null) {
-                              System.out.print("Location not found. Try again: ");
+                           if (select3 == 5) {
+                              sc.nextLine();
+                              String name;
+                              Location loc;
+                           
+                              System.out.print("Enter the name of the location you want to move to: ");
                               name = sc.nextLine();
                               loc = gameDatabase.getLocationDex().searchLocationByName(name);
+                           
+                              while (loc == null) {
+                                 System.out.print("Location not found. Try again: ");
+                                 name = sc.nextLine();
+                                 loc = gameDatabase.getLocationDex().searchLocationByName(name);
+                              }
+                           
+                              uD.moveTo(account, loc);
+                              System.out.print("Moved to new location successfully.");
+                              System.out.println();
                            }
                         
-                           uD.moveTo(account, loc);
-                           System.out.print("Moved to new location successfully.");
-                        }
-                     
-                        if (select3 == 6) {
-                           if (uD.healTeam(account)) {
-                              System.out.print("Team was healed successfully");
-                           } else {
-                              System.out.print("Team was not healed. Make sure you are in a city with a PokeCentre");
+                           if (select3 == 6) {
+                              if (uD.healTeam(account)) {
+                                 System.out.print("Team was healed successfully");
+                              } else {
+                                 System.out.print("Team was not healed. Make sure you are in a city with a PokeCentre");
+                              }
+                              System.out.println();
+                           }
+                        
+                           if (select3 == 7) {
+                              sc.nextLine();
+                              int personId;
+                              String type;
+                              System.out.println("Enter the type of person you want to you want to see the team of: ");
+                              type = sc.nextLine();
+                              System.out.println("Enter the ID of the person: ");
+                              personId = sc.nextInt();
+                              uD.displayPokemon(personId, type);
+                              System.out.println();
+                           }
+                        
+                           if (select3 == 8) {
+                              sc.nextLine();
+                              String otherName;
+                              Person p;
+                              System.out.print("Enter the name of the user you want to battle: ");
+                              otherName = sc.nextLine();
+                              p = uD.battleTrainer(account, otherName);
+                              if (p == null) {
+                                 System.out.println("Something went wrong. Try again.");
+                              } else {
+                                 System.out.println(p.getName() + " is the winner!");
+                              }
+                              System.out.println();
                            }
                         }
-                     
-                        if (select3 == 7) {
-                           sc.nextLine();
-                           int personId;
-                           String type;
-                           System.out.println("Enter the type of person you want to you want to see the team of: ");
-                           type = sc.nextLine();
-                           System.out.println("Enter the ID of the person: ");
-                           personId = sc.nextInt();
-                           uD.displayPokemon(personId, type);
-                        }
-                     
-                        if (select3 == 8) {
-                           sc.nextLine();
-                           String otherName;
-                           Person p;
-                           System.out.print("Enter the name of the user you want to battle: ");
-                           otherName = sc.nextLine();
-                           p = uD.battleTrainer(account, otherName);
-                           System.out.println(p.getName() + " is the winner!");
+                        else {
+                           System.out.println("There are no accounts. Please create an account.");
+                           select3 = 0;
                         }
                      }
-                     else {
-                        System.out.println("There are no accounts. Please create an account.");
-                        select3 = 0;
-                     }
                   }
-               }
-               if (select2 == 4) {
-                  System.out.println("Select an option: ");
-                  System.out.println("1) Search Person by Name.");
-                  System.out.println("2) Search User by ID.");
-                  System.out.println("3) Search NPC by ID.");
-                  select3 = sc.nextInt();
+                  if (select2 == 4) {
+                     System.out.println("Select an option: ");
+                     System.out.println("1) Search Person by Name.");
+                     System.out.println("2) Search User by ID.");
+                     System.out.println("3) Search NPC by ID.");
+                     select3 = sc.nextInt();
                   
-                  if (select3 == 1) {
-                     sc.nextLine();
-                     String name;
-                     Person p0;
-                     System.out.println("Enter the name of the Person you want to find: ");
-                     name = sc.nextLine();
-                     p0 = uD.searchPersonByName(name);
-                     if (p0 != null) {
-                        System.out.println(p0);
-                     } else {
-                        System.out.println("Person not found.");
+                     while (select3 < 0 && select3 > 3) {
+                        System.out.print("That is not a possible option. Please try again: ");
+                        select3 = sc.nextInt();
                      }
-                  }
                   
-                  if (select3 == 2) {
-                     int id;
-                     User u0;
-                     System.out.println("Enter the ID of the User you want to find: ");
-                     id = sc.nextInt();
-                     u0 = uD.searchUserById(id);
-                     if (u0 != null) {
-                        System.out.println(u0);
-                     } else {
-                        System.out.println("Person not found.");
-                     }
-                  }
+                     System.out.println();
                   
-                  if (select3 == 3) {
-                     int id;
-                     NPC n0;
-                     System.out.println("Enter the ID of the NPC you want to find: ");
-                     id = sc.nextInt();
-                     n0 = uD.searchNPCById(id);
-                     if (n0 != null) {
-                        System.out.println(n0);
-                     } else {
-                        System.out.println("Person not found.");
+                     if (select3 == 1) {
+                        sc.nextLine();
+                        String name;
+                        Person p0;
+                        System.out.println("Enter the name of the Person you want to find: ");
+                        name = sc.nextLine();
+                        p0 = uD.searchPersonByName(name);
+                        if (p0 != null) {
+                           System.out.println(p0);
+                        } else {
+                           System.out.println("Person not found.");
+                        }
+                        System.out.println();
+                     }
+                  
+                     if (select3 == 2) {
+                        int id;
+                        User u0;
+                        System.out.println("Enter the ID of the User you want to find: ");
+                        id = sc.nextInt();
+                        u0 = uD.searchUserById(id);
+                        if (u0 != null) {
+                           System.out.println(u0);
+                        } else {
+                           System.out.println("Person not found.");
+                        }
+                        System.out.println();
+                     }
+                  
+                     if (select3 == 3) {
+                        int id;
+                        NPC n0;
+                        System.out.println("Enter the ID of the NPC you want to find: ");
+                        id = sc.nextInt();
+                        n0 = uD.searchNPCById(id);
+                        if (n0 != null) {
+                           System.out.println(n0);
+                        } else {
+                           System.out.println("Person not found.");
+                        }
+                        System.out.println();
                      }
                   }
-               }
-               if (select2 == 5) {
-                  if (uD.saveUsers(USER_FILE)) {
-                     System.out.println("Users saved successfully");
-                  } else {
-                     System.out.println("An error has occured.");
+                  if (select2 == 5) {
+                     if (uD.saveUsers(USER_FILE)) {
+                        System.out.println("Users saved successfully");
+                     } else {
+                        System.out.println("An error has occured.");
+                     }
+                     System.out.println();
                   }
                }
             }
