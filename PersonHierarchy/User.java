@@ -266,7 +266,7 @@ public class User extends Person {
             winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
          
             while (challenger_pokemon_left > 0 && defender_pokemon_left > 0) {
-               if (def_team[defender_pokemon].getCurrentHp <= 0) {
+               if (def_team[defender_pokemon].getCurrentHP() <= 0) {
                   System.out.println("balls");
                   defender_pokemon_left--;
                   if (defender_pokemon_left > 0) {
