@@ -363,7 +363,7 @@ public class User extends Person {
                if (challenger.getCurrentHP() <= 0) {
                   winner = defender;
                } 
-               else if (challenger.getCurrentHP() <= 0) {
+               else if (defender.getCurrentHP() <= 0) {
                   winner = challenger;  
                } 
                else {
