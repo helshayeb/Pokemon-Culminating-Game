@@ -108,12 +108,18 @@ public class ItemDex {
       try {
          BufferedWriter out = new BufferedWriter (new FileWriter (fileName));
          out.write(numItemData);
+	 out.newLine();
          for (int i = 0; i <= numItemData; i++) {
             out.write(itemList[i].getItemTypeName());
+	    out.newLine();
             out.write(itemList[i].getItemName());
-            out.write(itemList[i].getId());
+            out.newLine();
+	    out.write(itemList[i].getId());
+	    out.newLine();
             out.write(itemList[i].getPrice());
+	    out.newLine();
             out.write(String.format("%.2f", itemList[i].getModifier()));
+	    out.newLine();
          }
          out.close();
          return true;
