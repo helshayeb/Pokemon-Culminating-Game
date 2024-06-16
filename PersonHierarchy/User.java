@@ -371,7 +371,14 @@ public class User extends Person {
                } 
                else {
                   System.out.println(challenger.getName() + " has " + challenger.getCurrentHP() + " HP.");
+                  System.out.println("Atk: " + challenger.getAttackStat());
+                  System.out.println("Def: " + challenger.getDefenceStat());
+                  System.out.println("Spd: " + challenger.getSpeedStat());
                   System.out.println(defender.getName() + " has " + defender.getCurrentHP() + " HP.");
+                  System.out.println("Atk: " + defender.getAttackStat());
+                  System.out.println("Def: " + defender.getDefenceStat());
+                  System.out.println("Spd: " + defender.getSpeedStat());
+                  
                   this.computerTurn(defender, challenger);
                   if (challenger.getCurrentHP() <= 0) {
                      winner = defender;
@@ -389,7 +396,13 @@ public class User extends Person {
                   winner = challenger; 
                } else {
                   System.out.println(challenger.getName() + " has " + challenger.getCurrentHP() + " HP.");
+                  System.out.println("Atk: " + challenger.getAttackStat());
+                  System.out.println("Def: " + challenger.getDefenceStat());
+                  System.out.println("Spd: " + challenger.getSpeedStat());
                   System.out.println(defender.getName() + " has " + defender.getCurrentHP() + " HP.");
+                  System.out.println("Atk: " + defender.getAttackStat());
+                  System.out.println("Def: " + defender.getDefenceStat());
+                  System.out.println("Spd: " + defender.getSpeedStat());
                   this.userTurn(challenger, defender);
                   if (challenger.getCurrentHP() <= 0) {
                      winner = defender;
