@@ -124,7 +124,7 @@ public class User extends Person {
    * is already in the team or numPokemon is equal to MAX_POKEMON
    */
    public boolean catchPokemon (Pokemon poke) {
-	  int numPoke = this.getNumPokemon();
+      int numPoke = this.getNumPokemon();
       boolean inTeam = false;
       for (int i = 0; i < numPoke; i++) {
          if (poke == this.getTeamList()[i]) {
@@ -132,10 +132,10 @@ public class User extends Person {
          }
       }
       if (poke.getFoundIn().equals(this.getCurrentLocation()) && numPoke < getMaxPokemon() && !(inTeam)) {
-        this.newPokemon(poke);
-        return true;
+         this.newPokemon(poke);
+         return true;
       } else {
-        return false;
+         return false;
       }
    }
 
@@ -147,17 +147,17 @@ public class User extends Person {
    * or numItems is equal to maxItems
    */
    public boolean buyItem (Item it) {
-	  Location curLoc = this.getCurrentLocation();
+      Location curLoc = this.getCurrentLocation();
       if (money > it.getPrice() && numItems < PokeDex.MAX_SIZE && curLoc instanceof City && ((City)curLoc).getHasPokeStop()) {
-    	  if (it instanceof AttackItem) {
-    		  inventory[numItems] = new AttackItem (it.getItemTypeName(), it.getItemName(), it.getId(), it.getPrice(), it.getModifier());
-    	  } else if (it instanceof DefenceItem) {
-    		  inventory[numItems] = new DefenceItem (it.getItemTypeName(), it.getItemName(), it.getId(), it.getPrice(), it.getModifier());
-    	  } else if (it instanceof HealthItem) {
-    		  inventory[numItems] = new HealthItem (it.getItemTypeName(), it.getItemName(), it.getId(), it.getPrice(), it.getModifier());
-    	  } else {
-    		  inventory[numItems] = new SpeedItem (it.getItemTypeName(), it.getItemName(), it.getId(), it.getPrice(), it.getModifier());
-    	  }
+         if (it instanceof AttackItem) {
+            inventory[numItems] = new AttackItem (it.getItemTypeName(), it.getItemName(), it.getId(), it.getPrice(), it.getModifier());
+         } else if (it instanceof DefenceItem) {
+            inventory[numItems] = new DefenceItem (it.getItemTypeName(), it.getItemName(), it.getId(), it.getPrice(), it.getModifier());
+         } else if (it instanceof HealthItem) {
+            inventory[numItems] = new HealthItem (it.getItemTypeName(), it.getItemName(), it.getId(), it.getPrice(), it.getModifier());
+         } else {
+            inventory[numItems] = new SpeedItem (it.getItemTypeName(), it.getItemName(), it.getId(), it.getPrice(), it.getModifier());
+         }
          numItems++;
          money -= it.getPrice();
          return true;
@@ -173,8 +173,8 @@ public class User extends Person {
    * Pokemon is not found in the team and the team has at no Pokemon
    */
    public boolean releasePokemon (Pokemon poke) {
-	  int numPoke = this.getNumPokemon(); 
-	  Pokemon[] team = this.getTeamList();
+      int numPoke = this.getNumPokemon(); 
+      Pokemon[] team = this.getTeamList();
       if (numPoke <= 0) {
          return false;
       } else {
@@ -197,16 +197,6 @@ public class User extends Person {
    }
 
    /**
-   * Simulates moving to another location in order to fulfill
-   * requirements for certain actions
-   * @param it Item object that user wants to add to their inventory
-   * Pokemon is not found in the team and the team has at no Pokemon
-   */
-   public void moveTo (Location loc) {
-      this.setCurrentLocation(loc);
-   }
-
-   /**
    * A method that continuously has Pokemon keep attacking each other
    * in a 1 on 1 format until one player runs out of Pokemon.
    * @param other Person that the user is battling
@@ -214,34 +204,34 @@ public class User extends Person {
    * an incorrect input was taken in
    */
    public Person battleTrainer (Person other) {
-	  int chal_num_poke = this.getNumPokemon();
-	  int def_num_poke = other.getNumPokemon();
-	  Pokemon[] chal_team = this.getTeamList();
-	  Pokemon[] def_team = other.getTeamList();
+      int chal_num_poke = this.getNumPokemon();
+      int def_num_poke = other.getNumPokemon();
+      Pokemon[] chal_team = this.getTeamList();
+      Pokemon[] def_team = other.getTeamList();
       int challenger_pokemon, defender_pokemon, challenger_pokemon_left, defender_pokemon_left;
       Scanner sc = new Scanner (System.in);
       Pokemon winner;
       Person p_winner = null;
-
+   
       challenger_pokemon_left = chal_num_poke;
       defender_pokemon_left = def_num_poke;
-
+   
       for (int i = 0; i < chal_num_poke; i++) {
          if (chal_team[i].getCurrentHP() == 0) {
             challenger_pokemon_left--;
          }
       }
-
+   
       for (int i = 0; i < def_num_poke; i++) {
          if (def_team[i].getCurrentHP() == 0) {
             defender_pokemon_left--;
          }
       }
-
+   
       try {
          System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
          challenger_pokemon = sc.nextInt() - 1;
-
+      
          while (chal_team[challenger_pokemon].getCurrentHP() == 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
             if (chal_team[challenger_pokemon].getCurrentHP() == 0 ) {
                System.out.print("That Pokemon is dead. Please select another: ");
@@ -254,13 +244,13 @@ public class User extends Person {
          }
          
          defender_pokemon = ((int)Math.random() * (def_num_poke));
-
+      
          while (chal_team[defender_pokemon].getCurrentHP() == 0) {
             defender_pokemon = ((int)Math.random() * (def_num_poke));
          }
          
          winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
-
+      
          while (challenger_pokemon_left > 0 && defender_pokemon_left > 0) {
             if (winner == chal_team[challenger_pokemon]) {
                defender_pokemon_left--;
@@ -276,7 +266,7 @@ public class User extends Person {
                challenger_pokemon_left--;
                System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
                challenger_pokemon = sc.nextInt() - 1;
-
+            
                if (challenger_pokemon_left > 0) {
                   System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
                   challenger_pokemon = sc.nextInt();
@@ -293,15 +283,17 @@ public class User extends Person {
                   winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
                }
             }
-
+         
             for (int i = 0; i < chal_num_poke; i++) {
                this.resetPokemon(chal_team[i].getID());
             }
-
+         
             for (int i = 0; i < def_num_poke; i++) {
-               other.newPokemon(def_team[i]);
+               other.resetPokemon(def_team[i].getID());
+               other.moveTo(other.getPokedexReference().getLocationDex().getLocList()[11]);
+               other.healTeam();
             }
-
+         
             if (challenger_pokemon_left == 0) {
                p_winner = other;
             } else {
@@ -312,13 +304,17 @@ public class User extends Person {
       }
       catch (InputMismatchException ime) {
          for (int i = 0; i < chal_num_poke; i++) {
-            this.resetPokemon(chal_team[i].getID());
+            this.resetPokemon(def_team[i].getID());
+            this.moveTo(this.getPokedexReference().getLocationDex().getLocList()[11]);
+            this.healTeam();
          }
-
+      
          for (int i = 0; i < def_num_poke; i++) {
             other.resetPokemon(def_team[i].getID());
+            other.moveTo(other.getPokedexReference().getLocationDex().getLocList()[11]);
+            other.healTeam();
          }
-
+      
          return null;
       }
    }
@@ -334,38 +330,60 @@ public class User extends Person {
       Condition cCondition = challenger.getCurrentCondition();
       Condition dCondition =  defender.getCurrentCondition();
       Pokemon winner = null;
-      while (challenger.getCurrentHP() != 0 && defender.getCurrentHP() != 0) {
+      while (challenger.getCurrentHP() > 0 && defender.getCurrentHP() > 0) {
+         System.out.println(challenger.getName() + " has " + challenger.getCurrentHP() + " HP.");
+         System.out.println(defender.getName() + " has " + defender.getCurrentHP() + " HP.");
          if (cCondition != null) {
             challenger.applyCondition();
          }
-
+      
          if (dCondition != null) {
-        	defender.applyCondition();
+            defender.applyCondition();
          }
-
+      
          if (challenger.getCurrentHP() == 0) {
             winner = defender;
          } 
-         else if (challenger.getCurrentHP() == 0) {
+         else if (defender.getCurrentHP() == 0) {
             winner = challenger;
          } 
          else {
             if (challenger.getSpeedStat() > defender.getSpeedStat()) {
                this.userTurn(challenger, defender);
-               if (challenger.getCurrentHP() == 0) {
+               if (challenger.getCurrentHP() <= 0) {
                   winner = defender;
                } 
-               else if (challenger.getCurrentHP() == 0) {
+               else if (challenger.getCurrentHP() <= 0) {
                   winner = challenger;  
                } 
                else {
-                  this.computerTurn(challenger, defender);
-                  if (challenger.getCurrentHP() == 0) {
+                  System.out.println(challenger.getName() + " has " + challenger.getCurrentHP() + " HP.");
+                  System.out.println(defender.getName() + " has " + defender.getCurrentHP() + " HP.");
+                  this.computerTurn(defender, challenger);
+                  if (challenger.getCurrentHP() <= 0) {
                      winner = defender;
                   } 
-                  else if (challenger.getCurrentHP() == 0) {
+                  else if (defender.getCurrentHP() <= 0) {
                      winner = challenger; 
                   }
+               }
+            } else {
+               this.computerTurn(defender, challenger);
+               if (challenger.getCurrentHP() <= 0) {
+                  winner = defender;
+               } 
+               else if (defender.getCurrentHP() <= 0) {
+                  winner = challenger; 
+               } else {
+                  System.out.println(challenger.getName() + " has " + challenger.getCurrentHP() + " HP.");
+                  System.out.println(defender.getName() + " has " + defender.getCurrentHP() + " HP.");
+                  this.userTurn(challenger, defender);
+                  if (challenger.getCurrentHP() <= 0) {
+                     winner = defender;
+                  } 
+                  else if (defender.getCurrentHP() <= 0) {
+                     winner = challenger;  
+                  } 
                }
             }
          }
@@ -389,27 +407,32 @@ public class User extends Person {
          System.out.println("4) " + challenger.getMoveList()[3].getMoveName());
          System.out.println("5) Use Item");
          select = sc.nextInt();
-
+      
          while (select < 1 || select > 5) {
             System.out.print("That is not an option. Try again: ");
             select = sc.nextInt();
          }
-
+      
          switch (select) {
             case 1:
-               challenger.attack(defender, challenger.getMoveList()[1]);
+               challenger.attack(defender, challenger.getMoveList()[0]);
                break;
             case 2:
-               challenger.attack(defender, challenger.getMoveList()[2]);
+               challenger.attack(defender, challenger.getMoveList()[1]);
                break;
             case 3:
-               challenger.attack(defender, challenger.getMoveList()[3]);
+               challenger.attack(defender, challenger.getMoveList()[2]);
                break;
             case 4:
-               challenger.attack(defender, challenger.getMoveList()[4]);
+               challenger.attack(defender, challenger.getMoveList()[3]);
                break;
             case 5:
-               challenger.consumeItem(challenger.getItemHolding());
+               if (challenger.getItemHolding() == null) {
+                  System.out.println("There is no item. Try again.");
+                  this.userTurn(challenger, defender);
+               } else {
+                  challenger.consumeItem(challenger.getItemHolding());
+               }
                break;
             default:
                System.out.print("Error");
@@ -425,24 +448,29 @@ public class User extends Person {
    * @param challenger Pokemon object of the user who was challenged 
    * @param defender Pokemon object of the user who initiated the battle
    */
-   public void computerTurn (Pokemon challenger, Pokemon defender) {
+   public void computerTurn (Pokemon attacker, Pokemon defender) {
       int select;
       select = ((int) (Math.random() * (5) + 1));
       switch (select) {
          case 1:
-            challenger.attack(defender, challenger.getMoveList()[1]);
+            attacker.attack(defender, attacker.getMoveList()[0]);
             break;
          case 2:
-            challenger.attack(defender, challenger.getMoveList()[2]);
+            attacker.attack(defender, attacker.getMoveList()[1]);
             break;
          case 3:
-            challenger.attack(defender, challenger.getMoveList()[3]);
+            attacker.attack(defender, attacker.getMoveList()[2]);
             break;
          case 4:
-            challenger.attack(defender, challenger.getMoveList()[4]);
+            attacker.attack(defender, attacker.getMoveList()[3]);
             break;
          case 5:
-            challenger.consumeItem(challenger.getItemHolding());
+            if (attacker.getItemHolding() == null) {
+               this.computerTurn(attacker, defender);
+            }
+            else {
+               attacker.consumeItem(attacker.getItemHolding());
+            }
             break;
          default:
             System.out.print("Error");
@@ -470,11 +498,11 @@ public class User extends Person {
    * @return String of the User object
    */
    public String toString () {
-	   int numPoke = this.getNumPokemon();
-	   String s = "Name: " + this.getName() + "\nAge: " + this.getAge() + "\nID: " + this.getPersonID() + "\nNumber of Pokemon: " + numPoke + "\n";
-	   for (int i = 0; i < numPoke; i++) {
-	      s += this.getTeamList()[i] + "\n";
-	   }
+      int numPoke = this.getNumPokemon();
+      String s = "Name: " + this.getName() + "\nAge: " + this.getAge() + "\nID: " + this.getPersonID() + "\nNumber of Pokemon: " + numPoke + "\n";
+      for (int i = 0; i < numPoke; i++) {
+         s += this.getTeamList()[i] + "\n";
+      }
       s += "Number of Items: " + numItems + "\n";
       for (int i = 0; i < numItems; i++) {
          s += inventory[i] + "\n\n";
