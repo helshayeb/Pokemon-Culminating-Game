@@ -297,8 +297,8 @@ public class User extends Person {
                      winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
                   }
                }
-            
-               for (int i = 0; i < chal_num_poke; i++) {
+            }
+            for (int i = 0; i < chal_num_poke; i++) {
                   this.resetPokemon(chal_team[i].getID());
                }
             
@@ -313,7 +313,6 @@ public class User extends Person {
                } else {
                   p_winner = this;
                }
-            }
             return p_winner;
          }
          catch (InputMismatchException ime) {
