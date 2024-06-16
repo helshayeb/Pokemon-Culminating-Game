@@ -233,12 +233,12 @@ public class User extends Person {
       }
       else if (challenger_pokemon_left == 0) {
          System.out.println("Challenger does not have enough Pokemon to battle");
-         defender = winner;
+         winner = defender;
          return winner;
       }
       else if (defender_pokemon_left == 0) {
          System.out.println("Defender does not have enough Pokemon to battle");
-         challenger = winner;
+         winner = challenger;
          return winner;
       }
       else {
