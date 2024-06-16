@@ -69,7 +69,6 @@ public class PokemonDex{
          Move move1, move2, move3, move4;
          Location foundIn;
          for (int i = 0; i < numPokemonData; i++) {
-            System.out.println(i);
             name = in.readLine();
             type = Integer.parseInt(in.readLine());
             id = Integer.parseInt(in.readLine());
@@ -147,7 +146,6 @@ public class PokemonDex{
 	* @return Pokemon if successful, null if not
 	*/
    public Pokemon searchPokemonById (int id) {
-   System.out.println(numPokemonData);
       return searchPokemonById (id, numPokemonData-1, 0);
    }
 
