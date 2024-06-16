@@ -551,5 +551,5 @@ Damage
 Light That Burns the Sky
 8
 72
-300
+200
  
