@@ -1,76 +1,116 @@
 package LocationHierarchy;
 
-public class Location {
+public class Route extends Location {
     /**
-    *  Type of region where the location is situated
+    * An array of pokemon IDs in the Location
     */
-    private String regionType; 
+    String[] pokemonInLocation;
     /**
-    *  Name of the location
+    * The number of the Pokemons in the Array
     */
-    private String name; 
+    int numPokemon = 0;
     /**
-    *  Unique identifier for the location
+    * The unique Identification number of the Route
     */
-    private int locationID; 
+    int routeNum;
 
     /**
-     * Constructs a new Location object with specified type, name, and id.
+     * Constructs a new Route object with specified type, name, id, pokes(list of pokemon).
+     * 
+     * @param type The type of region where the location is situated.
+     * @param name The name of the location.
+     * @param id The unique identifier for the location.
+     * @param pokes The list of pokemon ids
+     */
+    public Route(String type, String name, int routeNum, int id, String[] pokes){
+        super(type, name, id);
+        pokemonInLocation = pokes;
+        this.routeNum = routeNum;
+    }
+
+    /**
+     * Constructs a new Route object with specified type, name, id.
      * 
      * @param type The type of region where the location is situated.
      * @param name The name of the location.
      * @param id The unique identifier for the location.
      */
-    public Location(String type, String name, int id) {
-        regionType = type;
-        this.name = name;
-        locationID = id;
+    public Route(String type, String name, int routeNum, int id){
+        super(type, name, id);
+        pokemonInLocation = new String[200];
+        this.routeNum = routeNum;
     }
 
     /**
-     * Constructs a new Location object with the specified id.
+     * Constructs a new Route object with specified type, name, id.
      * 
      * @param id The unique identifier for the location.
+     * @param pokes The list of pokemon ids
      */
-    public Location(int id) {
-        locationID = id;
-        regionType = null;
-        name = null;
+    public Route(int id, int routeNum, String[] pokes){
+        super(id);
+        pokemonInLocation = pokes;
+        this.routeNum = routeNum;
     }
 
+    // Accessors (Getters)
     /**
-     * Gets the type of region where the location is situated.
+     * Accesses pokemonInLocation.
      * 
-     * @return The region type.
+     * @param id The unique identifier for the location.
+     * @param pokes The list of pokemon ids
      */
-    public String getRegionType() {
-        return regionType;
+    public String[] getPokemonInLocation() {
+        return pokemonInLocation;
     }
 
+    // Accessors (Getters)
     /**
-     * Gets the name of the location.
+     * Accesses pokemonInLocation.
      * 
-     * @return The name of the location.
      */
-    public String getName() {
-        return name;
+    public int getNumPokemon(){
+        return numPokemon;
     }
 
     /**
-     * Gets the unique identifier for the location.
+     * Accesses routeNum.
      * 
-     * @return The location ID.
      */
-    public int getLocationID() {
-        return locationID;
+    public int getRouteNum() {
+        return routeNum;
+    }
+
+    // Mutators (Setters)
+    /**
+     * Changes pokemonInLocation.
+     * 
+     */
+    public void setPokemonInLocation(int[] pokemonInLocation) {
+        this.pokemonInLocation = pokemonInLocation;
     }
 
     /**
-        * This method returns information about the Location
-        * in the form of a String
-        * @return String Information about the Location
-        */
+     * Changes routeNum.
+     * 
+     */
+    public void setRouteNum(int routeNum) {
+        this.routeNum = routeNum;
+    }
+
+    /**
+     * This method returns information about the Route
+     * in the form of a String
+     * @return String Information about the Route
+     */
     public String toString(){
-        return ("Region Type: " +regionType + "\nName: " + name + "\nID: " +locationID);
+        String str = super.toString();
+        str += ("\nRoute Number: "+ routeNum);
+        str += ("\nPokemon IDs: ");
+        for(int i = 0; i< pokemonInLocation.length; i++){
+            str+= pokemonInLocation[i]+", ";
+        }
+        return str;
     }
+    
 }
