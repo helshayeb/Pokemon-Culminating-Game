@@ -369,11 +369,10 @@ public class Pokemon{
    public String toString(){
       String cond;
       if(currentCondition == null){
-	cond = "No Condition Applied";
+	      cond = "No Condition Applied";
       }else{
-	cond == conditionApplied.toString();
+	      cond = currentCondition.toString();
       }
-	
       String pokemonInfo = "Name: " + name + "\nType: " + getTypeName(type) + "\nID: " + id + "\nMax Health: " + maxHPStat + "\nAttack Stat: " + attackStat + "\nDefence Stat" + defenceStat + "\nSpeedStat: " + speedStat + "Moves: " + moveList[0].getMoveName() + "\n" + moveList[1].getMoveName() + "\n" + moveList[2].getMoveName() + "\n" + moveList[3].getMoveName() + "\nCondition: " + cond + "\nLocation: " + foundIn.getRegionType();  
       return pokemonInfo;
    }
