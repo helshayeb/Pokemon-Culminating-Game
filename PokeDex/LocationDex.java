@@ -65,7 +65,7 @@ public class LocationDex {
                     int len = Integer.parseInt(br.readLine());
                     int[] list = new int[len];
                     for (int j = 0; j < len; j++) {
-                        list[j] = PD.getPokemonDex().searchPokemonByName(br.readLine()).getID();
+                        list[j] = br.readLine();
                     }
                     locList[i] = new Route(region, name, id, routeNum, list);
                     numLocationsData++;
