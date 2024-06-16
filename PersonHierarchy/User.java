@@ -187,7 +187,7 @@ public class User extends Person {
          if (index == -1) {
             return false;
          } else {
-            for (int i = index; i < numPoke; i++) {
+            for (int i = index; i+1 < numPoke; i++) {
                team[i] = team[i+1];
             }
             this.setNumPokemon(numPoke - 1);
@@ -227,7 +227,21 @@ public class User extends Person {
             defender_pokemon_left--;
          }
       }
-   
+      if (challenger_pokemon_left == 0 && defender_pokemon_left == 0) {
+         System.out.println("Neither team has enough Pokemon to battle");
+         return null;
+      }
+      else if (challenger_pokemon_left == 0) {
+         System.out.println("Challenger does not have enough Pokemon to battle");
+         defender = winner;
+         return winner;
+      }
+      else if (defender_pokemon_left == 0) {
+         System.out.println("Defender does not have enough Pokemon to battle");
+         challenger = winner;
+         return winner;
+      }
+      else {
       try {
          System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
          challenger_pokemon = sc.nextInt() - 1;
@@ -316,6 +330,7 @@ public class User extends Person {
          }
       
          return null;
+      }
       }
    }
 
