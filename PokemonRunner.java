@@ -36,7 +36,7 @@ public class PokemonRunner {
       // Read in text files
       iD.readItems(ITEM_FILE);
       mD.readMoves(MOVE_FILE);
-      lD.readLocations(LOCATION_FILE, gameDatabase);
+      lD.readLocations(LOCATION_FILE);
       pD.readPokemon(POKEMON_FILE, gameDatabase);
       uD.readNPCs(NPC_FILE, gameDatabase);
       uD.readUsers(USER_FILE, gameDatabase);
@@ -481,14 +481,14 @@ public class PokemonRunner {
                      if(select3 == 1){
                         iD.saveItems(ITEM_FILE);
                      }else if(select3 == 2){
-                        lD.saveLocations(LOCATION_FILE, gameDatabase);
+                        lD.saveLocations(LOCATION_FILE;
                      }else if(select3 ==3){
                         mD.saveMoves(MOVE_FILE);
                      }else if(select3 == 4){
                         pD.savePokemon(POKEMON_FILE);
                      }else if(select3 == 5){
                         iD.saveItems(ITEM_FILE);
-                        lD.saveLocations(LOCATION_FILE, gameDatabase);
+                        lD.saveLocations(LOCATION_FILE);
                         mD.saveMoves(MOVE_FILE);
                         pD.savePokemon(POKEMON_FILE);
                      }
