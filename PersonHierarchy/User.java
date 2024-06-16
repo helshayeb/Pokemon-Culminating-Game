@@ -217,13 +217,13 @@ public class User extends Person {
       defender_pokemon_left = def_num_poke;
    
       for (int i = 0; i < chal_num_poke; i++) {
-         if (chal_team[i].getCurrentHP() == 0) {
+         if (chal_team[i].getCurrentHP() <= 0) {
             challenger_pokemon_left--;
          }
       }
    
       for (int i = 0; i < def_num_poke; i++) {
-         if (def_team[i].getCurrentHP() == 0) {
+         if (def_team[i].getCurrentHP() <= 0) {
             defender_pokemon_left--;
          }
       }
@@ -281,12 +281,12 @@ public class User extends Person {
                   if (challenger_pokemon_left > 0) {
                      System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
                      challenger_pokemon = sc.nextInt() - 1;
-                     while (chal_team[challenger_pokemon].getCurrentHP() == 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
-                        if (chal_team[challenger_pokemon].getCurrentHP() == 0 ) {
-                           System.out.print("That Pokemon is dead. Please select another: ");
+                     while (chal_team[challenger_pokemon].getCurrentHP() <= 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
+                        if (challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
+                           System.out.print("That was not in the specified range. Please try another number: ");
                         }
                         else {
-                           System.out.print("That was not in the specified range. Please try another number: ");
+                           System.out.print("That Pokemon is dead. Please select another: ");
                         }
                         challenger_pokemon = sc.nextInt() - 1;
                         System.out.println();
