@@ -243,7 +243,7 @@ public class Person {
             Item[] inv = ((User)this).getInventory();
             int index = -1;
             for (int i = 0; i < numIt; i++) {
-               if (inv[i].getItemName() == it) {
+               if (inv[i].getItemName().equals(it)) {
                   index = i;
                }
             }
@@ -252,7 +252,7 @@ public class Person {
             } else {
                Item i_temp = inv[index];
                p_temp.setItemHolding(i_temp);
-               for (int i = index; i < numIt; i++) {
+               for (int i = index; i+1 < numIt; i++) {
                   inv[i] = inv[i+1];
                }
                ((User)this).setNumItems(((User)this).getNumItems() - 1);
