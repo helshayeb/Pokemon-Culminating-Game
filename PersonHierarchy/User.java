@@ -233,13 +233,13 @@ public class User extends Person {
       }
       else if (challenger_pokemon_left == 0) {
          System.out.println("Challenger does not have enough Pokemon to battle");
-         winner = other;
-         return winner;
+         p_winner = other;
+         return p_winner;
       }
       else if (defender_pokemon_left == 0) {
          System.out.println("Defender does not have enough Pokemon to battle");
-         winner = this;
-         return winner;
+         p_winner = this;
+         return p_winner;
       }
       else {
       try {
@@ -465,19 +465,24 @@ public class User extends Person {
       select = ((int) (Math.random() * (5) + 1));
       switch (select) {
          case 1:
+            System.out.println(attacker.getName() + " used " + attacker.getMoveList()[0]);
             attacker.attack(defender, attacker.getMoveList()[0]);
             break;
          case 2:
+            System.out.println(attacker.getName() + " used " + attacker.getMoveList()[1]);
             attacker.attack(defender, attacker.getMoveList()[1]);
             break;
          case 3:
+            System.out.println(attacker.getName() + " used " + attacker.getMoveList()[2]);
             attacker.attack(defender, attacker.getMoveList()[2]);
             break;
          case 4:
+            System.out.println(attacker.getName() + " used " + attacker.getMoveList()[3]);
             attacker.attack(defender, attacker.getMoveList()[3]);
             break;
          case 5:
             if (attacker.getItemHolding() == null) {
+               System.out.println(attacker.getName() + " used their item.");
                this.computerTurn(attacker, defender);
             }
             else {
