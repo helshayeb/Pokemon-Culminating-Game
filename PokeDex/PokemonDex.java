@@ -211,19 +211,21 @@ public class PokemonDex{
    * @param numChecks The number of checks
    * @param sorted Stores if the program is sorted or not
    */
-   public void sortByHpStat (int numChecks, boolean sorted) {
+     public void sortByHpStat (int numChecks, boolean sorted) {
       Pokemon temp;
-      if (numChecks > 0 || !sorted)
+      if (numChecks > 0 || !sorted) {
          sorted = true;
-      for (int i = 1; i < numPokemonData - 1; i++) {
-         if (pokemonList[i].getMaxHPStat() > pokemonList[i - 1].getMaxHPStat()) {
-            sorted = false;
-            temp = pokemonList[i];
-            pokemonList[i] = pokemonList[i - 1];
-            pokemonList[i - 1] = temp;
+         for (int i = 1; i < numChecks - 1; i++) {
+            if (pokemonList[i].getMaxHPStat() > pokemonList[i - 1].getMaxHPStat()) {
+               sorted = false;
+               temp = pokemonList[i];
+               pokemonList[i] = pokemonList[i - 1];
+               pokemonList[i - 1] = temp;
+            }
          }
+
+         this.sortByHpStat(numChecks - 1, sorted);
       }
-      this.sortByHpStat(numChecks + 1, sorted);
    }
 
 /**
