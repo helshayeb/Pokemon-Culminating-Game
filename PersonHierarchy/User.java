@@ -246,8 +246,8 @@ public class User extends Person {
             System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
             challenger_pokemon = sc.nextInt() - 1;
          
-            while (chal_team[challenger_pokemon].getCurrentHP() == 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
-               if (chal_team[challenger_pokemon].getCurrentHP() == 0 ) {
+            while (chal_team[challenger_pokemon].getCurrentHP() <= 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
+               if (chal_team[challenger_pokemon].getCurrentHP() <= 0 ) {
                   System.out.print("That Pokemon is dead. Please select another: ");
                }
                else {
@@ -259,7 +259,7 @@ public class User extends Person {
          
             defender_pokemon = ((int)Math.random() * (def_num_poke));
          
-            while (chal_team[defender_pokemon].getCurrentHP() == 0) {
+            while (def_team[defender_pokemon].getCurrentHP() <= 0) {
                defender_pokemon = ((int)(Math.random() * (def_num_poke)));
             }
          
@@ -286,6 +286,9 @@ public class User extends Person {
                            System.out.print("That was not in the specified range. Please try another number: ");
                         }
                         else {
+                           for (int i = 0; i < this.getNumPokemon(); i++) {
+                              System.out.println(chal_team[i].getName() + " has " + chal_team[i].getCurrentHP() + " HP.");
+                           }
                            System.out.print("That Pokemon is dead. Please select another: ");
                         }
                         challenger_pokemon = sc.nextInt() - 1;
