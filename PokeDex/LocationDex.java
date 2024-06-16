@@ -194,7 +194,7 @@ public class LocationDex {
     * @param fileName The name of the file to save to.
     * @return true if the data was successfully saved, false otherwise.
     */
-   public boolean saveLocations(String fileName){
+   public boolean saveLocations(String fileName, Pokedex PD){
       try{
          File file = new File(fileName);
          file.createNewFile();
