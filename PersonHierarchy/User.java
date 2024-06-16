@@ -480,12 +480,12 @@ public class User extends Person {
             break;
          case 5:
             if (attacker.getItemHolding() == null) {
-               System.out.println(attacker.getName() + " used their item.");
-               attacker.setItemHolding(null);
                this.computerTurn(attacker, defender);
             }
             else {
                attacker.consumeItem(attacker.getItemHolding());
+               System.out.println(attacker.getName() + " used their item.");
+               attacker.setItemHolding(null);
             }
             break;
          default:
