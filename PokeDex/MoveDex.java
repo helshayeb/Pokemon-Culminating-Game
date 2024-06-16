@@ -69,6 +69,7 @@ public class MoveDex {
 					basePower = Integer.parseInt(in.readLine().trim());
 					in.readLine().trim();
 					moveList[i] = new DamageMove(objectID, moveName, moveType, moveID, basePower);
+
 				} else if (objectID.equalsIgnoreCase("Status")) {
 					moveName = in.readLine().trim();
 					moveType = Integer.parseInt(in.readLine().trim());
@@ -79,15 +80,16 @@ public class MoveDex {
 					spdMod = Double.parseDouble(in.readLine().trim());
 					recipient = Integer.parseInt(in.readLine().trim());
 					in.readLine().trim();
-					moveList[i] = new StatusMove(objectID, moveName, moveType, moveID, hpMod, atkMod, defMod, spdMod,
-							recipient);
+					moveList[i] = new StatusMove(objectID, moveName, moveType, moveID, hpMod, atkMod, defMod, spdMod, recipient);
+
 				} else if (objectID.equalsIgnoreCase("Condition")) {
 					moveName = in.readLine().trim();
 					moveType = Integer.parseInt(in.readLine().trim());
 					moveID = Integer.parseInt(in.readLine().trim());
 					conditionApplied = Integer.parseInt(in.readLine().trim());
 					in.readLine().trim();
-					moveList[i] = new ConditionMove(objectID, moveName, moveType, moveID, conditionApplied);
+					moveList[i] = new DamageMove(objectID, moveName, moveType, moveID, conditionApplied);
+
 				}
 			}
 			in.close();
@@ -106,49 +108,50 @@ public class MoveDex {
 	public boolean saveMoves(String fileName) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
-			out.write(numMoveData);
+			out.write(numMoveData + "");
+         out.newLine();
 			for (int i = 0; i <= numMoveData; i++) {
 				if (moveList[i] instanceof DamageMove) {
 					out.write(moveList[i].getObjectID());
-					out.newLine();
+               out.newLine();
 					out.write(moveList[i].getMoveName());
-					out.newLine();
-					out.write(moveList[i].getMoveType());
-					out.newLine();
-					out.write(moveList[i].getMoveID());
-					out.newLine();
-					out.write(((DamageMove) moveList[i]).getBasePower());
-					out.newLine();
+               out.newLine();
+					out.write(moveList[i].getMoveType() + "");
+               out.newLine();
+					out.write(moveList[i].getMoveID() + "");
+               out.newLine();
+					out.write(((DamageMove) moveList[i]).getBasePower() + "");
+               out.newLine();
 				} else if (moveList[i] instanceof StatusMove) {
 					out.write(moveList[i].getObjectID());
-					out.newLine();
+               out.newLine();
 					out.write(moveList[i].getMoveName());
-					out.newLine();
-					out.write(moveList[i].getMoveType());
-					out.newLine();
-					out.write(moveList[i].getMoveID());
-					out.newLine();
-					out.write("" + ((StatusMove) moveList[i]).getHPMod());
-					out.newLine();
-					out.write("" + ((StatusMove) moveList[i]).getAtkMod());
-					out.newLine();
-					out.write("" + ((StatusMove) moveList[i]).getDefMod());
-					out.newLine();
-					out.write("" + ((StatusMove) moveList[i]).getSpdMod());
-					out.newLine();
-					out.write(((StatusMove) moveList[i]).getRecipient());
-					out.newLine();
+               out.newLine();
+					out.write(moveList[i].getMoveType() + "");
+               out.newLine();
+					out.write(moveList[i].getMoveID() + "");
+               out.newLine();
+					out.write("" + ((StatusMove) moveList[i]).getHPMod() + "");
+               out.newLine();
+					out.write("" + ((StatusMove) moveList[i]).getAtkMod() + "");
+               out.newLine();
+					out.write("" + ((StatusMove) moveList[i]).getDefMod() + "");
+               out.newLine();
+					out.write("" + ((StatusMove) moveList[i]).getSpdMod() + "");
+               out.newLine();
+					out.write(((StatusMove) moveList[i]).getRecipient() + "");
+               out.newLine();
 				} else if (moveList[i] instanceof ConditionMove) {
 					out.write(moveList[i].getObjectID());
-					out.newLine();
+               out.newLine();
 					out.write(moveList[i].getMoveName());
-					out.newLine();
-					out.write(moveList[i].getMoveType());
-					out.newLine();
-					out.write(moveList[i].getMoveID());
-					out.newLine();
-					out.write(((ConditionMove) moveList[i]).getConditionAppliedID());
-					out.newLine();
+               out.newLine();
+					out.write(moveList[i].getMoveType() + "");
+               out.newLine();
+					out.write(moveList[i].getMoveID() + "");
+               out.newLine();
+					out.write(((ConditionMove) moveList[i]).getConditionAppliedID() + "");
+               out.newLine();
 				}
 				out.newLine();
 			}
