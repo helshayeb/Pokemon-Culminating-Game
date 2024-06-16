@@ -275,6 +275,7 @@ public class User extends Person {
                      while (def_team[defender_pokemon].getCurrentHP() == 0) {
                         defender_pokemon = ((int)Math.random() * (def_num_poke));
                      }
+                     System.out.println(other.getName() + " sent out " + def_team[defender_pokemon].getName());
                      winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
                   }
                } 
@@ -356,18 +357,22 @@ public class User extends Person {
          }
       
          if (challenger.getCurrentHP() <= 0) {
+            System.out.println(challenger.getName() + " fainted!");
             winner = defender;
          } 
          else if (defender.getCurrentHP() <= 0) {
+            System.out.println(defender.getName() + " fainted!");
             winner = challenger;
          } 
          else {
             if (challenger.getSpeedStat() > defender.getSpeedStat()) {
                this.userTurn(challenger, defender);
                if (challenger.getCurrentHP() <= 0) {
+                  System.out.println(challenger.getName() + " fainted!");
                   winner = defender;
                } 
                else if (defender.getCurrentHP() <= 0) {
+                  System.out.println(defender.getName() + " fainted!");
                   winner = challenger;  
                } 
                else {
@@ -382,18 +387,22 @@ public class User extends Person {
                   
                   this.computerTurn(defender, challenger);
                   if (challenger.getCurrentHP() <= 0) {
+                     System.out.println(challenger.getName() + " fainted!");
                      winner = defender;
                   } 
                   else if (defender.getCurrentHP() <= 0) {
+                     System.out.println(defender.getName() + " fainted!");
                      winner = challenger; 
                   }
                }
             } else {
                this.computerTurn(defender, challenger);
                if (challenger.getCurrentHP() <= 0) {
+                  System.out.println(challenger.getName() + " fainted!");
                   winner = defender;
                } 
                else if (defender.getCurrentHP() <= 0) {
+                  System.out.println(defender.getName() + " fainted!");
                   winner = challenger; 
                } else {
                   System.out.println(challenger.getName() + " has " + challenger.getCurrentHP() + " HP.");
@@ -406,9 +415,11 @@ public class User extends Person {
                   System.out.println("Spd: " + defender.getSpeedStat());
                   this.userTurn(challenger, defender);
                   if (challenger.getCurrentHP() <= 0) {
+                     System.out.println(challenger.getName() + " fainted!");
                      winner = defender;
                   } 
                   else if (defender.getCurrentHP() <= 0) {
+                     System.out.println(defender.getName() + " fainted!");
                      winner = challenger;  
                   } 
                }
