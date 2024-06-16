@@ -343,8 +343,6 @@ public class User extends Person {
       Condition dCondition =  defender.getCurrentCondition();
       Pokemon winner = null;
       while (challenger.getCurrentHP() > 0 && defender.getCurrentHP() > 0) {
-         System.out.println(challenger.getName() + " has " + challenger.getCurrentHP() + " HP.");
-         System.out.println(defender.getName() + " has " + defender.getCurrentHP() + " HP.");
          if (cCondition != null) {
             challenger.applyCondition();
          }
@@ -353,10 +351,10 @@ public class User extends Person {
             defender.applyCondition();
          }
       
-         if (challenger.getCurrentHP() == 0) {
+         if (challenger.getCurrentHP() <= 0) {
             winner = defender;
          } 
-         else if (defender.getCurrentHP() == 0) {
+         else if (defender.getCurrentHP() <= 0) {
             winner = challenger;
          } 
          else {
@@ -483,6 +481,7 @@ public class User extends Person {
          case 5:
             if (attacker.getItemHolding() == null) {
                System.out.println(attacker.getName() + " used their item.");
+               attacker.setItemHolding(null);
                this.computerTurn(attacker, defender);
             }
             else {
