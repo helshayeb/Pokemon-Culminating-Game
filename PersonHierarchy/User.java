@@ -266,7 +266,7 @@ public class User extends Person {
             winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
          
             while (challenger_pokemon_left > 0 && defender_pokemon_left > 0) {
-               if (winner == chal_team[challenger_pokemon]) {
+               if (def_team[defender_pokemon].getCurrentHp <= 0) {
                   System.out.println("balls");
                   defender_pokemon_left--;
                   if (defender_pokemon_left > 0) {
@@ -282,7 +282,7 @@ public class User extends Person {
                   if (challenger_pokemon_left > 0) {
                      System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
                      challenger_pokemon = sc.nextInt() - 1;
-                     while (chal_team[challenger_pokemon].getCurrentHP() <= 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
+                     while (challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1 || chal_team[challenger_pokemon].getCurrentHP() <= 0) {
                         if (challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
                            System.out.print("That was not in the specified range. Please try another number: ");
                         }
