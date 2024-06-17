@@ -4,6 +4,10 @@ import LocationHierarchy.*;
 import Pokemon.Pokemon;
 
 /**
+* Class Name: NPC
+* Author: Carlos Kau
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * A type of Person object that users can battle 
 */
 public class NPC extends Person {
