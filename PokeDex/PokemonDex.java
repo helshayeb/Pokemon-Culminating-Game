@@ -6,6 +6,10 @@ import java.io.*;
 import MoveHierarchy.*;
 
 /**
+* Class Name: Pokemondex
+* Author: Joint Effort
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates a PokeDex which can be accessed and used to 
 * manipulate Pokemon
 */
