@@ -9,11 +9,33 @@ package PokeDex;
 */
 public class PokeDex {
 
+    /**
+ 	* Itemdex
+	*/
     private ItemDex itDex;
+
+    /**
+ 	* Pokemondex
+	*/
     private PokemonDex pmDex;
+
+    /**
+ 	* LocationDex
+	*/
     private LocationDex loDex;
+
+    /**
+ 	* MoveDex
+	*/
     private MoveDex mvDex;
 
+    /**
+ 	* Constructor that initializes the fields of the Pokedex class when given its
+    * @param ItemDex
+    * @param PokemonDex
+    * @param LocationDex
+    * @param MoveDex
+	*/
     public PokeDex (ItemDex iDex, PokemonDex pDex, LocationDex lDex, MoveDex mDex) {
         itDex = iDex;
         pmDex = pDex;
@@ -21,22 +43,41 @@ public class PokeDex {
         mvDex = mDex;
     }
 
+    /**
+ 	* Accessor for the ItemDex field
+    * @return itDex
+	*/
     public ItemDex getItemDex () {
         return itDex;
     }
 
+    /**
+ 	* Accessor for the PokemonDex field
+    * @return pmDex
+	*/
     public PokemonDex getPokemonDex () {
         return pmDex;
     }
 
+    /**
+ 	* Accessor for the LocationDex field
+    * @return loDex
+	*/
     public LocationDex getLocationDex () {
         return loDex;
     }
 
+    /**
+ 	* Accessor for the MoveDex field
+    * @return mvDex
+	*/
     public MoveDex getMoveDex () {
         return mvDex;
     }
 
+    /**
+ 	* Maximum size for databases
+	*/
     public final static int MAX_SIZE = 200;
 
 }
