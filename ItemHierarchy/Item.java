@@ -2,6 +2,10 @@ package ItemHierarchy;
 
 import Pokemon.*;
 /**
+* Class Name: Item
+* Author: Hassan Elshayeb
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates items that can be held by users and pokemon to affect a pokemon's stats and the outcome of a battle
 */
 public abstract class Item {
