@@ -102,7 +102,7 @@ public class PokemonDex{
    public boolean savePokemon (String fileName) {
       try {
          BufferedWriter out = new BufferedWriter (new FileWriter (fileName));
-         out.write(numPokemonData);
+         out.write("" + numPokemonData);
          out.newLine();
          for (int i = 0; i < numPokemonData; i++) {
             out.write(pokemonList[i].getName() + "");
@@ -139,6 +139,7 @@ public class PokemonDex{
       }
       return true;
    }
+
 
   /**
  	* This method uses sequential search to search for a Pokemon given
@@ -216,34 +217,30 @@ public class PokemonDex{
  	* This method is a wrapper method used to sort a list of Pokemon by their Hp stat
 	*/
    public void sortByHpStat () {
-      this.sortByHpStat(numPokemonData);
+      this.sortByHpStat(numPokemonData, false);
    }
 
   /**
    * This method uses recursive bubble sort to sort a list of pokemon by their HP stat
    * with the
    * @param numChecks The number of checks
+   * @param sorted Stores if the program is sorted or not
    */
    public void sortByHpStat (int numChecks, boolean sorted) {
       Pokemon temp;
-      if (numChecks > 0 || !sorted) {
+      if (numChecks > 0 || !sorted)
          sorted = true;
-         for (int i = 1; i < numChecks - 1; i++) {
-            if (pokemonList[i].getMaxHPStat() > pokemonList[i - 1].getMaxHPStat()) {
-               sorted = false;
-               temp = pokemonList[i];
-               pokemonList[i] = pokemonList[i - 1];
-               pokemonList[i - 1] = temp;
-            }
+      for (int i = 1; i < numPokemonData - 1; i++) {
+         if (pokemonList[i].getMaxHPStat() > pokemonList[i - 1].getMaxHPStat()) {
+            sorted = false;
+            temp = pokemonList[i];
+            pokemonList[i] = pokemonList[i - 1];
+            pokemonList[i - 1] = temp;
          }
-
-         this.sortByHpStat(numChecks - 1, sorted);
       }
+      this.sortByHpStat(numChecks + 1, sorted);
    }
-			
-			
-			
-	      
+
 /**
  	* This method is a wrapper method used to sort a list of Pokemon by their attack stat
 	*/
@@ -357,6 +354,7 @@ public class PokemonDex{
          pokemonList[numPokemonData] = new Pokemon (name, type, numPokemonData, hp, attack, defence, speed, move1, move2, move3, move4, foundIn);
          pD.getLocationDex().addPokemonToLocation(((Route)foundIn), name);
       }
+      System.out.println(pokemonList[numPokemonData]);
       return true;
    }
 }
