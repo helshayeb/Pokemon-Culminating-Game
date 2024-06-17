@@ -3,6 +3,10 @@ package PokeDex;
 import java.io.*;
 import MoveHierarchy.*;
 /**
+* Class Name: MoveDex
+* Author: David Guan
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates a PokeDex which can be accessed and used to 
 * manipulate Moves
 */
