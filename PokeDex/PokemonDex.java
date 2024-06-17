@@ -103,19 +103,33 @@ public class PokemonDex{
       try {
          BufferedWriter out = new BufferedWriter (new FileWriter (fileName));
          out.write(numPokemonData);
+         out.newLine();
          for (int i = 0; i < numPokemonData; i++) {
-            out.write(pokemonList[i].getName());
+            out.write(pokemonList[i].getName() + "");
+            out.newLine();
             out.write(pokemonList[i].getType() + "");
+            out.newLine();
             out.write(pokemonList[i].getID() + "");
+            out.newLine();
             out.write("" + String.format("%.2f", pokemonList[i].getMaxHPStat()));
+            out.newLine();
             out.write("" + String.format("%.2f",pokemonList[i].getAttackStat()));
+            out.newLine();
             out.write("" + String.format("%.2f",pokemonList[i].getDefenceStat()));
+            out.newLine();
             out.write("" + String.format("%.2f",pokemonList[i].getSpeedStat()));
+            out.newLine();
             out.write(pokemonList[i].getMoveList()[0].getMoveID() + "");
+            out.newLine();
             out.write(pokemonList[i].getMoveList()[1].getMoveID() + "");
+            out.newLine();
             out.write(pokemonList[i].getMoveList()[2].getMoveID() + "");
+            out.newLine();
             out.write(pokemonList[i].getMoveList()[3].getMoveID() + "");
+            out.newLine();
             out.write(pokemonList[i].getFoundIn().getLocationID() + "");
+            out.newLine();
+            out.newLine();
          }
          out.close();
       }
