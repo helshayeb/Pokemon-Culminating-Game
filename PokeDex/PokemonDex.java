@@ -260,7 +260,7 @@ public class PokemonDex{
 		 int i = index;
 		 Pokemon p_save = pokemonList[i];
 		 double atk_save = pokemonList[i].getAttackStat();
-		 while (j > 0 && atk_save > pokemonList[i - 1].getAttackStat()) {
+		 while (i > 0 && atk_save > pokemonList[i - 1].getAttackStat()) {
 				pokemonList[i] = pokemonList[i - 1];
 				i--;
 		 }
@@ -353,6 +353,7 @@ public class PokemonDex{
          return false;
       } else {
          pokemonList[numPokemonData] = new Pokemon (name, type, numPokemonData, hp, attack, defence, speed, move1, move2, move3, move4, foundIn);
+         numPokemonData++;
          pD.getLocationDex().addPokemonToLocation(((Route)foundIn), name);
       }
       System.out.println(pokemonList[numPokemonData]);
