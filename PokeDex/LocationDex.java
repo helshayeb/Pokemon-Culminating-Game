@@ -164,7 +164,7 @@ public class LocationDex {
    */
    public void addRoute(String type, String name, int routeNum, int id, int len, String[] pokes, PokeDex pD){
       if(!duplicateRouteNum(routeNum)){
-         locList[numLocationsData] = new Route(type,name,routeNum, numLocationsData, len, pokes);
+         locList[numLocationsData] = new Route(type,name, numLocationsData, routeNum, len, pokes);
          for (int i = 0; pokes[i] != null; i++) {
             (pD.getPokemonDex().searchPokemonByName(pokes[i])).setFoundIn(locList[numLocationsData]);
          }
