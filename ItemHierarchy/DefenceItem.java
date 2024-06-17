@@ -3,6 +3,10 @@ package ItemHierarchy;
 import Pokemon.*;
 
 /**
+* Class Name: DefenceItem
+* Author: Hassan Elshayeb
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates defence items that can increase a pokemon's defence stat
 */
 public class DefenceItem extends Item {
