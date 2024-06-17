@@ -3,6 +3,10 @@ package ItemHierarchy;
 import Pokemon.*;
 
 /**
+* Class Name: AttackItem
+* Author: Hassan Elshayeb
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates attack items that can increase a pokemon's attack stat
 */
 public class AttackItem extends Item {
