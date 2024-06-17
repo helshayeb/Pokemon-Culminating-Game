@@ -1,12 +1,16 @@
-/**
-* A list of all the users and NPCs, making it so users can interact with the game
-*/
 import java.io.*;
 import PersonHierarchy.*;
 import ItemHierarchy.*;
 import LocationHierarchy.*;
 import Pokemon.*;
 import PokeDex.*;
+/**
+* Class Name: UserDatabase
+* Author: Carlos Kau
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
+* A list of all the users and NPCs, making it so users can interact with the game
+*/
 public class UserDatabase {
 
    /**
