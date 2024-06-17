@@ -296,6 +296,7 @@ public class Person {
    */
    public void moveTo (Location loc) {
       this.setCurrentLocation(loc);
+      System.out.println(loc);
    }
 
    /**
