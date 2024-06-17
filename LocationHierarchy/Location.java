@@ -1,5 +1,11 @@
 package LocationHierarchy;
-
+/**
+* Class Name: City
+* Author: Kelvin Kim
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
+* Creates Locations that can be travelled to
+*/
 public class Location {
     /**
     *  Type of region where the location is situated
