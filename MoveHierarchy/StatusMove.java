@@ -4,6 +4,10 @@ package MoveHierarchy;
 import Pokemon.*;
 
 /**
+* Class Name: StatusMove
+* Author: David Guan
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
  * Creates Damage Moves which can be used by Pokemon in Battle to deal damage to
  * the opposing Pokemon
  */
