@@ -226,21 +226,21 @@ public class PokemonDex{
    * @param numChecks The number of checks
    * @param sorted Stores if the program is sorted or not
    */
-   public void sortByHpStat (int numChecks, boolean sorted) {
-      Pokemon temp;
-      if (numChecks > 0 || !sorted)
-         sorted = true;
-      for (int i = 1; i < numPokemonData - 1; i++) {
-         if (pokemonList[i].getMaxHPStat() > pokemonList[i - 1].getMaxHPStat()) {
-            sorted = false;
-            temp = pokemonList[i];
-            pokemonList[i] = pokemonList[i - 1];
-            pokemonList[i - 1] = temp;
-         }
-      }
-      this.sortByHpStat(numChecks + 1, sorted);
-   }
-
+   	public void sortByHpStat (int n) {
+		Pokemon temp;
+		if(n == 0){
+			return;
+		}
+		for(int i = 0; i < n; i++){
+			if(pokemonList[i].getMaxHPStat() > pokemonList[i + 1].getMaxHPStat()){
+				temp = pokemonList[i];
+        pokemonList[i] = pokemonList[i + 1];
+        pokemonList[i + 1] = temp;
+			}
+		}
+		sortByHpStat(n+1);
+	}
+	      
 /**
  	* This method is a wrapper method used to sort a list of Pokemon by their attack stat
 	*/
@@ -254,17 +254,18 @@ public class PokemonDex{
    * @param index The index of the array the sort is on
    */
    public void sortByAtkStat (int index) {
-      if (index < numPokemonData) {
-         int i = index;
-         Pokemon p_save = pokemonList[i];
-         double atk_save = pokemonList[i].getAttackStat();
-         while (index > 0 && atk_save > pokemonList[i - 1].getAttackStat()) {
-            pokemonList[i] = pokemonList[i - 1];
-            i--;
-         }
-         pokemonList[i] = p_save;
-         this.sortByAtkStat(index + 1);
-      }
+      if (index == numPokemonData-1) {
+				return;
+			}
+		 int i = index;
+		 Pokemon p_save = pokemonList[i];
+		 double atk_save = pokemonList[i].getAttackStat();
+		 while (j > 0 && atk_save > pokemonList[i - 1].getAttackStat()) {
+				pokemonList[i] = pokemonList[i - 1];
+				i--;
+		 }
+		 pokemonList[i] = p_save;
+		 this.sortByAtkStat(index + 1);
    }
 
 /**
