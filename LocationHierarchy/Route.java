@@ -1,5 +1,11 @@
 package LocationHierarchy;
-
+/**
+* Class Name: City
+* Author: Kelvin Kim
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
+* Creates Routes that can be travelled to
+*/
 public class Route extends Location {
     /**
     * An array of pokemon names in the Location
