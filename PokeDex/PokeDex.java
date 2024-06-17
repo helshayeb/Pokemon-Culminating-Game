@@ -1,5 +1,12 @@
 package PokeDex;
-
+/**
+* Class Name: Pokedex
+* Author: Joint Effort
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
+* Creates a PokeDex which can be accessed and used to 
+* manipulate Moves
+*/
 public class PokeDex {
 
     private ItemDex itDex;
