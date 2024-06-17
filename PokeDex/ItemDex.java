@@ -193,16 +193,16 @@ public class ItemDex {
       }
       else {
          if (type.equalsIgnoreCase("health")) {
-            itemList[newId] = new HealthItem(type, name, newId, price, modifier);
+            itemList[newId] = new HealthItem("HealthItem", name, newId, price, modifier);
          }
          else if (type.equalsIgnoreCase("attack")) {
-            itemList[newId] = new AttackItem(type, name, newId, price, modifier);
+            itemList[newId] = new AttackItem("AttackItem", name, newId, price, modifier);
          }
          else if (type.equalsIgnoreCase("defence")) {
-            itemList[newId] = new DefenceItem(type, name, newId, price, modifier);
+            itemList[newId] = new DefenceItem("DefenceItem", name, newId, price, modifier);
          }
          else if (type.equalsIgnoreCase("speed")) {
-            itemList[newId] = new SpeedItem(type, name, newId, price, modifier);
+            itemList[newId] = new SpeedItem("SpeedItem", name, newId, price, modifier);
          }
          else {
             return false;
