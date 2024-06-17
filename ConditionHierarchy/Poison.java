@@ -2,6 +2,10 @@ package ConditionHierarchy;
 
 import Pokemon.*;
 /**
+* Class Name: Poison
+* Author: David Guan
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * This class creates and allows the Poison Condition to be used and applied to Pokemon 
 * in the Pokemon game
 * The Poison Condition deals considerable damage to the Pokemon every turn it is applied on
