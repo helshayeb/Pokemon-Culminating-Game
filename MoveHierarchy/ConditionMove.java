@@ -1,8 +1,11 @@
 package MoveHierarchy;
 
 import Pokemon.*;
-//import ConditionHierarchy.*;
 /**
+* Class Name: ConditionMove
+* Author: David Guan
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates Condition Moves which can be used by Pokemon in Battle
 * to apply a condition to the opposing Pokemon
 */
