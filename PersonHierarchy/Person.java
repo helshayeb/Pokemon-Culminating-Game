@@ -6,6 +6,10 @@ import Pokemon.*;
 import PokeDex.*;
 
 /**
+* Class Name: Person
+* Author: Carlos Kau
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates accounts that users can use and creates characters in the game users can battle
 */
 public class Person {
