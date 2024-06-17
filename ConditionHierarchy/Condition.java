@@ -2,6 +2,10 @@ package ConditionHierarchy;
 
 import Pokemon.*;
 /**
+* Class Name: Condition
+* Author: David Guan
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * This class creates the Condition abstract class, which allows other Conditions to be used 
 * in the Pokemon game
 */
