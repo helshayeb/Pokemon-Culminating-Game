@@ -3,7 +3,13 @@ package PokeDex;
 import LocationHierarchy.*;
 import java.io.*;
 import java.util.*;
-
+/**
+* Class Name: LocationDex
+* Author: Kelvin Kim
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
+* Creates a LocationDex which can manipulate Locations
+*/
 public class LocationDex {
    /**
    * The number of locations data stored in the LocationDex.
