@@ -39,7 +39,7 @@ public class NPC extends Person {
    */
    public String toString () {
 	  int numPoke = this.getNumPokemon();
-      String s = "Name: " + this.getName() + "\nAge: " + this.getAge() + "\nID: " + this.getPersonID() + "\nNumber of Pokemon: " + numPoke;
+      String s = "Name: " + this.getName() + "\nAge: " + this.getAge() + "\nID: " + this.getPersonID() + "\nNumber of Pokemon: " + numPoke + "\n";
       for (int i = 0; i < numPoke; i++) {
          s += this.getTeamList()[i] + "\n";
       }
