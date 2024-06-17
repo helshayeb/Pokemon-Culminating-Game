@@ -73,7 +73,7 @@ public class LocationDex {
                for (int j = 0; j < len; j++) {
                   list[j] = br.readLine();
                }
-               locList[i] = new Route(region, name, id, routeNum, list);
+               locList[i] = new Route(region, name, id, routeNum, len, list);
                numLocationsData++;
             } else {
                return false;
@@ -162,9 +162,12 @@ public class LocationDex {
    * @param id The ID of the route.
    * @param pokes An array of Pokémon on the route.
    */
-   public void addRoute(String type, String name, int routeNum, int id, String[] pokes){
+   public void addRoute(String type, String name, int routeNum, int id, int len, String[] pokes, PokeDex pD){
       if(!duplicateRouteNum(routeNum)){
-         locList[numLocationsData] = new Route(type,name,routeNum, numLocationsData,pokes);
+         locList[numLocationsData] = new Route(type,name,routeNum, numLocationsData, len, pokes);
+         for (int i = 0; pokes[i] != null; i++) {
+            (pD.getPokemonDex().searchPokemonByName(pokes[i])).setFoundIn(locList[numLocationsData]);
+         }
          numLocationsData++;
       }
    }
@@ -203,7 +206,7 @@ public class LocationDex {
    public boolean saveLocations(String fileName){
       try{
          BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
-         bw.write(numLocationsData); /*Number of Location*/
+         bw.write(numLocationsData + ""); /*Number of Location*/
          bw.newLine();
          for (int i = 0; i < locList.length; i++) {
             bw.newLine();
@@ -215,8 +218,6 @@ public class LocationDex {
                bw.write(temp.getRegionType());
                bw.newLine();
                bw.write(temp.getName());
-               System.out.println(temp.getName());
-               System.out.println(locList[i].getName());
                bw.newLine();
                bw.write(temp.getLocationID() + "");
                bw.newLine();
@@ -239,19 +240,17 @@ public class LocationDex {
                bw.write(tempp.getNumPokemon() + "");
                bw.newLine();
                for (int j = 0; j < tempp.getNumPokemon(); j++) {
-                  bw.write(tempp.getPokemonInLocation()[i]);
+                  bw.write(tempp.getPokemonInLocation()[j]);
                   bw.newLine();
                }
             }
          }
+         bw.close();
          return true;
       }catch(IOException iox){
          System.out.println("File Not Found");
          return false;
-      } catch(Exception x){
-         System.out.println("Some other error occurred");
-         return false;
-      }
+      } 
    }
    
    /**
