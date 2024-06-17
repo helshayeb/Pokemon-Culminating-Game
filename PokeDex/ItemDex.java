@@ -66,7 +66,7 @@ public class ItemDex {
          double modifier;
          
          for (int i = 0; i < numItemData; i++) {
-	         in.readLine();
+            in.readLine();
             in.readLine();
             itemTypeName = (in.readLine());
             itemName = (in.readLine());
@@ -107,13 +107,24 @@ public class ItemDex {
    public boolean saveItems (String fileName) {
       try {
          BufferedWriter out = new BufferedWriter (new FileWriter (fileName));
-         out.write(numItemData);
-         for (int i = 0; i <= numItemData; i++) {
+         out.write("" + numItemData);
+         out.newLine();
+         out.newLine();
+         out.newLine();
+         for (int i = 0; i < numItemData; i++) {
+            System.out.println(itemList[i]);
             out.write(itemList[i].getItemTypeName());
+            out.newLine();
             out.write(itemList[i].getItemName());
-            out.write(itemList[i].getId());
-            out.write(itemList[i].getPrice());
-            out.write(String.format("%.2f", itemList[i].getModifier()));
+            out.newLine();
+            out.write("" + itemList[i].getId());
+            out.newLine();
+            out.write("" + itemList[i].getPrice());
+            out.newLine();
+            out.write("" + String.format("%.2f", itemList[i].getModifier()));
+            out.newLine();
+            out.newLine();
+            out.newLine();
          }
          out.close();
          return true;
@@ -181,23 +192,23 @@ public class ItemDex {
          return false;
       }
       else {
-         if (itemList[newId].getItemTypeName().equals("HealthItem")) {
+         if (type.equalsIgnoreCase("health")) {
             itemList[newId] = new HealthItem(type, name, newId, price, modifier);
          }
-         else if (itemList[newId].getItemTypeName().equals("AttackItem")) {
+         else if (type.equalsIgnoreCase("attack")) {
             itemList[newId] = new AttackItem(type, name, newId, price, modifier);
          }
-         else if (itemList[newId].getItemTypeName().equals("DefenceItem")) {
+         else if (type.equalsIgnoreCase("defence")) {
             itemList[newId] = new DefenceItem(type, name, newId, price, modifier);
          }
-         else if (itemList[newId].getItemTypeName().equals("SpeedItem")) {
+         else if (type.equalsIgnoreCase("speed")) {
             itemList[newId] = new SpeedItem(type, name, newId, price, modifier);
          }
          else {
             return false;
          }
-      
          numItemData ++;
+         System.out.println(itemList[newId]);
          return true;
       }
    }           
