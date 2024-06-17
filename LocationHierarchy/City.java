@@ -1,5 +1,11 @@
 package LocationHierarchy;
-
+/**
+* Class Name: City
+* Author: Kelvin Kim
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
+* Creates Cities that can be travelled to
+*/
 public class City extends Location {
     /**
     *If the city has the pokecenter to heal pokemons
