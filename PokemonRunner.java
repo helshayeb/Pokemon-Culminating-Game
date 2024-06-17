@@ -7,6 +7,10 @@ import MoveHierarchy.Move;
 import PersonHierarchy.*;
 import PokeDex.*;
 /**
+* Class Name: PokemonRunner
+* Author: David Guan (first half) Carlos Kau (second half)
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * This class makes it so the user can interact with everything 
 * in the Pokemon game
 */
