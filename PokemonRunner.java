@@ -221,12 +221,16 @@ public class PokemonRunner {
                            }
                            System.out.println("Enter the names of Pokemon found in the Route");
                            String[] pokeInLoca = new String[10];
+                           sc.nextLine();
                            for(int i = 0; i < foundSize; i++){
-                              System.out.println("Enter the name of Pokemon #" + i+1 + ": ");
-                              sc.nextLine();
+                              System.out.println("Enter the name of Pokemon #" + (i+1) + ": ");
                               pokeInLoca[i] = sc.nextLine();
+                              while (gameDatabase.getPokemonDex().searchPokemonByName(pokeInLoca[i]) == null) {
+                                 System.out.println("That Pokemon doesn't exist. Try again: ");
+                                 pokeInLoca[i] = sc.nextLine();
+                              }
                            }
-                           lD.addRoute(type, name, routeNum, gameDatabase.getLocationDex().getNumLocationsData(), pokeInLoca);
+                           lD.addRoute(type, name, routeNum, gameDatabase.getLocationDex().getNumLocationsData(), foundSize, pokeInLoca, gameDatabase);
                         
                         }
                      
