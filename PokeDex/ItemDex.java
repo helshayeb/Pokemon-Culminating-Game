@@ -116,7 +116,6 @@ public class ItemDex {
          out.newLine();
          out.newLine();
          for (int i = 0; i < numItemData; i++) {
-            System.out.println(itemList[i]);
             out.write(itemList[i].getItemTypeName());
             out.newLine();
             out.write(itemList[i].getItemName());
@@ -212,7 +211,6 @@ public class ItemDex {
             return false;
          }
          numItemData ++;
-         System.out.println(itemList[newId]);
          return true;
       }
    }           
