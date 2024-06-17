@@ -2,6 +2,10 @@ package ConditionHierarchy;
 
 import Pokemon.*;
 /**
+* Class Name: Burn
+* Author: David Guan
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * This class creates and allows the Burn Condition to be used and applied to Pokemon 
 * in the Pokemon game
 * The Burn Condition halves the Pokemon's attack stat and deals minor damage every turn
