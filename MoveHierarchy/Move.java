@@ -2,6 +2,10 @@ package MoveHierarchy;
 
 import Pokemon.*;
 /**
+* Class Name: Move
+* Author: David Guan
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates Moves which can be used by Pokemon in Battle
 */
 public abstract class Move {
