@@ -2,6 +2,10 @@ package ConditionHierarchy;
 
 import Pokemon.*;
 /**
+* Class Name: Paralysis
+* Author: David Guan
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * This class creates and allows the Paralysis Condition to be used and applied to Pokemon 
 * in the Pokemon game
 * The Paralysis Class drastically reduces the Pokemon's speed stat
