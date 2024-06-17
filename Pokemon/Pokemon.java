@@ -4,6 +4,10 @@ import MoveHierarchy.*;
 import LocationHierarchy.*;
 import ItemHierarchy.*;
 /**
+* Class Name: Pokemon
+* Author: David Guan
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates Pokemon which can be caught and used to battle other Pokemon
 */
 public class Pokemon{
