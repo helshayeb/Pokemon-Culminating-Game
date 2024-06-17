@@ -53,11 +53,11 @@ public class LocationDex {
          for (int i = 0; i < numLoca; i++) {
             br.readLine();
             br.readLine();
-            String type = br.readLine().toLowerCase();
-            if (type.equals("city") || type.equals("c")) {
+            String type = br.readLine();
+            if (type.equalsIgnoreCase("city") || type.equalsIgnoreCase("c")) {
                locList[i] = new City(br.readLine(), br.readLine(), Integer.parseInt(br.readLine()),Boolean.parseBoolean(br.readLine()),Boolean.parseBoolean(br.readLine()));
                numLocationsData++;
-            } else if(type.equals("route")||type.equals("r")){
+            } else if(type.equalsIgnoreCase("route")||type.equalsIgnoreCase("r")){
                String region = br.readLine();
                String name = br.readLine();
                int id = Integer.parseInt(br.readLine());
@@ -196,10 +196,8 @@ public class LocationDex {
     */
    public boolean saveLocations(String fileName){
       try{
-         File file = new File(fileName);
-         file.createNewFile();
          BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
-         bw.write(locList.length); /*Number of Location*/
+         bw.write(numLocationsData); /*Number of Location*/
          bw.newLine();
          for (int i = 0; i < locList.length; i++) {
             bw.newLine();
@@ -211,6 +209,8 @@ public class LocationDex {
                bw.write(temp.getRegionType());
                bw.newLine();
                bw.write(temp.getName());
+               System.out.println(temp.getName());
+               System.out.println(locList[i].getName());
                bw.newLine();
                bw.write(temp.getLocationID() + "");
                bw.newLine();
