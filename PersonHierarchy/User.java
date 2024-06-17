@@ -208,18 +208,25 @@ public class User extends Person {
    * an incorrect input was taken in
    */
    public Person battleTrainer (Person other) {
+
+      // The number of Pokemon the people have for battle
       int chal_num_poke = this.getNumPokemon();
       int def_num_poke = other.getNumPokemon();
+
+      // THe list of teams the people will use in battle
       Pokemon[] chal_team = this.getTeamList();
       Pokemon[] def_team = other.getTeamList();
+      
       int challenger_pokemon, defender_pokemon, challenger_pokemon_left, defender_pokemon_left;
       Scanner sc = new Scanner (System.in);
-      Pokemon winner;
-      Person p_winner = null;
-   
+      Pokemon winner; // Winner of Pokemon 1v1
+      Person p_winner = null; // Winner of the entire battle
+
+      // The number of Pokemon the people have for battle
       challenger_pokemon_left = chal_num_poke;
       defender_pokemon_left = def_num_poke;
-   
+
+      // If any Pokemon are at 0 HP, the are unfit to battle and aren't included
       for (int i = 0; i < chal_num_poke; i++) {
          if (chal_team[i].getCurrentHP() <= 0) {
             challenger_pokemon_left--;
@@ -231,6 +238,8 @@ public class User extends Person {
             defender_pokemon_left--;
          }
       }
+
+      // Checks if any or both users have no Pokemon to battle
       if (challenger_pokemon_left == 0 && defender_pokemon_left == 0) {
          System.out.println("Neither team has enough Pokemon to battle");
          return null;
@@ -247,9 +256,11 @@ public class User extends Person {
       }
       else {
          try {
+            // Asks for Pokemon to be sent out by the challenger
             System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
             challenger_pokemon = sc.nextInt() - 1;
-         
+
+            // Validate input if out of bounds or Pokemon selected is dead
             while (chal_team[challenger_pokemon].getCurrentHP() <= 0 || challenger_pokemon < 0 || challenger_pokemon > chal_num_poke - 1) {
                if (chal_team[challenger_pokemon].getCurrentHP() <= 0 ) {
                   System.out.print("That Pokemon is dead. Please select another: ");
@@ -260,18 +271,24 @@ public class User extends Person {
                challenger_pokemon = sc.nextInt() - 1;
                System.out.println();
             }
-         
+
+            // Randomly selects other person's Pokemon to send out
             defender_pokemon = ((int)Math.random() * (def_num_poke));
-         
+
+            // Validate input if out of bounds or Pokemon selected is dead
             while (def_team[defender_pokemon].getCurrentHP() <= 0) {
                defender_pokemon = ((int)(Math.random() * (def_num_poke)));
             }
-            
+
+            // Prints what Pokemon was sent out
             System.out.println(other.getName() + " sent out " + def_team[defender_pokemon].getName());
-            
+
+            // Returns the Pokemon left standing
             winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
-         
+
+            // Runs as long as both people have Pokemon left
             while (challenger_pokemon_left > 0 && defender_pokemon_left > 0) {
+               // Checks if the defender's Pokemon was knocked out, then adjusts the number of Pokemon left accordingly and randomly sends out a new Pokemon
                if (def_team[defender_pokemon].getCurrentHP() <= 0) {
                   defender_pokemon_left--;
                   if (defender_pokemon_left > 0) {
@@ -284,6 +301,7 @@ public class User extends Person {
                   }
                } 
                else {
+                  // If the challenger's Pokemon was knocked out, adjust the number of Pokemon left accordingly and asks user for next Pokemon to send out
                   challenger_pokemon_left--;
                   if (challenger_pokemon_left > 0) {
                      System.out.println("Enter a pokemon (1-" + chal_num_poke + "): ");
@@ -301,10 +319,12 @@ public class User extends Person {
                         challenger_pokemon = sc.nextInt() - 1;
                         System.out.println();
                      }
+                      // Returns the Pokemon left standing
                      winner = this.arena(chal_team[challenger_pokemon], def_team[defender_pokemon]);
                   }
                }
             }
+            // Resets both teams Pokemon after battle
             for (int i = 0; i < chal_num_poke; i++) {
                   this.resetPokemon(chal_team[i].getID());
                }
@@ -314,7 +334,7 @@ public class User extends Person {
                   other.moveTo(other.getPokedexReference().getLocationDex().getLocList()[11]);
                   other.healTeam();
                }
-            
+            // Checks winner
                if (challenger_pokemon_left == 0) {
                   p_winner = other;
                } else {
@@ -322,6 +342,7 @@ public class User extends Person {
                }
             return p_winner;
          }
+            // Resets everything if excception occurs
          catch (InputMismatchException ime) {
             for (int i = 0; i < chal_num_poke; i++) {
                this.resetPokemon(chal_team[i].getID());
@@ -351,7 +372,9 @@ public class User extends Person {
       Condition cCondition = challenger.getCurrentCondition();
       Condition dCondition =  defender.getCurrentCondition();
       Pokemon winner = null;
+      // Runs while both Pokemon are alive
       while (challenger.getCurrentHP() > 0 && defender.getCurrentHP() > 0) {
+         // Checks if the Pokemon have a condition and applies it if so
          if (cCondition != null) {
             challenger.applyCondition();
          }
@@ -359,7 +382,8 @@ public class User extends Person {
          if (dCondition != null) {
             defender.applyCondition();
          }
-      
+         
+         // Checks if either Pokemon fainted
          if (challenger.getCurrentHP() <= 0) {
             System.out.println(challenger.getName() + " fainted!");
             winner = defender;
@@ -369,7 +393,9 @@ public class User extends Person {
             winner = challenger;
          } 
          else {
+            // Checks which Pokemon is faster
             if (challenger.getSpeedStat() > defender.getSpeedStat()) {
+               // Runs the users turn and checks if either Pokemon are dead
                this.userTurn(challenger, defender);
                if (challenger.getCurrentHP() <= 0) {
                   System.out.println(challenger.getName() + " fainted!");
@@ -380,15 +406,10 @@ public class User extends Person {
                   winner = challenger;  
                } 
                else {
-                  System.out.println(challenger.getName() + " has " + challenger.getCurrentHP() + " HP.");
-                  System.out.println("Atk: " + challenger.getAttackStat());
-                  System.out.println("Def: " + challenger.getDefenceStat());
-                  System.out.println("Spd: " + challenger.getSpeedStat());
-                  System.out.println(defender.getName() + " has " + defender.getCurrentHP() + " HP.");
-                  System.out.println("Atk: " + defender.getAttackStat());
-                  System.out.println("Def: " + defender.getDefenceStat());
-                  System.out.println("Spd: " + defender.getSpeedStat());
-                  
+                  // Prints out HP of the Pokemon
+                  System.out.printf("%s has %.2f HP.%n", challenger.getName(), challenger.getCurrentHP());
+                  System.out.printf("%s has %.2f HP.%n", defender.getName(), defender.getCurrentHP());
+                  // Runs the computers turn and checks if either Pokemon are dead
                   this.computerTurn(defender, challenger);
                   if (challenger.getCurrentHP() <= 0) {
                      System.out.println(challenger.getName() + " fainted!");
@@ -400,6 +421,7 @@ public class User extends Person {
                   }
                }
             } else {
+               // Runs the computers turn and checks if either Pokemon are dead
                this.computerTurn(defender, challenger);
                if (challenger.getCurrentHP() <= 0) {
                   System.out.println(challenger.getName() + " fainted!");
@@ -409,14 +431,10 @@ public class User extends Person {
                   System.out.println(defender.getName() + " fainted!");
                   winner = challenger; 
                } else {
-                  System.out.println(challenger.getName() + " has " + challenger.getCurrentHP() + " HP.");
-                  System.out.println("Atk: " + challenger.getAttackStat());
-                  System.out.println("Def: " + challenger.getDefenceStat());
-                  System.out.println("Spd: " + challenger.getSpeedStat());
-                  System.out.println(defender.getName() + " has " + defender.getCurrentHP() + " HP.");
-                  System.out.println("Atk: " + defender.getAttackStat());
-                  System.out.println("Def: " + defender.getDefenceStat());
-                  System.out.println("Spd: " + defender.getSpeedStat());
+                  // Prints out HP of the Pokemon
+                  System.out.printf("%s has %.2f HP.%n", challenger.getName(), challenger.getCurrentHP());
+                  System.out.printf("%s has %.2f HP.%n", defender.getName(), defender.getCurrentHP());
+                  // Runs the users turn and checks if either Pokemon are dead
                   this.userTurn(challenger, defender);
                   if (challenger.getCurrentHP() <= 0) {
                      System.out.println(challenger.getName() + " fainted!");
@@ -430,6 +448,7 @@ public class User extends Person {
             }
          }
       }
+      // Returns the Pokemon left standing
       return winner;
    }
 
@@ -442,6 +461,7 @@ public class User extends Person {
       Scanner sc = new Scanner (System.in);
       int select;
       try {
+         // Asks and validates for user input
          System.out.println("Choose an option: ");
          System.out.println("1) " + challenger.getMoveList()[0].getMoveName());
          System.out.println("2) " + challenger.getMoveList()[1].getMoveName());
@@ -456,6 +476,7 @@ public class User extends Person {
          }
       
          switch (select) {
+               // Does a move depending on what user selected above
             case 1:
                System.out.println(challenger.getName() + " used " + challenger.getMoveList()[0]);
                challenger.attack(defender, challenger.getMoveList()[0]);
@@ -486,6 +507,7 @@ public class User extends Person {
                System.out.print("Error");
          }
       } catch (InputMismatchException ime) {
+         // restarts this method if the user provides invalid input
          System.out.println("Please provide proper input.");
          this.userTurn(challenger, defender);
       }
@@ -498,8 +520,10 @@ public class User extends Person {
    */
    public void computerTurn (Pokemon attacker, Pokemon defender) {
       int select;
+      // Computer randomly selects a move
       select = ((int) (Math.random() * (5) + 1));
       switch (select) {
+         // Does a move depending on what was selected above
          case 1:
             System.out.println(attacker.getName() + " used " + attacker.getMoveList()[0]);
             attacker.attack(defender, attacker.getMoveList()[0]);
