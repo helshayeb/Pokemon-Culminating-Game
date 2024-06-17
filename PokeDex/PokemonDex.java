@@ -216,30 +216,32 @@ public class PokemonDex{
  	* This method is a wrapper method used to sort a list of Pokemon by their Hp stat
 	*/
    public void sortByHpStat () {
-      this.sortByHpStat(numPokemonData, false);
+      this.sortByHpStat(numPokemonData);
    }
 
   /**
    * This method uses recursive bubble sort to sort a list of pokemon by their HP stat
    * with the
    * @param numChecks The number of checks
-   * @param sorted Stores if the program is sorted or not
    */
-   public void sortByHpStat (int numChecks, boolean sorted) {
-      Pokemon temp;
-      if (numChecks > 0 || !sorted)
-         sorted = true;
-      for (int i = 1; i < numPokemonData - 1; i++) {
-         if (pokemonList[i].getMaxHPStat() > pokemonList[i - 1].getMaxHPStat()) {
-            sorted = false;
-            temp = pokemonList[i];
-            pokemonList[i] = pokemonList[i - 1];
-            pokemonList[i - 1] = temp;
-         }
-      }
-      this.sortByHpStat(numChecks + 1, sorted);
-   }
-
+	public void sortByHpStat (int n) {
+		Pokemon temp;
+		if(n == 0){
+			return;
+		}
+		for(int i = 0; i < n; i++){
+			if(pokemonList[i].getMaxHPStat() > pokemonList[i + 1].getMaxHPStat()){
+				temp = pokemonList[i];
+        pokemonList[i] = pokemonList[i + 1];
+        pokemonList[i + 1] = temp;
+			}
+		}
+		sortByHpStat(n+1);
+	}
+			
+			
+			
+	      
 /**
  	* This method is a wrapper method used to sort a list of Pokemon by their attack stat
 	*/
