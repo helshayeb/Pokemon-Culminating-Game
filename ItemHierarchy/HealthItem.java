@@ -3,6 +3,10 @@ package ItemHierarchy;
 import Pokemon.*;
 
 /**
+* Class Name: HealthItem
+* Author: Hassan Elshayeb
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates health items that can heal pokemon
 */
 public class HealthItem extends Item {
