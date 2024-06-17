@@ -4,6 +4,10 @@ import ItemHierarchy.*;
 import java.io.*;
 
 /**
+* Class Name: ItemDex
+* Author: Hassan Elshayeb
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates a PokeDex which can be accessed and used to 
 * manipulate Items
 */
