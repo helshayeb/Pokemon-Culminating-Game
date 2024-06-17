@@ -88,7 +88,7 @@ public class PokemonRunner {
                
                   System.out.println();
                
-                  if(select2 == 1){
+                  if(select2 == 1){ // User chooses to add an object
                   
                      System.out.println("Enter the number corresponding to what object you want to add: ");
                      System.out.println("1) Add a Pokemon.");
@@ -212,7 +212,7 @@ public class PokemonRunner {
                            }
                            lD.addCity(type, name, pkc, str);
                         
-                        } else{
+                        } else{ // User chooses to add a Location
                            System.out.println("Enter the Location name of the Route: ");
                            String name = sc.nextLine();
                            System.out.println("Enter the number of the Route:");
@@ -505,7 +505,7 @@ public class PokemonRunner {
                   }
                }
             }
-            else if(select1 == 2){
+            else if(select1 == 2){ // User chooses to access the User Database
                select2 = -1;
                while (select2 != 0) {
                   System.out.println("Enter the number corresponding to what you want to do: ");
@@ -547,7 +547,7 @@ public class PokemonRunner {
                      }
                   
                   }
-                  if (select2 == 2) {
+                  if (select2 == 2) { // User chooses to remove the account
                   // Filter
                      sc.nextLine();
                   
@@ -566,7 +566,7 @@ public class PokemonRunner {
                      }
                   }
                
-                  if (select2 == 3) {
+                  if (select2 == 3) { // User chooses to play in an account
                      select3 = -1;
                      while (select3 != 0) {
                         int account;
@@ -756,7 +756,7 @@ public class PokemonRunner {
                         }
                      }
                   }
-                  if (select2 == 4) {
+                  if (select2 == 4) { // User chooses to seach for a Person
                      System.out.println("Select an option: ");
                      System.out.println("1) Search Person by Name.");
                      System.out.println("2) Search User by ID.");
@@ -816,7 +816,7 @@ public class PokemonRunner {
                         System.out.println();
                      }
                   }
-                  if (select2 == 5) {
+                  if (select2 == 5) { // User chooses to save Users
                      if (uD.saveUsers(USER_FILE)) {
                         System.out.println("Users saved successfully");
                      } else {
