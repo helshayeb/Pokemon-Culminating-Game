@@ -3,6 +3,10 @@ package MoveHierarchy;
 import Pokemon.*;
 import PokeDex.*;
 /**
+* Class Name: DamageMove
+* Author: David Guan
+* Date: June 14th 2024
+* School: A. Y. Jackson SS
 * Creates Damage Moves which can be used by Pokemon in Battle
 * to deal damage to the opposing Pokemon
 */
