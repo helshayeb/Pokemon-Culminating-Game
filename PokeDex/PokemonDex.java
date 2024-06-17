@@ -217,7 +217,7 @@ public class PokemonDex{
  	* This method is a wrapper method used to sort a list of Pokemon by their Hp stat
 	*/
    public void sortByHpStat () {
-      this.sortByHpStat(numPokemonData, false);
+      this.sortByHpStat(numPokemonData);
    }
 
   /**
