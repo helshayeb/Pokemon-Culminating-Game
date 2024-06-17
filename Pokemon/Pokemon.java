@@ -303,6 +303,15 @@ public class Pokemon{
    public void setItemHolding(Item holding) {
 	   itemHolding = holding;
    }
+
+   /**
+   * This method is a mutator that sets the Location
+   * of where the Pokemon can be found in
+   * @param loc Location where the Pokemon can be found
+   */
+   public void setFoundIn(Location loc) {
+      foundIn = loc;
+   }
 	
    /**
    * This method returns the name of 
