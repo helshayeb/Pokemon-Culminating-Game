@@ -224,20 +224,22 @@ public class PokemonDex{
    * with the
    * @param numChecks The number of checks
    */
-	public void sortByHpStat (int n) {
-		Pokemon temp;
-		if(n == 0){
-			return;
-		}
-		for(int i = 0; i < n; i++){
-			if(pokemonList[i].getMaxHPStat() > pokemonList[i + 1].getMaxHPStat()){
-				temp = pokemonList[i];
-        pokemonList[i] = pokemonList[i + 1];
-        pokemonList[i + 1] = temp;
-			}
-		}
-		sortByHpStat(n+1);
-	}
+   public void sortByHpStat (int numChecks, boolean sorted) {
+      Pokemon temp;
+      if (numChecks > 0 || !sorted) {
+         sorted = true;
+         for (int i = 1; i < numChecks - 1; i++) {
+            if (pokemonList[i].getMaxHPStat() > pokemonList[i - 1].getMaxHPStat()) {
+               sorted = false;
+               temp = pokemonList[i];
+               pokemonList[i] = pokemonList[i - 1];
+               pokemonList[i - 1] = temp;
+            }
+         }
+
+         this.sortByHpStat(numChecks - 1, sorted);
+      }
+   }
 			
 			
 			
